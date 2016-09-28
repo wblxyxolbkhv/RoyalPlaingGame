@@ -1,0 +1,5 @@
+c:\users\dima\documents\visual studio 2015\Projects\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\RoyalPlayingGame.dll
+c:\users\dima\documents\visual studio 2015\Projects\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\RoyalPlayingGame.pdb
+c:\users\dima\documents\visual studio 2015\Projects\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.csprojResolveAssemblyReference.cache
+c:\users\dima\documents\visual studio 2015\Projects\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.dll
+c:\users\dima\documents\visual studio 2015\Projects\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.pdb
