@@ -1,0 +1,4 @@
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\SimplePhysicalEngine\bin\Debug\SimplePhysicalEngine.dll
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\SimplePhysicalEngine\bin\Debug\SimplePhysicalEngine.pdb
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\SimplePhysicalEngine\obj\Debug\SimplePhysicalEngine.dll
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\SimplePhysicalEngine\obj\Debug\SimplePhysicalEngine.pdb
