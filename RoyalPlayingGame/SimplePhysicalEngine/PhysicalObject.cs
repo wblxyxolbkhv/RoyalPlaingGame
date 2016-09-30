@@ -22,11 +22,22 @@ namespace SimplePhysicalEngine
 
         private void OnRefresh(object sender, EventArgs e)
         {
+            double newPositionX = Position.X + Speed.X * dt + dt * dt * 1 / 2 * GetBoost().X;
             Speed.X = Speed.X + dt*GetBoost().X;
-            Position.X = Position.X + Speed.X * dt + dt*dt*1/2*GetBoost().X;
+            if (newPositionX < MinX)
+                Position.X = MinX;
+            else if (newPositionX > MaxX)
+                Position.X = MaxX;
+            else Position.X = newPositionX;
 
             Speed.Y = Speed.Y + dt * GetBoost().Y;
-            Position.Y = Position.Y + Speed.Y * dt + dt * dt * 1 / 2 * GetBoost().Y;
+            double newPositionY = Position.Y + Speed.Y * dt + dt * dt * 1 / 2 * GetBoost().Y;
+            Speed.Y = Speed.Y + dt * GetBoost().Y;
+            if (newPositionY < MinY)
+                Position.Y = MinY;
+            else if (newPositionY > MaxY)
+                Position.Y = MaxY;
+            else Position.Y = newPositionY;
         }
 
         /// <summary>
@@ -53,6 +64,15 @@ namespace SimplePhysicalEngine
         /// высота по Y
         /// </summary>
         public double Height { get; set; }
+
+        // ограничения
+        public double MinX { get; set; }
+        public double MinY { get; set; }
+        public double MaxX { get; set; }
+        public double MaxY { get; set; }
+
+
+
 
         /// <summary>
         /// все силы, действующие на тело

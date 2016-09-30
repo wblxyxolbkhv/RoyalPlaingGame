@@ -8,8 +8,7 @@ namespace RoyalPlayingGame
 {
     public  interface ITargetObject
     {
-        uint Life { get; set; }
-        void GetDamage(uint damage);
-                
+        uint Health { get; set; }
+        void GotDamaged(uint damage);
     }
 }

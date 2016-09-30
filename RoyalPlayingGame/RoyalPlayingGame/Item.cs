@@ -8,6 +8,8 @@ namespace RoyalPlayingGame
 {
     public class Item
     {
+        public string ItemName { get; protected set; }
         public ushort MaxAmount { get; protected set; }
+
     }
 }

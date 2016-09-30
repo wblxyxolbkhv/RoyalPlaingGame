@@ -20,6 +20,20 @@ namespace VisualPart
             t.Tick += T_Tick;
             t.Interval = 20;
             t.Start();
+
+            player = new PhysicalObject();
+            player.Position = new Vector2(0, 0);
+            player.Width = 50;
+            player.Height = 50;
+            player.Mass = 5;
+
+            player.MinX = 0;
+            player.MinY = 0;
+            player.MaxX = pictureBox1.Width - player.Width;
+            player.MaxY = pictureBox1.Height - player.Height;
+
+            player.Powers.Add(new Power(new Vector2(0, 1), 0.01));
+            
         }
 
         private void T_Tick(object sender, EventArgs e)
@@ -40,6 +54,11 @@ namespace VisualPart
                     (int)(objects[i].Width),
                     (int)(objects[i].Height));
             }
+            e.Graphics.FillRectangle(Brushes.Red,
+                    (int)(player.Position.X),
+                    (int)(player.Position.Y),
+                    (int)(player.Width),
+                    (int)(player.Height));
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
@@ -50,9 +69,25 @@ namespace VisualPart
             obj.Width = 50;
             obj.Height = 50;
             obj.Mass = 5;
+
+            obj.MinX = 0;
+            obj.MinY = 0;
+            obj.MaxX = pictureBox1.Width - obj.Width;
+            obj.MaxY = pictureBox1.Height - obj.Height;
+
             obj.Powers.Add(new Power(new Vector2(0, 1), 0.01));
             objects.Add(obj);
         }
 
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.D)
+            {
+                player.Powers.Add(rightPower);
+            }
+        }
+        Power leftPower = new Power(new Vector2(-1, 0), 0.01);
+        Power rightPower = new Power(new Vector2(1, 0), 0.01);
+        PhysicalObject player;
     }
 }

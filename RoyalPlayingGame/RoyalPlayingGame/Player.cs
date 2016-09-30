@@ -12,5 +12,9 @@ namespace RoyalPlayingGame
         {
 
         }
+        public void EquipArmor(Armor armor)
+        {
+
+        }
     }
 }
