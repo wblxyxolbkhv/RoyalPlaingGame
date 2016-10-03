@@ -6,13 +6,20 @@ using System.Threading.Tasks;
 
 namespace RoyalPlayingGame
 {
-    enum ArmorType{ Cloth, Leather, Mail, Plate }
-    enum ArmorSlot { Head, Sholders, Back, Chest, Hands, Belt, Legs, Boots, Ring1, Ring2}
+    public enum ArmorType{ Cloth, Leather, Mail, Plate }
+    public enum ArmorSlot { Head, Sholders, Back, Chest, Hands, Belt, Legs, Boots, Ring1, Ring2}
     public class Armor: Item
     {
-        public bool CheckRequirementStats(Player player)
+        public Armor(string name, ArmorType AType, ArmorSlot ASlot, Effect effect, uint armorLvl)
         {
-            return true;
+            this.ASlot = ASlot;
+            this.AType = AType;
+            base.ItemName = name;
+            base.ItemEffect = effect;
+            base.ItemLvl = armorLvl;
+            base.MaxAmount = 1;
         }
+        public ArmorSlot ASlot { get; private set; }
+        public ArmorType AType { get; private set; }
     }
 }

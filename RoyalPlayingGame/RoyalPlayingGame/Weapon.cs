@@ -10,19 +10,16 @@ namespace RoyalPlayingGame
     public enum WeaponSlot { LeftHand, RightHand, TwoHands}
     public class Weapon : Item
     {
-        Effect weaponEffect;
-        public Weapon(string name, WeaponType WType, WeaponSlot WSlot, Effect effect )
+        public Weapon(string name, WeaponType WType, WeaponSlot WSlot, Effect effect, uint weaponLvl )
         {
             this.WSlot = WSlot;
             this.WType = WType;
             base.ItemName = name;
-            weaponEffect = effect;
+            base.ItemEffect = effect;
+            base.ItemLvl = weaponLvl;
+            base.MaxAmount = 1;
         }
         public WeaponSlot WSlot { get; private set; }
         public WeaponType WType { get; private set; }
-        public bool CheckRequirementStats(Player player)
-        {
-            return true;
-        }
     }
 }
