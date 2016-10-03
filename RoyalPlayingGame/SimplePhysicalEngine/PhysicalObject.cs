@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace SimplePhysicalEngine
 {
@@ -122,9 +123,15 @@ namespace SimplePhysicalEngine
         {
             return GetBoost(this.ResultantPower(), Mass);
         }
-        
+        private void CheckCollision(PhysicalObject o)
+        {
+            PointF p1 = new PointF((float)Position.X, (float)Position.Y);
+            PointF p2 = new PointF((float)Position.X, (float)Position.Y-(float)Height);
+            PointF p3 = new PointF((float)Position.X + (float)Width, (float)Position.Y - (float)Height);
+            PointF p4 = new PointF((float)Position.X + (float)Width, (float)Position.Y);
+        }
 
-    }
+    }   
     public delegate void CollisionHandler(PhysicalObject o1, PhysicalObject o2);
         
 }
