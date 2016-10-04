@@ -11,16 +11,14 @@ namespace SimplePhysicalEngine
     /// </summary>
     public class Power
     {
-        public Power(Vector2 direction, double multi, PhysicalObject o)
+        public Power(Vector2 direction, PhysicalObject o)
         {
             Direction = direction;
-            Multiple = multi;
             PhysObject = o;
         }
-        public Power(Vector2 direction, double multi)
+        public Power(Vector2 direction)
         {
             Direction = direction;
-            Multiple = multi;
         }
         /// <summary>
         /// обьект, к которому приложена сила
@@ -39,13 +37,6 @@ namespace SimplePhysicalEngine
             set;
         }
         /// <summary>
-        /// множитель силы
-        /// </summary>
-        public double Multiple
-        {
-            get;set;
-        }
-        /// <summary>
         /// время приложения силы
         /// </summary>
         public double Time
@@ -54,19 +45,19 @@ namespace SimplePhysicalEngine
         }
         public static Power operator +(Power p1, Power p2)
         {
-            Vector2 newDirection = p1.Multiple*p1.Direction + p2.Multiple*p2.Direction;
-            Power v = new Power(newDirection, 1);
+            Vector2 newDirection = p1.Direction + p2.Direction;
+            Power v = new Power(newDirection);
             return v;
         }
         public static Power operator -(Power p1, Power p2)
         {
-            Vector2 newDirection = p1.Multiple * p1.Direction - p2.Multiple * p2.Direction;
-            Power v = new Power(newDirection, 1);
+            Vector2 newDirection = p1.Direction - p2.Direction;
+            Power v = new Power(newDirection);
             return v;
         }
         public static Power operator *(double d, Power v)
         {
-            return new Power(new Vector2(d * v.Direction.X, d * v.Direction.Y), v.Multiple);
+            return new Power(new Vector2(d * v.Direction.X, d * v.Direction.Y));
         }
     }
 }

@@ -80,7 +80,7 @@ namespace SimplePhysicalEngine
         /// </summary>
         public List<Power> Powers { get; set; }
 
-        public event CollisionHandler CollisionDetected;
+        //public event CollisionHandler CollisionDetected;
 
 
 
@@ -96,7 +96,7 @@ namespace SimplePhysicalEngine
         /// <returns></returns>
         private Power ResultantPower()
         {
-            Power res = new Power(new Vector2(0, 0), 1);
+            Power res = new Power(new Vector2(0, 0));
             foreach (Power p in Powers)
                 res += p;
             return res;
@@ -111,7 +111,7 @@ namespace SimplePhysicalEngine
         {
             if (mass == 0)
                 return new Vector2(0, 0);
-            Vector2 v = p.Multiple * p.Direction;
+            Vector2 v = p.Direction;
             v = (1 / mass) * v;
             return v;
         } 
