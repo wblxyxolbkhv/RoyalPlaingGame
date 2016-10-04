@@ -20,3 +20,5 @@ C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\D
 C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.csproj.GenerateResource.Cache
 C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.exe
 C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.Scale.resources
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.PlayerMenu.resources

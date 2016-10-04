@@ -37,5 +37,24 @@ namespace RoyalPlayingGame
                 return true;
             else return false;
         }
+        public void AddPotion(Potion potion)
+        {
+            foreach (Potion addedPotion in potions)
+            {
+                if (addedPotion.ItemName == potion.ItemName)
+                {
+                    addedPotion.Amount = +1;
+                }
+                else
+                {
+                    potions.Add(potion);
+                }
+            }
+        }
+        public void AddPotion(Potion potion, int amount)
+        {
+
+        }
+
     }
 }

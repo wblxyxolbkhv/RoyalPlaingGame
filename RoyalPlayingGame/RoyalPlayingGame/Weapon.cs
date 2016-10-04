@@ -10,14 +10,22 @@ namespace RoyalPlayingGame
     public enum WeaponSlot { LeftHand, RightHand, TwoHands}
     public class Weapon : Item
     {
-        public Weapon(string name, WeaponType WType, WeaponSlot WSlot, Effect effect, uint weaponLvl )
+        Random randomWeaponGeneration;
+        public Weapon(string name, WeaponType WType, WeaponSlot WSlot, Effect effect, uint weaponLvl ):base(name,1,1,weaponLvl,effect)
         {
             this.WSlot = WSlot;
             this.WType = WType;
-            base.ItemName = name;
+        }
+        public Weapon(string name, WeaponType WType, WeaponSlot WSlot, uint weaponLvl, int minValue, int maxValue):base(name, 1,1,weaponLvl)
+        {
+            Effect effect = new Effect();
+            randomWeaponGeneration = new Random();
+            effect.DAgility = randomWeaponGeneration.Next(minValue, maxValue);
+            effect.DIntelligence = randomWeaponGeneration.Next(minValue, maxValue);
+            effect.DStrength = randomWeaponGeneration.Next(minValue, maxValue);
             base.ItemEffect = effect;
-            base.ItemLvl = weaponLvl;
-            base.MaxAmount = 1;
+            this.WType = WType;
+            this.WSlot = WSlot;
         }
         public WeaponSlot WSlot { get; private set; }
         public WeaponType WType { get; private set; }

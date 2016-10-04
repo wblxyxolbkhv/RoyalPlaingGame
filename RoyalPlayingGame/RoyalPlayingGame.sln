@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePhysicalEngine", "Sim
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualPart", "VisualPart\VisualPart.csproj", "{4E7DE960-DAC3-4DC5-A52F-D8EDDF0C76CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{A59FDD84-B9FD-4445-A17E-FB6C99FB878E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4E7DE960-DAC3-4DC5-A52F-D8EDDF0C76CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E7DE960-DAC3-4DC5-A52F-D8EDDF0C76CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E7DE960-DAC3-4DC5-A52F-D8EDDF0C76CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A59FDD84-B9FD-4445-A17E-FB6C99FB878E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A59FDD84-B9FD-4445-A17E-FB6C99FB878E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A59FDD84-B9FD-4445-A17E-FB6C99FB878E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A59FDD84-B9FD-4445-A17E-FB6C99FB878E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -18,7 +18,7 @@ namespace RoyalPlayingGame
         public uint RealAgility { get; protected set; }
         public uint RealIntelligence { get; protected set; }
 
-        private List<Effect> Effects { get; protected set; }
+        private List<Effect> Effects { get; }
         public uint Level { get; protected set; }
         public void GotDamaged(uint damage)
         {
@@ -37,7 +37,6 @@ namespace RoyalPlayingGame
             }
             foreach (Effect effect in Effects)
             {
-
                 RealHealth = Health;
                 RealStrength = Strength;
                 RealIntelligence = Intelligence;

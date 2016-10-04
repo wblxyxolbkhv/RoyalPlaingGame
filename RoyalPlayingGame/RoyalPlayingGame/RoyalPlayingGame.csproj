@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,13 +44,23 @@
   <ItemGroup>
     <Compile Include="Armor.cs" />
     <Compile Include="Effect.cs" />
+    <Compile Include="Enemy.cs" />
+    <Compile Include="GameLevel.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ITargetObject.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="PlayerMenu.cs" />
     <Compile Include="Potion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Spell.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="Weapon.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VisualPart\VisualPart.csproj">
+      <Project>{4e7de960-dac3-4dc5-a52f-d8eddf0c76ca}</Project>
+      <Name>VisualPart</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

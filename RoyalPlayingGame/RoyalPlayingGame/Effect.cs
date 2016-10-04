@@ -37,10 +37,10 @@ namespace RoyalPlayingGame
         }
 
         public virtual int DHealth { get; set; }
-        public virtual int DStrength { get; protected set; }
-        public virtual int DAgility { get; protected set; }
-        public virtual int DIntelligence{ get; protected set; }
-        public virtual uint Duration { get; protected set; }
-        public virtual uint CurrentTime { get; protected set; }
+        public virtual int DStrength { get; set; }
+        public virtual int DAgility { get; set; }
+        public virtual int DIntelligence{ get; set; }
+        public virtual uint Duration { get; set; }
+        public virtual uint CurrentTime { get; set; }
     }
 }

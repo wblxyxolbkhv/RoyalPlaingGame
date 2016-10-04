@@ -8,3 +8,12 @@ C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlai
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.csprojResolveAssemblyReference.cache
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.dll
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\RoyalPlayingGame.dll
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\RoyalPlayingGame.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.csprojResolveAssemblyReference.cache
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.dll
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\VisualPart.exe
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\SimplePhysicalEngine.dll
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\VisualPart.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\SimplePhysicalEngine.pdb

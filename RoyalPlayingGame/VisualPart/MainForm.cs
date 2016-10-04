@@ -34,6 +34,7 @@ namespace VisualPart
 
             player.Powers.Add(new Power(new Vector2(0, 1), 0.01));
             
+            
         }
 
         private void T_Tick(object sender, EventArgs e)
