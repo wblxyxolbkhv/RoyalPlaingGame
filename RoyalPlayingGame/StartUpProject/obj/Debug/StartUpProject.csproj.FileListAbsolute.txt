@@ -1,0 +1,15 @@
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\StartUpProject.exe.config
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\StartUpProject.exe
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\StartUpProject.pdb
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\RoyalPlayingGame.dll
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\SimplePhysicalEngine.dll
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\VisualPart.dll
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\RoyalPlayingGame.pdb
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\SimplePhysicalEngine.pdb
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\VisualPart.pdb
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.csprojResolveAssemblyReference.cache
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.MainForm.resources
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.Properties.Resources.resources
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.csproj.GenerateResource.Cache
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.exe
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.pdb

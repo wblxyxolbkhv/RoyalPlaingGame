@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using VisualPart.UserControls;
 
 namespace RoyalPlayingGame
 {
@@ -13,15 +14,32 @@ namespace RoyalPlayingGame
         public Player player;
         public PlayerMenu playerMenu;
         public VisualPart.UserControls.PlayerMenu VisualMenu;
-        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+
+
+        private bool IsMenuShowed { get; set; }
+
+
+
+        public void OnKeyDownExternal(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Tab)
+            if (e.KeyCode == Keys.P)
             {
-                VisualMenu.Visible = true;
-                double w = (double)VisualMenu.Parent.Width / 2.0;
-                double h = (double)VisualMenu.Parent.Height / 2.0;
-                VisualMenu.Location = new Point((int)(w - VisualMenu.Size.Width),
-                    (int)(h - VisualMenu.Size.Height));
+                if (IsMenuShowed)
+                {
+                    IsMenuShowed = false;
+                    VisualMenu.Visible = false;
+                }
+                else
+                {
+                    IsMenuShowed = true;
+                    VisualMenu.Visible = true;
+                    double w = (double)VisualMenu.Parent.Width / 2.0;
+                    double h = (double)VisualMenu.Parent.Height / 2.0;
+                    VisualMenu.Location = new Point((int)(w - (double)VisualMenu.Size.Width / 2.0),
+                        (int)(h - (double)VisualMenu.Size.Height / 2.0));
+                    VisualMenu.Parent.Focus();
+                }
+
             }
         }
 

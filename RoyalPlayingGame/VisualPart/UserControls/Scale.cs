@@ -38,7 +38,7 @@ namespace VisualPart.UserControls
             base.OnPaint(e);
             //e.Graphics.FillRectangle(Brushes.Black, 0, 0, this.Width, this.Height);
             double percent = (double)CurrentValue / (double)MaxValue;
-            e.Graphics.FillRectangle(brush, 2, 2, (float)(this.Width*percent)-4, this.Height-4);
+            e.Graphics.FillRectangle(brush, 2, 2, (float)(this.Width * percent) - 4, this.Height - 4);
             labelValue.Text = CurrentValue + "/" + MaxValue;
         }
     }
