@@ -14,31 +14,42 @@ namespace RoyalPlayingGame
         public uint Strength { get; protected set; }
         public uint Agility { get; protected set; }
         public uint Intelligence { get; protected set; }
-
+        public uint PhysicalDamageReduction { get; protected set; }
+        public uint MagicalDamageReduction { get; protected set; }
 
         public uint RealHealth { get; set; }
         public uint RealMana { get; set; }
         public uint RealStrength { get; protected set; }
         public uint RealAgility { get; protected set; }
         public uint RealIntelligence { get; protected set; }
+        public uint RealPhysicalDamageReduction { get; protected set; }
+        public uint RealMagicalDamageReduction { get; protected set; }
 
         private List<Effect> Effects { get; }
         public uint Level { get; protected set; }
-        public void GotDamaged(uint damage)
-        {
-            Health = Health - damage;
-        }
-        public void Attack(ITargetObject tarobject, DamageType DType)
+        public void GotDamaged(uint damage, DamageType DType)
         {
             if (DType == DamageType.physical)
             {
-                tarobject.GotDamaged((uint)(Strength * 0.85));
+                Health = Health - (damage - (damage * PhysicalDamageReduction / 100));
             }
             else
             {
-                tarobject.GotDamaged((uint)(Intelligence * 0.60));
+                Health = Health - (damage - (damage * MagicalDamageReduction / 100));
             }
+            
         }
+        //public void Attack(ITargetObject tarobject, DamageType DType)
+        //{
+        //    if (DType == DamageType.physical)
+        //    {
+        //        tarobject.GotDamaged((uint)(Strength * 0.85));
+        //    }
+        //    else
+        //    {
+        //        tarobject.GotDamaged((uint)(Intelligence * 0.60));
+        //    }
+        //}
         public void CalcStatsEffects()
         {
             foreach (Effect effect in Effects)

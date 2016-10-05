@@ -18,7 +18,10 @@ namespace RoyalPlayingGame
             DIntelligence = 0;
             Duration = 0;
             DMana = 0;
+            DPhysicalDamageReduction = 0;
+            DMagicalDamageReduction = 0;
         }
+
         public Effect(uint duration)
         {
             effectTimer = new Timer();
@@ -29,6 +32,8 @@ namespace RoyalPlayingGame
             DAgility = 0;
             DIntelligence = 0;
             DMana = 0;
+            DPhysicalDamageReduction = 0;
+            DMagicalDamageReduction = 0;
             Duration = duration;
             CurrentTime = duration;
         }
@@ -45,5 +50,7 @@ namespace RoyalPlayingGame
         public virtual int DIntelligence{ get; set; }
         public virtual uint Duration { get; set; }
         public virtual uint CurrentTime { get; set; }
+        public virtual uint DPhysicalDamageReduction { get; set; }
+        public virtual uint DMagicalDamageReduction { get; set; }
     }
 }

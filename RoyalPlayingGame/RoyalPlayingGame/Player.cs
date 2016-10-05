@@ -21,6 +21,8 @@ namespace RoyalPlayingGame
             Agility = RealAgility = 4;
             Intelligence = RealIntelligence = 5;
             Strength = RealStrength = 4;
+            PhysicalDamageReduction = RealPhysicalDamageReduction = 10;
+            MagicalDamageReduction = RealMagicalDamageReduction = 15;
         }
         public int Experience { get; set; }
         public void EquipWeapon(Weapon weapon)
@@ -49,7 +51,7 @@ namespace RoyalPlayingGame
             {
                 if (addedPotion.ItemName == potion.ItemName)
                 {
-                    addedPotion.Amount = +1;
+                    addedPotion.Amount += 1;
                 }
                 else
                 {
@@ -57,9 +59,21 @@ namespace RoyalPlayingGame
                 }
             }
         }
-        public void AddPotion(Potion potion, int amount)
+        public void AddPotion(Potion potion, ushort amount)
         {
-            //реализовать
+            foreach (Potion addedPotion in potions)
+            {
+                if (addedPotion.ItemName == potion.ItemName)
+                    addedPotion.Amount += amount;
+            }
+        }
+        public void LvlUP()
+        {
+            if (Experience>=200)
+            {
+                Experience = Experience - 200;
+                Level += 1;
+            }
         }
 
     }
