@@ -17,10 +17,7 @@ namespace RoyalPlayingGame
         {
             this.PType = PType;
         }
-        public void AddPotion()
-        {
-            
-        }
+        
         public PotionType PType { get; protected set; }
 
     }

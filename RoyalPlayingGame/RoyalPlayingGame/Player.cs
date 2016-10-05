@@ -16,7 +16,13 @@ namespace RoyalPlayingGame
             armorSet = new List<Armor>();
             weaponSet = new List<Weapon>();
             potions = new List<Potion>();
+            Experience = 0;
+            Health = RealHealth = 50;
+            Agility = RealAgility = 4;
+            Intelligence = RealIntelligence = 5;
+            Strength = RealStrength = 4;
         }
+        public int Experience { get; set; }
         public void EquipWeapon(Weapon weapon)
         {
             if (CheckRequiredLvl(weapon))
@@ -53,7 +59,7 @@ namespace RoyalPlayingGame
         }
         public void AddPotion(Potion potion, int amount)
         {
-
+            //реализовать
         }
 
     }
