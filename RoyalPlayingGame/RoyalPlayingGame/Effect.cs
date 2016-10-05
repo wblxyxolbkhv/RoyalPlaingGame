@@ -17,6 +17,7 @@ namespace RoyalPlayingGame
             DAgility = 0;
             DIntelligence = 0;
             Duration = 0;
+            DMana = 0;
         }
         public Effect(uint duration)
         {
@@ -27,6 +28,7 @@ namespace RoyalPlayingGame
             DStrength = 0;
             DAgility = 0;
             DIntelligence = 0;
+            DMana = 0;
             Duration = duration;
             CurrentTime = duration;
         }
@@ -37,6 +39,7 @@ namespace RoyalPlayingGame
         }
 
         public virtual int DHealth { get; set; }
+        public virtual int DMana { get; set; }
         public virtual int DStrength { get; set; }
         public virtual int DAgility { get; set; }
         public virtual int DIntelligence{ get; set; }
