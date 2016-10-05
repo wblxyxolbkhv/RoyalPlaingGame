@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace SimplePhysicalEngine.NonPhysicalComponents
 {
-    public enum Direction { Left, Right, None}
+    public enum Direction { Left, Right, NoneLeft, NoneRight}
     public class RealObject
     {
         private int dt = 20;
@@ -17,7 +17,7 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             refreshTimer = new Timer();
             refreshTimer.Interval = dt;
             //refreshTimer.Tick += OnRefreshPosition;
-            direction = Direction.None;
+            direction = Direction.NoneRight;
             NearbyObjects.Add(this);
 
             this.gravity = null;
@@ -33,7 +33,7 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             refreshTimer = new Timer();
             refreshTimer.Interval = dt;
             //refreshTimer.Tick += OnRefreshPosition;
-            direction = Direction.None;
+            direction = Direction.NoneRight;
             NearbyObjects.Add(this);
 
             this.gravity = gravity;
@@ -60,7 +60,8 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
                 case Direction.Right:
                         StepRight();
                         break;
-                case Direction.None:
+                case Direction.NoneRight:
+                case Direction.NoneLeft:
                     break;
             }
         }
@@ -116,8 +117,8 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             get;
             set; }
 
-        private bool IsJumpingUp { get; set; }
-        private bool IsJumpingDown { get; set; }
+        public bool IsJumpingUp { get; private set; }
+        public bool IsJumpingDown { get; private set; }
         private double JumpHeight { get; set; }
 
         private double Mass { get; set; }
@@ -172,7 +173,7 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
                     }
                 }
             }
-            if (Math.Abs(SpeedY) < 0.01 || step < Position.Y - newPositionY)
+            if (Math.Abs(SpeedY) < 0.05 || step < Position.Y - newPositionY)
             {
                 IsJumpingDown = true;
                 IsJumpingUp = false;

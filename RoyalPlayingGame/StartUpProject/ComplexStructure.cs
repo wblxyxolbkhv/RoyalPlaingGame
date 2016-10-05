@@ -10,6 +10,11 @@ namespace StartUpProject
 {
     public class ComplexStructure
     {
+        public ComplexStructure()
+        {
+            Texture = Image.FromFile("GroundTextureTransparent.png");
+            ((Bitmap)Texture).MakeTransparent(Color.White);
+        }
         public RealObject RealObject { get; set; }
         public Image Texture { get; set; }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RoyalPlayingGame
 {
-    class NegativeSpell :Spell
+    class NegativeSpell //:Spell
     {
         //реализовать
     }

@@ -25,8 +25,13 @@ namespace StartUpProject
 
         public void OnPrintAllObjects(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawImage(Player.CurrentFrame, (float)Player.RealObject.Position.X, (float)Player.RealObject.Position.Y);
-
+            if (Player.CurrentFrame != null)
+                e.Graphics.DrawImage(Player.CurrentFrame, (float)Player.RealObject.Position.X, (float)Player.RealObject.Position.Y);
+            else e.Graphics.FillRectangle(System.Drawing.Brushes.Black,
+                        (float)Player.RealObject.Position.X,
+                        (float)Player.RealObject.Position.Y,
+                        (float)Player.RealObject.Width,
+                        (float)Player.RealObject.Height);
             foreach (ComplexStructure o in Structures)
             {
                 if (o.Texture == null)
@@ -56,7 +61,7 @@ namespace StartUpProject
                     Player.RealObject.direction = Direction.Left;
                     break;
                 case Keys.W:
-                    Player.RealObject.Jump(-1);
+                    Player.RealObject.Jump(-0.7);
                     break;
             }
         }
@@ -65,10 +70,10 @@ namespace StartUpProject
             switch (e.KeyCode)
             {
                 case Keys.D:
-                    Player.RealObject.direction = Direction.None;
+                    Player.RealObject.direction = Direction.NoneRight;
                     break;
                 case Keys.A:
-                    Player.RealObject.direction = Direction.None;
+                    Player.RealObject.direction = Direction.NoneLeft;
                     break;
             }
         }
@@ -79,26 +84,39 @@ namespace StartUpProject
             Structures = new List<ComplexStructure>();
             Gravity = new Power(0.01 * new Vector2(0, 1));
 
+            InitPlayer();
+
+            ComplexStructure ground = new ComplexStructure();
+            Structures.Add(ground);
+            ground.RealObject = new RealObject(CollisionDomain);
+            ground.RealObject.Position = new Vector2(0, 645);
+            ground.RealObject.Height = 30;
+            ground.RealObject.Width = 1008;
+        }
+
+        private void InitPlayer()
+        {
             Player = new ComplexObject();
             Player.RealObject = new RealObject(CollisionDomain, Gravity);
             Player.RealObject.Position = new Vector2(400, 400);
             Player.RealObject.Height = 72;
             Player.RealObject.Width = 72;
             Player.RealObject.SpeedX = 8;
-            Player.NonActivityAnimation = new Animation("NonActivitySprites", 100);
-            Player.NonActivityAnimation.Start();
+            Player.NonActivityAnimationLeft = new Animation("NonActivityAnimationLeft", 100);
+            Player.NonActivityAnimationLeft.Start();
+            Player.NonActivityAnimationRight = new Animation("NonActivityAnimationRight", 100);
+            Player.NonActivityAnimationRight.Start();
+
             Player.WalkAnimationLeft = new Animation("WalkAnimationLeft", 100);
             Player.WalkAnimationLeft.Start();
             Player.WalkAnimationRight = new Animation("WalkAnimationRight", 100);
             Player.WalkAnimationRight.Start();
-            Player.Animation = Player.NonActivityAnimation;
 
-            ComplexStructure ground = new ComplexStructure();
-            Structures.Add(ground);
-            ground.RealObject = new RealObject(CollisionDomain);
-            ground.RealObject.Position = new Vector2(20, 600);
-            ground.RealObject.Height = 10;
-            ground.RealObject.Width = 800;
+            Player.JumpAnimationLeft = new Animation("JumpAnimationLeft", 300);
+            Player.JumpAnimationLeft.Start();
+            Player.JumpAnimationRight = new Animation("JumpAnimationRight", 300);
+            Player.JumpAnimationRight.Start();
+            Player.Animation = Player.NonActivityAnimationRight;
         }
 
     }
