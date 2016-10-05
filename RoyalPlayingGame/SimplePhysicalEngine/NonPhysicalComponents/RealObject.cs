@@ -16,7 +16,7 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             NearbyObjects = objs;
             refreshTimer = new Timer();
             refreshTimer.Interval = dt;
-            refreshTimer.Tick += OnRefreshPosition;
+            //refreshTimer.Tick += OnRefreshPosition;
             direction = Direction.None;
             NearbyObjects.Add(this);
 
@@ -32,7 +32,7 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             NearbyObjects = objs;
             refreshTimer = new Timer();
             refreshTimer.Interval = dt;
-            refreshTimer.Tick += OnRefreshPosition;
+            //refreshTimer.Tick += OnRefreshPosition;
             direction = Direction.None;
             NearbyObjects.Add(this);
 
@@ -47,7 +47,7 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
         {
             refreshTimer.Start();
         }
-        private void OnRefreshPosition(object sender, EventArgs e)
+        public void OnRefreshPosition(object sender, EventArgs e)
         {
             if (IsJumpingUp)
                 StepUp();

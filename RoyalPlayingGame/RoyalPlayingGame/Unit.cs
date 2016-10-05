@@ -69,7 +69,10 @@ namespace RoyalPlayingGame
                 RealMana = effect.DMana < 0 ? RealMana - (uint)effect.DMana : RealMana + (uint)effect.DMana;
                 RealStrength = effect.DStrength < 0 ? RealStrength - (uint)effect.DStrength : RealStrength + (uint)effect.DStrength;
                 RealIntelligence = effect.DIntelligence < 0 ? RealIntelligence - (uint)effect.DIntelligence : RealIntelligence + (uint)effect.DIntelligence;
+                RealMagicalDamageReduction = effect.DMagicalDamageReduction < 0 ? RealMagicalDamageReduction - (uint)effect.DMagicalDamageReduction : RealMagicalDamageReduction + (uint)effect.DMagicalDamageReduction;
+                RealPhysicalDamageReduction = effect.DPhysicalDamageReduction < 0 ? RealPhysicalDamageReduction - (uint)effect.DPhysicalDamageReduction : RealPhysicalDamageReduction + (uint)effect.DPhysicalDamageReduction;
             }
+
         }
         public void AddEffect(Effect effect)
         {
