@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.playerMenu1 = new VisualPart.UserControls.PlayerMenu();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -36,16 +37,17 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1086, 614);
+            this.pictureBox1.Size = new System.Drawing.Size(1008, 730);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // playerMenu1
             // 
-            this.playerMenu1.Location = new System.Drawing.Point(872, 443);
+            this.playerMenu1.Location = new System.Drawing.Point(958, 113);
             this.playerMenu1.Name = "playerMenu1";
             this.playerMenu1.Size = new System.Drawing.Size(596, 359);
             this.playerMenu1.TabIndex = 1;
@@ -55,11 +57,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1086, 614);
+            this.ClientSize = new System.Drawing.Size(1008, 730);
             this.Controls.Add(this.playerMenu1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "RoyalPlayGame";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
