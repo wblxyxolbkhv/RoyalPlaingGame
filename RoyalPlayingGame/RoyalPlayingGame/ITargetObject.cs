@@ -10,5 +10,6 @@ namespace RoyalPlayingGame
     {
         uint Health { get; set; }
         void GotDamaged(uint damage, DamageType DType);
+        bool ItsALIVE();
     }
 }

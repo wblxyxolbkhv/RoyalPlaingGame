@@ -10,18 +10,18 @@ namespace RoyalPlayingGame
     {
         public Item(string name, ushort maxAmount, ushort amount, uint itemLvl, Effect effect)
         {
-            this.ItemName = name;
-            this.ItemLvl = itemLvl;
-            this.MaxAmount = maxAmount;
-            this.Amount = amount;
-            this.ItemEffect = effect;
+            ItemName = name;
+            ItemLvl = itemLvl;
+            MaxAmount = maxAmount;
+            Amount = amount;
+            ItemEffect = effect;
         }
         public Item(string name, ushort maxAmount, ushort amount, uint itemLvl)
         {
-            this.ItemName = name;
-            this.MaxAmount = maxAmount;
-            this.ItemLvl = itemLvl;
-            this.Amount = amount;
+            ItemName = name;
+            MaxAmount = maxAmount;
+            ItemLvl = itemLvl;
+            Amount = amount;
         }
         public string ItemName { get; set; }
         public ushort MaxAmount { get; set; }

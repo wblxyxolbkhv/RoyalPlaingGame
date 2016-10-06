@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace RoyalPlayingGame
 
-{ public enum DamageType { physical, magic }
+{
+    public enum DamageType { Physical, Magic }
+
     public class Unit : ITargetObject
     {
         public uint Health { get; set; }
@@ -25,11 +27,16 @@ namespace RoyalPlayingGame
         public uint RealPhysicalDamageReduction { get; protected set; }
         public uint RealMagicalDamageReduction { get; protected set; }
 
-        private List<Effect> Effects { get; }
+        public List<Effect> Effects { get; set; }
+        public List<Armor> ArmorSet { get; set; }
+        public List<Weapon> WeaponSet { get; set; }
+        public List<Potion> Potions { get; set; }
+        public List<Spell> SpellBook { get; set; }
         public uint Level { get; protected set; }
+
         public void GotDamaged(uint damage, DamageType DType)
         {
-            if (DType == DamageType.physical)
+            if (DType == DamageType.Physical)
             {
                 Health = Health - (damage - (damage * PhysicalDamageReduction / 100));
             }
@@ -39,17 +46,7 @@ namespace RoyalPlayingGame
             }
             
         }
-        //public void Attack(ITargetObject tarobject, DamageType DType)
-        //{
-        //    if (DType == DamageType.physical)
-        //    {
-        //        tarobject.GotDamaged((uint)(Strength * 0.85));
-        //    }
-        //    else
-        //    {
-        //        tarobject.GotDamaged((uint)(Intelligence * 0.60));
-        //    }
-        //}
+  
         public void CalcStatsEffects()
         {
             foreach (Effect effect in Effects)
@@ -74,10 +71,53 @@ namespace RoyalPlayingGame
             }
 
         }
+
         public void AddEffect(Effect effect)
         {
             effect.effectTimer.Start();
             Effects.Add(effect);
+        }
+
+        public void AddPotion(Potion potion)
+        {
+            foreach (Potion addedPotion in Potions)
+            {
+                if (addedPotion.ItemName == potion.ItemName)
+                {
+                    addedPotion.Amount += 1;
+                }
+                else
+                {
+                    Potions.Add(potion);
+                }
+            }
+        }
+        public void AddPotion(Potion potion, ushort amount)
+        {
+            foreach (Potion addedPotion in Potions)
+            {
+                if (addedPotion.ItemName == potion.ItemName)
+                    addedPotion.Amount += amount;
+            }
+        }
+
+        public bool ItsALIVE()
+        {
+            if (RealHealth == 0)
+            {
+                return false;
+            }
+            else return true;
+        }
+
+        public void PhysicalAttack(ITargetObject targetObject)
+        {
+            targetObject.GotDamaged((uint)(RealStrength * 0.03), DamageType.Physical);
+        }
+
+        public void MagicalAttack(ITargetObject targetObject, NegativeSpell negativeSpell)
+        {
+            targetObject.GotDamaged((uint)negativeSpell.DealtDamage(), DamageType.Magic);
         }
     }
 }

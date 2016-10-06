@@ -8,14 +8,14 @@ namespace RoyalPlayingGame
 {
    public class Player:Unit
     {
-        public List<Armor> armorSet;
-        public List<Weapon> weaponSet;
-        public List<Potion> potions;
         public Player()
         {
-            armorSet = new List<Armor>();
-            weaponSet = new List<Weapon>();
-            potions = new List<Potion>();
+            ArmorSet = new List<Armor>();
+            WeaponSet = new List<Weapon>();
+            Potions = new List<Potion>();
+            SpellBook = new List<Spell>();
+            QuestJournal = new List<Quest>();
+            Effects = new List<Effect>();
             Experience = 0;
             Health = RealHealth = 50;
             Agility = RealAgility = 4;
@@ -24,49 +24,29 @@ namespace RoyalPlayingGame
             PhysicalDamageReduction = RealPhysicalDamageReduction = 10;
             MagicalDamageReduction = RealMagicalDamageReduction = 15;
         }
+        public List<Quest> QuestJournal { get; set; }
         public int Experience { get; set; }
         public void EquipWeapon(Weapon weapon)
         {
             if (CheckRequiredLvl(weapon))
             {
-                weaponSet.Add(weapon);
+                WeaponSet.Add(weapon);
             }
         }
         public void EquipArmor(Armor armor)
         {
             if(CheckRequiredLvl(armor))
             {
-                armorSet.Add(armor);
+                ArmorSet.Add(armor);
             }
         }
         public bool CheckRequiredLvl(Item item)
         {
-            if (item.ItemLvl >= base.Level)
+            if (item.ItemLvl >= Level)
                 return true;
             else return false;
         }
-        public void AddPotion(Potion potion)
-        {
-            foreach (Potion addedPotion in potions)
-            {
-                if (addedPotion.ItemName == potion.ItemName)
-                {
-                    addedPotion.Amount += 1;
-                }
-                else
-                {
-                    potions.Add(potion);
-                }
-            }
-        }
-        public void AddPotion(Potion potion, ushort amount)
-        {
-            foreach (Potion addedPotion in potions)
-            {
-                if (addedPotion.ItemName == potion.ItemName)
-                    addedPotion.Amount += amount;
-            }
-        }
+        
         public void LvlUP()
         {
             if (Experience>=200)
@@ -74,6 +54,12 @@ namespace RoyalPlayingGame
                 Experience = Experience - 200;
                 Level += 1;
             }
+        }
+
+        public Spell CastSpell()
+        {
+         NegativeSpells.FireBall fireball = new NegativeSpells.FireBall(RealIntelligence,RealAgility);
+          return fireball ;
         }
 
     }
