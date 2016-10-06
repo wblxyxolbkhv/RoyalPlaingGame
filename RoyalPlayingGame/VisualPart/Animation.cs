@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace VisualPart
 {
+    public enum AnimationMode { Loop, Once }
     public class Animation
     {
         private Animation() { }
@@ -19,6 +20,8 @@ namespace VisualPart
             Delay = delay;
             updateFrameTimer.Interval = Delay;
             updateFrameTimer.Tick += OnUpdateFrame;
+            Mode = AnimationMode.Loop;
+           
 
             GetFrames();
             if (frames.Count == 0)
@@ -40,9 +43,21 @@ namespace VisualPart
 
             currentFrameIndex++;
             if (currentFrameIndex >= frames.Count)
-                currentFrameIndex = 0;
+            {
+                if (Mode == AnimationMode.Loop)
+                    currentFrameIndex = 0;
+                else
+                {
+                    IsActive = false;
+                    Stop();
+                    return;
+                }
+            }
             CurrentFrame = frames[currentFrameIndex];
         }
+
+        public AnimationMode Mode { get; set; }
+        public bool IsActive { get; set; } 
 
         int Delay { get; set; }
         List<Image> frames;
@@ -74,7 +89,9 @@ namespace VisualPart
         }
         public void Start()
         {
+            currentFrameIndex = 0;
             updateFrameTimer.Start();
+            IsActive = true;
         }
         public void Stop()
         {

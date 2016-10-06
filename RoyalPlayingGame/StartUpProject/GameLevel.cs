@@ -7,6 +7,7 @@ using SimplePhysicalEngine.NonPhysicalComponents;
 using System.Windows.Forms;
 using SimplePhysicalEngine;
 using VisualPart;
+using RoyalPlayingGame;
 
 namespace StartUpProject
 {
@@ -18,6 +19,7 @@ namespace StartUpProject
         }
         ComplexObject Player { get; set; }
         List<ComplexObject> Enemies { get; set; }
+        List<ComplexObject> Spells { get; set; }
         List<ComplexStructure> Structures { get; set; }
 
         List<RealObject> CollisionDomain { get; set; }
@@ -45,10 +47,25 @@ namespace StartUpProject
                         (float)o.RealObject.Position.X,
                         (float)o.RealObject.Position.Y);
             }
+            foreach (ComplexObject o in Spells)
+            {
+                if (o.CurrentFrame == null)
+                    e.Graphics.FillRectangle(System.Drawing.Brushes.Black,
+                        (float)o.RealObject.Position.X,
+                        (float)o.RealObject.Position.Y,
+                        (float)o.RealObject.Width,
+                        (float)o.RealObject.Height);
+                else
+                    e.Graphics.DrawImage(o.CurrentFrame,
+                        (float)o.RealObject.Position.X,
+                        (float)o.RealObject.Position.Y);
+            }
         }
         public void OnRefresh(object sender, EventArgs e)
         {
             Player.OnRefresh(sender, e);
+            foreach (ComplexObject o in Spells)
+                o.OnRefresh(sender, e);
         }
         public void OnKeyDownExternal(object sender, KeyEventArgs e)
         {
@@ -62,6 +79,9 @@ namespace StartUpProject
                     break;
                 case Keys.W:
                     Player.RealObject.Jump(-0.7);
+                    break;
+                case Keys.Space:
+                    Spells.Add(Player.Cast(Player.Unit.CastSpell() as NegativeSpell, Player.RealObject, CollisionDomain));
                     break;
             }
         }
@@ -82,6 +102,7 @@ namespace StartUpProject
         {
             CollisionDomain = new List<RealObject>();
             Structures = new List<ComplexStructure>();
+            Spells = new List<ComplexObject>();
             Gravity = new Power(0.01 * new Vector2(0, 1));
 
             InitPlayer();
@@ -97,11 +118,14 @@ namespace StartUpProject
         private void InitPlayer()
         {
             Player = new ComplexObject();
+
+            Player.Unit = new Unit();
+            
             Player.RealObject = new RealObject(CollisionDomain, Gravity);
             Player.RealObject.Position = new Vector2(400, 400);
             Player.RealObject.Height = 72;
             Player.RealObject.Width = 72;
-            Player.RealObject.SpeedX = 8;
+            Player.RealObject.SpeedX = 4;
             Player.NonActivityAnimationLeft = new Animation("NonActivityAnimationLeft", 100);
             Player.NonActivityAnimationLeft.Start();
             Player.NonActivityAnimationRight = new Animation("NonActivityAnimationRight", 100);
@@ -116,8 +140,20 @@ namespace StartUpProject
             Player.JumpAnimationLeft.Start();
             Player.JumpAnimationRight = new Animation("JumpAnimationRight", 300);
             Player.JumpAnimationRight.Start();
+
+            Player.Cast1AnimationLeft = new Animation("Cast1/Cast1Left", 100);
+            Player.Cast1AnimationLeft.Mode = AnimationMode.Once;
+            Player.Cast1AnimationRight = new Animation("Cast1/Cast1Right", 100);
+            Player.Cast1AnimationRight.Mode = AnimationMode.Once;
+            Player.DefaultAnimation = Player.NonActivityAnimationRight;
             Player.Animation = Player.NonActivityAnimationRight;
         }
 
+
+
+
+
+
+        
     }
 }

@@ -119,5 +119,11 @@ namespace RoyalPlayingGame
         {
             targetObject.GotDamaged((uint)negativeSpell.DealtDamage(), DamageType.Magic);
         }
+
+        public Spell CastSpell()
+        {
+            NegativeSpells.FireBall fireball = new NegativeSpells.FireBall(RealIntelligence, RealAgility);
+            return fireball;
+        }
     }
 }

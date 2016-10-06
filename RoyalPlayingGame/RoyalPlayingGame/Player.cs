@@ -56,11 +56,6 @@ namespace RoyalPlayingGame
             }
         }
 
-        public Spell CastSpell()
-        {
-         NegativeSpells.FireBall fireball = new NegativeSpells.FireBall(RealIntelligence,RealAgility);
-          return fireball ;
-        }
 
     }
 }

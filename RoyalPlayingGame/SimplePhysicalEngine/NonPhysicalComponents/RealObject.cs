@@ -23,7 +23,7 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             this.gravity = null;
             SpeedY = 0;
             IsJumpingUp = false;
-            IsJumpingDown = true;
+            IsJumpingDown = false;
             Mass = 5;
             
         }
@@ -206,5 +206,22 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             return GetBoost(gravity, Mass);
         }
         Timer refreshTimer;
+        /// <summary>
+        /// метод для получения точки для респауна атакующих заклинаний (только для кастеров)
+        /// </summary>
+        /// <returns></returns>
+        public Vector2 GetCastPoint()
+        {
+            Vector2 res = null;
+            if (direction == Direction.Left || direction == Direction.NoneLeft)
+            {
+                res = new Vector2(Position.X + 9 - 26, Position.Y + 30);
+            }
+            if (direction == Direction.Right || direction == Direction.NoneRight)
+            {
+                res = new Vector2(Position.X + Width - 9, Position.Y + 30);
+            }
+            return res;
+        }
     }
 }

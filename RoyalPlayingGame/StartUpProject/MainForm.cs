@@ -37,7 +37,7 @@ namespace StartUpProject
             //pictureBox1.MouseClick += pictureBox1_MouseClick;
             t.Tick += Level.OnRefresh;
             t.Tick += T_Tick;
-            t.Interval = 20;
+            t.Interval = 10;
             t.Start();
 
             #endregion
