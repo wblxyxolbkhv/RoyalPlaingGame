@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoyalPlayingGame.Spells
+namespace RoyalPlayingGame.NegativeSpells
 {
-    public class FireBall :Spell
+    public class FireBall: NegativeSpell
     {
-        public FireBall(uint manaCost, uint castTime, uint coolDown, Unit unit):base(unit, manaCost, castTime, coolDown)
+        //доделать
+        public FireBall(uint realIntellegence,uint realAgility):base(realIntellegence,realAgility)
         {
-
+            //реализую позже
         }
     }
 }
