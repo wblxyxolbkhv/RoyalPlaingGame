@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoyalPlayingGame
+namespace RoyalPlayingGame.PositiveSpells
 {
-    public class Quest
+    class FlashHeal
     {
-        //реализовать
     }
 }

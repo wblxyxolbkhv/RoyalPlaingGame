@@ -14,7 +14,7 @@ namespace RoyalPlayingGame
             WeaponSet = new List<Weapon>();
             Potions = new List<Potion>();
             SpellBook = new List<Spell>();
-            QuestJournal = new List<Quest>();
+            QuestJournal = new List<Quest.Quest>();
             Effects = new List<Effect>();
             Experience = 0;
             Health = RealHealth = 50;
@@ -24,7 +24,7 @@ namespace RoyalPlayingGame
             PhysicalDamageReduction = RealPhysicalDamageReduction = 10;
             MagicalDamageReduction = RealMagicalDamageReduction = 15;
         }
-        public List<Quest> QuestJournal { get; set; }
+        public List<Quest.Quest> QuestJournal { get; set; }
         public int Experience { get; set; }
         public void EquipWeapon(Weapon weapon)
         {
