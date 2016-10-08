@@ -19,7 +19,7 @@ namespace StartUpProject
             GenerateLevel();
         }
         ComplexObject Player { get; set; }
-        List<ComplexObject> Enemies { get; set; }
+        List<ComplexEnemy> Enemies { get; set; }
         List<ComplexObject> Spells { get; set; }
         List<ComplexStructure> Structures { get; set; }
 
@@ -32,33 +32,20 @@ namespace StartUpProject
 
         public void OnPrintAllObjects(object sender, PaintEventArgs e)
         {
-            if (Player.CurrentFrame != null)
-                e.Graphics.DrawImage(Player.CurrentFrame, (float)Player.RealObject.Position.X - CameraBias, (float)Player.RealObject.Position.Y);
-            else e.Graphics.FillRectangle(System.Drawing.Brushes.Black,
-                        (float)Player.RealObject.Position.X - CameraBias,
-                        (float)Player.RealObject.Position.Y,
-                        (float)Player.RealObject.Width,
-                        (float)Player.RealObject.Height);
+            Player.PrintObject(e, CameraBias);
             foreach (ComplexStructure o in Structures)
                 o.PrintTexture(e, CameraBias);
             foreach (ComplexObject o in Spells)
-            {
-                if (o.CurrentFrame == null)
-                    e.Graphics.FillRectangle(System.Drawing.Brushes.Black,
-                        (float)o.RealObject.Position.X - CameraBias,
-                        (float)o.RealObject.Position.Y,
-                        (float)o.RealObject.Width,
-                        (float)o.RealObject.Height);
-                else
-                    e.Graphics.DrawImage(o.CurrentFrame,
-                        (float)o.RealObject.Position.X - CameraBias,
-                        (float)o.RealObject.Position.Y);
-            }
+                o.PrintObject(e, CameraBias);
+            foreach (ComplexEnemy o in Enemies)
+                o.PrintObject(e, CameraBias);
         }
         public void OnRefresh(object sender, EventArgs e)
         {
             Player.OnRefresh(sender, e);
             foreach (ComplexObject o in Spells)
+                o.OnRefresh(sender, e);
+            foreach (ComplexEnemy o in Enemies)
                 o.OnRefresh(sender, e);
             foreach (ComplexStructure o in Structures)
                 o.RealObject.OnRefreshPosition(sender, e);
@@ -100,6 +87,7 @@ namespace StartUpProject
             CollisionDomain = new List<RealObject>();
             Structures = new List<ComplexStructure>();
             Spells = new List<ComplexObject>();
+            Enemies = new List<ComplexEnemy>();
             Gravity = new Power(0.01 * new Vector2(0, 1));
 
             InitPlayer();
@@ -113,6 +101,28 @@ namespace StartUpProject
             ground.RealObject.Width = 4000;
 
             CameraBias = 0;
+
+
+            ComplexEnemy enemy = new ComplexEnemy();
+
+            enemy.Unit = new Unit();
+
+            enemy.RealObject = new RealObject(CollisionDomain, Gravity);
+            enemy.RealObject.Position = new Vector2(600, 400);
+            enemy.RealObject.Height = 110;
+            enemy.RealObject.Width = 110;
+            enemy.RealObject.SpeedX = 2;
+            enemy.RealObject.direction = Direction.Right;
+
+            enemy.WalkAnimationLeft = new Animation("Minotaur/WalkLeft", 100);
+            enemy.WalkAnimationLeft.Start();
+            enemy.WalkAnimationRight = new Animation("Minotaur/WalkRight", 100);
+            enemy.WalkAnimationRight.Start();
+
+            enemy.DefaultAnimation = enemy.WalkAnimationLeft;
+            enemy.Animation = enemy.WalkAnimationLeft;
+
+            Enemies.Add(enemy);
         }
 
         private void InitPlayer()

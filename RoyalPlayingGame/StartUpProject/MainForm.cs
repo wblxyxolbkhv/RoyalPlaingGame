@@ -27,10 +27,13 @@ namespace StartUpProject
 
             RoyalPlayingGame.GameLevel level1 = new RoyalPlayingGame.GameLevel();
             level1.VisualMenu = this.playerMenu1;
+            
+            
 
             Level.WorkAreaHeight = pictureBox1.Height;
             Level.WorkAreaWidth = pictureBox1.Width;
             this.KeyDown += Level.OnKeyDownExternal;
+            this.KeyDown += level1.OnKeyDownExternal;
             this.KeyUp += Level.OnKeyUpExternal;
             pictureBox1.Paint += Level.OnPrintAllObjects;
             this.KeyPreview = true;
