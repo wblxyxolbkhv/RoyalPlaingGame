@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using SimplePhysicalEngine;
 using VisualPart;
 using RoyalPlayingGame;
+using System.Drawing;
 
 namespace StartUpProject
 {
@@ -25,39 +26,32 @@ namespace StartUpProject
         List<RealObject> CollisionDomain { get; set; }
         Power Gravity { get; set; }
 
+        int CameraBias { get; set; }
+        public int WorkAreaWidth { get; set; }
+        public int WorkAreaHeight { get; set; }
+
         public void OnPrintAllObjects(object sender, PaintEventArgs e)
         {
             if (Player.CurrentFrame != null)
-                e.Graphics.DrawImage(Player.CurrentFrame, (float)Player.RealObject.Position.X, (float)Player.RealObject.Position.Y);
+                e.Graphics.DrawImage(Player.CurrentFrame, (float)Player.RealObject.Position.X - CameraBias, (float)Player.RealObject.Position.Y);
             else e.Graphics.FillRectangle(System.Drawing.Brushes.Black,
-                        (float)Player.RealObject.Position.X,
+                        (float)Player.RealObject.Position.X - CameraBias,
                         (float)Player.RealObject.Position.Y,
                         (float)Player.RealObject.Width,
                         (float)Player.RealObject.Height);
             foreach (ComplexStructure o in Structures)
-            {
-                if (o.Texture == null)
-                    e.Graphics.FillRectangle(System.Drawing.Brushes.Black,
-                        (float)o.RealObject.Position.X,
-                        (float)o.RealObject.Position.Y,
-                        (float)o.RealObject.Width,
-                        (float)o.RealObject.Height);
-                else
-                    e.Graphics.DrawImage(o.Texture,
-                        (float)o.RealObject.Position.X,
-                        (float)o.RealObject.Position.Y);
-            }
+                o.PrintTexture(e, CameraBias);
             foreach (ComplexObject o in Spells)
             {
                 if (o.CurrentFrame == null)
                     e.Graphics.FillRectangle(System.Drawing.Brushes.Black,
-                        (float)o.RealObject.Position.X,
+                        (float)o.RealObject.Position.X - CameraBias,
                         (float)o.RealObject.Position.Y,
                         (float)o.RealObject.Width,
                         (float)o.RealObject.Height);
                 else
                     e.Graphics.DrawImage(o.CurrentFrame,
-                        (float)o.RealObject.Position.X,
+                        (float)o.RealObject.Position.X - CameraBias,
                         (float)o.RealObject.Position.Y);
             }
         }
@@ -66,6 +60,9 @@ namespace StartUpProject
             Player.OnRefresh(sender, e);
             foreach (ComplexObject o in Spells)
                 o.OnRefresh(sender, e);
+            foreach (ComplexStructure o in Structures)
+                o.RealObject.OnRefreshPosition(sender, e);
+            CameraBias = GetCameraBiasX();
         }
         public void OnKeyDownExternal(object sender, KeyEventArgs e)
         {
@@ -107,12 +104,15 @@ namespace StartUpProject
 
             InitPlayer();
 
-            ComplexStructure ground = new ComplexStructure();
+            ComplexStructure ground = new ComplexStructure("Textures/ground.png");
             Structures.Add(ground);
             ground.RealObject = new RealObject(CollisionDomain);
-            ground.RealObject.Position = new Vector2(0, 645);
-            ground.RealObject.Height = 30;
-            ground.RealObject.Width = 1008;
+            ground.RealObject.Position = new Vector2(0, 520);
+            ground.BiasY = 19;
+            ground.RealObject.Height = 104;
+            ground.RealObject.Width = 4000;
+
+            CameraBias = 0;
         }
 
         private void InitPlayer()
@@ -149,11 +149,47 @@ namespace StartUpProject
             Player.Animation = Player.NonActivityAnimationRight;
         }
 
+        public void OnMouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ComplexStructure o = new ComplexStructure("Textures/stone.png");
+                o.RealObject = new RealObject(CollisionDomain, Gravity);
+                o.RealObject.Position = new Vector2(e.X + CameraBias, e.Y);
+                o.RealObject.Height = 50;
+                o.RealObject.Width = 50;
+                o.RealObject.SpeedX = 8;
+                Structures.Add(o);
+            }
+            else
+            {
+                Player.RealObject.Position = new Vector2(e.X + CameraBias, e.Y);
+            }
+
+        }
+        private int GetCameraBiasX()
+        {
+            int limit = 400;
+            if (WorkAreaWidth - (int)Player.RealObject.Position.X + CameraBias < limit)
+            {
+                int answer = (int)Player.RealObject.Position.X + limit - WorkAreaWidth;
+                return answer;
+            }
+            if (WorkAreaWidth - (int)Player.RealObject.Position.X + CameraBias > WorkAreaWidth - limit)
+            {
+                int answer = (int)Player.RealObject.Position.X - limit;
+                if (answer < 0)
+                    return 0;
+                return answer;
+            }
+            return CameraBias;
+        }
 
 
 
 
 
-        
+
+
     }
 }
