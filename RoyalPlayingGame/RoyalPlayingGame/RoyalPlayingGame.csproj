@@ -53,9 +53,11 @@
     <Compile Include="Player.cs" />
     <Compile Include="PlayerMenu.cs" />
     <Compile Include="PositiveSpell.cs" />
+    <Compile Include="PositiveSpells\FlashHeal.cs" />
     <Compile Include="Potion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quest.cs" />
+    <Compile Include="Quest\Quest.cs" />
+    <Compile Include="Quest\QuestStage.cs" />
     <Compile Include="Spell.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="Weapon.cs" />
@@ -66,9 +68,7 @@
       <Name>VisualPart</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PositiveSpells\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
