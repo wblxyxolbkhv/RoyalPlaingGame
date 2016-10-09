@@ -76,6 +76,8 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
                 {
                     if (this.Position.X - ro.Position.X - ro.Width >= 0 && this.Position.X - ro.Position.X - ro.Width < SpeedX)
                     {
+                        if (CollisionDetected != null)
+                            CollisionDetected(ro);
                         step = Math.Min(this.Position.X - ro.Position.X - ro.Width, step);
                         continue;
                     }
@@ -94,6 +96,8 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
                 {
                     if (ro.Position.X - this.Position.X - this.Width >= 0 && ro.Position.X - this.Position.X - this.Width < SpeedX)
                     {
+                        if (CollisionDetected != null)
+                            CollisionDetected(ro);
                         step = Math.Min(ro.Position.X - this.Position.X - this.Width, step);
                         continue;
                     }
@@ -223,5 +227,7 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             }
             return res;
         }
+        public event CollisionHandler CollisionDetected; 
     }
+    public delegate void CollisionHandler(RealObject o);
 }

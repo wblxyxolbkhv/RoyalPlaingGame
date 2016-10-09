@@ -132,6 +132,5 @@ namespace SimplePhysicalEngine
         }
 
     }   
-    public delegate void CollisionHandler(PhysicalObject o1, PhysicalObject o2);
         
 }
