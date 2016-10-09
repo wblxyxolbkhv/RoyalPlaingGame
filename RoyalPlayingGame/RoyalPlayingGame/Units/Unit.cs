@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoyalPlayingGame
+namespace RoyalPlayingGame.Units
 
 {
     public enum DamageType { Physical, Magic }
 
-    public class Unit : ITargetObject
+    public class Unit : Interfaces.ITargetObject
     {
         public uint Health { get; set; }
         public uint Mana { get; set; }
@@ -27,11 +27,11 @@ namespace RoyalPlayingGame
         public uint RealPhysicalDamageReduction { get; protected set; }
         public uint RealMagicalDamageReduction { get; protected set; }
 
-        public List<Effect> Effects { get; set; }
-        public List<Armor> ArmorSet { get; set; }
-        public List<Weapon> WeaponSet { get; set; }
-        public List<Potion> Potions { get; set; }
-        public List<Spell> SpellBook { get; set; }
+        public List<Effect.Effect> Effects { get; set; }
+        public List<Item.Items.Armor> ArmorSet { get; set; }
+        public List<Item.Items.Weapon> WeaponSet { get; set; }
+        public List<Item.Items.Potion> Potions { get; set; }
+        public List<Spell.Spell> SpellBook { get; set; }
         public uint Level { get; protected set; }
 
         public void GotDamaged(uint damage, DamageType DType)
@@ -49,12 +49,12 @@ namespace RoyalPlayingGame
   
         public void CalcStatsEffects()
         {
-            foreach (Effect effect in Effects)
+            foreach (Effect.Effect effect in Effects)
             {
                 if (effect.effectTimer != null && effect.CurrentTime <=0)
                     Effects.Remove(effect);
             }
-            foreach (Effect effect in Effects)
+            foreach (Effect.Effect effect in Effects)
             {
                 RealHealth = Health;
                 RealMana = Mana;
@@ -72,15 +72,15 @@ namespace RoyalPlayingGame
 
         }
 
-        public void AddEffect(Effect effect)
+        public void AddEffect(Effect.Effect effect)
         {
             effect.effectTimer.Start();
             Effects.Add(effect);
         }
 
-        public void AddPotion(Potion potion)
+        public void AddPotion(Item.Items.Potion potion)
         {
-            foreach (Potion addedPotion in Potions)
+            foreach (Item.Items.Potion addedPotion in Potions)
             {
                 if (addedPotion.ItemName == potion.ItemName)
                 {
@@ -92,9 +92,9 @@ namespace RoyalPlayingGame
                 }
             }
         }
-        public void AddPotion(Potion potion, ushort amount)
+        public void AddPotion(Item.Items.Potion potion, ushort amount)
         {
-            foreach (Potion addedPotion in Potions)
+            foreach (Item.Items.Potion addedPotion in Potions)
             {
                 if (addedPotion.ItemName == potion.ItemName)
                     addedPotion.Amount += amount;
@@ -110,19 +110,19 @@ namespace RoyalPlayingGame
             else return true;
         }
 
-        public void PhysicalAttack(ITargetObject targetObject)
+        public void PhysicalAttack(Interfaces.ITargetObject targetObject)
         {
             targetObject.GotDamaged((uint)(RealStrength * 0.03), DamageType.Physical);
         }
 
-        public void MagicalAttack(ITargetObject targetObject, NegativeSpell negativeSpell)
+        public void MagicalAttack(Interfaces.ITargetObject targetObject, Spell.NegativeSpell negativeSpell)
         {
             targetObject.GotDamaged((uint)negativeSpell.DealtDamage(), DamageType.Magic);
         }
 
-        public Spell CastSpell()
+        public Spell.Spell CastSpell()
         {
-            NegativeSpells.FireBall fireball = new NegativeSpells.FireBall(RealIntelligence, RealAgility);
+            Spell.NegativeSpells.FireBall fireball = new Spell.NegativeSpells.FireBall(RealIntelligence, RealAgility);
             return fireball;
         }
     }

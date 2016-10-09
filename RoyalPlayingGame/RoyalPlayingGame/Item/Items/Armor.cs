@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoyalPlayingGame
+namespace RoyalPlayingGame.Item.Items
 {
-    public enum ArmorType{ Cloth, Leather, Mail, Plate }
-    public enum ArmorSlot { Head, Sholders, Back, Chest, Hands, Belt, Legs, Boots, Ring1, Ring2}
-    public class Armor: Item
+    public enum ArmorType { Cloth, Leather, Mail, Plate }
+    public enum ArmorSlot { Head, Sholders, Back, Chest, Hands, Belt, Legs, Boots, Ring1, Ring2 }
+    public class Armor : Item
     {
         Random randomArmorGeneration;
-        public Armor(string name, ArmorType AType, ArmorSlot ASlot, Effect effect, uint armorLvl):base(name, 1,1,armorLvl,effect)
+        public Armor(string name, ArmorType AType, ArmorSlot ASlot, Effect.Effect effect, uint armorLvl) : base(name, 1, 1, armorLvl, effect)
         {
             this.ASlot = ASlot;
             this.AType = AType;
         }
-        public Armor(string name, ArmorType AType, ArmorSlot ASlot, uint armorLvl, int minValue, int maxValue):base(name, 1,1,armorLvl)
+        public Armor(string name, ArmorType AType, ArmorSlot ASlot, uint armorLvl, int minValue, int maxValue) : base(name, 1, 1, armorLvl)
         {
-            Effect effect = new Effect();
+            Effect.Effect effect = new Effect.Effect();
             randomArmorGeneration = new Random();
             effect.DAgility = randomArmorGeneration.Next(minValue, maxValue);
             effect.DIntelligence = randomArmorGeneration.Next(minValue, maxValue);

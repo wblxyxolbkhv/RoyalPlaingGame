@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoyalPlayingGame
+namespace RoyalPlayingGame.Spell.PositiveSpells
 {
-    class PositiveSpell //:Spell
+    class FlashHeal
     {
-        //реализовать
     }
 }

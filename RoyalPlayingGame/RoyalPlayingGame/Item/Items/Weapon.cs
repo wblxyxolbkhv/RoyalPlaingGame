@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoyalPlayingGame
+namespace RoyalPlayingGame.Item.Items
 {
     public enum WeaponType { Sword, Staff, Shield, Dagger, Mace, Spear }
-    public enum WeaponSlot { LeftHand, RightHand, TwoHands}
+    public enum WeaponSlot { LeftHand, RightHand, TwoHands }
     public class Weapon : Item
     {
         Random randomWeaponGeneration;
-        public Weapon(string name, WeaponType WType, WeaponSlot WSlot, Effect effect, uint weaponLvl ):base(name,1,1,weaponLvl,effect)
+        public Weapon(string name, WeaponType WType, WeaponSlot WSlot, Effect.Effect effect, uint weaponLvl) : base(name, 1, 1, weaponLvl, effect)
         {
             this.WSlot = WSlot;
             this.WType = WType;
         }
-        public Weapon(string name, WeaponType WType, WeaponSlot WSlot, uint weaponLvl, int minValue, int maxValue):base(name, 1,1,weaponLvl)
+        public Weapon(string name, WeaponType WType, WeaponSlot WSlot, uint weaponLvl, int minValue, int maxValue) : base(name, 1, 1, weaponLvl)
         {
-            Effect effect = new Effect();
+            Effect.Effect effect = new Effect.Effect();
             randomWeaponGeneration = new Random();
             effect.DAgility = randomWeaponGeneration.Next(minValue, maxValue);
             effect.DIntelligence = randomWeaponGeneration.Next(minValue, maxValue);

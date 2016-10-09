@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoyalPlayingGame
+namespace RoyalPlayingGame.Item
 {
     public class Item
     {
-        public Item(string name, ushort maxAmount, ushort amount, uint itemLvl, Effect effect)
+        public Item(string name, ushort maxAmount, ushort amount, uint itemLvl, Effect.Effect effect)
         {
             ItemName = name;
             ItemLvl = itemLvl;
@@ -27,6 +27,6 @@ namespace RoyalPlayingGame
         public ushort MaxAmount { get; set; }
         public ushort Amount { get; set; }
         public uint ItemLvl { get; set; }
-        public Effect ItemEffect { get; set; }
+        public Effect.Effect ItemEffect { get; set; }
     }
 }
