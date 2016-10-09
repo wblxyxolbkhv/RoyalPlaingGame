@@ -8,6 +8,7 @@ using SimplePhysicalEngine.NonPhysicalComponents;
 using SimplePhysicalEngine;
 using VisualPart;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace StartUpProject
 {
@@ -38,7 +39,7 @@ namespace StartUpProject
         public Animation Cast1AnimationLeft { get; set; }
         public Animation Cast1AnimationRight { get; set; }
 
-        public void OnRefresh(object sender, EventArgs e)
+        public virtual void OnRefresh(object sender, EventArgs e)
         {
             RealObject.OnRefreshPosition(sender, e);
             if (Animation.Mode == AnimationMode.Once && Animation.IsActive)
@@ -104,6 +105,19 @@ namespace StartUpProject
                     break;
             }
             return flyingSpell;
+        }
+        public void PrintObject(PaintEventArgs e, int CameraBias)
+        {
+            if (CurrentFrame == null)
+                e.Graphics.FillRectangle(System.Drawing.Brushes.Black,
+                    (float)RealObject.Position.X - CameraBias,
+                    (float)RealObject.Position.Y,
+                    (float)RealObject.Width,
+                    (float)RealObject.Height);
+            else
+                e.Graphics.DrawImage(CurrentFrame,
+                    (float)RealObject.Position.X - CameraBias,
+                    (float)RealObject.Position.Y);
         }
     }
 }
