@@ -14,15 +14,15 @@ namespace RoyalPlayingGame.Quest
 
         }
         public int QuestStageMoneyReward { get; set; }
-        public List<Item> QuestStageItemReward { get; set; }
-        public List<Item> QuestStageItems { get; set; }
+        public List<Item.Item> QuestStageItemReward { get; set; }
+        public List<Item.Item> QuestStageItems { get; set; }
         public int QuestStageExperienceReward { get; set; }
         public string QuestStageName { get; set; }
         public string QuestStageDescription { get; set; }
         
         public QuestStageType QuestStageType { get; set; }
-        public Unit QuestReciver { get; set; }
-        public Unit QuestStageUnit { get; set; }
+        public Units.Unit QuestReciver { get; set; }
+        public Units.Unit QuestStageUnit { get; set; }
 
     }
 }

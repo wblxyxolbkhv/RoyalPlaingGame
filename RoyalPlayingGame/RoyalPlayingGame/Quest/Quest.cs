@@ -16,7 +16,7 @@ namespace RoyalPlayingGame.Quest
         public QuestStage CurrentQuestStage { get; set; }
         public string QuestName { get; set; }
         public string QuestDescription { get; set; }
-        public Unit QuestGiver { get; set; }
+        public Units.Unit QuestGiver { get; set; }
 
         public void AddQuestStage(QuestStage questStage)
         {

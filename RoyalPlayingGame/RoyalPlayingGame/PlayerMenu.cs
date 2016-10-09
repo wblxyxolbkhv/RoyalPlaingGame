@@ -8,11 +8,11 @@ namespace RoyalPlayingGame
 {
     public class PlayerMenu
     {
-        public PlayerMenu(Player player)
+        public PlayerMenu(Units.Player player)
         {
             this.player = player;
         }
-        Player player;
+        Units.Player player;
 
         public uint Health { get; set; }
         public uint Strength { get; protected set; }

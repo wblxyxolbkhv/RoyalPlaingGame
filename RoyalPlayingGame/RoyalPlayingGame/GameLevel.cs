@@ -11,7 +11,7 @@ namespace RoyalPlayingGame
 {
     public class GameLevel
     {
-        public Player player;
+        public Units.Player player;
         public PlayerMenu playerMenu;
         public VisualPart.UserControls.PlayerMenu VisualMenu;
 
