@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="Effect\Effect.cs" />
     <Compile Include="Units\Enemy.cs" />
-    <Compile Include="GameLevel.cs" />
     <Compile Include="Interfaces\ITargetObject.cs" />
     <Compile Include="Item\Item.cs" />
     <Compile Include="Item\Items\Armor.cs" />
@@ -53,7 +52,6 @@
     <Compile Include="Spell\NegativeSpell.cs" />
     <Compile Include="Spell\NegativeSpells\FireBall.cs" />
     <Compile Include="Units\Player.cs" />
-    <Compile Include="PlayerMenu.cs" />
     <Compile Include="Spell\PositiveSpell.cs" />
     <Compile Include="Spell\PositiveSpells\FlashHeal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

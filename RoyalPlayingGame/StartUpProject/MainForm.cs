@@ -20,20 +20,19 @@ namespace StartUpProject
             InitializeComponent();
 
             Level = new GameLevel();
+            Level.PlayerMenuManager.VisualMenu = this.playerMenu1;
 
 
             #region Инициализация меню, событий
 
-
-            RoyalPlayingGame.GameLevel level1 = new RoyalPlayingGame.GameLevel();
-            level1.VisualMenu = this.playerMenu1;
+            
             
             
 
             Level.WorkAreaHeight = pictureBox1.Height;
             Level.WorkAreaWidth = pictureBox1.Width;
             this.KeyDown += Level.OnKeyDownExternal;
-            this.KeyDown += level1.OnKeyDownExternal;
+            this.KeyDown += Level.PlayerMenuManager.OnKeyDownExternal;
             this.KeyUp += Level.OnKeyUpExternal;
             pictureBox1.Paint += Level.OnPrintAllObjects;
             this.KeyPreview = true;
