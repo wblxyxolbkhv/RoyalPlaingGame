@@ -10,7 +10,7 @@ namespace RoyalPlayingGame.Quest
     {
         public Quest()
         {
-
+            
         }
         List<QuestStage> QuestStages { get; set; }
         public QuestStage CurrentQuestStage { get; set; }
@@ -21,6 +21,15 @@ namespace RoyalPlayingGame.Quest
         public void AddQuestStage(QuestStage questStage)
         {
             QuestStages.Add(questStage);
+        }
+
+        public void NextStage()
+        {
+            if (CurrentQuestStage.QuestStageCompleted())
+            {
+                if (CurrentQuestStage.QuestStageIndex < QuestStages.Count())
+                CurrentQuestStage = QuestStages[CurrentQuestStage.QuestStageIndex+1];
+            }
         }
     }
 }

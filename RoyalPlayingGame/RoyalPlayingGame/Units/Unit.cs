@@ -38,11 +38,11 @@ namespace RoyalPlayingGame.Units
         {
             if (DType == DamageType.Physical)
             {
-                Health = Health - (damage - (damage * PhysicalDamageReduction / 100));
+                RealHealth = RealHealth - (damage - (damage * PhysicalDamageReduction / 100));
             }
             else
             {
-                Health = Health - (damage - (damage * MagicalDamageReduction / 100));
+                RealHealth = RealHealth - (damage - (damage * MagicalDamageReduction / 100));
             }
             
         }
