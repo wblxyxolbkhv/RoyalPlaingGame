@@ -14,9 +14,6 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
         public RealObject(List<RealObject> objs)
         {
             NearbyObjects = objs;
-            refreshTimer = new Timer();
-            refreshTimer.Interval = dt;
-            //refreshTimer.Tick += OnRefreshPosition;
             direction = Direction.NoneRight;
             NearbyObjects.Add(this);
 
@@ -30,9 +27,6 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
         public RealObject(List<RealObject> objs, Power gravity)
         {
             NearbyObjects = objs;
-            refreshTimer = new Timer();
-            refreshTimer.Interval = dt;
-            //refreshTimer.Tick += OnRefreshPosition;
             direction = Direction.NoneRight;
             NearbyObjects.Add(this);
 
@@ -42,10 +36,6 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             IsJumpingDown = true;
             Mass = 5;
 
-        }
-        public void Start()
-        {
-            refreshTimer.Start();
         }
         public void OnRefreshPosition(object sender, EventArgs e)
         {
@@ -76,6 +66,8 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
                 {
                     if (this.Position.X - ro.Position.X - ro.Width >= 0 && this.Position.X - ro.Position.X - ro.Width < SpeedX)
                     {
+                        if (CollisionDetected != null)
+                            CollisionDetected(ro, this);
                         step = Math.Min(this.Position.X - ro.Position.X - ro.Width, step);
                         continue;
                     }
@@ -94,6 +86,8 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
                 {
                     if (ro.Position.X - this.Position.X - this.Width >= 0 && ro.Position.X - this.Position.X - this.Width < SpeedX)
                     {
+                        if (CollisionDetected != null)
+                            CollisionDetected(ro, this);
                         step = Math.Min(ro.Position.X - this.Position.X - this.Width, step);
                         continue;
                     }
@@ -205,7 +199,6 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
         {
             return GetBoost(gravity, Mass);
         }
-        Timer refreshTimer;
         /// <summary>
         /// метод для получения точки для респауна атакующих заклинаний (только для кастеров)
         /// </summary>
@@ -223,5 +216,7 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             }
             return res;
         }
+        public event CollisionHandler CollisionDetected; 
     }
+    public delegate void CollisionHandler(RealObject o1, RealObject o2);
 }

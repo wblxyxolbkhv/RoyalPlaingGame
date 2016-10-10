@@ -34,9 +34,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.labelStrengh = new System.Windows.Forms.Label();
+            this.labelAgility = new System.Windows.Forms.Label();
+            this.labelIntelegence = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // scaleHP
@@ -101,43 +101,44 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Интеллект";
             // 
-            // label5
+            // labelStrengh
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(150, 121);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 18);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "0";
+            this.labelStrengh.AutoSize = true;
+            this.labelStrengh.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelStrengh.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelStrengh.Location = new System.Drawing.Point(150, 121);
+            this.labelStrengh.Name = "labelStrengh";
+            this.labelStrengh.Size = new System.Drawing.Size(17, 18);
+            this.labelStrengh.TabIndex = 6;
+            this.labelStrengh.Text = "0";
             // 
-            // label6
+            // labelAgility
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(150, 152);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(17, 18);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "0";
+            this.labelAgility.AutoSize = true;
+            this.labelAgility.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelAgility.Location = new System.Drawing.Point(150, 152);
+            this.labelAgility.Name = "labelAgility";
+            this.labelAgility.Size = new System.Drawing.Size(17, 18);
+            this.labelAgility.TabIndex = 7;
+            this.labelAgility.Text = "0";
             // 
-            // label7
+            // labelIntelegence
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(150, 184);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(17, 18);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "0";
+            this.labelIntelegence.AutoSize = true;
+            this.labelIntelegence.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelIntelegence.Location = new System.Drawing.Point(150, 184);
+            this.labelIntelegence.Name = "labelIntelegence";
+            this.labelIntelegence.Size = new System.Drawing.Size(17, 18);
+            this.labelIntelegence.TabIndex = 8;
+            this.labelIntelegence.Text = "0";
             // 
             // PlayerMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.labelIntelegence);
+            this.Controls.Add(this.labelAgility);
+            this.Controls.Add(this.labelStrengh);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -159,8 +160,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelStrengh;
+        private System.Windows.Forms.Label labelAgility;
+        private System.Windows.Forms.Label labelIntelegence;
     }
 }

@@ -7,7 +7,8 @@ using SimplePhysicalEngine.NonPhysicalComponents;
 using System.Windows.Forms;
 using SimplePhysicalEngine;
 using VisualPart;
-using RoyalPlayingGame;
+using RoyalPlayingGame.Spell;
+using RoyalPlayingGame.Units;
 using System.Drawing;
 
 namespace StartUpProject
@@ -17,10 +18,13 @@ namespace StartUpProject
         public GameLevel()
         {
             GenerateLevel();
+
+            PlayerMenuManager = new PlayerMenuManager();
+            PlayerMenuManager.player = (Player)Player.Unit;
         }
         ComplexObject Player { get; set; }
         List<ComplexEnemy> Enemies { get; set; }
-        List<ComplexObject> Spells { get; set; }
+        List<ComplexSpell> Spells { get; set; }
         List<ComplexStructure> Structures { get; set; }
 
         List<RealObject> CollisionDomain { get; set; }
@@ -29,6 +33,9 @@ namespace StartUpProject
         int CameraBias { get; set; }
         public int WorkAreaWidth { get; set; }
         public int WorkAreaHeight { get; set; }
+
+
+        public PlayerMenuManager PlayerMenuManager { get; private set; }
 
         public void OnPrintAllObjects(object sender, PaintEventArgs e)
         {
@@ -42,8 +49,10 @@ namespace StartUpProject
         }
         public void OnRefresh(object sender, EventArgs e)
         {
+            RemoveRealObjects();
+            PlayerMenuManager.OnMenuRefresh(sender, e);
             Player.OnRefresh(sender, e);
-            foreach (ComplexObject o in Spells)
+            foreach (ComplexSpell o in Spells)
                 o.OnRefresh(sender, e);
             foreach (ComplexEnemy o in Enemies)
                 o.OnRefresh(sender, e);
@@ -65,7 +74,11 @@ namespace StartUpProject
                     Player.RealObject.Jump(-0.7);
                     break;
                 case Keys.Space:
-                    Spells.Add(Player.Cast(Player.Unit.CastSpell() as NegativeSpell, Player.RealObject, CollisionDomain));
+                    NegativeSpell spell = Player.Unit.CastSpell() as NegativeSpell;
+                    ComplexSpell s = Player.Cast(spell, Player.RealObject, CollisionDomain);
+                    s.Spell = spell;
+                    s.RealObject.CollisionDetected += OnCollisionDetected;
+                    Spells.Add(s);
                     break;
             }
         }
@@ -86,7 +99,7 @@ namespace StartUpProject
         {
             CollisionDomain = new List<RealObject>();
             Structures = new List<ComplexStructure>();
-            Spells = new List<ComplexObject>();
+            Spells = new List<ComplexSpell>();
             Enemies = new List<ComplexEnemy>();
             Gravity = new Power(0.01 * new Vector2(0, 1));
 
@@ -99,6 +112,7 @@ namespace StartUpProject
             ground.BiasY = 19;
             ground.RealObject.Height = 104;
             ground.RealObject.Width = 4000;
+            ground.RealObject.CollisionDetected += OnCollisionDetected;
 
             CameraBias = 0;
 
@@ -106,6 +120,8 @@ namespace StartUpProject
             ComplexEnemy enemy = new ComplexEnemy();
 
             enemy.Unit = new Unit();
+            enemy.Unit.Health = 100;
+            enemy.Unit.RealHealth = 100;
 
             enemy.RealObject = new RealObject(CollisionDomain, Gravity);
             enemy.RealObject.Position = new Vector2(600, 400);
@@ -113,6 +129,7 @@ namespace StartUpProject
             enemy.RealObject.Width = 110;
             enemy.RealObject.SpeedX = 2;
             enemy.RealObject.direction = Direction.Right;
+            enemy.RealObject.CollisionDetected += OnCollisionDetected;
 
             enemy.WalkAnimationLeft = new Animation("Minotaur/WalkLeft", 100);
             enemy.WalkAnimationLeft.Start();
@@ -129,8 +146,12 @@ namespace StartUpProject
         {
             Player = new ComplexObject();
 
-            Player.Unit = new Unit();
-            
+            Player.Unit = new Player();
+            Player.Unit.Health = 200;
+            Player.Unit.Mana = 200;
+            Player.Unit.RealHealth = 200;
+            Player.Unit.RealMana = 200;
+
             Player.RealObject = new RealObject(CollisionDomain, Gravity);
             Player.RealObject.Position = new Vector2(400, 400);
             Player.RealObject.Height = 72;
@@ -197,9 +218,65 @@ namespace StartUpProject
 
 
 
+        private void OnCollisionDetected(RealObject o1, RealObject o2)
+        {
+            ComplexSpell spell = FindSpell(o1);
+            if (spell == null)
+                spell = FindSpell(o2);
+            else
+            {
+                RemoveQueue.Add(spell);
+                ComplexObject enemy = FindObject(o2);
+                if (enemy != null)
+                {
+                    int d = spell.Spell.DealtDamage();
+                    uint dmg = d > 0 ? (uint)d : (uint)-d; 
+                    enemy.Unit.GotDamaged(dmg, DamageType.Magic);
+                }
+                return;
+            }
+            if (spell == null)
+                return;
+            else
+            {
+                RemoveQueue.Add(spell);
+                ComplexObject enemy = FindObject(o1);
+                if (enemy != null)
+                {
+                    int d = spell.Spell.DealtDamage();
+                    uint dmg = d > 0 ? (uint)d : (uint)-d;
+                    enemy.Unit.GotDamaged(dmg, DamageType.Magic);
+                }
+                return;
+            }
 
+        }
+        private ComplexSpell FindSpell(RealObject o)
+        {
+            foreach (ComplexSpell s in Spells)
+                if (s.RealObject.Equals(o))
+                    return s;
+            return null;
+        }
+        private ComplexObject FindObject(RealObject o)
+        {
+            foreach (ComplexObject s in Enemies)
+                if (s.RealObject.Equals(o))
+                    return s;
+            return null;
+        }
 
-
-
+        private List<ComplexSpell> RemoveQueue = new List<ComplexSpell>();
+        private void RemoveRealObjects()
+        {
+            foreach(ComplexSpell o in RemoveQueue)
+            {
+                if (CollisionDomain.Contains(o.RealObject))
+                    CollisionDomain.Remove(o.RealObject);
+                if (Spells.Contains(o))
+                    Spells.Remove(o);
+            }
+            RemoveQueue.Clear();
+        }
     }
 }

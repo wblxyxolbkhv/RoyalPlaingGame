@@ -49,9 +49,19 @@
             // 
             // playerMenu1
             // 
+            this.playerMenu1.Agility = 0;
+            this.playerMenu1.Intelegence = 0;
             this.playerMenu1.Location = new System.Drawing.Point(958, 113);
+            this.playerMenu1.MaxHP = 0;
+            this.playerMenu1.MaxMP = 0;
             this.playerMenu1.Name = "playerMenu1";
+            this.playerMenu1.RealAgility = 0;
+            this.playerMenu1.RealHP = 0;
+            this.playerMenu1.RealIntelegence = 0;
+            this.playerMenu1.RealMP = 0;
+            this.playerMenu1.RealStrengh = 0;
             this.playerMenu1.Size = new System.Drawing.Size(596, 359);
+            this.playerMenu1.Strengh = 0;
             this.playerMenu1.TabIndex = 1;
             this.playerMenu1.Visible = false;
             // 
@@ -62,7 +72,7 @@
             this.scale1.Location = new System.Drawing.Point(13, 13);
             this.scale1.MaxValue = 100;
             this.scale1.Name = "scale1";
-            this.scale1.ScaleColor = System.Drawing.Color.Red;
+            this.scale1.ScaleColor = System.Drawing.Color.Green;
             this.scale1.Size = new System.Drawing.Size(136, 19);
             this.scale1.TabIndex = 2;
             // 
