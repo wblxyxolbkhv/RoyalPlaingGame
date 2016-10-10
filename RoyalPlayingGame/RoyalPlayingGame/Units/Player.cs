@@ -17,7 +17,8 @@ namespace RoyalPlayingGame.Units
             QuestJournal = new List<Quest.Quest>();
             Effects = new List<Effect.Effect>();
             Experience = 0;
-            Health = RealHealth = 50;
+            Health = RealHealth = 100;
+            Mana = RealMana = 100;
             Agility = RealAgility = 4;
             Intelligence = RealIntelligence = 5;
             Strength = RealStrength = 4;

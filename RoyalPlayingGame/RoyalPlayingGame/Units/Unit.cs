@@ -38,13 +38,7 @@ namespace RoyalPlayingGame.Units
         {
             if (DType == DamageType.Physical)
             {
-<<<<<<< HEAD
-                RealHealth = RealHealth - (damage - (damage * PhysicalDamageReduction / 100));
-            }
-            else
-            {
-                RealHealth = RealHealth - (damage - (damage * MagicalDamageReduction / 100));
-=======
+                //RealHealth = RealHealth - (damage - (damage * MagicalDamageReduction / 100));
                 int hp = (int)RealHealth - ((int)damage - ((int)damage * (int)PhysicalDamageReduction / 100));
                 if (hp < 0)
                     RealHealth = 0;
@@ -56,7 +50,6 @@ namespace RoyalPlayingGame.Units
                 if (hp < 0)
                     RealHealth = 0;
                 else RealHealth = (uint)hp;
->>>>>>> 5edd38dcb363cd19fa3387a6db0d112d78541614
             }
             
         }
