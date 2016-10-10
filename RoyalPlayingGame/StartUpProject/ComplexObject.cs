@@ -15,12 +15,7 @@ namespace StartUpProject
 {
     public class ComplexObject
     {
-<<<<<<< HEAD
-
-        public RoyalPlayingGame.Units.Unit Unit { get; set; }
-=======
         public Unit Unit { get; set; }
->>>>>>> 5edd38dcb363cd19fa3387a6db0d112d78541614
         public RealObject RealObject { get; set; }
         public Animation Animation { get; set; }
         public Image CurrentFrame
@@ -79,11 +74,8 @@ namespace StartUpProject
                 }
         }
 
-<<<<<<< HEAD
-        public ComplexObject Cast(RoyalPlayingGame.Spell.NegativeSpell spell, RealObject caster, List<RealObject> CollisionDomain)
-=======
+
         public ComplexSpell Cast(NegativeSpell spell, RealObject caster, List<RealObject> CollisionDomain)
->>>>>>> 5edd38dcb363cd19fa3387a6db0d112d78541614
         {
             ComplexSpell flyingSpell = new ComplexSpell();
             flyingSpell.RealObject = new RealObject(CollisionDomain);
