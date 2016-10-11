@@ -8,14 +8,6 @@ namespace RoyalPlayingGame.Spell
 {
     public class NegativeSpell :Spell
     {
-   //доработать
-        //public NegativeSpell( Unit unit, uint manaCost, uint castTime, uint coolDown, uint basicDamage):base(unit, manaCost, castTime, coolDown)
-        //{
-        //    SpellCriticalChance = new Random();
-            
-        //    BasicSpellDamage = basicDamage;
-        //}
-
         public NegativeSpell(int realIntelligence, int realAgility, string spellName):base (20,2,10,spellName)
         {
             SpellCriticalChance = new Random();
