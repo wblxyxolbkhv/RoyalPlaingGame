@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RoyalPlayingGame.Item.Items;
+using RoyalPlayingGame.Effect;
+using RoyalPlayingGame.Spell;
 
 namespace RoyalPlayingGame.Units
 
@@ -11,47 +14,146 @@ namespace RoyalPlayingGame.Units
 
     public class Unit : Interfaces.ITargetObject
     {
-        public uint Health { get; set; }
-        public uint Mana { get; set; }
-        public uint Strength { get; protected set; }
-        public uint Agility { get; protected set; }
-        public uint Intelligence { get; protected set; }
-        public uint PhysicalDamageReduction { get; protected set; }
-        public uint MagicalDamageReduction { get; protected set; }
+        public Unit()
+        {
+            SpellBook = new SpellBookCollection();
+            ArmorSet = new List<Armor>();
+            WeaponSet = new List<Weapon>();
+            Potions = new List<Potion>();
+            SpellBook = new SpellBookCollection();
+            Effects = new List<Effect.Effect>();
+        }
+        #region BITCH
+        protected int realHealth;
+        protected int realMana;
+        protected int realAgility;
+        protected int realStrength;
+        protected int realIntelligence;
+        protected int realPhysicalDamageReduction;
+        protected int realMagicalDamageReduction;
+        public event Action Death;
 
-        public uint RealHealth { get; set; }
-        public uint RealMana { get; set; }
-        public uint RealStrength { get; protected set; }
-        public uint RealAgility { get; protected set; }
-        public uint RealIntelligence { get; protected set; }
-        public uint RealPhysicalDamageReduction { get; protected set; }
-        public uint RealMagicalDamageReduction { get; protected set; }
+        public int Health { get; set; }
+        public int Mana { get; set; }
+        public int Strength { get; protected set; }
+        public int Agility { get; protected set; }
+        public int Intelligence { get; protected set; }
+        public int PhysicalDamageReduction { get; protected set; }
+        public int MagicalDamageReduction { get; protected set; }
 
+        public int RealHealth { get { return realHealth; }
+            set
+            {
+                if (value <= 0)
+                {
+                    realHealth = 0;
+                    Death?.Invoke();
+                }
+                else
+                {
+                    realHealth = value;
+                }
+            }
+        }
+        public int RealMana
+        {
+            get
+            {
+                if (realMana <= 0)
+                    return 0;
+                else return realMana;
+            }
+            set
+            {
+                realMana = value;
+            }
+        }
+        public int RealStrength
+        {
+            get
+            {
+                if (realStrength <= 0)
+                    return 0;
+                else return realStrength;
+            }
+            set
+            {
+                realStrength = value;
+            }
+        }
+        public int RealAgility
+        {
+            get
+            {
+                if (realAgility <= 0)
+                    return 0;
+                else return realAgility;
+            }
+            set
+            {
+                realAgility = value;
+            }
+        }
+        public int RealIntelligence
+        {
+            get
+            {
+                if (realIntelligence <= 0)
+                    return 0;
+                else return realIntelligence;
+            }
+            set
+            {
+                realIntelligence = value;
+            }
+        }
+        public int RealPhysicalDamageReduction
+        {
+            get
+            {
+                if (realPhysicalDamageReduction <= 0)
+                    return 0;
+                else return realPhysicalDamageReduction;
+            }
+            set
+            {
+                realPhysicalDamageReduction = value;
+            }
+        }
+        public int RealMagicalDamageReduction
+        {
+            get
+            {
+                if (realMagicalDamageReduction <= 0)
+                    return 0;
+                else return realMagicalDamageReduction;
+            }
+            set
+            {
+                realMagicalDamageReduction = value;
+            }
+        }
+        #endregion 
         public List<Effect.Effect> Effects { get; set; }
-        public List<Item.Items.Armor> ArmorSet { get; set; }
-        public List<Item.Items.Weapon> WeaponSet { get; set; }
-        public List<Item.Items.Potion> Potions { get; set; }
-        public List<Spell.Spell> SpellBook { get; set; }
-        public uint Level { get; protected set; }
+        public List<Armor> ArmorSet { get; set; }
+        public List<Weapon> WeaponSet { get; set; }
+        public List<Potion> Potions { get; set; }
+        public SpellBookCollection SpellBook { get; set; }
+        public int Level { get; protected set; }
+        public Spell.Spell SpellHotKey1 { get; set; }
+        public Spell.Spell SpellHotKey2 { get; set; }
+        public Spell.Spell SpellHotKey3 { get; set; }
 
-        public void GotDamaged(uint damage, DamageType DType)
+        public void GotDamaged(int damage, DamageType DType)
         {
             if (DType == DamageType.Physical)
             {
-                //RealHealth = RealHealth - (damage - (damage * MagicalDamageReduction / 100));
-                int hp = (int)RealHealth - ((int)damage - ((int)damage * (int)PhysicalDamageReduction / 100));
-                if (hp < 0)
-                    RealHealth = 0;
-                else RealHealth = (uint)hp; 
+                RealHealth = RealHealth - (damage - (damage * PhysicalDamageReduction / 100));
             }
             else
             {
-                int hp = (int)RealHealth - ((int)damage - ((int)damage * (int)MagicalDamageReduction / 100));
-                if (hp < 0)
-                    RealHealth = 0;
-                else RealHealth = (uint)hp;
+                RealHealth = RealHealth - (damage - (damage * MagicalDamageReduction / 100));
             }
-            
         }
   
         public void CalcStatsEffects()
@@ -63,18 +165,13 @@ namespace RoyalPlayingGame.Units
             }
             foreach (Effect.Effect effect in Effects)
             {
-                RealHealth = Health;
-                RealMana = Mana;
-                RealStrength = Strength;
-                RealIntelligence = Intelligence;
-                RealAgility = Agility;               
-                RealAgility = effect.DAgility < 0 ? RealAgility - (uint)effect.DAgility : RealAgility + (uint)effect.DAgility;
-                RealHealth = effect.DHealth < 0 ? RealHealth - (uint)effect.DHealth : RealHealth + (uint)effect.DHealth;
-                RealMana = effect.DMana < 0 ? RealMana - (uint)effect.DMana : RealMana + (uint)effect.DMana;
-                RealStrength = effect.DStrength < 0 ? RealStrength - (uint)effect.DStrength : RealStrength + (uint)effect.DStrength;
-                RealIntelligence = effect.DIntelligence < 0 ? RealIntelligence - (uint)effect.DIntelligence : RealIntelligence + (uint)effect.DIntelligence;
-                RealMagicalDamageReduction = effect.DMagicalDamageReduction < 0 ? RealMagicalDamageReduction - (uint)effect.DMagicalDamageReduction : RealMagicalDamageReduction + (uint)effect.DMagicalDamageReduction;
-                RealPhysicalDamageReduction = effect.DPhysicalDamageReduction < 0 ? RealPhysicalDamageReduction - (uint)effect.DPhysicalDamageReduction : RealPhysicalDamageReduction + (uint)effect.DPhysicalDamageReduction;
+                RealAgility += effect.DAgility;
+                RealHealth += effect.DHealth;
+                RealMana += effect.DMana;
+                RealStrength += effect.DStrength;
+                RealIntelligence += effect.DIntelligence;
+                RealMagicalDamageReduction += effect.DMagicalDamageReduction;
+                RealPhysicalDamageReduction += effect.DPhysicalDamageReduction;
             }
 
         }
@@ -85,9 +182,9 @@ namespace RoyalPlayingGame.Units
             Effects.Add(effect);
         }
 
-        public void AddPotion(Item.Items.Potion potion)
+        public void AddPotion(Potion potion)
         {
-            foreach (Item.Items.Potion addedPotion in Potions)
+            foreach (Potion addedPotion in Potions)
             {
                 if (addedPotion.ItemName == potion.ItemName)
                 {
@@ -99,38 +196,44 @@ namespace RoyalPlayingGame.Units
                 }
             }
         }
-        public void AddPotion(Item.Items.Potion potion, ushort amount)
+        public void AddPotion(Potion potion, ushort amount)
         {
-            foreach (Item.Items.Potion addedPotion in Potions)
+            foreach (Potion addedPotion in Potions)
             {
                 if (addedPotion.ItemName == potion.ItemName)
                     addedPotion.Amount += amount;
             }
         }
 
-        public bool ItsALIVE()
-        {
-            if (RealHealth == 0)
-            {
-                return false;
-            }
-            else return true;
-        }
+        //public void PhysicalAttack(Interfaces.ITargetObject targetObject)
+        //{
+        //    targetObject.GotDamaged((int)(RealStrength * 0.03), DamageType.Physical);
+        //}
 
-        public void PhysicalAttack(Interfaces.ITargetObject targetObject)
-        {
-            targetObject.GotDamaged((uint)(RealStrength * 0.03), DamageType.Physical);
-        }
+        //public void MagicalAttack(Interfaces.ITargetObject targetObject, Spell.NegativeSpell negativeSpell)
+        //{
+        //    targetObject.GotDamaged(negativeSpell.DealtDamage(), DamageType.Magic);
+        //}
 
-        public void MagicalAttack(Interfaces.ITargetObject targetObject, Spell.NegativeSpell negativeSpell)
-        {
-            targetObject.GotDamaged((uint)negativeSpell.DealtDamage(), DamageType.Magic);
-        }
-
-        public Spell.Spell CastSpell()
+        public virtual Spell.Spell CastSpell()
         {
             Spell.NegativeSpells.FireBall fireball = new Spell.NegativeSpells.FireBall(RealIntelligence, RealAgility);
             return fireball;
         }
+        public virtual Spell.Spell CastSpell(Spell.Spell spell)
+        {
+            if (RealMana - spell.ManaCost < 0)
+                throw new Exceptions.NoManaException();
+            else if (spell.Active == true)
+            {
+                spell.CurrentCoolDown = SpellHotKey1.CoolDown;
+                spell.coolDownTimer.Start();
+                RealMana -= spell.ManaCost;
+                return spell;
+            }
+            throw new Exceptions.SpellCoolDownException();
+        }
+        
+
     }
 }

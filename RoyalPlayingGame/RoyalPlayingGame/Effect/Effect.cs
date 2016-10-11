@@ -50,7 +50,7 @@ namespace RoyalPlayingGame.Effect
         public virtual int DIntelligence{ get; set; }
         public virtual uint Duration { get; set; }
         public virtual uint CurrentTime { get; set; }
-        public virtual uint DPhysicalDamageReduction { get; set; }
-        public virtual uint DMagicalDamageReduction { get; set; }
+        public virtual int DPhysicalDamageReduction { get; set; }
+        public virtual int DMagicalDamageReduction { get; set; }
     }
 }

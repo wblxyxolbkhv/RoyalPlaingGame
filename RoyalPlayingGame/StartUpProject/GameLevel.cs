@@ -229,9 +229,9 @@ namespace StartUpProject
                 ComplexObject enemy = FindObject(o2);
                 if (enemy != null)
                 {
-                    int d = spell.Spell.DealtDamage();
-                    uint dmg = d > 0 ? (uint)d : (uint)-d; 
-                    enemy.Unit.GotDamaged(dmg, DamageType.Magic);
+                    bool critical;
+                    int d = spell.Spell.DealtDamage(out critical);
+                    enemy.Unit.GotDamaged(d, DamageType.Magic);
                 }
                 return;
             }
@@ -243,9 +243,9 @@ namespace StartUpProject
                 ComplexObject enemy = FindObject(o1);
                 if (enemy != null)
                 {
-                    int d = spell.Spell.DealtDamage();
-                    uint dmg = d > 0 ? (uint)d : (uint)-d;
-                    enemy.Unit.GotDamaged(dmg, DamageType.Magic);
+                    bool critical;
+                    int d = spell.Spell.DealtDamage(out critical);
+                    enemy.Unit.GotDamaged(d, DamageType.Magic);
                 }
                 return;
             }

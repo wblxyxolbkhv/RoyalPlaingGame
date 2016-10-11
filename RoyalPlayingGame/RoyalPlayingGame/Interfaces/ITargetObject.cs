@@ -8,8 +8,7 @@ namespace RoyalPlayingGame.Interfaces
 {
     public  interface ITargetObject
     {
-        uint Health { get; set; }
-        void GotDamaged(uint damage, Units.DamageType DType);
-        bool ItsALIVE();
+        int Health { get; set; }
+        void GotDamaged(int damage, Units.DamageType DType);
     }
 }

@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RoyalPlayingGame.Spell;
+using System.Windows.Forms;
 
 namespace RoyalPlayingGame.Units
 {
    public class Player:Unit
     {
-        public Player()
+        public Player():base()
         {
-            ArmorSet = new List<Item.Items.Armor>();
-            WeaponSet = new List<Item.Items.Weapon>();
-            Potions = new List<Item.Items.Potion>();
-            SpellBook = new List<Spell.Spell>();
             QuestJournal = new List<Quest.Quest>();
-            Effects = new List<Effect.Effect>();
             Experience = 0;
             Health = RealHealth = 100;
             Mana = RealMana = 100;
@@ -24,6 +21,10 @@ namespace RoyalPlayingGame.Units
             Strength = RealStrength = 4;
             PhysicalDamageReduction = RealPhysicalDamageReduction = 10;
             MagicalDamageReduction = RealMagicalDamageReduction = 15;
+
+            Spell.NegativeSpells.FireBall fireBall = new Spell.NegativeSpells.FireBall(RealIntelligence,RealAgility);
+            SpellBook.AddSpell(fireBall);
+            SpellHotKey1 = SpellBook[fireBall.SpellName];
         }
         public List<Quest.Quest> QuestJournal { get; set; }
         public int Experience { get; set; }
@@ -56,6 +57,34 @@ namespace RoyalPlayingGame.Units
                 Level += 1;
             }
         }
+        public Spell.Spell CastSpell(Keys key)
+        {
+            switch (key)
+            {
+                case Keys.D1:
+                    {
+                        return base.CastSpell(SpellHotKey1);      
+                    }
+                case Keys.D2:
+                    {
+                        return base.CastSpell(SpellHotKey2);
+                    }
+                case Keys.D3:
+                    {
+                        return base.CastSpell(SpellHotKey3);
+                    }
+            }
+            return null;
+                
+        }
+        //public void StopCoolDowns()
+        //{
+        //    foreach (Spell.Spell in SpellBook)
+        //    {
+
+        //    }
+        //}
+
 
 
     }
