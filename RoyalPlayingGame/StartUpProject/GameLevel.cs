@@ -42,9 +42,9 @@ namespace StartUpProject
             Player.PrintObject(e, CameraBias);
             foreach (ComplexStructure o in Structures)
                 o.PrintTexture(e, CameraBias);
-            foreach (ComplexObject o in Spells)
-                o.PrintObject(e, CameraBias);
             foreach (ComplexEnemy o in Enemies)
+                o.PrintObject(e, CameraBias);
+            foreach (ComplexObject o in Spells)
                 o.PrintObject(e, CameraBias);
             foreach (TemporaryTitle o in TemporaryObjects)
                 o.PrintObject(e, CameraBias);
@@ -345,9 +345,10 @@ namespace StartUpProject
             {
                 if (CollisionDomain.Contains(s.RealObject))
                     CollisionDomain.Remove(s.RealObject);
+                if (s.DeathAnimation != null && !s.DeathAnimation.IsActive || s.DeathAnimation == null)
+                    RemoveQueue.Add(s);
+                
             }
-            if (s.DeathAnimation != null && !s.DeathAnimation.IsActive)
-                RemoveQueue.Add(s);
         }
     }
 }

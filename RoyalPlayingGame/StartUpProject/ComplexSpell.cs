@@ -25,5 +25,16 @@ namespace StartUpProject
                 OnUnitDeath();
             }
         }
+        public override void OnUnitDeath()
+        {
+            IsActive = false;
+            RealObject.Fixate();
+            if (DeathAnimation != null)
+            {
+                Animation = DeathAnimation;
+                DeathAnimation.Start();
+            }
+        }
+
     }
 }

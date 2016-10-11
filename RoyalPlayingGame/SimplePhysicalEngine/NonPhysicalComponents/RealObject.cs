@@ -63,14 +63,19 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             double step = SpeedX;
             foreach (RealObject ro in NearbyObjects)
             {
+                
                 if (this.Position.Y - ro.Position.Y >= 0 && this.Position.Y - ro.Position.Y < this.Height ||
                     this.Position.Y - ro.Position.Y <= 0 && ro.Position.Y - this.Position.Y < ro.Height)
                 {
+                    //if (this.Position.X <= ro.Position.X + ro.Width && this.Position.X >= ro.Position.X - this.Width)
+                    //    if (ro.Width != 4000 && this.Width != 4000 && ro.Width != 72 && this.Width != 72)
+                    //    if (CollisionDetected != null)
+                    //        CollisionDetected(ro, this);
                     if (this.Position.X - ro.Position.X - ro.Width >= 0 && this.Position.X - ro.Position.X - ro.Width < SpeedX)
                     {
-                        if (CollisionDetected != null)
-                            CollisionDetected(ro, this);
-                        step = Math.Min(this.Position.X - ro.Position.X - ro.Width, step);
+                            if (CollisionDetected != null)
+                                CollisionDetected(ro, this);
+                            step = Math.Min(this.Position.X - ro.Position.X - ro.Width, step);
                         continue;
                     }
                 }

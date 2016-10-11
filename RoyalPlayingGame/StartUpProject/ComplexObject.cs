@@ -19,12 +19,15 @@ namespace StartUpProject
         {
             IsActive = true;
         }
-        protected void OnUnitDeath()
+        public virtual void OnUnitDeath()
         {
             IsActive = false;
             RealObject.Fixate();
-            Animation = DeathAnimation;
-            DeathAnimation.Start();
+            if (DeathAnimation != null)
+            {
+                Animation = DeathAnimation;
+                DeathAnimation.Start();
+            }
         }
 
         public Unit Unit
@@ -66,7 +69,7 @@ namespace StartUpProject
                 return;
             if (Unit != null && !Unit.IsAlive)
                 return;
-            if (this is ComplexSpell && !(this as ComplexSpell).IsActive)
+            if (!IsActive)
                 return;
             switch (RealObject.direction)
             {
