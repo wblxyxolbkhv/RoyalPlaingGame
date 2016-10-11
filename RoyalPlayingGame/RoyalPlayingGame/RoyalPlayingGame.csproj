@@ -45,6 +45,7 @@
     <Compile Include="Effect\Effect.cs" />
     <Compile Include="Exceptions\NoManaException.cs" />
     <Compile Include="Exceptions\SpellCoolDownException.cs" />
+    <Compile Include="Spell\NegativeSpells\FrostDragonHead.cs" />
     <Compile Include="Spell\SpellBookCollection.cs" />
     <Compile Include="Units\Enemy.cs" />
     <Compile Include="Interfaces\ITargetObject.cs" />

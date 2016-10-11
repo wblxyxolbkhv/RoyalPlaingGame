@@ -8,7 +8,7 @@ namespace RoyalPlayingGame.Units
 {
     public class Enemy:Unit
     {
-        public Enemy(int health, int intellegence, int strength, int agility, int physicalDamageReduction, int magicalDamegeReduction)
+        public Enemy(int health, int intellegence, int strength, int agility, int physicalDamageReduction, int magicalDamegeReduction):base()
         {
             Health = RealHealth = health;
             Strength = RealStrength = strength;
@@ -19,7 +19,7 @@ namespace RoyalPlayingGame.Units
             Loot = new List<Item.Item>();
         }
         
-        public Enemy()
+        public Enemy():base()
         {
             Health = RealHealth = 30;
             Strength = RealStrength = 3;
