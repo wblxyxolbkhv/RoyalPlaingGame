@@ -77,13 +77,13 @@ namespace RoyalPlayingGame.Units
             return null;
                 
         }
-        //public void StopCoolDowns()
-        //{
-        //    foreach (Spell.Spell in SpellBook)
-        //    {
-
-        //    }
-        //}
+        public void StopCoolDowns()
+        {
+            foreach (Spell.Spell spell in SpellBook.SpellBook)
+            {
+                spell.coolDownTimer.Stop();
+            }
+        }
 
 
 

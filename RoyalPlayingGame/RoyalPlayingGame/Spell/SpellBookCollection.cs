@@ -8,7 +8,11 @@ namespace RoyalPlayingGame.Spell
 {
     public class SpellBookCollection
     {
-        private List<Spell> SpellBook { get; set; }
+        public SpellBookCollection()
+        {
+            SpellBook = new List<Spell>();
+        }
+        public  List<Spell> SpellBook { get; set; }
         public Spell this[string index]
         {
             get
