@@ -21,13 +21,15 @@ namespace StartUpProject
 
             Level = new GameLevel();
             Level.PlayerMenuManager.VisualMenu = this.playerMenu1;
+            Level.PlayerMenuManager.ScaleHP = this.scaleHP;
+            Level.PlayerMenuManager.ScaleMP = this.scaleMP;
 
 
             #region Инициализация меню, событий
 
-            
-            
-            
+
+
+
 
             Level.WorkAreaHeight = pictureBox1.Height;
             Level.WorkAreaWidth = pictureBox1.Width;

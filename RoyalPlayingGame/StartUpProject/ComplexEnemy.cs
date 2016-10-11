@@ -17,6 +17,8 @@ namespace StartUpProject
             RealObject.OnRefreshPosition(sender, e);
             if (Animation.Mode == AnimationMode.Once && Animation.IsActive)
                 return;
+            if (Unit != null && !Unit.IsAlive)
+                return;
             else
                 switch (RealObject.direction)
                 {

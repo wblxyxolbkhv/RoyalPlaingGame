@@ -9,6 +9,6 @@ namespace RoyalPlayingGame.Interfaces
     public  interface ITargetObject
     {
         int Health { get; set; }
-        void GotDamaged(int damage, Units.DamageType DType);
+        int GotDamaged(int damage, Units.DamageType DType);
     }
 }

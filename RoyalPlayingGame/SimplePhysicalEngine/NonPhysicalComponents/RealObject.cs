@@ -39,6 +39,8 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
         }
         public void OnRefreshPosition(object sender, EventArgs e)
         {
+            if (Fixed)
+                return;
             if (IsJumpingUp)
                 StepUp();
             else StepDown();
@@ -107,7 +109,7 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
 
 
         private Power gravity { get; set; }
-        private double SpeedY {
+        public double SpeedY {
             get;
             set; }
 
@@ -145,8 +147,6 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
         }
         private void StepUp()
         {
-            if (gravity == null)
-                return;
             SpeedY = SpeedY + dt * GetBoost().Y;
             double newPositionY = Position.Y + SpeedY * dt + dt * dt * 1 / 2 * GetBoost().Y;
             double step = Position.Y - newPositionY;
@@ -154,6 +154,8 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
                 return;
             foreach (RealObject ro in NearbyObjects)
             {
+                if (this.Equals(ro))
+                    continue;
                 if (this.Position.X - ro.Position.X >= 0 && this.Position.X - ro.Position.X <= ro.Width ||
                     this.Position.X - ro.Position.X <= 0 && ro.Position.X - this.Position.X <= this.Width)
                 {
@@ -216,6 +218,17 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             }
             return res;
         }
+
+        private bool Fixed;
+        public void Fixate()
+        {
+            Fixed = true;
+        }
+        public void Unfixate()
+        {
+            Fixed = false;
+        }
+
         public event CollisionHandler CollisionDetected; 
     }
     public delegate void CollisionHandler(RealObject o1, RealObject o2);
