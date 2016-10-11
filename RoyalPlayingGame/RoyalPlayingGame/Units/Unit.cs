@@ -22,6 +22,7 @@ namespace RoyalPlayingGame.Units
             Potions = new List<Potion>();
             SpellBook = new SpellBookCollection();
             Effects = new List<Effect.Effect>();
+            IsAlive = true;
         }
         #region BITCH
         protected int realHealth;
@@ -32,6 +33,7 @@ namespace RoyalPlayingGame.Units
         protected int realPhysicalDamageReduction;
         protected int realMagicalDamageReduction;
         public event Action Death;
+        public bool IsAlive { get; set; }
 
         public int Health { get; set; }
         public int Mana { get; set; }
@@ -44,14 +46,11 @@ namespace RoyalPlayingGame.Units
         public int RealHealth { get { return realHealth; }
             set
             {
+                realHealth = value;
                 if (value <= 0)
                 {
-                    realHealth = 0;
+                    IsAlive = false;
                     Death?.Invoke();
-                }
-                else
-                {
-                    realHealth = value;
                 }
             }
         }
@@ -144,15 +143,17 @@ namespace RoyalPlayingGame.Units
         public Spell.Spell SpellHotKey2 { get; set; }
         public Spell.Spell SpellHotKey3 { get; set; }
 
-        public void GotDamaged(int damage, DamageType DType)
+        public int GotDamaged(int damage, DamageType DType)
         {
             if (DType == DamageType.Physical)
             {
                 RealHealth = RealHealth - (damage - (damage * PhysicalDamageReduction / 100));
+                return (damage - (damage * PhysicalDamageReduction / 100));
             }
             else
             {
                 RealHealth = RealHealth - (damage - (damage * MagicalDamageReduction / 100));
+                return (damage - (damage * MagicalDamageReduction / 100));
             }
         }
   

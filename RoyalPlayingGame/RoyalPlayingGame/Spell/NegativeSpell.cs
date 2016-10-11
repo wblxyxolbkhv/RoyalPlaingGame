@@ -33,7 +33,7 @@ namespace RoyalPlayingGame.Spell
         public int DealtDamage(out bool CriticalStrike)
         {
             SpellDamage = BasicSpellDamage + (UnitIntellegence* 0.5);
-            BasicSpellCriticalChance = 5 + (int)(UnitIntellegence * 0.05) + (int)(UnitAgility * 0.02);
+            BasicSpellCriticalChance = 20 + (int)(UnitIntellegence * 0.05) + (int)(UnitAgility * 0.02);
             if (SpellCriticalChance.Next(100) < BasicSpellCriticalChance)
             {
                 CriticalStrike = true;

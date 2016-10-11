@@ -46,7 +46,7 @@
             this.scaleHP.Location = new System.Drawing.Point(41, 53);
             this.scaleHP.MaxValue = 100;
             this.scaleHP.Name = "scaleHP";
-            this.scaleHP.ScaleColor = System.Drawing.Color.Red;
+            this.scaleHP.ScaleColor = System.Drawing.Color.Green;
             this.scaleHP.Size = new System.Drawing.Size(136, 19);
             this.scaleHP.TabIndex = 0;
             // 
@@ -57,7 +57,7 @@
             this.scaleMP.Location = new System.Drawing.Point(41, 78);
             this.scaleMP.MaxValue = 100;
             this.scaleMP.Name = "scaleMP";
-            this.scaleMP.ScaleColor = System.Drawing.Color.Red;
+            this.scaleMP.ScaleColor = System.Drawing.Color.Blue;
             this.scaleMP.Size = new System.Drawing.Size(136, 19);
             this.scaleMP.TabIndex = 1;
             // 

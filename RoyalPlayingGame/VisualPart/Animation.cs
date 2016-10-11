@@ -21,7 +21,7 @@ namespace VisualPart
             updateFrameTimer.Interval = Delay;
             updateFrameTimer.Tick += OnUpdateFrame;
             Mode = AnimationMode.Loop;
-           
+            IsActive = true;
 
             GetFrames();
             if (frames.Count == 0)
@@ -49,6 +49,7 @@ namespace VisualPart
                 else
                 {
                     IsActive = false;
+                    AnumationEnd?.Invoke();
                     Stop();
                     return;
                 }
@@ -97,5 +98,6 @@ namespace VisualPart
         {
             updateFrameTimer.Stop();
         }
+        public event Action AnumationEnd;
     }
 }

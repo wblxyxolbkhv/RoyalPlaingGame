@@ -15,18 +15,44 @@ namespace StartUpProject
 {
     public class ComplexObject
     {
-        public Unit Unit { get; set; }
+        public ComplexObject()
+        {
+            IsActive = true;
+        }
+        public virtual void OnUnitDeath()
+        {
+            IsActive = false;
+            RealObject.Fixate();
+            if (DeathAnimation != null)
+            {
+                Animation = DeathAnimation;
+                DeathAnimation.Start();
+            }
+        }
+
+        public Unit Unit
+        {
+            get { return unit; }
+            set
+            {
+                unit = value;
+                unit.Death += OnUnitDeath;
+            }
+        }
+        private Unit unit;
+
         public RealObject RealObject { get; set; }
         public Animation Animation { get; set; }
         public Image CurrentFrame
         {
             get
             {
-                if (Animation != null && Animation.CurrentFrame!=null)
+                if (Animation != null && Animation.CurrentFrame != null)
                     return Animation.CurrentFrame;
                 return null;
             }
         }
+        public bool IsActive { get; set; }
 
         public Animation DefaultAnimation { get; set; }
 
@@ -34,79 +60,36 @@ namespace StartUpProject
         public Animation NonActivityAnimationRight { get; set; }
         public Animation WalkAnimationLeft { get; set; }
         public Animation WalkAnimationRight { get; set; }
-        public Animation JumpAnimationLeft { get; set; }
-        public Animation JumpAnimationRight { get; set; }
-        public Animation Cast1AnimationLeft { get; set; }
-        public Animation Cast1AnimationRight { get; set; }
+        public Animation DeathAnimation { get;set;}
 
         public virtual void OnRefresh(object sender, EventArgs e)
         {
             RealObject.OnRefreshPosition(sender, e);
             if (Animation.Mode == AnimationMode.Once && Animation.IsActive)
                 return;
-            if (RealObject.IsJumpingDown || RealObject.IsJumpingUp)
-                switch (RealObject.direction)
-                {
-                    case Direction.Left:
-                    case Direction.NoneLeft:
-                        Animation = JumpAnimationLeft;
-                        break;
-                    case Direction.Right:
-                    case Direction.NoneRight:
-                        Animation = JumpAnimationRight;
-                        break;
-                }
-            else 
-                switch (RealObject.direction)
-                {
-                    case Direction.Left:
-                        Animation = WalkAnimationLeft;
-                        break;
-                    case Direction.Right:
-                        Animation = WalkAnimationRight;
-                        break;
-                    case Direction.NoneLeft:
-                        Animation = NonActivityAnimationLeft;
-                        break;
-                    case Direction.NoneRight:
-                        Animation = NonActivityAnimationRight;
-                        break;
-                }
-        }
-
-
-        public ComplexSpell Cast(NegativeSpell spell, RealObject caster, List<RealObject> CollisionDomain)
-        {
-            ComplexSpell flyingSpell = new ComplexSpell();
-            flyingSpell.RealObject = new RealObject(CollisionDomain);
-            flyingSpell.RealObject.Position = caster.GetCastPoint();
-            flyingSpell.RealObject.Height = 17;
-            flyingSpell.RealObject.Width = 26;
-            flyingSpell.RealObject.SpeedX = 6;
-            flyingSpell.WalkAnimationLeft = new Animation("Fireball/WalkLeftFireball", 200);
-            flyingSpell.WalkAnimationLeft.Start();
-            flyingSpell.WalkAnimationRight = new Animation("Fireball/WalkRightFireball", 200);
-            flyingSpell.WalkAnimationRight.Start();
-            
-            switch (caster.direction)
+            if (Unit != null && !Unit.IsAlive)
+                return;
+            if (!IsActive)
+                return;
+            switch (RealObject.direction)
             {
-                case Direction.Left:
-                case Direction.NoneLeft:
-                    flyingSpell.RealObject.direction = Direction.Left;
-                    flyingSpell.Animation = flyingSpell.WalkAnimationLeft;
-                    Animation = Cast1AnimationLeft;
-                    Animation.Start();
-                    break;
-                case Direction.Right:
-                case Direction.NoneRight:
-                    flyingSpell.RealObject.direction = Direction.Right;
-                    flyingSpell.Animation = flyingSpell.WalkAnimationRight;
-                    Animation = Cast1AnimationRight;
-                    Animation.Start();
-                    break;
+                 case Direction.Left:
+                     Animation = WalkAnimationLeft;
+                     break;
+                 case Direction.Right:
+                     Animation = WalkAnimationRight;
+                     break;
+                 case Direction.NoneLeft:
+                     Animation = NonActivityAnimationLeft;
+                     break;
+                 case Direction.NoneRight:
+                     Animation = NonActivityAnimationRight;
+                     break;
             }
-            return flyingSpell;
         }
+
+
+
         public virtual void PrintObject(PaintEventArgs e, int CameraBias)
         {
             if (CurrentFrame == null)

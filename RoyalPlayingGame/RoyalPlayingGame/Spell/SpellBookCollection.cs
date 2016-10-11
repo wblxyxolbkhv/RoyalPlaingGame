@@ -12,7 +12,11 @@ namespace RoyalPlayingGame.Spell
         {
             SpellBook = new List<Spell>();
         }
+<<<<<<< HEAD
         public  List<Spell> SpellBook { get; set; }
+=======
+        private List<Spell> SpellBook { get; set; }
+>>>>>>> 837e9e60489873aeee88c5c90254e737875b48b1
         public Spell this[string index]
         {
             get

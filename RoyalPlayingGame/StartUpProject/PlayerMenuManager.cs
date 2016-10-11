@@ -15,27 +15,42 @@ namespace StartUpProject
         public Player player;
         public PlayerMenu VisualMenu;
 
+        public Scale ScaleHP { get;
+            set; }
+        public Scale ScaleMP { get;
+            set; }
+
 
         private bool IsMenuShowed { get; set; }
 
         public void OnMenuRefresh(object sender, EventArgs e)
         {
-            VisualMenu.MaxHP = (int)player.Health;
-            VisualMenu.RealHP = (int)player.RealHealth;
+            ScaleHP.CurrentValue = player.RealHealth;
+            ScaleHP.MaxValue = player.Health;
 
-            VisualMenu.MaxMP = (int)player.Mana;
-            VisualMenu.RealMP = (int)player.RealMana;
+            ScaleMP.CurrentValue = player.RealMana;
+            ScaleMP.MaxValue = player.Mana;
 
-            VisualMenu.Strengh = (int)player.Strength;
-            VisualMenu.RealStrengh = (int)player.RealStrength;
+            VisualMenu.MaxHP = player.Health;
+            VisualMenu.RealHP = player.RealHealth;
 
-            VisualMenu.Agility = (int)player.Agility;
-            VisualMenu.RealAgility = (int)player.RealAgility;
+            VisualMenu.MaxMP = player.Mana;
+            VisualMenu.RealMP = player.RealMana;
 
-            VisualMenu.Intelegence = (int)player.Intelligence;
-            VisualMenu.RealIntelegence = (int)player.RealIntelligence;
+            VisualMenu.Strengh = player.Strength;
+            VisualMenu.RealStrengh = player.RealStrength;
+
+            VisualMenu.Agility = player.Agility;
+            VisualMenu.RealAgility = player.RealAgility;
+
+            VisualMenu.Intelegence = player.Intelligence;
+            VisualMenu.RealIntelegence = player.RealIntelligence;
         }
-
+        public void OnPrint(object sender, PaintEventArgs e)
+        {
+            ScaleHP.Refresh();
+            ScaleMP.Refresh();
+        }
         public void OnKeyDownExternal(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.P)

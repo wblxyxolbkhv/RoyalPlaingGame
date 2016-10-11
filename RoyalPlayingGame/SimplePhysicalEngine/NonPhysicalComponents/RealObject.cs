@@ -39,6 +39,8 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
         }
         public void OnRefreshPosition(object sender, EventArgs e)
         {
+            if (Fixed)
+                return;
             if (IsJumpingUp)
                 StepUp();
             else StepDown();
@@ -61,14 +63,19 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             double step = SpeedX;
             foreach (RealObject ro in NearbyObjects)
             {
+                
                 if (this.Position.Y - ro.Position.Y >= 0 && this.Position.Y - ro.Position.Y < this.Height ||
                     this.Position.Y - ro.Position.Y <= 0 && ro.Position.Y - this.Position.Y < ro.Height)
                 {
+                    //if (this.Position.X <= ro.Position.X + ro.Width && this.Position.X >= ro.Position.X - this.Width)
+                    //    if (ro.Width != 4000 && this.Width != 4000 && ro.Width != 72 && this.Width != 72)
+                    //    if (CollisionDetected != null)
+                    //        CollisionDetected(ro, this);
                     if (this.Position.X - ro.Position.X - ro.Width >= 0 && this.Position.X - ro.Position.X - ro.Width < SpeedX)
                     {
-                        if (CollisionDetected != null)
-                            CollisionDetected(ro, this);
-                        step = Math.Min(this.Position.X - ro.Position.X - ro.Width, step);
+                            if (CollisionDetected != null)
+                                CollisionDetected(ro, this);
+                            step = Math.Min(this.Position.X - ro.Position.X - ro.Width, step);
                         continue;
                     }
                 }
@@ -107,7 +114,7 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
 
 
         private Power gravity { get; set; }
-        private double SpeedY {
+        public double SpeedY {
             get;
             set; }
 
@@ -145,8 +152,6 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
         }
         private void StepUp()
         {
-            if (gravity == null)
-                return;
             SpeedY = SpeedY + dt * GetBoost().Y;
             double newPositionY = Position.Y + SpeedY * dt + dt * dt * 1 / 2 * GetBoost().Y;
             double step = Position.Y - newPositionY;
@@ -154,6 +159,8 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
                 return;
             foreach (RealObject ro in NearbyObjects)
             {
+                if (this.Equals(ro))
+                    continue;
                 if (this.Position.X - ro.Position.X >= 0 && this.Position.X - ro.Position.X <= ro.Width ||
                     this.Position.X - ro.Position.X <= 0 && ro.Position.X - this.Position.X <= this.Width)
                 {
@@ -216,6 +223,17 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             }
             return res;
         }
+
+        private bool Fixed;
+        public void Fixate()
+        {
+            Fixed = true;
+        }
+        public void Unfixate()
+        {
+            Fixed = false;
+        }
+
         public event CollisionHandler CollisionDetected; 
     }
     public delegate void CollisionHandler(RealObject o1, RealObject o2);

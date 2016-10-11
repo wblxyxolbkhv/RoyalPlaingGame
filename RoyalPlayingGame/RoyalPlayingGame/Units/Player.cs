@@ -23,8 +23,11 @@ namespace RoyalPlayingGame.Units
             MagicalDamageReduction = RealMagicalDamageReduction = 15;
 
             Spell.NegativeSpells.FireBall fireBall = new Spell.NegativeSpells.FireBall(RealIntelligence,RealAgility);
+            Spell.NegativeSpells.FrostDragonHead frost = new Spell.NegativeSpells.FrostDragonHead(RealIntelligence, RealAgility);
             SpellBook.AddSpell(fireBall);
+            SpellBook.AddSpell(frost);
             SpellHotKey1 = SpellBook[fireBall.SpellName];
+            SpellHotKey2 = SpellBook[frost.SpellName];
         }
         public List<Quest.Quest> QuestJournal { get; set; }
         public int Experience { get; set; }
