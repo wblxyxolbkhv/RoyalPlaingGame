@@ -139,9 +139,11 @@ namespace RoyalPlayingGame.Units
         public List<Potion> Potions { get; set; }
         public SpellBookCollection SpellBook { get; set; }
         public int Level { get; protected set; }
+        public Random CriticalChance { get; set; }
         public Spell.Spell SpellHotKey1 { get; set; }
         public Spell.Spell SpellHotKey2 { get; set; }
         public Spell.Spell SpellHotKey3 { get; set; }
+
 
         public int GotDamaged(int damage, DamageType DType)
         {
@@ -206,16 +208,6 @@ namespace RoyalPlayingGame.Units
             }
         }
 
-        //public void PhysicalAttack(Interfaces.ITargetObject targetObject)
-        //{
-        //    targetObject.GotDamaged((int)(RealStrength * 0.03), DamageType.Physical);
-        //}
-
-        //public void MagicalAttack(Interfaces.ITargetObject targetObject, Spell.NegativeSpell negativeSpell)
-        //{
-        //    targetObject.GotDamaged(negativeSpell.DealtDamage(), DamageType.Magic);
-        //}
-
         public virtual Spell.Spell CastSpell()
         {
             Spell.NegativeSpells.FireBall fireball = new Spell.NegativeSpells.FireBall(RealIntelligence, RealAgility);
@@ -235,7 +227,23 @@ namespace RoyalPlayingGame.Units
             }
             throw new Exceptions.SpellCoolDownException();
         }
-        
+        public int AutoAttack(out bool CriticalStrike)
+        {
+            CriticalChance = new Random();  
+            int damage = RealStrength * 4 + (int)(RealAgility * 0.5);
+            int BasicCriticalChance = 20 + (int)(RealAgility * 0.02);
+            if (CriticalChance.Next(100) < BasicCriticalChance)
+            {
+                CriticalStrike = true;
+                return damage * 2;
+            }
+            else
+            {
+                CriticalStrike = false;
+                return damage;
+            }
+        }
+
 
     }
 }
