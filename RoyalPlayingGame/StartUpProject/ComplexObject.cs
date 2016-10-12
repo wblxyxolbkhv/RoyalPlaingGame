@@ -39,7 +39,7 @@ namespace StartUpProject
                 unit.Death += OnUnitDeath;
             }
         }
-        private Unit unit;
+        protected Unit unit;
 
         public RealObject RealObject { get; set; }
         public Animation Animation { get; set; }

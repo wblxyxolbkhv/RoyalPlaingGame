@@ -12,6 +12,7 @@ namespace StartUpProject
         public ComplexSpell()
         {
             IsActive = true;
+            DamagedUnits = new List<ComplexUnit>();
         }
         public NegativeSpell Spell { get; set; }
         public void ManualyDeath()
@@ -25,16 +26,7 @@ namespace StartUpProject
                 OnUnitDeath();
             }
         }
-        public override void OnUnitDeath()
-        {
-            IsActive = false;
-            RealObject.Fixate();
-            if (DeathAnimation != null)
-            {
-                Animation = DeathAnimation;
-                DeathAnimation.Start();
-            }
-        }
+        public List<ComplexUnit> DamagedUnits { get; set; }
 
     }
 }

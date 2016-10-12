@@ -9,7 +9,7 @@ using VisualPart;
 
 namespace StartUpProject
 {
-    class ComplexUnit : ComplexObject
+    public class ComplexUnit : ComplexObject
     {
         public Animation JumpAnimationLeft { get; set; }
         public Animation JumpAnimationRight { get; set; }
@@ -56,7 +56,7 @@ namespace StartUpProject
                 flyingSpell.RealObject = new RealObject(CollisionDomain);
                 flyingSpell.RealObject.Height = 108;
                 flyingSpell.RealObject.Width = 150;
-                flyingSpell.RealObject.SpeedX = 0.001;
+                flyingSpell.RealObject.SpeedX = 0;
                 flyingSpell.WalkAnimationLeft = new Animation("FrostDragonHead/WalkLeft", 100);
                 flyingSpell.WalkAnimationLeft.Mode = AnimationMode.Once;
                 flyingSpell.WalkAnimationRight = new Animation("FrostDragonHead/WalkRight", 100);

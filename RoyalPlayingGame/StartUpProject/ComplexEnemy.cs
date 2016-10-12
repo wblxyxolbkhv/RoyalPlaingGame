@@ -7,10 +7,11 @@ using System.Windows.Forms;
 using SimplePhysicalEngine.NonPhysicalComponents;
 using VisualPart;
 using System.Drawing;
+using SimplePhysicalEngine;
 
 namespace StartUpProject
 {
-    public class ComplexEnemy : ComplexObject
+    public class ComplexEnemy : ComplexUnit
     {
         public override void OnRefresh(object sender, EventArgs e)
         {
@@ -31,6 +32,7 @@ namespace StartUpProject
                         Animation = WalkAnimationRight;
                         break;
                 }
+            Decide();
         }
         public override void PrintObject(PaintEventArgs e, int CameraBias)
         {
@@ -59,6 +61,40 @@ namespace StartUpProject
                  (float)RealObject.Position.Y - 9,
                  (float)(RealObject.Width*percent),
                  4f);
+        }
+        public ComplexUnit Target { get; set; }
+        public Vector2 PatrolPoint { get; set; }
+        public double PatrolRadius { get; set; }
+        public double AttackRadius { get; set; }
+        public double AttackRange { get; set; }
+        private void Decide()
+        {
+            PatrolMode();
+        }
+        private void PatrolMode()
+        {
+            Vector2 patrolDirection = PatrolPoint - RealObject.Position;
+            // слева от точки
+            if (patrolDirection.X >= 0)
+            {
+                if (RealObject.direction == Direction.Right)
+                    return;
+                else if (patrolDirection.SqLength >= PatrolRadius)
+                    RealObject.direction = Direction.Right;
+            }
+            // справа от точки
+            else
+            {
+                if (RealObject.direction == Direction.Left)
+                    return;
+                else if (patrolDirection.SqLength >= PatrolRadius)
+                    RealObject.direction = Direction.Left;
+            }
+        }
+        private void AttackMode()
+        {
+            Vector2 targetDirection = Target.RealObject.Position - RealObject.Position;
+            
         }
     }
 }

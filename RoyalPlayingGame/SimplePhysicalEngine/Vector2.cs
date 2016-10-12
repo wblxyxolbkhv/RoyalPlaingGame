@@ -25,7 +25,7 @@ namespace SimplePhysicalEngine
         {
             get
             {
-                return Math.Abs(X*X + Y*Y);
+                return Math.Sqrt(X*X + Y*Y);
             }
         }
         /// <summary>
@@ -53,6 +53,24 @@ namespace SimplePhysicalEngine
         public static Vector2 operator *(double d, Vector2 v)
         {
             return new Vector2(d * v.X, d * v.Y);
+        }
+        /// <summary>
+        /// передает расстояние от одной точки до другой
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <returns></returns>
+        public static double GetDistance(Vector2 v1, Vector2 v2)
+        {
+            double distance = 0;
+
+            if (v1 == null || v2 == null)
+                return distance;
+
+            Vector2 v3 = v1 - v2;
+            distance = v3.SqLength;
+
+            return distance;
         }
     }
 }
