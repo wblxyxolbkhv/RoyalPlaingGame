@@ -23,11 +23,17 @@ namespace RoyalPlayingGame.Quest
         
         public QuestStageType QuestStageType { get; set; }
         public Units.Unit QuestReciver { get; set; }
-        public Units.Unit QuestStageUnit { get; set; }
+        public Units.Unit QuestStageUnit { get; set; } 
 
         public bool QuestStageCompleted()
         {
+            //q = QuestStageType.GetToPoint;
             return true;
         }
+        public bool QuestStegeCompleted()
+        {
+            return true;
+        }
+        
     }
 }
