@@ -45,12 +45,15 @@ namespace StartUpProject
 
             VisualMenu.Intelegence = player.Intelligence;
             VisualMenu.RealIntelegence = player.RealIntelligence;
-        }
-        public void OnPrint(object sender, PaintEventArgs e)
-        {
+
             ScaleHP.Refresh();
             ScaleMP.Refresh();
         }
+        //public void OnPrint(object sender, PaintEventArgs e)
+        //{
+        //    ScaleHP.Refresh();
+        //    ScaleMP.Refresh();
+        //}
         public void OnKeyDownExternal(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.P)

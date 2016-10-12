@@ -51,6 +51,7 @@
     <Compile Include="ComplexSpell.cs" />
     <Compile Include="ComplexStructure.cs" />
     <Compile Include="ComplexUnit.cs" />
+    <Compile Include="Enemies\Minotaur.cs" />
     <Compile Include="GameLevel.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

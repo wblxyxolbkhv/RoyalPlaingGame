@@ -10,6 +10,7 @@ using VisualPart;
 using RoyalPlayingGame.Spell;
 using RoyalPlayingGame.Units;
 using System.Drawing;
+using StartUpProject.Enemies;
 
 namespace StartUpProject
 {
@@ -28,6 +29,7 @@ namespace StartUpProject
         List<ComplexStructure> Structures { get; set; }
 
         List<RealObject> CollisionDomain { get; set; }
+        List<RealObject> EnemiesCollisionDomain { get; set; }
         Power Gravity { get; set; }
 
         int CameraBias { get; set; }
@@ -48,7 +50,7 @@ namespace StartUpProject
                 o.PrintObject(e, CameraBias);
             foreach (TemporaryTitle o in TemporaryObjects)
                 o.PrintObject(e, CameraBias);
-            PlayerMenuManager.OnPrint(sender, e);
+            //PlayerMenuManager.OnPrint(sender, e);
         }
         public void OnRefresh(object sender, EventArgs e)
         {
@@ -145,6 +147,7 @@ namespace StartUpProject
         private void GenerateLevel()
         {
             CollisionDomain = new List<RealObject>();
+            EnemiesCollisionDomain = new List<RealObject>();
             Structures = new List<ComplexStructure>();
             Spells = new List<ComplexSpell>();
             Enemies = new List<ComplexEnemy>();
@@ -164,31 +167,11 @@ namespace StartUpProject
             CameraBias = 0;
 
 
-            ComplexEnemy enemy = new ComplexEnemy();
-
-            enemy.Unit = new Unit();
-            enemy.Unit.Health = 100;
-            enemy.Unit.RealHealth = 100;
-
-            enemy.RealObject = new RealObject(CollisionDomain, Gravity);
+            Minotaur enemy = new Minotaur(CollisionDomain, Gravity);
+            
             enemy.RealObject.Position = new Vector2(600, 400);
-            enemy.RealObject.Height = 110;
-            enemy.RealObject.Width = 110;
-            enemy.RealObject.SpeedX = 2;
-            enemy.RealObject.direction = Direction.Right;
             enemy.RealObject.CollisionDetected += OnCollisionDetected;
-
-            enemy.WalkAnimationLeft = new Animation("Minotaur/WalkLeft", 100);
-            enemy.WalkAnimationLeft.Start();
-            enemy.WalkAnimationRight = new Animation("Minotaur/WalkRight", 100);
-            enemy.WalkAnimationRight.Start();
-
-            enemy.DeathAnimation = new Animation("Minotaur/Death", 100);
-            enemy.DeathAnimation.Mode = AnimationMode.Once;
-
-            enemy.DefaultAnimation = enemy.WalkAnimationLeft;
-            enemy.Animation = enemy.WalkAnimationLeft;
-
+            
             Enemies.Add(enemy);
         }
 
@@ -275,34 +258,36 @@ namespace StartUpProject
                 spell = FindSpell(o2);
             else
             {
-                spell.ManualyDeath();
                 ComplexObject enemy = FindObject(o2);
-                if (enemy != null)
-                {
-                    bool critical;
-                    int d = spell.Spell.DealtDamage(out critical);
-                    int dealedDamage = enemy.Unit.GotDamaged(d, DamageType.Magic);
-                    CreateTemporaryTitle("-" + dealedDamage.ToString(), enemy.RealObject.Position, critical);
-                }
+                DestroySpell(spell, enemy);
                 return;
             }
             if (spell == null)
                 return;
             else
             {
-                spell.ManualyDeath();
                 ComplexObject enemy = FindObject(o1);
-                if (enemy != null)
-                {
-                    bool critical;
-                    int d = spell.Spell.DealtDamage(out critical);
-                    int dealedDamage = enemy.Unit.GotDamaged(d, DamageType.Magic);
-                    CreateTemporaryTitle("-" + dealedDamage.ToString(), enemy.RealObject.Position, critical);
-                }
+                DestroySpell(spell, enemy);
                 return;
             }
 
         }
+        private void DestroySpell(ComplexSpell spell, ComplexObject enemy)
+        {
+            if (spell.RealObject.SpeedX != 0)
+                spell.ManualyDeath();
+            if (enemy != null && !spell.DamagedUnits.Contains((ComplexUnit)enemy))
+            {
+                bool critical;
+                int d = spell.Spell.DealtDamage(out critical);
+                int dealedDamage = enemy.Unit.GotDamaged(d, DamageType.Magic);
+                spell.DamagedUnits.Add((ComplexUnit)enemy);
+                CreateTemporaryTitle("-" + dealedDamage.ToString(), enemy.RealObject.Position, critical);
+            }
+        }
+
+
+
         private ComplexSpell FindSpell(RealObject o)
         {
             foreach (ComplexSpell s in Spells)
