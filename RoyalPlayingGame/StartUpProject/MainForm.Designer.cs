@@ -30,9 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.playerMenu1 = new VisualPart.UserControls.PlayerMenu();
-            this.scaleHP = new VisualPart.UserControls.Scale();
             this.scaleMP = new VisualPart.UserControls.Scale();
+            this.scaleHP = new VisualPart.UserControls.Scale();
+            this.playerMenu1 = new VisualPart.UserControls.PlayerMenu();
+            this.skillPanel1 = new VisualPart.UserControls.SkillPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,6 +47,28 @@
             this.pictureBox1.Size = new System.Drawing.Size(1008, 603);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // scaleMP
+            // 
+            this.scaleMP.BackColor = System.Drawing.Color.Black;
+            this.scaleMP.CurrentValue = 100;
+            this.scaleMP.Location = new System.Drawing.Point(12, 38);
+            this.scaleMP.MaxValue = 100;
+            this.scaleMP.Name = "scaleMP";
+            this.scaleMP.ScaleColor = System.Drawing.Color.Blue;
+            this.scaleMP.Size = new System.Drawing.Size(136, 19);
+            this.scaleMP.TabIndex = 3;
+            // 
+            // scaleHP
+            // 
+            this.scaleHP.BackColor = System.Drawing.Color.Black;
+            this.scaleHP.CurrentValue = 100;
+            this.scaleHP.Location = new System.Drawing.Point(13, 13);
+            this.scaleHP.MaxValue = 100;
+            this.scaleHP.Name = "scaleHP";
+            this.scaleHP.ScaleColor = System.Drawing.Color.Green;
+            this.scaleHP.Size = new System.Drawing.Size(136, 19);
+            this.scaleHP.TabIndex = 2;
             // 
             // playerMenu1
             // 
@@ -65,33 +88,21 @@
             this.playerMenu1.TabIndex = 1;
             this.playerMenu1.Visible = false;
             // 
-            // scaleHP
+            // skillPanel1
             // 
-            this.scaleHP.BackColor = System.Drawing.Color.Black;
-            this.scaleHP.CurrentValue = 100;
-            this.scaleHP.Location = new System.Drawing.Point(13, 13);
-            this.scaleHP.MaxValue = 100;
-            this.scaleHP.Name = "scaleHP";
-            this.scaleHP.ScaleColor = System.Drawing.Color.Green;
-            this.scaleHP.Size = new System.Drawing.Size(136, 19);
-            this.scaleHP.TabIndex = 2;
-            // 
-            // scaleMP
-            // 
-            this.scaleMP.BackColor = System.Drawing.Color.Black;
-            this.scaleMP.CurrentValue = 100;
-            this.scaleMP.Location = new System.Drawing.Point(12, 38);
-            this.scaleMP.MaxValue = 100;
-            this.scaleMP.Name = "scaleMP";
-            this.scaleMP.ScaleColor = System.Drawing.Color.Blue;
-            this.scaleMP.Size = new System.Drawing.Size(136, 19);
-            this.scaleMP.TabIndex = 3;
+            this.skillPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.skillPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("skillPanel1.BackgroundImage")));
+            this.skillPanel1.Location = new System.Drawing.Point(0, 561);
+            this.skillPanel1.Name = "skillPanel1";
+            this.skillPanel1.Size = new System.Drawing.Size(363, 42);
+            this.skillPanel1.TabIndex = 4;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 603);
+            this.Controls.Add(this.skillPanel1);
             this.Controls.Add(this.scaleMP);
             this.Controls.Add(this.scaleHP);
             this.Controls.Add(this.playerMenu1);
@@ -109,6 +120,7 @@
         private VisualPart.UserControls.PlayerMenu playerMenu1;
         private VisualPart.UserControls.Scale scaleHP;
         private VisualPart.UserControls.Scale scaleMP;
+        private VisualPart.UserControls.SkillPanel skillPanel1;
     }
 }
 

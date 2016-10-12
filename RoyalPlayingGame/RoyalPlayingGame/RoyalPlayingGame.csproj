@@ -46,6 +46,7 @@
     <Compile Include="Exceptions\NoManaException.cs" />
     <Compile Include="Exceptions\SpellCoolDownException.cs" />
     <Compile Include="Spell\NegativeSpells\FrostDragonHead.cs" />
+    <Compile Include="Spell\PositiveSpells\UpLift.cs" />
     <Compile Include="Spell\SpellBookCollection.cs" />
     <Compile Include="Units\Enemy.cs" />
     <Compile Include="Interfaces\ITargetObject.cs" />
@@ -63,12 +64,6 @@
     <Compile Include="Quest\QuestStage.cs" />
     <Compile Include="Spell\Spell.cs" />
     <Compile Include="Units\Unit.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\VisualPart\VisualPart.csproj">
-      <Project>{51783c6f-4415-48cd-92a1-9b72647a3220}</Project>
-      <Name>VisualPart</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

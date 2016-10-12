@@ -227,6 +227,7 @@ namespace RoyalPlayingGame.Units
                 throw new Exceptions.NoManaException();
             else if (spell.Active == true)
             {
+                spell.Active = false;
                 spell.CurrentCoolDown = SpellHotKey1.CoolDown;
                 spell.coolDownTimer.Start();
                 RealMana -= spell.ManaCost;
