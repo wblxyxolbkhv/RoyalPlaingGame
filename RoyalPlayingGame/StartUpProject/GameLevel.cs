@@ -88,48 +88,34 @@ namespace StartUpProject
                     Player.RealObject.Jump(-0.7);
                     break;
                 case Keys.D1:
-                    NegativeSpell spell;
-                    try
-                    {
-                        spell = (Player.Unit as Player).CastSpell(Keys.D1) as NegativeSpell;
-                    }
-                    catch (RoyalPlayingGame.Exceptions.NoManaException)
-                    {
-                        CreateTemporaryTitle("Недостаточно маны", Player.RealObject.Position, false);
-                        return;
-                    }    
-                    catch (RoyalPlayingGame.Exceptions.SpellCoolDownException)
-                    {
-                        CreateTemporaryTitle("Заклинание еще не готово", Player.RealObject.Position, false);
-                        return;
-                    }
-                    ComplexSpell s = Player.Cast(spell, Player.RealObject, CollisionDomain);
-                    s.Spell = spell;
-                    s.RealObject.CollisionDetected += OnCollisionDetected;
-                    Spells.Add(s);
-                    break;
                 case Keys.D2:
-                    NegativeSpell spell2;
-                    try
-                    {
-                        spell2 = (Player.Unit as Player).CastSpell(Keys.D2) as NegativeSpell;
-                    }
-                    catch (RoyalPlayingGame.Exceptions.NoManaException)
-                    {
-                        CreateTemporaryTitle("Недостаточно маны", Player.RealObject.Position, false);
-                        return;
-                    }
-                    catch (RoyalPlayingGame.Exceptions.SpellCoolDownException)
-                    {
-                        CreateTemporaryTitle("Заклинание еще не готово", Player.RealObject.Position, false);
-                        return;
-                    }
-                    ComplexSpell s2 = Player.Cast(spell2, Player.RealObject, CollisionDomain);
-                    s2.Spell = spell2;
-                    s2.RealObject.CollisionDetected += OnCollisionDetected;
-                    Spells.Add(s2);
+                case Keys.D3:
+                case Keys.D4:
+                    CastSpell(e.KeyCode);
                     break;
             }
+        }
+        private void CastSpell(Keys k)
+        {
+            NegativeSpell spell;
+            try
+            {
+                spell = (Player.Unit as Player).CastSpell(k) as NegativeSpell;
+            }
+            catch (RoyalPlayingGame.Exceptions.NoManaException)
+            {
+                CreateTemporaryTitle("Недостаточно маны", Player.RealObject.Position, false);
+                return;
+            }
+            catch (RoyalPlayingGame.Exceptions.SpellCoolDownException)
+            {
+                CreateTemporaryTitle("Заклинание еще не готово", Player.RealObject.Position, false);
+                return;
+            }
+            ComplexSpell s = Player.Cast(spell, Player.RealObject, CollisionDomain);
+            s.Spell = spell;
+            s.RealObject.CollisionDetected += OnCollisionDetected;
+            Spells.Add(s);
         }
         public void OnKeyUpExternal(object sender, KeyEventArgs e)
         {

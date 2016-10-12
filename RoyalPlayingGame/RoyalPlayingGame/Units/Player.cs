@@ -24,10 +24,16 @@ namespace RoyalPlayingGame.Units
 
             Spell.NegativeSpells.FireBall fireBall = new Spell.NegativeSpells.FireBall(RealIntelligence,RealAgility);
             Spell.NegativeSpells.FrostDragonHead frost = new Spell.NegativeSpells.FrostDragonHead(RealIntelligence, RealAgility);
+            Spell.NegativeSpells.DragonBreath breath = new Spell.NegativeSpells.DragonBreath(RealIntelligence, RealAgility);
+            Spell.NegativeSpells.IceWave wave = new Spell.NegativeSpells.IceWave(RealIntelligence, RealAgility);
             SpellBook.AddSpell(fireBall);
             SpellBook.AddSpell(frost);
+            SpellBook.AddSpell(breath);
+            SpellBook.AddSpell(wave);
             SpellHotKey1 = SpellBook[fireBall.SpellName];
             SpellHotKey2 = SpellBook[frost.SpellName];
+            SpellHotKey3 = SpellBook[breath.SpellName];
+            SpellHotKey4 = SpellBook[wave.SpellName];
         }
         public List<Quest.Quest> QuestJournal { get; set; }
         public int Experience { get; set; }
@@ -75,6 +81,10 @@ namespace RoyalPlayingGame.Units
                 case Keys.D3:
                     {
                         return base.CastSpell(SpellHotKey3);
+                    }
+                case Keys.D4:
+                    {
+                        return base.CastSpell(SpellHotKey4);
                     }
             }
             return null;

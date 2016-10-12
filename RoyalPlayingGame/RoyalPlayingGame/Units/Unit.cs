@@ -143,6 +143,7 @@ namespace RoyalPlayingGame.Units
         public Spell.Spell SpellHotKey1 { get; set; }
         public Spell.Spell SpellHotKey2 { get; set; }
         public Spell.Spell SpellHotKey3 { get; set; }
+        public Spell.Spell SpellHotKey4 { get; set; }
 
 
         public int GotDamaged(int damage, DamageType DType)

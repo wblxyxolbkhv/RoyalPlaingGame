@@ -13,5 +13,3 @@ C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame
 C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.csprojResolveAssemblyReference.cache
 C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.dll
 C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.pdb
-C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\VisualPart.dll
-C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\VisualPart.pdb
