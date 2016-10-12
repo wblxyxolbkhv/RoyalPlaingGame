@@ -8,7 +8,7 @@ namespace RoyalPlayingGame.Spell.NegativeSpells
 {
     public class DragonBreath:NegativeSpell
     {
-        public const string name = "fireball";
+        public const string name = "dragonBreath";
         public const int castTime = 2;
         public const int manaCost = 50;
         public const int coolDown = 10;
