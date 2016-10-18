@@ -15,6 +15,8 @@ namespace StartUpProject
         public Animation JumpAnimationRight { get; set; }
         public Animation Cast1AnimationLeft { get; set; }
         public Animation Cast1AnimationRight { get; set; }
+        public Animation AttackAnimationLeft { get; set; }
+        public Animation AttackAnimationRight { get; set; }
         public ComplexSpell Cast(NegativeSpell spell, RealObject caster, List<RealObject> CollisionDomain)
         {
             ComplexSpell flyingSpell = null;
@@ -26,6 +28,7 @@ namespace StartUpProject
                 flyingSpell = new Spells.DragonBreath(CollisionDomain, RealObject);
             else if (spell is RoyalPlayingGame.Spell.NegativeSpells.IceWave)
                 flyingSpell = new Spells.IceWave(CollisionDomain, RealObject);
+            else flyingSpell = new
             switch (caster.direction)
             {
                 case Direction.Left:
