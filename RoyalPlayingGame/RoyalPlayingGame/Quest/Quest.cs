@@ -25,7 +25,7 @@ namespace RoyalPlayingGame.Quest
 
         public void NextStage()
         {
-            if (CurrentQuestStage.QuestStageCompleted())
+            if (CurrentQuestStage.QuestStageCompleted()) 
             {
                 if (CurrentQuestStage.QuestStageIndex < QuestStages.Count())
                 CurrentQuestStage = QuestStages[CurrentQuestStage.QuestStageIndex+1];
