@@ -11,19 +11,19 @@ namespace RoyalPlayingGame.Item.Items
     public class Weapon : Item
     {
         Random randomWeaponGeneration;
-        public Weapon(string name, WeaponType WType, WeaponSlot WSlot, Effect.Effect effect, uint weaponLvl) : base(name, 1, 1, weaponLvl, effect)
+        public Weapon(int iD, string name, WeaponType WType, WeaponSlot WSlot, Effect.Effect effect, uint weaponLvl) : base(iD,name, 1, 1, weaponLvl, effect)
         {
             this.WSlot = WSlot;
             this.WType = WType;
         }
-        public Weapon(string name, WeaponType WType, WeaponSlot WSlot, uint weaponLvl, int minValue, int maxValue) : base(name, 1, 1, weaponLvl)
+        public Weapon(int iD, string name, WeaponType WType, WeaponSlot WSlot, uint weaponLvl, int minValue, int maxValue) : base(iD,name, 1, 1, weaponLvl)
         {
             Effect.Effect effect = new Effect.Effect();
             randomWeaponGeneration = new Random();
             effect.DAgility = randomWeaponGeneration.Next(minValue, maxValue);
             effect.DIntelligence = randomWeaponGeneration.Next(minValue, maxValue);
             effect.DStrength = randomWeaponGeneration.Next(minValue, maxValue);
-            base.ItemEffect = effect;
+            ItemEffect = effect;
             this.WType = WType;
             this.WSlot = WSlot;
         }

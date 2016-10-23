@@ -11,8 +11,7 @@ namespace RoyalPlayingGame.Spell
     {
         public PositiveSpell(int realIntelligence, int manaCost, int castTime, int coolDown, string name):base(manaCost,castTime,coolDown,name)
         {
-            BasikSpellPower = 10;
-            
+            BasikSpellPower = 10;           
         }
         public Effect.Effect spellEffect { get; set; }
         public int BasikSpellPower { get; set; }
