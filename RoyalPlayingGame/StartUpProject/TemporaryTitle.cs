@@ -35,7 +35,8 @@ namespace StartUpProject
         }
         private void OnTimerTick(object sender, EventArgs e)
         {
-            LifeTime--;
+            //LifeTime--;
+            LifeTime++;
             if (LifeTime <= 0)
                 IsActive = false;
         }

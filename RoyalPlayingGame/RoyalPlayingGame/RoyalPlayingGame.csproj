@@ -42,7 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialogs\Answer.cs" />
+    <Compile Include="Dialogs\Dialog.cs" />
+    <Compile Include="Dialogs\NPCReplic.cs" />
+    <Compile Include="Dialogs\PlayerChoice.cs" />
+    <Compile Include="Dialogs\Replic.cs" />
     <Compile Include="Effect\Effect.cs" />
+    <Compile Include="Exceptions\LoadDialogException.cs" />
     <Compile Include="Exceptions\NoManaException.cs" />
     <Compile Include="Exceptions\NotAQuestItemException.cs" />
     <Compile Include="Exceptions\SpellCoolDownException.cs" />

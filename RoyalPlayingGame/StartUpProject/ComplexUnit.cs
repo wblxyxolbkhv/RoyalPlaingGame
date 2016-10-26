@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RoyalPlayingGame.Spell;
+using RoyalPlayingGame.Dialogs;
 using SimplePhysicalEngine.NonPhysicalComponents;
 using VisualPart;
 
@@ -17,6 +18,7 @@ namespace StartUpProject
         public Animation Cast1AnimationRight { get; set; }
         public Animation AttackAnimationLeft { get; set; }
         public Animation AttackAnimationRight { get; set; }
+        public Dialog CurrentDialog { get; set; }
         public virtual ComplexSpell Cast(NegativeSpell spell, List<RealObject> CollisionDomain)
         {
             ComplexSpell flyingSpell = null;
@@ -99,5 +101,6 @@ namespace StartUpProject
                         break;
                 }
         }
+
     }
 }

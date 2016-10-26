@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace RoyalPlayingGame.Quest.QuestStages
 {
-    public class Complex:QuestStage
+    public class Complex//:QuestStage
     {
-        public override bool QuestStageCompleted()
-        {
-            throw new NotImplementedException();
-        }
+        //public override bool QuestStageCompleted()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

@@ -49,6 +49,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ChoiceBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ChoiceBox.Designer.cs">
+      <DependentUpon>ChoiceBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\PlayerMenu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -73,6 +79,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ChoiceBox.resx">
+      <DependentUpon>ChoiceBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PlayerMenu.resx">
       <DependentUpon>PlayerMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -82,6 +91,12 @@
     <EmbeddedResource Include="UserControls\SkillPanel.resx">
       <DependentUpon>SkillPanel.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RoyalPlayingGame\RoyalPlayingGame.csproj">
+      <Project>{8369d834-0e0b-4a76-abd3-7d3fd3f61f84}</Project>
+      <Name>RoyalPlayingGame</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
