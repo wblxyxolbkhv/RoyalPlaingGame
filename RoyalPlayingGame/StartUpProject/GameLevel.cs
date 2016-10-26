@@ -11,6 +11,7 @@ using RoyalPlayingGame.Spell;
 using RoyalPlayingGame.Units;
 using System.Drawing;
 using StartUpProject.Enemies;
+using StartUpProject.Dialogs;
 
 namespace StartUpProject
 {
@@ -22,9 +23,14 @@ namespace StartUpProject
 
             PlayerMenuManager = new PlayerMenuManager();
             PlayerMenuManager.player = (Player)Player.Unit;
+
+            DialogManager = new DialogManager();
+            DialogManager.Player = Player;
+
         }
         ComplexUnit Player { get; set; }
         List<ComplexEnemy> Enemies { get; set; }
+        List<ComplexUnit> NPCs { get; set; }
         List<ComplexSpell> Spells { get; set; }
         List<ComplexStructure> Structures { get; set; }
 
@@ -38,6 +44,9 @@ namespace StartUpProject
 
 
         public PlayerMenuManager PlayerMenuManager { get; private set; }
+        public DialogManager DialogManager { get; private set; }
+
+        private List<string> HintQueue = new List<string>();
 
         public void OnPrintAllObjects(object sender, PaintEventArgs e)
         {
@@ -46,16 +55,23 @@ namespace StartUpProject
                 o.PrintTexture(e, CameraBias);
             foreach (ComplexEnemy o in Enemies)
                 o.PrintObject(e, CameraBias);
+            foreach (ComplexUnit o in NPCs)
+                o.PrintObject(e, CameraBias);
             foreach (ComplexObject o in Spells)
                 o.PrintObject(e, CameraBias);
             foreach (TemporaryTitle o in TemporaryObjects)
                 o.PrintObject(e, CameraBias);
+            DialogManager.PrintDialog(e, CameraBias);
+            foreach (string s in HintQueue)
+                e.Graphics.DrawString(s, new Font("Arial", 12), Brushes.Black, 400, 400);
             //PlayerMenuManager.OnPrint(sender, e);
         }
         public void OnRefresh(object sender, EventArgs e)
         {
             CheckTemporaryObjects();
             RemoveRealObjects();
+            // TODO: заменить магическое число 10
+            DialogManager.Refresh(10);
             PlayerMenuManager.OnMenuRefresh(sender, e);
             Player.OnRefresh(sender, e);
             foreach (ComplexEnemy o in Enemies)
@@ -72,6 +88,7 @@ namespace StartUpProject
             }
             foreach (TemporaryTitle o in TemporaryObjects)
                 o.RealObject.OnRefreshPosition(sender, e);
+            OnTalkAvailable();
             CameraBias = GetCameraBiasX();
         }
         public void OnKeyDownExternal(object sender, KeyEventArgs e)
@@ -85,13 +102,22 @@ namespace StartUpProject
                     Player.RealObject.direction = Direction.Left;
                     break;
                 case Keys.W:
-                    Player.RealObject.Jump(-0.7);
+                    Player.RealObject.Jump(-1);
                     break;
                 case Keys.D1:
                 case Keys.D2:
                 case Keys.D3:
                 case Keys.D4:
                     CastSpell(e.KeyCode);
+                    break;
+                //case Keys.Space:
+                //    Enemies[0].Cast(CollisionDomain);
+                //    break;
+                case Keys.E:
+                    Talk(AvailableForTalkingNPC);
+                    break;
+                case Keys.Escape:
+                    HintQueue.Clear();
                     break;
             }
         }
@@ -112,7 +138,7 @@ namespace StartUpProject
                 CreateTemporaryTitle("Заклинание еще не готово", Player.RealObject.Position, false);
                 return;
             }
-            ComplexSpell s = Player.Cast(spell, Player.RealObject, CollisionDomain);
+            ComplexSpell s = Player.Cast(spell, CollisionDomain);
             s.Spell = spell;
             s.RealObject.CollisionDetected += OnCollisionDetected;
             Spells.Add(s);
@@ -137,6 +163,7 @@ namespace StartUpProject
             Structures = new List<ComplexStructure>();
             Spells = new List<ComplexSpell>();
             Enemies = new List<ComplexEnemy>();
+            NPCs = new List<ComplexUnit>();
             Gravity = new Power(0.01 * new Vector2(0, 1));
 
             InitPlayer();
@@ -152,13 +179,15 @@ namespace StartUpProject
 
             CameraBias = 0;
 
+            DebugBear bear = new DebugBear(new List<RealObject>(), null);
+            bear.RealObject.Position = new Vector2(600, 440);
 
-            Minotaur enemy = new Minotaur(CollisionDomain, Gravity);
-            
-            enemy.RealObject.Position = new Vector2(600, 400);
-            enemy.RealObject.CollisionDetected += OnCollisionDetected;
-            
-            Enemies.Add(enemy);
+            //Minotaur enemy = new Minotaur(CollisionDomain, Gravity);
+
+            //enemy.RealObject.Position = new Vector2(600, 400);
+            //enemy.RealObject.CollisionDetected += OnCollisionDetected;
+
+            NPCs.Add(bear);
         }
 
         private void InitPlayer()
@@ -347,6 +376,52 @@ namespace StartUpProject
                 if (s.DeathAnimation != null && !s.DeathAnimation.IsActive || s.DeathAnimation == null)
                     RemoveQueue.Add(s);
                 
+            }
+        }
+
+        private void OnTalkAvailable()
+        {
+            if (DialogManager.Dialog != null && DialogManager.Dialog.IsActive)
+                return;
+            int range = 50;
+            AvailableForTalkingNPC = null;
+            foreach (ComplexUnit unit in NPCs)
+            {
+                switch (Player.RealObject.direction)
+                {
+                    case Direction.Right:
+                    case Direction.NoneRight:
+                        if (unit.RealObject.Position.X - Player.RealObject.Position.X < range + 20 &&
+                            unit.RealObject.Position.X - Player.RealObject.Position.X > range - 20)
+                        {
+                            if (!HintQueue.Contains("Нажмите E чтобы заговорить с ЭТИМ"))
+                                HintQueue.Add("Нажмите E чтобы заговорить с ЭТИМ");
+                            AvailableForTalkingNPC = unit;
+                        }
+                        break;
+                    case Direction.Left:
+                    case Direction.NoneLeft:
+                        if (-unit.RealObject.Position.X + Player.RealObject.Position.X < range + 20 &&
+                            -unit.RealObject.Position.X + Player.RealObject.Position.X > range - 20)
+                        {
+                            if (!HintQueue.Contains("Нажмите E чтобы заговорить с ЭТИМ"))
+                                HintQueue.Add("Нажмите E чтобы заговорить с ЭТИМ");
+                            AvailableForTalkingNPC = unit;
+                        }
+                        break;
+                }
+            }
+        }
+        private ComplexUnit AvailableForTalkingNPC;
+        private void Talk(ComplexUnit unit)
+        {
+            if (unit != null)
+            {
+                DialogManager.Dialog = unit.CurrentDialog;
+                DialogManager.Dialog.IsActive = true;
+                DialogManager.Dialog.GoToDialogBeginning();
+                DialogManager.TalkingObject = unit;
+                HintQueue.Clear();
             }
         }
     }

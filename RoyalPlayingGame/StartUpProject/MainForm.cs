@@ -24,6 +24,8 @@ namespace StartUpProject
             Level.PlayerMenuManager.ScaleHP = this.scaleHP;
             Level.PlayerMenuManager.ScaleMP = this.scaleMP;
 
+            Level.DialogManager.ChoiceBox = choiceBox1;
+
 
             #region Инициализация меню, событий
 

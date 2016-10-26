@@ -34,6 +34,11 @@ namespace StartUpProject.Enemies
             WalkAnimationRight = new Animation("Minotaur/WalkRight", 100);
             WalkAnimationRight.Start();
 
+            AttackAnimationLeft = new Animation("Minotaur/AttackLeft", 100);
+            AttackAnimationLeft.Mode = AnimationMode.Once;
+            AttackAnimationRight = new Animation("Minotaur/AttackRight", 100);
+            AttackAnimationRight.Mode = AnimationMode.Once;
+
             DeathAnimation = new Animation("Minotaur/Death", 100);
             DeathAnimation.Mode = AnimationMode.Once;
 
@@ -41,6 +46,6 @@ namespace StartUpProject.Enemies
             Animation = WalkAnimationLeft;
             
         }
-
+        
     }
 }

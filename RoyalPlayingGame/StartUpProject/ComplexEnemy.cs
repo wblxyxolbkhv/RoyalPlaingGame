@@ -96,5 +96,9 @@ namespace StartUpProject
             Vector2 targetDirection = Target.RealObject.Position - RealObject.Position;
             
         }
+        private void Attack(ComplexUnit target)
+        {
+            //Cast(CollisionDomain);
+        }
     }
 }
