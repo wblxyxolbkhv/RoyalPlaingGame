@@ -29,22 +29,15 @@ namespace RoyalPlayingGame.Quest.QuestStages
         }
         public override bool QuestStageCompleted()
         {
-            bool flag = false;
             for(int i=0;i<Amount.Count;i++)
             {
                 if (CurrentAmount[i] == Amount[i])
                 {
-                    flag = true;
+                    return true;
                 }
-                else
-                {
-                    flag = false;
-                    break;
-                }
+                else return false;          
             }
-            if (flag)
-                return true;
-            else return false;         
+            return false;         
         }
     }
 }

@@ -7,7 +7,8 @@ using RoyalPlayingGame.Units;
 
 namespace RoyalPlayingGame.Quest.QuestStages
 {
-   public class GetToPoint:QuestStage
+    public delegate bool CheckDestination();
+    public class GetToPoint:QuestStage
     {
         public GetToPoint(int moneyReward, int experienceReward, List<Item.Item> itemReward,
             string description, string name, int index):base(moneyReward,experienceReward, itemReward, name,description)
