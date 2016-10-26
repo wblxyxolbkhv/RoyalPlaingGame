@@ -98,7 +98,7 @@ namespace StartUpProject
         }
         private void Attack(ComplexUnit target)
         {
-            Cast()
+            //Cast(CollisionDomain);
         }
     }
 }

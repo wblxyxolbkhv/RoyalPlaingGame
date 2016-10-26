@@ -46,6 +46,6 @@ namespace StartUpProject.Enemies
             Animation = WalkAnimationLeft;
             
         }
-
+        
     }
 }

@@ -17,7 +17,7 @@ namespace StartUpProject
         public Animation Cast1AnimationRight { get; set; }
         public Animation AttackAnimationLeft { get; set; }
         public Animation AttackAnimationRight { get; set; }
-        public ComplexSpell Cast(NegativeSpell spell, RealObject caster, List<RealObject> CollisionDomain)
+        public virtual ComplexSpell Cast(NegativeSpell spell, List<RealObject> CollisionDomain)
         {
             ComplexSpell flyingSpell = null;
             if (spell is RoyalPlayingGame.Spell.NegativeSpells.FireBall)
@@ -28,8 +28,8 @@ namespace StartUpProject
                 flyingSpell = new Spells.DragonBreath(CollisionDomain, RealObject);
             else if (spell is RoyalPlayingGame.Spell.NegativeSpells.IceWave)
                 flyingSpell = new Spells.IceWave(CollisionDomain, RealObject);
-            else flyingSpell = new
-            switch (caster.direction)
+            else flyingSpell = new Spells.AutoAttack(CollisionDomain, this);
+            switch (RealObject.direction)
             {
                 case Direction.Left:
                 case Direction.NoneLeft:
@@ -39,6 +39,26 @@ namespace StartUpProject
                 case Direction.Right:
                 case Direction.NoneRight:
                     Animation = Cast1AnimationRight;
+                    Animation.Start();
+                    break;
+            }
+
+            return flyingSpell;
+        }
+        public virtual ComplexSpell Cast(List<RealObject> CollisionDomain)
+        {
+            ComplexSpell flyingSpell = null;
+            flyingSpell = new Spells.AutoAttack(CollisionDomain, this);
+            switch (RealObject.direction)
+            {
+                case Direction.Left:
+                case Direction.NoneLeft:
+                    Animation = AttackAnimationLeft;
+                    Animation.Start();
+                    break;
+                case Direction.Right:
+                case Direction.NoneRight:
+                    Animation = AttackAnimationRight;
                     Animation.Start();
                     break;
             }

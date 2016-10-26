@@ -8,30 +8,27 @@ namespace StartUpProject.Spells
 {
     public class AutoAttack : ComplexSpell
     {
-        public AutoAttack(List<RealObject> CollisionDomain, RealObject caster)
+        public AutoAttack(List<RealObject> CollisionDomain, ComplexUnit caster)
         {
             RealObject = new RealObject(CollisionDomain);
-            RealObject.Height = 108;
-            RealObject.Width = 150;
+            RealObject.Height = 200;
+            RealObject.Width = 200;
             RealObject.SpeedX = 0;
-            switch (caster.direction)
+
+            switch (caster.RealObject.direction)
             {
                 case Direction.Left:
                 case Direction.NoneLeft:
-                    RealObject.Position = new SimplePhysicalEngine.Vector2(caster.Position.X - 150, caster.Position.Y - 40);
+                    RealObject.Position = new SimplePhysicalEngine.Vector2(caster.RealObject.Position.X - RealObject.Width, caster.RealObject.Position.Y + caster.RealObject.Height - RealObject.Height);
                     RealObject.direction = Direction.Left;
-                    Animation = NonActivityAnimationLeft;
-                    Animation.Start();
                     break;
                 case Direction.Right:
                 case Direction.NoneRight:
-                    RealObject.Position = new SimplePhysicalEngine.Vector2(caster.Position.X + caster.Width - 30, caster.Position.Y - 40);
+                    RealObject.Position = new SimplePhysicalEngine.Vector2(caster.RealObject.Position.X + caster.RealObject.Width, caster.RealObject.Position.Y + caster.RealObject.Height - RealObject.Height);
                     RealObject.direction = Direction.Right;
-                    Animation = NonActivityAnimationRight;
-                    Animation.Start();
                     break;
             }
-            Animation.AnumationEnd += OnUnitDeath;
+            //caster.Animation.AnumationEnd += OnUnitDeath;
         }
     }
 }

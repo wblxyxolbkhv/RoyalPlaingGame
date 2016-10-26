@@ -93,6 +93,9 @@ namespace StartUpProject
                 case Keys.D4:
                     CastSpell(e.KeyCode);
                     break;
+                case Keys.Space:
+                    Enemies[0].Cast(CollisionDomain);
+                    break;
             }
         }
         private void CastSpell(Keys k)
@@ -112,7 +115,7 @@ namespace StartUpProject
                 CreateTemporaryTitle("Заклинание еще не готово", Player.RealObject.Position, false);
                 return;
             }
-            ComplexSpell s = Player.Cast(spell, Player.RealObject, CollisionDomain);
+            ComplexSpell s = Player.Cast(spell, CollisionDomain);
             s.Spell = spell;
             s.RealObject.CollisionDetected += OnCollisionDetected;
             Spells.Add(s);
