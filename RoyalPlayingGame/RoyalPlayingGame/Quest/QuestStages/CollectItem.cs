@@ -27,20 +27,13 @@ namespace RoyalPlayingGame.Quest.QuestStages
 
         public override bool QuestStageCompleted()
         {
-            bool flag = false;
             foreach (Item.Item item in MustBeCollectedItems)
             {
                 if (item.Amount == item.MaxAmount)
-                    flag = true;
-                else
-                {
-                    flag = false;
-                    break;
-                }   
+                    return true;
+                else return false;
             }
-            if (flag)              
-                return true;
-            else return false;
+            return false;
         }
     }
 }
