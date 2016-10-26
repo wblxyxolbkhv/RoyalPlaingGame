@@ -24,7 +24,7 @@ namespace RoyalPlayingGame.Units
             Effects = new List<Effect.Effect>();
             IsAlive = true;
         }
-        #region BITCH
+        #region Stats
         protected int realHealth;
         protected int realMana;
         protected int realAgility;
@@ -133,11 +133,13 @@ namespace RoyalPlayingGame.Units
             }
         }
         #endregion 
+        
         public List<Effect.Effect> Effects { get; set; }
         public List<Armor> ArmorSet { get; set; }
         public List<Weapon> WeaponSet { get; set; }
         public List<Potion> Potions { get; set; }
         public SpellBookCollection SpellBook { get; set; }
+        public int MoneyAmount { get; set; }
         public int Level { get; protected set; }
         public Random CriticalChance { get; set; }
         public Spell.Spell SpellHotKey1 { get; set; }

@@ -12,6 +12,7 @@ namespace RoyalPlayingGame.Units
     {
         public Player():base()
         {
+            Inventory = new List<Item.Item>();
             QuestJournal = new List<Quest.Quest>();
             Experience = 0;
             Health = RealHealth = 100;
@@ -36,6 +37,7 @@ namespace RoyalPlayingGame.Units
             SpellHotKey4 = SpellBook[wave.SpellName];
         }
         public List<Quest.Quest> QuestJournal { get; set; }
+        public List<Item.Item> Inventory { get; set; }
         public int Experience { get; set; }
         public void EquipWeapon(Item.Items.Weapon weapon)
         {
