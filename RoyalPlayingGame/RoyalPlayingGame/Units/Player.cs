@@ -12,7 +12,7 @@ namespace RoyalPlayingGame.Units
     {
         public Player():base()
         {
-            Inventory = new List<Item.Item>();
+            
             QuestJournal = new List<Quest.Quest>();
             Experience = 0;
             Health = RealHealth = 100;
@@ -36,38 +36,24 @@ namespace RoyalPlayingGame.Units
             SpellHotKey3 = SpellBook[breath.SpellName];
             SpellHotKey4 = SpellBook[wave.SpellName];
         }
+        public int experience;
         public List<Quest.Quest> QuestJournal { get; set; }
-        public List<Item.Item> Inventory { get; set; }
-        public int Experience { get; set; }
-        public void EquipWeapon(Item.Items.Weapon weapon)
+        
+        public int Experience
         {
-            if (CheckRequiredLvl(weapon))
+            get { return experience; }
+            set
             {
-                WeaponSet.Add(weapon);
+                if (value > 200)
+                {
+                    experience = value - 200;
+                    Level++;
+                }
+                else experience = value;
             }
-        }
-        public void EquipArmor(Item.Items.Armor armor)
-        {
-            if(CheckRequiredLvl(armor))
-            {
-                ArmorSet.Add(armor);
-            }
-        }
-        public bool CheckRequiredLvl(Item.Item item)
-        {
-            if (item.ItemLvl >= Level)
-                return true;
-            else return false;
         }
         
-        public void LvlUP()
-        {
-            if (Experience>=200)
-            {
-                Experience = Experience - 200;
-                Level += 1;
-            }
-        }
+        
         public Spell.Spell CastSpell(Keys key)
         {
             switch (key)
@@ -100,7 +86,10 @@ namespace RoyalPlayingGame.Units
             }
         }
 
-
+        public void AddQuest(Quest.Quest quest)
+        {
+            QuestJournal.Add(quest);
+        }
 
     }
 }

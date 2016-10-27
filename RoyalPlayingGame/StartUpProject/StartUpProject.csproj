@@ -64,6 +64,12 @@
     <Compile Include="PlayerMenuManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quests\ComplexQuest.cs" />
+    <Compile Include="Quests\ComplexQuestStage.cs" />
+    <Compile Include="Quests\ComplexQuestStages\ComplexCollectItem.cs" />
+    <Compile Include="Quests\ComplexQuestStages\ComplexGetToPoint.cs" />
+    <Compile Include="Quests\ComplexQuestStages\ComplexGetToUnit.cs" />
+    <Compile Include="Quests\ComplexQuestStages\ComplexKillTargetObject.cs" />
     <Compile Include="Spells\AutoAttack.cs" />
     <Compile Include="Spells\DragonBreath.cs" />
     <Compile Include="Spells\Fireball.cs" />

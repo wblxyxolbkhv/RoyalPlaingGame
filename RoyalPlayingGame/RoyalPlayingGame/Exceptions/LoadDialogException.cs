@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RoyalPlayingGame.Exceptions
 {
-    public class LoadDialogException: System.Exception
+    public class LoadDialogException: Exception
     {
         public override string Message
         {

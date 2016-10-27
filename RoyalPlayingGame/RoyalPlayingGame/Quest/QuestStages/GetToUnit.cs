@@ -7,19 +7,22 @@ using RoyalPlayingGame.Units;
 
 namespace RoyalPlayingGame.Quest.QuestStages
 {
-   // public delegate bool CheckDestination();
-    public class GetToPoint:QuestStage
+    public class GetToUnit : QuestStage
     {
-        public GetToPoint(int moneyReward, int experienceReward, List<Item.Item> itemReward,
-            string description, string name, int index):base(moneyReward,experienceReward, itemReward, name,description)
+        public GetToUnit(int moneyReward, int experienceReward, List<Item.Item> itemReward,
+            string description, string name, int index) : base(moneyReward, experienceReward, itemReward, name, description)
         {
             QuestStageIndex = index;
         }
-        public int X { get; set; }
-        public Unit QuestReciver { get; set; }
+        public Unit questUnit { get; set; }
         public override bool IsQuestStageCompleted()
         {
             throw new NotImplementedException();
         }
     }
 }
+
+    
+
+
+

@@ -73,7 +73,7 @@
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.Name = "ChoiceBox";
-            this.Size = new System.Drawing.Size(549, 163);
+            this.Size = new System.Drawing.Size(548, 153);
             this.ResumeLayout(false);
             this.PerformLayout();
 
