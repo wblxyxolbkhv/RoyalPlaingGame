@@ -93,6 +93,8 @@ namespace StartUpProject
         }
         public void OnKeyDownExternal(object sender, KeyEventArgs e)
         {
+            if (DialogManager.Dialog!=null && DialogManager.Dialog.IsActive)
+                return;
             switch (e.KeyCode)
             {
                 case Keys.D:
@@ -145,6 +147,8 @@ namespace StartUpProject
         }
         public void OnKeyUpExternal(object sender, KeyEventArgs e)
         {
+            if (DialogManager.Dialog != null && DialogManager.Dialog.IsActive)
+                return;
             switch (e.KeyCode)
             {
                 case Keys.D:
