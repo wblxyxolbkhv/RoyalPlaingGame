@@ -25,7 +25,7 @@ namespace RoyalPlayingGame.Quest.QuestStages
             else throw new NotAQuestItemException();
         }
 
-        public override bool QuestStageCompleted()
+        public override bool IsQuestStageCompleted()
         {
             foreach (Item.Item item in MustBeCollectedItems)
             {

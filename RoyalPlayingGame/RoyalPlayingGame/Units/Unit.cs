@@ -16,6 +16,7 @@ namespace RoyalPlayingGame.Units
     {
         public Unit()
         {
+            Inventory = new List<Item.Item>();
             SpellBook = new SpellBookCollection();
             ArmorSet = new List<Armor>();
             WeaponSet = new List<Weapon>();
@@ -33,6 +34,7 @@ namespace RoyalPlayingGame.Units
         protected int realPhysicalDamageReduction;
         protected int realMagicalDamageReduction;
         public event Action Death;
+        public event Action QuestItemCollected;
         public bool IsAlive { get; set; }
 
         public int Health { get; set; }
@@ -134,6 +136,7 @@ namespace RoyalPlayingGame.Units
         }
         #endregion 
         
+        public List<Item.Item> Inventory { get; set; }
         public List<Effect.Effect> Effects { get; set; }
         public List<Armor> ArmorSet { get; set; }
         public List<Weapon> WeaponSet { get; set; }
@@ -188,26 +191,49 @@ namespace RoyalPlayingGame.Units
             Effects.Add(effect);
         }
 
-        public void AddPotion(Potion potion)
+        public void EquipWeapon(Weapon weapon)
         {
-            foreach (Potion addedPotion in Potions)
+            if (CheckRequiredLvl(weapon))
             {
-                if (addedPotion.ItemName == potion.ItemName)
+                WeaponSet.Add(weapon);
+            }
+        }
+        public void EquipArmor(Armor armor)
+        {
+            if (CheckRequiredLvl(armor))
+            {
+                ArmorSet.Add(armor);
+            }
+        }
+        public bool CheckRequiredLvl(Item.Item item)
+        {
+            if (item.ItemLvl >= Level)
+                return true;
+            else return false;
+        }
+
+        public void AddItem(Item.Item item)
+        {
+            if (item.IsAQuestItem)
+                QuestItemCollected?.Invoke();
+            foreach (Item.Item addedItem in Inventory)
+            {
+                if (addedItem.ID == item.ID)
                 {
-                    addedPotion.Amount += 1;
+                    addedItem.Amount += 1;
                 }
                 else
                 {
-                    Potions.Add(potion);
+                    Inventory.Add(item);
                 }
             }
         }
-        public void AddPotion(Potion potion, ushort amount)
+        public void AddItem(Item.Item item, ushort amount)
         {
-            foreach (Potion addedPotion in Potions)
+            foreach (Item.Item addedItem in Inventory)
             {
-                if (addedPotion.ItemName == potion.ItemName)
-                    addedPotion.Amount += amount;
+                if (addedItem.ID == item.ID)
+                    addedItem.Amount += amount;
             }
         }
 
@@ -223,7 +249,7 @@ namespace RoyalPlayingGame.Units
             else if (spell.Active == true)
             {
                 spell.Active = false;
-                spell.CurrentCoolDown = SpellHotKey1.CoolDown;
+                spell.CurrentCoolDown = spell.CoolDown;
                 spell.coolDownTimer.Start();
                 RealMana -= spell.ManaCost;
                 return spell;

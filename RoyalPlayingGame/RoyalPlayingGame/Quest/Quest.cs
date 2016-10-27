@@ -16,9 +16,12 @@ namespace RoyalPlayingGame.Quest
             QuestDescription = description;
             QuestGiver = giver;
             QuestStages = new List<QuestStage>();
+            IsActive = true;
         }
+        public event Action QuestComplited;
+        public bool IsActive { get; set; }
         private Units.Player Player { get; set; }
-        private List<QuestStage> QuestStages { get; set; }
+        public List<QuestStage> QuestStages { get; set; }
         public QuestStage CurrentQuestStage { get; set; }
         public string QuestName { get; set; }
         public string QuestDescription { get; set; }
@@ -35,17 +38,26 @@ namespace RoyalPlayingGame.Quest
 
         public void NextStage()
         {
-            if (CurrentQuestStage.QuestStageCompleted()) 
+            if (CurrentQuestStage.IsQuestStageCompleted()) 
             {
                 Player.Experience += CurrentQuestStage.QuestStageExperienceReward;
                 Player.MoneyAmount += CurrentQuestStage.QuestStageMoneyReward;
+                if (CurrentQuestStage.QuestStageItemReward!=null)
                 foreach (Item.Item item in CurrentQuestStage.QuestStageItemReward)
                 {
                     Player.Inventory.Add(item);
                 }
                 if (CurrentQuestStage.QuestStageIndex < QuestStages.Count())
-                CurrentQuestStage = QuestStages[CurrentQuestStage.QuestStageIndex+1];
-
+                {
+                    CurrentQuestStage.IsActive = false;
+                    CurrentQuestStage = QuestStages[CurrentQuestStage.QuestStageIndex + 1];
+                }
+                else
+                {
+                    CurrentQuestStage.IsActive = false;
+                    IsActive = false;
+                    QuestComplited?.Invoke();
+                }
             }
         }
     }

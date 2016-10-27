@@ -17,7 +17,9 @@ namespace RoyalPlayingGame.Quest
             QuestStageExperienceReward = experieneReward;
             QuestStageItemReward = itemReward;
             QuestStageMoneyReward = moneyReward;
+            IsActive = true;
         }
+        public bool IsActive { get; set; }
         public int QuestStageMoneyReward { get; set; }
         public List<Item.Item> QuestStageItemReward { get; set; }
         //public List<Item.Item> QuestStageItems { get; set; }
@@ -30,7 +32,7 @@ namespace RoyalPlayingGame.Quest
         //public Units.Unit QuestReciver { get; set; }
         //public Units.Unit QuestStageUnit { get; set; } 
 
-        public abstract bool QuestStageCompleted();
+        public abstract bool IsQuestStageCompleted();
        
     }
 }

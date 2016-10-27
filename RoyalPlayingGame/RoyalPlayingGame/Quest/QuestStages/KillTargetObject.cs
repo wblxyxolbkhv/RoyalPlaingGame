@@ -13,31 +13,28 @@ namespace RoyalPlayingGame.Quest.QuestStages
             string description, string name, int index):base(moneyReward,experienceReward, itemReward, name,description)
         {
             QuestStageIndex = index;
-            CurrentAmount = new List<int>();
-            Amount = new List<int>();
-            MustBeKilledTargets = new List<ITargetObject>();
+            MustBeKilledTargets = new List<KillTargetObjectStructure>();
         }
-        public List<int> CurrentAmount { get; set; }
-        public List<int> Amount { get; set; }
-        public List<ITargetObject> MustBeKilledTargets { get; set; }
 
-        public void AddTarget(ITargetObject target, int amount)
+        public List<KillTargetObjectStructure> MustBeKilledTargets { get; set; }
+
+        public void AddTarget(ITargetObject target, int reqAmount)
         {
-            MustBeKilledTargets.Add(target);
-            Amount.Add(amount);
-            CurrentAmount.Add(0);
+            KillTargetObjectStructure ktos = new KillTargetObjectStructure(target,reqAmount);
+            MustBeKilledTargets.Add(ktos);
         }
-        public override bool QuestStageCompleted()
+        public void AddTarget(KillTargetObjectStructure ktos)
         {
-            for(int i=0;i<Amount.Count;i++)
+            MustBeKilledTargets.Add(ktos);
+        }
+        public override bool IsQuestStageCompleted()
+        {
+            foreach (KillTargetObjectStructure ktos in MustBeKilledTargets)
             {
-                if (CurrentAmount[i] == Amount[i])
-                {
+                if (ktos.CurrentAmount == ktos.RequiredAmount)
                     return true;
-                }
-                else return false;          
             }
-            return false;         
+            return false;  
         }
     }
 }
