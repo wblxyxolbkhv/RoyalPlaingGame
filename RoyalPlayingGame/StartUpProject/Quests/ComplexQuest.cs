@@ -21,6 +21,7 @@ namespace StartUpProject.Quests
                     ComplexQuestStages.Add(new ComplexQuestStages.ComplexCollectItem(quest.QuestStages[i] as CollectItem));
                 if (quest.QuestStages[i] is KillTargetObject)
                     ComplexQuestStages.Add(new ComplexQuestStages.ComplexKillTargetObject(quest.QuestStages[i] as KillTargetObject));
+                //доделать
                 if (quest.QuestStages[i] is GetToPoint)
                     ComplexQuestStages.Add(new ComplexQuestStages.ComplexGetToPoint(quest.QuestStages[i] as GetToPoint));
                 if (quest.QuestStages[i] is GetToUnit)
