@@ -12,8 +12,13 @@ namespace StartUpProject.Quests.QuestStages
 {
     public class KillUnitStage:QuestStage
     {
-        public KillUnitStage(int moneyReward, int experieneReward, List<Item> itemReward, string name, string description)
-            : base(moneyReward, experieneReward, itemReward, name, description)
+        public KillUnitStage(int moneyReward, int experieneReward, List<Item> itemReward, string name, string description, int index)
+            : base(moneyReward, experieneReward, itemReward, name, description, index)
+        {
+            Targets = new List<KillUnitStageGroup>();
+            DeadUnitListener.DeathSomeUnit += OnSomeUnitDeath;
+        }
+        public KillUnitStage(string name, string description, int index):base(name,description,index)
         {
             Targets = new List<KillUnitStageGroup>();
             DeadUnitListener.DeathSomeUnit += OnSomeUnitDeath;
@@ -47,7 +52,7 @@ namespace StartUpProject.Quests.QuestStages
                 if (kusg.CurrentAmount < kusg.RequiredAmount)
                     return;
             }
-            
+            CallQSCEvent();
         }
     }
 }

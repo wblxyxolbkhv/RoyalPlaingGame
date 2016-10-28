@@ -8,9 +8,9 @@ namespace RoyalPlayingGame.Item
 {
     public class Item
     {
-        public Item(int iD, string name, ushort maxAmount, ushort amount, uint itemLvl, Effect.Effect effect)
+        public Item(int ID, string name, int maxAmount, int amount, uint itemLvl, Effect.Effect effect)
         {
-            ID = iD;
+            this.ID = ID;
             ItemName = name;
             ItemLvl = itemLvl;
             MaxAmount = maxAmount;
@@ -18,26 +18,27 @@ namespace RoyalPlayingGame.Item
             ItemEffect = effect;
             IsAQuestItem = false;
         }
-        public Item(int iD, string name, ushort maxAmount, ushort amount, uint itemLvl)
+        public Item(int ID, string name, int maxAmount, int amount, uint itemLvl)
         {
-            ID = iD;
+            this.ID = ID;
             ItemName = name;
             MaxAmount = maxAmount;
             ItemLvl = itemLvl;
             Amount = amount;
             IsAQuestItem = false;
         }
-        public Item(string name, int iD)
+        public Item(string name, int ID, int maxAmount)
         {
-            ID = iD;
+            this.ID = ID;
             ItemName = name;
-            Amount = 1;
+            MaxAmount = maxAmount;
+            Amount = 0;
             IsAQuestItem = true;
         }
         public int ID { get; set; }
         public string ItemName { get; set; }
-        public ushort MaxAmount { get; set; }
-        public ushort Amount { get; set; }
+        public int MaxAmount { get; set; }
+        public int Amount { get; set; }
         public uint ItemLvl { get; set; }
         public bool IsAQuestItem { get; set; }
         public Effect.Effect ItemEffect { get; set; }

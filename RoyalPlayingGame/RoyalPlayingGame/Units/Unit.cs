@@ -11,7 +11,7 @@ namespace RoyalPlayingGame.Units
 
 {
     public enum DamageType { Physical, Magic }
-
+    public delegate void QuestItemHendler(int ID);
     public class Unit : Interfaces.ITargetObject
     {
         public Unit()
@@ -46,7 +46,8 @@ namespace RoyalPlayingGame.Units
         protected int realPhysicalDamageReduction;
         protected int realMagicalDamageReduction;
         public event Action Death;
-        public event Action QuestItemCollected;
+        public static event QuestItemHendler QuestItemPicked;
+        public static event QuestItemHendler QuestItemDroped;
         public bool IsAlive { get; set; }
 
         public int Health { get; set; }
@@ -229,12 +230,12 @@ namespace RoyalPlayingGame.Units
         public void AddItem(Item.Item item)
         {
             if (item.IsAQuestItem)
-                QuestItemCollected?.Invoke();
+                QuestItemPicked?.Invoke(item.ID);
             foreach (Item.Item addedItem in Inventory)
             {
                 if (addedItem.ID == item.ID)
                 {
-                    addedItem.Amount += 1;
+                    addedItem.Amount ++;
                 }
                 else
                 {
@@ -242,12 +243,28 @@ namespace RoyalPlayingGame.Units
                 }
             }
         }
+
         public void AddItem(Item.Item item, ushort amount)
         {
             foreach (Item.Item addedItem in Inventory)
             {
                 if (addedItem.ID == item.ID)
                     addedItem.Amount += amount;
+            }
+        }
+
+        public void DropItem(int ID)
+        {
+            foreach(Item.Item addedItem in Inventory)
+            {
+                if (addedItem.ID == ID)
+                {
+                    if (addedItem.IsAQuestItem)
+                        QuestItemDroped?.Invoke(ID);
+                    addedItem.Amount--;
+                    if (addedItem.Amount == 0)
+                        Inventory.Remove(addedItem);
+                }
             }
         }
 

@@ -7,15 +7,15 @@ using RoyalPlayingGame.Item;
 
 namespace StartUpProject.Quests.QuestStages
 {
-    public class ToPointStage : QuestStage
+    public class ToUnitStage : QuestStage
     {
-        public ToPointStage(int moneyReward, int experieneReward, List<Item> itemReward, string name, string description, int index) 
+        public ToUnitStage(int moneyReward, int experieneReward, List<Item> itemReward, string name, string description, int index) 
             : base(moneyReward, experieneReward, itemReward, name, description, index)
         {
 
         }
 
-        public ToPointStage(string name,string description, int index):base(name,description,index)
+        public ToUnitStage(string name, string description, int index):base(name,description,index)
         {
 
         }

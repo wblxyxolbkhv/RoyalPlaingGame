@@ -10,13 +10,13 @@ namespace StartUpProject.Quests
 {
     public abstract class ComplexQuestStage
     {
-        public ComplexQuestStage(QuestStage questStage)
-        {
-            QuestStage = questStage;
-            ComplexQuestStageIndex = questStage.QuestStageIndex;
-        }
-        public QuestStage QuestStage { get; set; }
-        public int ComplexQuestStageIndex { get; set; }
+        //public ComplexQuestStage(QuestStage questStage)
+        //{
+        //    QuestStage = questStage;
+        //    ComplexQuestStageIndex = questStage.QuestStageIndex;
+        //}
+        //public QuestStage QuestStage { get; set; }
+        //public int ComplexQuestStageIndex { get; set; }
        // public abstract bool IsComplexQuestStageCompleted();
 
     }

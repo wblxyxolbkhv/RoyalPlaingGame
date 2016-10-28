@@ -14,7 +14,6 @@ namespace RoyalPlayingGame
         public static void SomeUnitDeath(Unit unit)
         {
             DeathSomeUnit?.Invoke(unit);
-            //DeathSomeUnit(unit);
         }
     }
 }
