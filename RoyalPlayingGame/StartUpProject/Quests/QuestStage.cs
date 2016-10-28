@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using RoyalPlayingGame.Item;
+
+namespace StartUpProject.Quests
+{
+    public abstract class QuestStage
+    {
+        public QuestStage(int moneyReward, int experieneReward, List<Item> itemReward, string name, string description)
+        {
+            QuestStageName = name;
+            QuestStageDescription = description;
+            QuestStageExperienceReward = experieneReward;
+            QuestStageItemReward = itemReward;
+            QuestStageMoneyReward = moneyReward;
+        }
+        public event Action QuestStageCompleted;
+        public int QuestStageMoneyReward { get; set; }
+        public List<Item> QuestStageItemReward { get; set; }
+        public int QuestStageExperienceReward { get; set; }
+        public string QuestStageName { get; set; }
+        public string QuestStageDescription { get; set; }
+        public int QuestStageIndex { get; set; }
+    }
+}

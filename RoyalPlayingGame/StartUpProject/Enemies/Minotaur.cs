@@ -16,7 +16,8 @@ namespace StartUpProject.Enemies
     {
         public Minotaur(List<RealObject> CollisionDomain, Power Gravity)
         {
-            Unit = new Unit();
+            
+            Unit = new Unit(1001);
             Unit.Health = 100;
             Unit.RealHealth = 100;
 
@@ -44,7 +45,7 @@ namespace StartUpProject.Enemies
 
             DefaultAnimation = WalkAnimationLeft;
             Animation = WalkAnimationLeft;
-            
+
         }
         
     }

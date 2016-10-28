@@ -25,6 +25,18 @@ namespace RoyalPlayingGame.Units
             Effects = new List<Effect.Effect>();
             IsAlive = true;
         }
+        public Unit(int ID)
+        {
+            this.ID = ID;
+            Inventory = new List<Item.Item>();
+            SpellBook = new SpellBookCollection();
+            ArmorSet = new List<Armor>();
+            WeaponSet = new List<Weapon>();
+            Potions = new List<Potion>();
+            SpellBook = new SpellBookCollection();
+            Effects = new List<Effect.Effect>();
+            IsAlive = true;
+        }
         #region Stats
         protected int realHealth;
         protected int realMana;
@@ -134,8 +146,10 @@ namespace RoyalPlayingGame.Units
                 realMagicalDamageReduction = value;
             }
         }
-        #endregion 
-        
+        #endregion
+
+
+        public int ID {get;protected set; }
         public List<Item.Item> Inventory { get; set; }
         public List<Effect.Effect> Effects { get; set; }
         public List<Armor> ArmorSet { get; set; }

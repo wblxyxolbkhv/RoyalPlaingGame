@@ -17,7 +17,7 @@ namespace StartUpProject.Quests
         }
         public QuestStage QuestStage { get; set; }
         public int ComplexQuestStageIndex { get; set; }
-        public abstract bool IsComplexQuestStageCompleted();
+       // public abstract bool IsComplexQuestStageCompleted();
 
     }
 }

@@ -16,7 +16,8 @@ namespace StartUpProject.Enemies
     {
         public DebugBear(List<RealObject> CollisionDomain, Power Gravity)
         {
-            Unit = new Unit();
+            
+            Unit = new Unit(1000);
             Unit.Health = 100;
             Unit.RealHealth = 100;
 

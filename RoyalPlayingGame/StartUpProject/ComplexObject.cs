@@ -10,6 +10,7 @@ using SimplePhysicalEngine;
 using VisualPart;
 using System.Drawing;
 using System.Windows.Forms;
+using RoyalPlayingGame;
 
 namespace StartUpProject
 {
@@ -28,6 +29,7 @@ namespace StartUpProject
                 Animation = DeathAnimation;
                 DeathAnimation.Start();
             }
+            DeadUnitListener.SomeUnitDeath(this.Unit);
         }
 
         public Unit Unit

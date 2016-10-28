@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeadUnitListener.cs" />
     <Compile Include="Dialogs\Answer.cs" />
     <Compile Include="Dialogs\Dialog.cs" />
     <Compile Include="Dialogs\NPCReplic.cs" />

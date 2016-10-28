@@ -6,21 +6,19 @@ using System.Threading.Tasks;
 using RoyalPlayingGame.Quest.QuestStages;
 using RoyalPlayingGame;
 
+
 namespace StartUpProject.Quests.ComplexQuestStages
 {
-    public class ComplexKillTargetObject:ComplexQuestStage
+    public class ComplexKillUnit
     {
-        public ComplexKillTargetObject(KillTargetObject questStage) : base(questStage)
+        public (KillTargetObject questStage) : base(questStage)
         {
             DeadUnitListener.DeathSomeUnit += OnSomeUnitDeath;
         }
 
         private void OnSomeUnitDeath(RoyalPlayingGame.Units.Unit unit)
         {
-            
-        }
 
-       
-        
+        }
     }
 }

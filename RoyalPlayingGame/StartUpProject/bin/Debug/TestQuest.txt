@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<quest id = "1000" name = "Лучше голубь в желудке..">
+	<description></description>
+	<stage id = "1" type = "ToPoint">
+		<destination X="3800" Y = "400"/>
+		<hide_replic replicID = "10003"/>
+		<name>Идти на край земли </name>
+		<description>Они говорили, что голубей сложно поймать.. Мне показалось это забавно.</description>
+	</stage>
+	<stage id = "2" type = "ToUnit">
+		<destination UnitID = "1000"/>
+		<show_replic replicID="100017"/>
+		<name>Вернуться назад </name>
+		<description>А по дороге попытайся понять причем тут голуби.</description>
+	</stage>
+</quest> 
