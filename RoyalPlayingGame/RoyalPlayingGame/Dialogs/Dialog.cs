@@ -117,7 +117,8 @@ namespace RoyalPlayingGame.Dialogs
         }
         public void GoToDialogBeginning()
         {
-            CurrentReplic = RootReplic; 
+            CurrentReplic = RootReplic;
+            CurrentReplic.CurrentDuration = 0;
         }
     }
 }

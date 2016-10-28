@@ -53,6 +53,7 @@ namespace StartUpProject.Dialogs
         private void OnAnswerChoosen(Answer a)
         {
             Dialog.CurrentReplic = a;
+            a.CurrentDuration = 0;
         }
         /// <summary>
         /// показывает окно с репликой с пользовательскими параметрами
