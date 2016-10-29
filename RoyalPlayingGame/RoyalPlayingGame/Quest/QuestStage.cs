@@ -27,12 +27,12 @@ namespace RoyalPlayingGame.Quest
         public string QuestStageName { get; set; }
         public string QuestStageDescription { get; set; }
         public int QuestStageIndex { get; set; }
-        
+
         //public QuestStageType QuestStageType { get; set; }
         //public Units.Unit QuestReciver { get; set; }
         //public Units.Unit QuestStageUnit { get; set; } 
 
-        //public abstract bool IsQuestStageCompleted();
-       
+        public abstract bool IsQuestStageCompleted();
+
     }
 }

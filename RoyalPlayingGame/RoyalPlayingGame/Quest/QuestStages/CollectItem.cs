@@ -7,7 +7,7 @@ using RoyalPlayingGame.Exceptions;
 
 namespace RoyalPlayingGame.Quest.QuestStages
 {
-    public class CollectItem:QuestStage
+    public class CollectItem : QuestStage
     {
         public CollectItem(int moneyReward, int experienceReward, List<Item.Item> itemReward, 
             string description, string name, int index):base(moneyReward,experienceReward, itemReward, name,description)

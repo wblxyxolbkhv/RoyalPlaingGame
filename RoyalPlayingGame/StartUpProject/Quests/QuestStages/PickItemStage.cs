@@ -25,9 +25,10 @@ namespace StartUpProject.Quests.QuestStages
 
         private List<Item> PickedQuestItems { get; set; }
 
-        public void AddQuestItem()
+        public void AddQuestItem(int ID, string name, int maxAmount)
         {
-
+            Item item = new Item(name, ID, maxAmount);
+            PickedQuestItems.Add(item);
         }
 
         public void RemoveQuestItem()
