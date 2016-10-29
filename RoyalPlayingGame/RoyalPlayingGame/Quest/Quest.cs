@@ -36,29 +36,29 @@ namespace RoyalPlayingGame.Quest
             }
         }
 
-        public void NextStage()
-        {
-            if (CurrentQuestStage.IsQuestStageCompleted()) 
-            {
-                Player.Experience += CurrentQuestStage.QuestStageExperienceReward;
-                Player.MoneyAmount += CurrentQuestStage.QuestStageMoneyReward;
-                if (CurrentQuestStage.QuestStageItemReward!=null)
-                foreach (Item.Item item in CurrentQuestStage.QuestStageItemReward)
-                {
-                    Player.Inventory.Add(item);
-                }
-                if (CurrentQuestStage.QuestStageIndex < QuestStages.Count())
-                {
-                    CurrentQuestStage.IsActive = false;
-                    CurrentQuestStage = QuestStages[CurrentQuestStage.QuestStageIndex + 1];
-                }
-                else
-                {
-                    CurrentQuestStage.IsActive = false;
-                    IsActive = false;
-                    QuestCompleted?.Invoke();
-                }
-            }
+        //public void NextStage()
+        //{
+        //    if (CurrentQuestStage.IsQuestStageCompleted()) 
+        //    {
+        //        Player.Experience += CurrentQuestStage.QuestStageExperienceReward;
+        //        Player.MoneyAmount += CurrentQuestStage.QuestStageMoneyReward;
+        //        if (CurrentQuestStage.QuestStageItemReward!=null)
+        //        foreach (Item.Item item in CurrentQuestStage.QuestStageItemReward)
+        //        {
+        //            Player.Inventory.Add(item);
+        //        }
+        //        if (CurrentQuestStage.QuestStageIndex < QuestStages.Count())
+        //        {
+        //            CurrentQuestStage.IsActive = false;
+        //            CurrentQuestStage = QuestStages[CurrentQuestStage.QuestStageIndex + 1];
+        //        }
+        //        else
+        //        {
+        //            CurrentQuestStage.IsActive = false;
+        //            IsActive = false;
+        //            QuestCompleted?.Invoke();
+        //        }
         }
-    }
-}
+        }
+    
+
