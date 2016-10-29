@@ -3,11 +3,11 @@
     <replic  number="0" next = "1">Здравствуй, герой!</replic>
     <choice number ="1">
         <answer number = "2" next = "5" > Где я? </answer>
-        <answer number = "3" next = "6"> Пойди в жопу, странное создание. </answer>
         <answer number = "4" next = "7"> Как пройти в релиз?</answer>
+        <answer number = "3" next = "6"> Есть работенка?</answer>
     </choice>
     <replic  number="5" next = "1">Ты в дебаге, дружок!</replic>
-    <replic  number="6" next = "null">Где твои манеры, щенок!</replic>
+    <replic  number="6" next = "13">Есть! Сходи прогуляйся и вернись сюда.</replic>
     <replic  number="7" next = "8">Направо.</replic>
     <choice number ="8">
         <answer number = "9" next = "11"> Ну я пошел тогда..</answer>
@@ -15,4 +15,9 @@
     </choice>
     <replic  number="11" next = "null">Давай, удачи!</replic>
     <replic  number="12" next = "null">Располагайся тогда, чувствуй себя как дома.</replic>
+    <choice number ="13">
+        <answer number = "14" next = "null"> Будет сделано!</answer>
+        <answer number = "15" next = "16">Это дерьмо какое то, а не работа! </answer>
+    </choice>
+    <replic  number="16" next = "null">Пока лучшее, что есть в этой дыре.</replic>
 </dialog>
