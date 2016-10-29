@@ -183,13 +183,15 @@ namespace StartUpProject
 
             CameraBias = 0;
 
+            
+
             DebugBear bear = new DebugBear(new List<RealObject>(), null);
             bear.RealObject.Position = new Vector2(600, 440);
 
-            //Minotaur enemy = new Minotaur(CollisionDomain, Gravity);
+            Minotaur enemy = new Minotaur(CollisionDomain, Gravity);
 
-            //enemy.RealObject.Position = new Vector2(600, 400);
-            //enemy.RealObject.CollisionDetected += OnCollisionDetected;
+            enemy.RealObject.Position = new Vector2(600, 400);
+            enemy.RealObject.CollisionDetected += OnCollisionDetected;
 
             NPCs.Add(bear);
         }

@@ -18,7 +18,7 @@ namespace RoyalPlayingGame.Quest
             QuestStages = new List<QuestStage>();
             IsActive = true;
         }
-        public event Action QuestComplited;
+        //public event Action QuestCompleted;
         public bool IsActive { get; set; }
         private Units.Player Player { get; set; }
         public List<QuestStage> QuestStages { get; set; }
@@ -56,7 +56,7 @@ namespace RoyalPlayingGame.Quest
                 {
                     CurrentQuestStage.IsActive = false;
                     IsActive = false;
-                    QuestComplited?.Invoke();
+                    QuestCompleted?.Invoke();
                 }
             }
         }

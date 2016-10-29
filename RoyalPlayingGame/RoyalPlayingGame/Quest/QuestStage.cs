@@ -32,7 +32,7 @@ namespace RoyalPlayingGame.Quest
         //public Units.Unit QuestReciver { get; set; }
         //public Units.Unit QuestStageUnit { get; set; } 
 
-        public abstract bool IsQuestStageCompleted();
+        //public abstract bool IsQuestStageCompleted();
        
     }
 }
