@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RoyalPlayingGame.Units;
 using RoyalPlayingGame.Item;
+using System.Xml;
 
 namespace StartUpProject.Quests
 {
@@ -19,6 +20,16 @@ namespace StartUpProject.Quests
             QuestGiver = giver;
             QuestStages = new List<QuestStage>();
             IsActive = true;
+            QuestStage.QuestStageCompleted += OnNextStage;
+        }
+
+        public Quest(int ID, string name, string description)
+        {
+            this.ID = ID;
+            QuestName = name;
+            QuestDescription = description;
+            QuestStages = new List<QuestStage>();
+            IsActive = false;
             QuestStage.QuestStageCompleted += OnNextStage;
         }
 
@@ -42,12 +53,13 @@ namespace StartUpProject.Quests
         public void AddQuestStage(QuestStage questStage)
         {
             QuestStages.Add(questStage);
-            if (questStage.QuestStageIndex == 0)
+            if (questStage.QuestStageIndex == 1)
             {
                 CurrentQuestStage = questStage;
             }
         }
 
+        
 
     }
 }
