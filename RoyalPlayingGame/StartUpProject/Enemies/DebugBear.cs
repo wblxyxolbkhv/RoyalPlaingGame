@@ -28,7 +28,7 @@ namespace StartUpProject.Enemies
             RealObject.SpeedX = 2;
             RealObject.direction = Direction.Right;
 
-            WalkAnimationLeft = new Animation("DebugBear", 150);
+            WalkAnimationLeft = new Animation("DebugBear", 120);
             WalkAnimationLeft.Start();
             
 
@@ -37,6 +37,9 @@ namespace StartUpProject.Enemies
 
             CurrentDialog = new RoyalPlayingGame.Dialogs.Dialog();
             CurrentDialog.LoadDialog("TestDialog.xml");
+
+            RealObject Trigger1 = new RealObject(CollisionDomain, 1);
+            Trigger1.IsTrigger = true;
         }
     }
 }
