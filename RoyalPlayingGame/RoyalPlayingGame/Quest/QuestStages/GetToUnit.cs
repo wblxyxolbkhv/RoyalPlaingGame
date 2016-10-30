@@ -15,10 +15,10 @@ namespace RoyalPlayingGame.Quest.QuestStages
             QuestStageIndex = index;
         }
         public Unit questUnit { get; set; }
-        //public override bool IsQuestStageCompleted()
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public override bool IsQuestStageCompleted()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

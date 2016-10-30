@@ -25,15 +25,15 @@ namespace RoyalPlayingGame.Quest.QuestStages
             else throw new NotAQuestItemException();
         }
 
-        //public override bool IsQuestStageCompleted()
-        //{
-        //    foreach (Item.Item item in MustBeCollectedItems)
-        //    {
-        //        if (item.Amount == item.MaxAmount)
-        //            return true;
-        //        else return false;
-        //    }
-        //    return false;
-        //}
+        public override bool IsQuestStageCompleted()
+        {
+            foreach (Item.Item item in MustBeCollectedItems)
+            {
+                if (item.Amount == item.MaxAmount)
+                    return true;
+                else return false;
+            }
+            return false;
+        }
     }
 }

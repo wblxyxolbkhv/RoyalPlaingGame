@@ -17,9 +17,9 @@ namespace RoyalPlayingGame.Quest.QuestStages
         }
         public int X { get; set; }
         public Unit QuestReciver { get; set; }
-        //public override bool IsQuestStageCompleted()
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public override bool IsQuestStageCompleted()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

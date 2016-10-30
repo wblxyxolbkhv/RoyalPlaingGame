@@ -53,6 +53,7 @@
     <Compile Include="Exceptions\NoManaException.cs" />
     <Compile Include="Exceptions\NotAQuestItemException.cs" />
     <Compile Include="Exceptions\SpellCoolDownException.cs" />
+    <Compile Include="QuestManager.cs" />
     <Compile Include="Quest\QuestStages\CollectItem.cs" />
     <Compile Include="Quest\QuestStages\Complex.cs" />
     <Compile Include="Quest\QuestStages\GetToPoint.cs" />

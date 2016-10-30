@@ -35,3 +35,18 @@ C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\St
 C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.MainForm.resources
 C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.Properties.Resources.resources
 C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.csproj.GenerateResource.Cache
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\StartUpProject.exe.config
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.exe
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.pdb
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\StartUpProject.exe
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\StartUpProject.pdb
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\RoyalPlayingGame.dll
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\SimplePhysicalEngine.dll
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\VisualPart.dll
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\RoyalPlayingGame.pdb
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\SimplePhysicalEngine.pdb
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\VisualPart.pdb
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.csprojResolveAssemblyReference.cache
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.MainForm.resources
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.Properties.Resources.resources
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.csproj.GenerateResource.Cache
