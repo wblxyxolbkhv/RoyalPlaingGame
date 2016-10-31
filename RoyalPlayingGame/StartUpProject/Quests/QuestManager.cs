@@ -20,6 +20,7 @@ namespace StartUpProject.Quests
         private int TargetID { get; set; }
         private int ItemID { get; set; }
         private string ItemName { get; set; }
+        private int PointID { get; set; }
 
         private void LoadQuest(string path)
         {
