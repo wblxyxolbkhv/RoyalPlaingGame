@@ -24,6 +24,8 @@ namespace RoyalPlayingGame.Dialogs
         {
             get; set;
         } = 0;
+        public int? GiveQuest { get; set; } = null;
+        public int? ReceiveQuest { get; set; } = null;
         public abstract Replic GetNextReplic();
     }
 }

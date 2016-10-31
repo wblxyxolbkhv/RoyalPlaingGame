@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RoyalPlayingGame.Dialogs
 {
+    public delegate void QuestHandler(int questID);
     /// <summary>
     /// реплика NPC
     /// </summary>
@@ -27,5 +28,7 @@ namespace RoyalPlayingGame.Dialogs
         {
             return NextChoice;
         }
+        public int? GiveQuest { get; set; } = null;
+        public int? ReceiveQuest { get; set; } = null;
     }
 }

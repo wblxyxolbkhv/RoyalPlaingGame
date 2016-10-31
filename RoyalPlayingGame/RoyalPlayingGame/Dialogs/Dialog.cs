@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Xml;
+using System;
 using RoyalPlayingGame.Exceptions;
 
 namespace RoyalPlayingGame.Dialogs
@@ -40,6 +41,12 @@ namespace RoyalPlayingGame.Dialogs
                             rep.Number = num.Value;
                             num = xnode.Attributes.GetNamedItem("next");
                             rep.Next = num.Value;
+                            XmlNode newQuest = xnode.Attributes.GetNamedItem("newQuest");
+                            if (newQuest != null)
+                                rep.GiveQuest = Convert.ToInt32(newQuest.Value);
+                            XmlNode recQuest = xnode.Attributes.GetNamedItem("recQuest");
+                            if (recQuest != null)
+                                rep.ReceiveQuest = Convert.ToInt32(recQuest.Value);
                             rep.Phrases.Add(xnode.LastChild.Value);
                             NPCReplics.Add(rep);
                             break;
@@ -49,6 +56,12 @@ namespace RoyalPlayingGame.Dialogs
                             PlayerChoice rep = new PlayerChoice();
                             XmlNode num = xnode.Attributes.GetNamedItem("number");
                             rep.Number = num.Value;
+                            XmlNode newQuest = xnode.Attributes.GetNamedItem("newQuest");
+                            if (newQuest !=null)
+                                rep.GiveQuest = Convert.ToInt32(newQuest.Value);
+                            XmlNode recQuest = xnode.Attributes.GetNamedItem("recQuest");
+                            if (recQuest != null)
+                                rep.ReceiveQuest = Convert.ToInt32(recQuest.Value);
                             choices.Add(rep);
 
                             foreach (XmlNode ans in xnode)
@@ -58,6 +71,12 @@ namespace RoyalPlayingGame.Dialogs
                                 a.Number = number.Value;
                                 number = ans.Attributes.GetNamedItem("next");
                                 a.Next = number.Value;
+                                newQuest = ans.Attributes.GetNamedItem("newQuest");
+                                if (newQuest != null)
+                                    a.GiveQuest = Convert.ToInt32(newQuest.Value);
+                                recQuest = ans.Attributes.GetNamedItem("recQuest");
+                                if (recQuest != null)
+                                    a.ReceiveQuest = Convert.ToInt32(recQuest.Value);
                                 a.PlayerPhrases.Add(ans.LastChild.Value);
                                 rep.Answers.Add(a);
                             }
@@ -110,6 +129,10 @@ namespace RoyalPlayingGame.Dialogs
             CurrentReplic.CurrentDuration += deltaTime;
             if (CurrentReplic.CurrentDuration > CurrentReplic.Duration)
             {
+                if (CurrentReplic.GiveQuest != null)
+                    QuestManager.GiveQuest(CurrentReplic.GiveQuest.Value);
+                if (CurrentReplic.ReceiveQuest != null)
+                    QuestManager.ReceiveQuest(CurrentReplic.ReceiveQuest.Value);
                 CurrentReplic = CurrentReplic.GetNextReplic();
                 if (CurrentReplic!=null)
                     CurrentReplic.CurrentDuration = 0;

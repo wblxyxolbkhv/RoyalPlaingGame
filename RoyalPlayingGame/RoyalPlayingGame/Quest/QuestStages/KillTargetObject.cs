@@ -34,7 +34,7 @@ namespace RoyalPlayingGame.Quest.QuestStages
                 if (ktos.CurrentAmount == ktos.RequiredAmount)
                     return true;
             }
-            return false;  
+            return false;
         }
     }
 }
