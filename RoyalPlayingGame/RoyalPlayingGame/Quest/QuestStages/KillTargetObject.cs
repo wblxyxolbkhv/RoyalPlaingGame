@@ -27,14 +27,14 @@ namespace RoyalPlayingGame.Quest.QuestStages
         {
             MustBeKilledTargets.Add(ktos);
         }
-        //public override bool IsQuestStageCompleted()
-        //{
-        //    foreach (KillTargetObjectStructure ktos in MustBeKilledTargets)
-        //    {
-        //        if (ktos.CurrentAmount == ktos.RequiredAmount)
-        //            return true;
-        //    }
-        //    return false;  
-        //}
+        public override bool IsQuestStageCompleted()
+        {
+            foreach (KillTargetObjectStructure ktos in MustBeKilledTargets)
+            {
+                if (ktos.CurrentAmount == ktos.RequiredAmount)
+                    return true;
+            }
+            return false;
+        }
     }
 }

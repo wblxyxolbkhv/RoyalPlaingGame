@@ -17,8 +17,8 @@
     <replic  number="11" next = "null">Давай, удачи!</replic>
     <replic  number="12" next = "null">Располагайся тогда, чувствуй себя как дома.</replic>
     <choice number ="13">
-        <answer number = "14" next = "null"> Понял, пошел выполнять</answer>
+        <answer number = "14" next = "null" newQuest = "1000"> Понял, пошел выполнять</answer>
         <answer number = "15" next = "1"> Кажется, ты наркоман</answer>
     </choice>
-    <replic  number="16" next = "1"> Отлично, ты меня понял </replic>
+    <replic  number="16" next = "1" recQuest = "1000"> Отлично, ты меня понял </replic>
 </dialog>

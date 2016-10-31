@@ -24,6 +24,12 @@ namespace StartUpProject.Quests.QuestStages
             DeadUnitListener.DeathSomeUnit += OnSomeUnitDeath;
         }
 
+        public KillUnitStage():base()
+        {
+            Targets = new List<KillUnitStageGroup>();
+            DeadUnitListener.DeathSomeUnit += OnSomeUnitDeath;
+        }
+
         private List<KillUnitStageGroup> Targets { get; set; }
 
         public void AddTarget(Unit target, int reqAmount)

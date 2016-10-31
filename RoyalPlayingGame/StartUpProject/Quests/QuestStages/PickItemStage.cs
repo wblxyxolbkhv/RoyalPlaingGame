@@ -23,6 +23,12 @@ namespace StartUpProject.Quests.QuestStages
             Unit.QuestItemDroped += OnItemDroped;
         }
 
+        public PickItemStage():base()
+        {
+            Unit.QuestItemPicked += OnItemPicked;
+            Unit.QuestItemDroped += OnItemDroped;
+        }
+
         private List<Item> PickedQuestItems { get; set; }
 
         public void AddQuestItem(int ID, string name, int maxAmount)
@@ -31,9 +37,9 @@ namespace StartUpProject.Quests.QuestStages
             PickedQuestItems.Add(item);
         }
 
-        public void RemoveQuestItem()
+        public void RemoveQuestItem(Item item)
         {
-
+            PickedQuestItems.Remove(item);
         }
         private void OnItemDroped(int ID)
         {

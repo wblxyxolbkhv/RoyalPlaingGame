@@ -77,7 +77,6 @@
     <Compile Include="Quests\QuestStage.cs" />
     <Compile Include="Quests\QuestStages\KillUnitStageGroup.cs" />
     <Compile Include="Quests\QuestStages\PickItemStage.cs" />
-    <Compile Include="Quests\QuestManager.cs" />
     <Compile Include="Quests\QuestStages\ToPointStage.cs" />
     <Compile Include="Quests\QuestStages\ToUnitStage.cs" />
     <Compile Include="Spells\AutoAttack.cs" />
