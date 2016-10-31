@@ -21,6 +21,10 @@ namespace StartUpProject.Quests.QuestStages
             TriggersColiisionsListener.TriggerCollisionDetected += OnTriggerDetected;
         }
 
+        public ToPointStage():base()
+        {
+
+        }
         private List<int> PointsID { get; set; }
 
         public void AddPoint(int ID)

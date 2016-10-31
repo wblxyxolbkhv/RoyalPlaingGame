@@ -23,6 +23,16 @@ namespace StartUpProject.Quests
             QuestStageName = name;
             QuestStageDescription = description;
             QuestStageIndex = index;
+            QuestStageMoneyReward = 0;
+            QuestStageExperienceReward = 10;
+            QuestStageItemReward = new List<Item>();
+        }
+
+        public QuestStage()
+        {
+            QuestStageMoneyReward = 0;
+            QuestStageExperienceReward = 10;
+            QuestStageItemReward = new List<Item>();
         }
         public static event Action QuestStageCompleted;
         public int QuestStageMoneyReward { get; set; }
