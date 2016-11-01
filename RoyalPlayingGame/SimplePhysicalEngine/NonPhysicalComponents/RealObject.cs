@@ -130,7 +130,8 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             double step = SpeedX;
             foreach (RealObject ro in NearbyObjects)
             {
-                
+                if (ro.ID == 0)
+                    continue;
                 if (this.Position.Y - ro.Position.Y >= 0 && this.Position.Y - ro.Position.Y < this.Height ||
                     this.Position.Y - ro.Position.Y <= 0 && ro.Position.Y - this.Position.Y < ro.Height)
                 {
@@ -152,6 +153,8 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             double step = SpeedX;
             foreach (RealObject ro in NearbyObjects)
             {
+                if (ro.ID == 0)
+                    continue;
                 if (this.Position.Y - ro.Position.Y >= 0 && this.Position.Y - ro.Position.Y < ro.Height ||
                     this.Position.Y - ro.Position.Y <= 0 && ro.Position.Y - this.Position.Y < this.Height)
                 {

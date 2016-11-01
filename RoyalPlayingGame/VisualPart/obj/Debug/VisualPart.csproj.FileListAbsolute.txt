@@ -63,3 +63,6 @@ C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\Vi
 C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\VisualPart\bin\Debug\SimplePhysicalEngine.pdb
 C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.ActiveQuestControl.resources
 C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.InventoryPage.resources
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\bin\Debug\SimplePhysicalEngine.dll
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\bin\Debug\SimplePhysicalEngine.pdb
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.ActiveQuestControl.resources

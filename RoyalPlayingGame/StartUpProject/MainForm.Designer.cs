@@ -35,6 +35,7 @@
             this.scaleHP = new VisualPart.UserControls.Scale();
             this.playerMenu1 = new VisualPart.UserControls.PlayerMenu();
             this.choiceBox1 = new VisualPart.UserControls.ChoiceBox();
+            this.activeQuestControl1 = new VisualPart.UserControls.ActiveQuestControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,17 +114,29 @@
             this.choiceBox1.BackColor = System.Drawing.Color.Transparent;
             this.choiceBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("choiceBox1.BackgroundImage")));
             this.choiceBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.choiceBox1.Choice = null;
             this.choiceBox1.Location = new System.Drawing.Point(283, 79);
             this.choiceBox1.Name = "choiceBox1";
             this.choiceBox1.Size = new System.Drawing.Size(547, 163);
             this.choiceBox1.TabIndex = 5;
             this.choiceBox1.Visible = false;
             // 
+            // activeQuestControl1
+            // 
+            this.activeQuestControl1.ActiveQuest = null;
+            this.activeQuestControl1.BackColor = System.Drawing.Color.Transparent;
+            this.activeQuestControl1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.activeQuestControl1.Location = new System.Drawing.Point(411, 24);
+            this.activeQuestControl1.Name = "activeQuestControl1";
+            this.activeQuestControl1.Size = new System.Drawing.Size(244, 73);
+            this.activeQuestControl1.TabIndex = 6;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 603);
+            this.Controls.Add(this.activeQuestControl1);
             this.Controls.Add(this.choiceBox1);
             this.Controls.Add(this.skillPanel1);
             this.Controls.Add(this.scaleMP);
@@ -145,6 +158,7 @@
         private VisualPart.UserControls.Scale scaleMP;
         private VisualPart.UserControls.SkillPanel skillPanel1;
         private VisualPart.UserControls.ChoiceBox choiceBox1;
+        private VisualPart.UserControls.ActiveQuestControl activeQuestControl1;
     }
 }
 

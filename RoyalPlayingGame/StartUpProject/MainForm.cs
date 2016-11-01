@@ -26,6 +26,7 @@ namespace StartUpProject
 
             Level.DialogManager.ChoiceBox = choiceBox1;
 
+            Level.ActiveQuestManager.ActiveQuestControl = activeQuestControl1;
 
             #region Инициализация меню, событий
 

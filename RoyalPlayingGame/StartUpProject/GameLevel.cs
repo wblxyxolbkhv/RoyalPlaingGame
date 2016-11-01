@@ -26,6 +26,9 @@ namespace StartUpProject
 
             DialogManager = new DialogManager();
             DialogManager.Player = Player;
+            
+            ActiveQuestManager = new ActiveQuestManager();
+            ActiveQuestManager.Player = Player.Unit as Player;
 
         }
         ComplexUnit Player { get; set; }
@@ -45,6 +48,7 @@ namespace StartUpProject
 
         public PlayerMenuManager PlayerMenuManager { get; private set; }
         public DialogManager DialogManager { get; private set; }
+        public ActiveQuestManager ActiveQuestManager { get; private set; }
 
         private List<string> HintQueue = new List<string>();
 
@@ -73,6 +77,7 @@ namespace StartUpProject
             // TODO: заменить магическое число 10
             DialogManager.Refresh(10);
             PlayerMenuManager.OnMenuRefresh(sender, e);
+            ActiveQuestManager.OnRefresh();
             Player.OnRefresh(sender, e);
             foreach (ComplexEnemy o in Enemies)
             {
@@ -206,7 +211,7 @@ namespace StartUpProject
             Player.Unit.RealHealth = 200;
             Player.Unit.RealMana = 200;
 
-            Player.RealObject = new RealObject(CollisionDomain, Gravity);
+            Player.RealObject = new RealObject(CollisionDomain, 0, Gravity);
             Player.RealObject.Position = new Vector2(400, 400);
             Player.RealObject.Height = 72;
             Player.RealObject.Width = 72;

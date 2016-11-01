@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveQuestManager.cs" />
     <Compile Include="ComplexEnemy.cs" />
     <Compile Include="ComplexObject.cs" />
     <Compile Include="ComplexSpell.cs" />
