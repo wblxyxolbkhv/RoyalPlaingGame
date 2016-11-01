@@ -21,7 +21,7 @@ namespace RoyalPlayingGame.Spell
             {
                 foreach (Spell spell in SpellBook)
                 {
-                    if (spell.SpellName == index)
+                    if (spell.Name == index)
                         return spell;
                 }
                 throw new IndexOutOfRangeException("Заклинание отсутствует.");

@@ -222,7 +222,7 @@ namespace RoyalPlayingGame.Units
         }
         public bool CheckRequiredLvl(Item.Item item)
         {
-            if (item.ItemLvl >= Level)
+            if (item.Lvl >= Level)
                 return true;
             else return false;
         }

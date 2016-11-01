@@ -16,26 +16,25 @@ namespace RoyalPlayingGame.Quests
         {
             Player = player;
             this.ID = ID;
-            QuestName = name;
-            QuestDescription = description;
+            Name = name;
+            Description = description;
             QuestGiver = giver;
             QuestStages = new List<QuestStage>();
-            IsActive = true;
-            //CurrentQuestStage.QuestStageCompleted += OnNextStage;
+            IsActive = false;
         }
 
         public Quest(int ID, string name, string description)
         {
             this.ID = ID;
-            QuestName = name;
-            QuestDescription = description;
+            Name = name;
+            Description = description;
             QuestStages = new List<QuestStage>();
             IsActive = false;
-            //CurrentQuestStage.QuestStageCompleted+= OnNextStage;
         }
 
         public Quest()
         {
+            IsActive = true;
             QuestStages = new List<QuestStage>();           
         }
 
@@ -56,8 +55,8 @@ namespace RoyalPlayingGame.Quests
         private Player Player { get; set; }
         public List<QuestStage> QuestStages { get; set; }
         public QuestStage CurrentQuestStage { get; set; }
-        public string QuestName { get; set; }
-        public string QuestDescription { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
         public Unit QuestGiver { get; set; }
 
         public void AddQuestStage(QuestStage questStage)
@@ -70,18 +69,6 @@ namespace RoyalPlayingGame.Quests
             }
         }
 
-        private string QuestName1 { get; set; }
-        private string QuestDescription1 { get; set; }
-        private int QuestID { get; set; }
-        private string StageName { get; set; }
-        private string StageDescription { get; set; }
-        private int StageID { get; set; }
-        private string StageType { get; set; }
-        private int ReqAmount { get; set; }
-        private int TargetID { get; set; }
-        private int ItemID { get; set; }
-        private string ItemName { get; set; }
-
 
         public void LoadQuest(string path)
         {
@@ -90,31 +77,13 @@ namespace RoyalPlayingGame.Quests
 
             XmlElement rootElement = questXml.DocumentElement;
             ID = Convert.ToInt32(rootElement.Attributes.GetNamedItem("id").Value);
-            QuestName = rootElement.Attributes.GetNamedItem("name").Value;
-            QuestDescription = rootElement.Attributes.GetNamedItem("description").Value;
-
-            
+            Name = rootElement.Attributes.GetNamedItem("name").Value;
+            Description = rootElement.Attributes.GetNamedItem("description").Value;
 
             foreach (XmlNode xnode in rootElement)
             {
-                StageID = Convert.ToInt32(xnode.Attributes.GetNamedItem("id").Value);
-                StageType = xnode.Attributes.GetNamedItem("type").Value;
-                //foreach(XmlNode stageParams in xnode)
-                //{
-                //    switch(stageParams.Name)
-                //    {
-                //        case "name":
-                //            {
-                //                StageName = stageParams.LastChild.Value;
-                //                break;
-                //            }
-                //        case "description":
-                //            {
-                //                StageDescription = stageParams.LastChild.Value;
-                //                break;
-                //            }
-                //    }
-                //}
+                int StageID = Convert.ToInt32(xnode.Attributes.GetNamedItem("id").Value);
+                string StageType = xnode.Attributes.GetNamedItem("type").Value;
                 switch (StageType)
                 {
                     case "ToPoint":
@@ -127,12 +96,12 @@ namespace RoyalPlayingGame.Quests
                                 {
                                     case "name":
                                         {
-                                            tps.QuestStageName = stageParams.LastChild.Value;
+                                            tps.Name = stageParams.LastChild.Value;
                                             break;
                                         }
                                     case "description":
                                         {
-                                            tps.QuestStageDescription = stageParams.LastChild.Value;
+                                            tps.Description = stageParams.LastChild.Value;
                                             break;
                                         }
                                     case "point":
@@ -147,7 +116,21 @@ namespace RoyalPlayingGame.Quests
                         }
                     case "ToUnit":
                         {
-                            ToUnitStage tus = new ToUnitStage(StageName, StageDescription, StageID);
+                            ToUnitStage tus = new ToUnitStage();
+                            foreach (XmlNode stageParams in xnode)
+                                switch (stageParams.Name)
+                            {
+                                case "name":
+                                    {
+                                        tus.Name = stageParams.LastChild.Value;
+                                        break;
+                                    }
+                                case "description":
+                                    {
+                                        tus.Description = stageParams.LastChild.Value;
+                                        break;
+                                    }
+                            }
                             AddQuestStage(tus);
                             break;
                         }
@@ -160,18 +143,18 @@ namespace RoyalPlayingGame.Quests
                                 {
                                     case "name":
                                         {
-                                            kus.QuestStageName = stageParams.LastChild.Value;
+                                            kus.Name = stageParams.LastChild.Value;
                                             break;
                                         }
                                     case "description":
                                         {
-                                            kus.QuestStageDescription = stageParams.LastChild.Value;
+                                            kus.Description = stageParams.LastChild.Value;
                                             break;
                                         }
                                     case "target":
                                         {
-                                            TargetID = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value));
-                                            ReqAmount = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("amount").Value));
+                                            int TargetID = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value));
+                                            int ReqAmount = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("amount").Value));
                                             kus.AddTarget(TargetID, ReqAmount);
                                             break;
                                         }
@@ -189,20 +172,20 @@ namespace RoyalPlayingGame.Quests
                                 {
                                     case "name":
                                         {
-                                            StageName = stageParams.LastChild.Value;
+                                            pis.Name = stageParams.LastChild.Value;
                                             break;
                                         }
                                     case "description":
                                         {
-                                            StageDescription = stageParams.LastChild.Value;
+                                            pis.Description = stageParams.LastChild.Value;
                                             break;
                                         }
                                     case "item":
                                         {
-                                            ItemID = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value));
-                                            ReqAmount = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("amount").Value));
-                                            ItemName = stageParams.Attributes.GetNamedItem("name").Value;
-                                            pis.AddQuestItem(ItemID, ItemName, ReqAmount);
+                                            int ItemID = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value));
+                                            int ReqAmount = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("amount").Value));
+                                            string Name = stageParams.Attributes.GetNamedItem("name").Value;
+                                            pis.AddQuestItem(ItemID, Name, ReqAmount);
                                             break;
                                         }
                                 }

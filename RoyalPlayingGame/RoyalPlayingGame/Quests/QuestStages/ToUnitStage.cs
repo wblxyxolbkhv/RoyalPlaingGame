@@ -20,5 +20,9 @@ namespace RoyalPlayingGame.Quests.QuestStages
         {
 
         }
+        public ToUnitStage():base()
+        {
+
+        }
     }
 }

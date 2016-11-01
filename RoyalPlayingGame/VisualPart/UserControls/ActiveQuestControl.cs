@@ -34,9 +34,9 @@ namespace VisualPart.UserControls
         }
         private void RefreshLables()
         {
-            labelQuestName.Text = ActiveQuest.QuestName;
+            labelQuestName.Text = ActiveQuest.Name;
 
-            label1.Text = ActiveQuest.CurrentQuestStage.QuestStageName;
+            label1.Text = ActiveQuest.CurrentQuestStage.Name;
 
             if (ActiveQuest.CurrentQuestStage is KillUnitStage)
             {
