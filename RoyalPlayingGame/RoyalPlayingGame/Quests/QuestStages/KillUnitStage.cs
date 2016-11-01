@@ -30,6 +30,12 @@ namespace RoyalPlayingGame.Quests.QuestStages
         }
 
         private List<KillUnitStageGroup> Targets { get; set; }
+        
+        // сраный костыль, надо исправить
+        public KillUnitStageGroup GetCurrentTarget()
+        {
+            return Targets[0];
+        }
 
         public void AddTarget(Unit target, int reqAmount)
         {

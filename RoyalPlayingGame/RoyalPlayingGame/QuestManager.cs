@@ -13,11 +13,11 @@ namespace RoyalPlayingGame
         public static event QuestHandler QuestReceived;
         public static void GiveQuest(int questID)
         {
-            QuestGave(questID);
+            QuestGave?.Invoke(questID);
         }
         public static void ReceiveQuest(int questID)
         {
-            QuestReceived(questID);
+            QuestReceived?.Invoke(questID);
         }
     }
 }

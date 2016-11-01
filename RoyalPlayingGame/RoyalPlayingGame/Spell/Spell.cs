@@ -14,7 +14,7 @@ namespace RoyalPlayingGame.Spell
         public int CurrentCoolDown { get; set; }
         public int CoolDown { get; set; }
         public Timer coolDownTimer { get; set; }
-        public string SpellName { get; set; }
+        public string Name { get; set; }
         public bool Active { get; set; }
         public Spell(int manaCost, int castTime, int coolDown, string spellName)
         {
@@ -24,7 +24,7 @@ namespace RoyalPlayingGame.Spell
             ManaCost = manaCost;
             CastTime = castTime;
             CoolDown = coolDown;
-            SpellName = spellName;
+            Name = spellName;
             Active = true;
         }
 

@@ -41,6 +41,7 @@ namespace RoyalPlayingGame.Quests.QuestStages
         {
             PickedQuestItems.Remove(item);
         }
+
         private void OnItemDroped(int ID)
         {
             foreach(Item.Item item in PickedQuestItems)

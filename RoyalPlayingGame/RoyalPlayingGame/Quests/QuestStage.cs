@@ -11,36 +11,33 @@ namespace RoyalPlayingGame.Quests
     {
         public QuestStage(int moneyReward, int experieneReward, List<Item.Item> itemReward, string name, string description, int index)
         {
-            QuestStageName = name;
-            QuestStageDescription = description;
-            //QuestStageIndex = index;
-            QuestStageExperienceReward = experieneReward;
-            QuestStageItemReward = itemReward;
-            QuestStageMoneyReward = moneyReward;
+            Name = name;
+            Description = description;
+            ExperienceReward = experieneReward;
+            ItemReward = itemReward;
+            MoneyReward = moneyReward;
         }
         public QuestStage(string name, string description, int index)
         {
-            QuestStageName = name;
-            QuestStageDescription = description;
-            //QuestStageIndex = index;
-            QuestStageMoneyReward = 0;
-            QuestStageExperienceReward = 10;
-            QuestStageItemReward = new List<Item.Item>();
+            Name = name;
+            Description = description;
+            MoneyReward = 0;
+            ExperienceReward = 10;
+            ItemReward = new List<Item.Item>();
         }
 
         public QuestStage()
         {
-            QuestStageMoneyReward = 0;
-            QuestStageExperienceReward = 10;
-            QuestStageItemReward = new List<Item.Item>();
+            MoneyReward = 0;
+            ExperienceReward = 10;
+            ItemReward = new List<Item.Item>();
         }
         public event Action QuestStageCompleted;
-        public int QuestStageMoneyReward { get; set; }
-        public List<Item.Item> QuestStageItemReward { get; set; }
-        public int QuestStageExperienceReward { get; set; }
-        public string QuestStageName { get; set; }
-        public string QuestStageDescription { get; set; }
-        //public int QuestStageIndex { get; set; }
+        public int MoneyReward { get; set; }
+        public List<Item.Item> ItemReward { get; set; }
+        public int ExperienceReward { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
         public void CallQSCEvent()
         {

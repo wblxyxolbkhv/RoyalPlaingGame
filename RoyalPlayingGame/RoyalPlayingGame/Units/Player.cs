@@ -32,10 +32,10 @@ namespace RoyalPlayingGame.Units
             SpellBook.AddSpell(frost);
             SpellBook.AddSpell(breath);
             SpellBook.AddSpell(wave);
-            SpellHotKey1 = SpellBook[fireBall.SpellName];
-            SpellHotKey2 = SpellBook[frost.SpellName];
-            SpellHotKey3 = SpellBook[breath.SpellName];
-            SpellHotKey4 = SpellBook[wave.SpellName];
+            SpellHotKey1 = SpellBook[fireBall.Name];
+            SpellHotKey2 = SpellBook[frost.Name];
+            SpellHotKey3 = SpellBook[breath.Name];
+            SpellHotKey4 = SpellBook[wave.Name];
         }
         public int experience;
         public List<Quest> QuestJournal { get; set; }
