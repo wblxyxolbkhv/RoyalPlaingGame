@@ -49,6 +49,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ActiveQuestControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ActiveQuestControl.Designer.cs">
+      <DependentUpon>ActiveQuestControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ChoiceBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ActiveQuestControl.resx">
+      <DependentUpon>ActiveQuestControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ChoiceBox.resx">
       <DependentUpon>ChoiceBox.cs</DependentUpon>

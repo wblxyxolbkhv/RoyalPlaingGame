@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RoyalPlayingGame.Spell;
 using System.Windows.Forms;
+using RoyalPlayingGame.Quests;
 
 namespace RoyalPlayingGame.Units
 {
@@ -13,7 +14,7 @@ namespace RoyalPlayingGame.Units
         public Player():base()
         {
             
-            QuestJournal = new List<Quest.Quest>();
+            QuestJournal = new List<Quest>();
             Experience = 0;
             Health = RealHealth = 100;
             Mana = RealMana = 100;
@@ -37,7 +38,7 @@ namespace RoyalPlayingGame.Units
             SpellHotKey4 = SpellBook[wave.SpellName];
         }
         public int experience;
-        public List<Quest.Quest> QuestJournal { get; set; }
+        public List<Quest> QuestJournal { get; set; }
         
         public int Experience
         {
@@ -86,7 +87,7 @@ namespace RoyalPlayingGame.Units
             }
         }
 
-        public void AddQuest(Quest.Quest quest)
+        public void AddQuest(Quest quest)
         {
             QuestJournal.Add(quest);
         }

@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RoyalPlayingGame.Item;
+using RoyalPlayingGame;
 
-namespace StartUpProject.Quests.QuestStages
+namespace RoyalPlayingGame.Quests.QuestStages
 {
     public class ToUnitStage : QuestStage
     {
-        public ToUnitStage(int moneyReward, int experieneReward, List<Item> itemReward, string name, string description, int index) 
+        public ToUnitStage(int moneyReward, int experieneReward, List<Item.Item> itemReward, string name, string description, int index) 
             : base(moneyReward, experieneReward, itemReward, name, description, index)
         {
 

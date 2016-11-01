@@ -9,6 +9,8 @@ using SimplePhysicalEngine;
 using VisualPart;
 using RoyalPlayingGame.Spell;
 using RoyalPlayingGame.Units;
+using RoyalPlayingGame.Quests;
+
 
 namespace StartUpProject.Enemies
 {
@@ -40,6 +42,8 @@ namespace StartUpProject.Enemies
 
             RealObject Trigger1 = new RealObject(CollisionDomain, 1);
             Trigger1.IsTrigger = true;
+            Quest quest = new Quest();
+            quest.LoadQuest("PigeonQuest.xml");
         }
     }
 }

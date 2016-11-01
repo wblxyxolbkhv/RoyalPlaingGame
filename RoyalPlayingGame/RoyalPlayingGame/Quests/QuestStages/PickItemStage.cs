@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using RoyalPlayingGame.Item;
 using RoyalPlayingGame.Units;
 
-namespace StartUpProject.Quests.QuestStages
+namespace RoyalPlayingGame.Quests.QuestStages
 {
     public class PickItemStage : QuestStage
     {
-        public PickItemStage(int moneyReward, int experieneReward, List<Item> itemReward, string name, string description, int index)
+        public PickItemStage(int moneyReward, int experieneReward, List<Item.Item> itemReward, string name, string description, int index)
             : base(moneyReward, experieneReward, itemReward, name, description, index)
         {
             Unit.QuestItemPicked += OnItemPicked;
@@ -29,21 +29,21 @@ namespace StartUpProject.Quests.QuestStages
             Unit.QuestItemDroped += OnItemDroped;
         }
 
-        private List<Item> PickedQuestItems { get; set; }
+        private List<Item.Item> PickedQuestItems { get; set; }
 
         public void AddQuestItem(int ID, string name, int maxAmount)
         {
-            Item item = new Item(name, ID, maxAmount);
+            Item.Item item = new Item.Item(name, ID, maxAmount);
             PickedQuestItems.Add(item);
         }
 
-        public void RemoveQuestItem(Item item)
+        public void RemoveQuestItem(Item.Item item)
         {
             PickedQuestItems.Remove(item);
         }
         private void OnItemDroped(int ID)
         {
-            foreach(Item item in PickedQuestItems)
+            foreach(Item.Item item in PickedQuestItems)
             {
                 if (item.ID == ID)
                 if (item.Amount > 0)
@@ -53,12 +53,12 @@ namespace StartUpProject.Quests.QuestStages
 
         private void OnItemPicked(int ID)
         {
-         foreach (Item item in PickedQuestItems)
+         foreach (Item.Item item in PickedQuestItems)
             {
                 if (item.ID == ID)
                     item.Amount++;
             }
-         foreach(Item item in PickedQuestItems)
+         foreach(Item.Item item in PickedQuestItems)
             {
                 if (item.Amount < item.MaxAmount)
                     return;

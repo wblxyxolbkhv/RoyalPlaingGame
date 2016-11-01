@@ -23,3 +23,6 @@ C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGam
 C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.pdb
 C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\RoyalPlayingGame.dll
 C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\RoyalPlayingGame.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.csprojResolveAssemblyReference.cache
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\SimplePhysicalEngine.dll
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\SimplePhysicalEngine.pdb

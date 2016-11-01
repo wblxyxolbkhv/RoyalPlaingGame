@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RoyalPlayingGame.Units;
 
-namespace StartUpProject.Quests.QuestStages
+namespace RoyalPlayingGame.Quests.QuestStages
 {
     public class KillUnitStageGroup
     {

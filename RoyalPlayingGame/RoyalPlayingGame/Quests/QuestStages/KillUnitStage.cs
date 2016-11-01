@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RoyalPlayingGame.Quest.QuestStages;
 using RoyalPlayingGame;
-using RoyalPlayingGame.Item;
+using RoyalPlayingGame.Item.Items;
 using RoyalPlayingGame.Units;
 
-namespace StartUpProject.Quests.QuestStages
+namespace RoyalPlayingGame.Quests.QuestStages
 {
     public class KillUnitStage:QuestStage
     {
-        public KillUnitStage(int moneyReward, int experieneReward, List<Item> itemReward, string name, string description, int index)
+        public KillUnitStage(int moneyReward, int experieneReward, List<Item.Item> itemReward, string name, string description, int index)
             : base(moneyReward, experieneReward, itemReward, name, description, index)
         {
             Targets = new List<KillUnitStageGroup>();

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using RoyalPlayingGame.Units;
 using RoyalPlayingGame.Item;
 using System.Xml;
-using StartUpProject.Quests.QuestStages;
+using RoyalPlayingGame.Quests.QuestStages;
 
-namespace StartUpProject.Quests
+namespace RoyalPlayingGame.Quests
 {
     public class Quest
     {
@@ -21,7 +21,7 @@ namespace StartUpProject.Quests
             QuestGiver = giver;
             QuestStages = new List<QuestStage>();
             IsActive = true;
-            QuestStage.QuestStageCompleted += OnNextStage;
+            //CurrentQuestStage.QuestStageCompleted += OnNextStage;
         }
 
         public Quest(int ID, string name, string description)
@@ -31,13 +31,22 @@ namespace StartUpProject.Quests
             QuestDescription = description;
             QuestStages = new List<QuestStage>();
             IsActive = false;
-            QuestStage.QuestStageCompleted += OnNextStage;
+            //CurrentQuestStage.QuestStageCompleted+= OnNextStage;
+        }
+
+        public Quest()
+        {
+            QuestStages = new List<QuestStage>();           
         }
 
         private void OnNextStage()
         {
-            if (CurrentQuestStage.QuestStageIndex < QuestStages.Count)
-                CurrentQuestStage = QuestStages[CurrentQuestStage.QuestStageIndex + 1];
+            if (QuestStages.IndexOf(CurrentQuestStage) < QuestStages.Count-1)
+            {
+                CurrentQuestStage.QuestStageCompleted -= OnNextStage;
+                CurrentQuestStage = QuestStages[QuestStages.IndexOf(CurrentQuestStage) +1];
+                CurrentQuestStage.QuestStageCompleted += OnNextStage;
+            }
             else QuestCompleted?.Invoke();
         }
 
@@ -54,9 +63,10 @@ namespace StartUpProject.Quests
         public void AddQuestStage(QuestStage questStage)
         {
             QuestStages.Add(questStage);
-            if (questStage.QuestStageIndex == 1)
+            if (QuestStages.IndexOf(questStage) == 1)
             {
                 CurrentQuestStage = questStage;
+                CurrentQuestStage.QuestStageCompleted += OnNextStage;
             }
         }
 
@@ -73,17 +83,17 @@ namespace StartUpProject.Quests
         private string ItemName { get; set; }
 
 
-        private void LoadQuest(string path)
+        public void LoadQuest(string path)
         {
             XmlDocument questXml = new XmlDocument();
             questXml.Load(path);
 
             XmlElement rootElement = questXml.DocumentElement;
-            QuestID = Convert.ToInt32(rootElement.Attributes.GetNamedItem("id").Value);
-            QuestName1 = rootElement.Attributes.GetNamedItem("name").Value;
-            QuestDescription1 = rootElement.Attributes.GetNamedItem("description").Value;
+            ID = Convert.ToInt32(rootElement.Attributes.GetNamedItem("id").Value);
+            QuestName = rootElement.Attributes.GetNamedItem("name").Value;
+            QuestDescription = rootElement.Attributes.GetNamedItem("description").Value;
 
-            Quest quest = new Quest(QuestID, QuestName1, QuestDescription1);
+            
 
             foreach (XmlNode xnode in rootElement)
             {
@@ -110,6 +120,7 @@ namespace StartUpProject.Quests
                     case "ToPoint":
                         {
                             ToPointStage tps = new ToPointStage();
+                            
                             foreach (XmlNode stageParams in xnode)
                             {
                                 switch (stageParams.Name)
@@ -124,23 +135,20 @@ namespace StartUpProject.Quests
                                             tps.QuestStageDescription = stageParams.LastChild.Value;
                                             break;
                                         }
-                                    case "Point":
+                                    case "point":
                                         {
                                             tps.AddPoint(Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value));
                                             break;
                                         }
                                 }
                             }
-
-
-                            quest.QuestStages.Add(tps);
-
+                            AddQuestStage(tps);
                             break;
                         }
                     case "ToUnit":
                         {
                             ToUnitStage tus = new ToUnitStage(StageName, StageDescription, StageID);
-                            quest.QuestStages.Add(tus);
+                            AddQuestStage(tus);
                             break;
                         }
                     case "KillUnit":
@@ -152,12 +160,12 @@ namespace StartUpProject.Quests
                                 {
                                     case "name":
                                         {
-                                            StageName = stageParams.LastChild.Value;
+                                            kus.QuestStageName = stageParams.LastChild.Value;
                                             break;
                                         }
                                     case "description":
                                         {
-                                            StageDescription = stageParams.LastChild.Value;
+                                            kus.QuestStageDescription = stageParams.LastChild.Value;
                                             break;
                                         }
                                     case "target":
@@ -169,8 +177,7 @@ namespace StartUpProject.Quests
                                         }
                                 }
                             }
-                            //KillUnitStage kus = new KillUnitStage(StageName, StageDescription, StageID);
-                            quest.QuestStages.Add(kus);
+                            AddQuestStage(kus);
                             break;
                         }
                     case "PickItem":
@@ -200,9 +207,7 @@ namespace StartUpProject.Quests
                                         }
                                 }
                             }
-
-                            //pis.AddQuestItem(ItemID, ItemName, ReqAmount);
-                            quest.QuestStages.Add(pis);
+                            AddQuestStage(pis);
                             break;
                         }
                 }
