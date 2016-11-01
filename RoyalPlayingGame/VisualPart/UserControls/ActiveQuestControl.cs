@@ -40,6 +40,7 @@ namespace VisualPart.UserControls
 
             if (ActiveQuest.CurrentQuestStage is KillUnitStage)
             {
+
                 label2.Text = string.Format("Убито {0}/{1}");
             }
         }
