@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.activeQuestControl1 = new VisualPart.UserControls.ActiveQuestControl();
+            this.choiceBox1 = new VisualPart.UserControls.ChoiceBox();
             this.skillPanel1 = new VisualPart.UserControls.SkillPanel();
             this.scaleMP = new VisualPart.UserControls.Scale();
             this.scaleHP = new VisualPart.UserControls.Scale();
             this.playerMenu1 = new VisualPart.UserControls.PlayerMenu();
-            this.choiceBox1 = new VisualPart.UserControls.ChoiceBox();
-            this.activeQuestControl1 = new VisualPart.UserControls.ActiveQuestControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,6 +49,28 @@
             this.pictureBox1.Size = new System.Drawing.Size(1008, 603);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // activeQuestControl1
+            // 
+            this.activeQuestControl1.ActiveQuest = null;
+            this.activeQuestControl1.BackColor = System.Drawing.Color.Transparent;
+            this.activeQuestControl1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.activeQuestControl1.Location = new System.Drawing.Point(410, 13);
+            this.activeQuestControl1.Name = "activeQuestControl1";
+            this.activeQuestControl1.Size = new System.Drawing.Size(244, 73);
+            this.activeQuestControl1.TabIndex = 6;
+            // 
+            // choiceBox1
+            // 
+            this.choiceBox1.BackColor = System.Drawing.Color.Transparent;
+            this.choiceBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("choiceBox1.BackgroundImage")));
+            this.choiceBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.choiceBox1.Choice = null;
+            this.choiceBox1.Location = new System.Drawing.Point(283, 79);
+            this.choiceBox1.Name = "choiceBox1";
+            this.choiceBox1.Size = new System.Drawing.Size(547, 163);
+            this.choiceBox1.TabIndex = 5;
+            this.choiceBox1.Visible = false;
             // 
             // skillPanel1
             // 
@@ -108,28 +130,6 @@
             this.playerMenu1.Strengh = 0;
             this.playerMenu1.TabIndex = 1;
             this.playerMenu1.Visible = false;
-            // 
-            // choiceBox1
-            // 
-            this.choiceBox1.BackColor = System.Drawing.Color.Transparent;
-            this.choiceBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("choiceBox1.BackgroundImage")));
-            this.choiceBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.choiceBox1.Choice = null;
-            this.choiceBox1.Location = new System.Drawing.Point(283, 79);
-            this.choiceBox1.Name = "choiceBox1";
-            this.choiceBox1.Size = new System.Drawing.Size(547, 163);
-            this.choiceBox1.TabIndex = 5;
-            this.choiceBox1.Visible = false;
-            // 
-            // activeQuestControl1
-            // 
-            this.activeQuestControl1.ActiveQuest = null;
-            this.activeQuestControl1.BackColor = System.Drawing.Color.Transparent;
-            this.activeQuestControl1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.activeQuestControl1.Location = new System.Drawing.Point(411, 24);
-            this.activeQuestControl1.Name = "activeQuestControl1";
-            this.activeQuestControl1.Size = new System.Drawing.Size(244, 73);
-            this.activeQuestControl1.TabIndex = 6;
             // 
             // MainForm
             // 

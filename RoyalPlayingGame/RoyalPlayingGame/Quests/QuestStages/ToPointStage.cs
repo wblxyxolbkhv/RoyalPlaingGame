@@ -13,34 +13,43 @@ namespace RoyalPlayingGame.Quests.QuestStages
         public ToPointStage(int moneyReward, int experieneReward, List<Item.Item> itemReward, string name, string description, int index) 
             : base(moneyReward, experieneReward, itemReward, name, description, index)
         {
-            PointsID = new List<int>();
+            Points = new List<ToPointStageGroup>();
             TriggersColiisionsListener.TriggerCollisionDetected += OnTriggerDetected;
         }
 
         public ToPointStage(string name,string description, int index):base(name,description,index)
         {
-            PointsID = new List<int>();
+            Points = new List<ToPointStageGroup>();
             TriggersColiisionsListener.TriggerCollisionDetected += OnTriggerDetected;
         }
 
         public ToPointStage():base()
         {
-            PointsID = new List<int>();
+            Points = new List<ToPointStageGroup>();
             TriggersColiisionsListener.TriggerCollisionDetected += OnTriggerDetected;
         }
 
-        private List<int> PointsID { get; set; }
+        private List<ToPointStageGroup> Points { get; set; }
 
-        public void AddPoint(int ID)
+        public ToPointStageGroup GetCurrentPoint()
         {
-            PointsID.Add(ID);
+            return Points[0];
+        }
+        public void AddPoint(ToPointStageGroup tpsg)
+        {
+            Points.Add(tpsg);
+        }
+        public void AddPoint(int ID, string objective)
+        {
+            ToPointStageGroup tpsg = new ToPointStageGroup(ID, objective);
+            Points.Add(tpsg);
         }
 
         private void OnTriggerDetected(int TriggerID)
         {
-            foreach (int ID in PointsID)
+            foreach (ToPointStageGroup tpsg in Points)
             {
-                if (ID == TriggerID)
+                if (tpsg.ID == TriggerID)
                 {
                     CallQSCEvent();
                 }

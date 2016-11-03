@@ -38,7 +38,7 @@ namespace RoyalPlayingGame.Units
             SpellHotKey4 = SpellBook[wave.Name];
         }
         public int experience;
-        public List<Quest> QuestJournal { get; set; }
+        public List<Quest> QuestJournal { get; set; } = null;
         
         public int Experience
         {

@@ -7,6 +7,7 @@ using RoyalPlayingGame.Units;
 using RoyalPlayingGame.Item;
 using System.Xml;
 using RoyalPlayingGame.Quests.QuestStages;
+using RoyalPlayingGame.Journal;
 
 namespace RoyalPlayingGame.Quests
 {
@@ -21,6 +22,7 @@ namespace RoyalPlayingGame.Quests
             QuestGiver = giver;
             QuestStages = new List<QuestStage>();
             IsActive = false;
+            Notes = new List<JournalNote>();
         }
 
         public Quest(int ID, string name, string description)
@@ -30,12 +32,14 @@ namespace RoyalPlayingGame.Quests
             Description = description;
             QuestStages = new List<QuestStage>();
             IsActive = false;
+            Notes = new List<JournalNote>();
         }
 
         public Quest()
         {
             IsActive = true;
-            QuestStages = new List<QuestStage>();           
+            QuestStages = new List<QuestStage>();
+            Notes = new List<JournalNote>();         
         }
 
         private void OnNextStage()
@@ -49,6 +53,7 @@ namespace RoyalPlayingGame.Quests
             else QuestCompleted?.Invoke();
         }
 
+        public List<JournalNote> Notes { get; set; }
         public int ID { get; set; }
         public bool IsActive { get; set; }
         public static event Action QuestCompleted;
@@ -106,7 +111,7 @@ namespace RoyalPlayingGame.Quests
                                         }
                                     case "point":
                                         {
-                                            tps.AddPoint(Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value));
+                                            tps.AddPoint(Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value), stageParams.Attributes.GetNamedItem("objective").Value);
                                             break;
                                         }
                                 }
@@ -153,9 +158,10 @@ namespace RoyalPlayingGame.Quests
                                         }
                                     case "target":
                                         {
-                                            int TargetID = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value));
-                                            int ReqAmount = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("amount").Value));
-                                            kus.AddTarget(TargetID, ReqAmount);
+                                            int targetID = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value));
+                                            int reqAmount = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("amount").Value));
+                                            string objective = stageParams.Attributes.GetNamedItem("objective").Value;
+                                            kus.AddTarget(targetID, reqAmount,objective);
                                             break;
                                         }
                                 }
@@ -182,10 +188,11 @@ namespace RoyalPlayingGame.Quests
                                         }
                                     case "item":
                                         {
-                                            int ItemID = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value));
-                                            int ReqAmount = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("amount").Value));
-                                            string Name = stageParams.Attributes.GetNamedItem("name").Value;
-                                            pis.AddQuestItem(ItemID, Name, ReqAmount);
+                                            int itemID = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value));
+                                            int reqAmount = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("amount").Value));
+                                            string name = stageParams.Attributes.GetNamedItem("name").Value;
+                                            string objective = stageParams.Attributes.GetNamedItem("objective").Value;
+                                            pis.AddQuestItem(itemID, name, reqAmount, objective);
                                             break;
                                         }
                                 }

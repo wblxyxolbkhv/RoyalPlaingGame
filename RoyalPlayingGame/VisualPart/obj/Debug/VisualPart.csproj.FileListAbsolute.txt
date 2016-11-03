@@ -66,3 +66,5 @@ C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\Vi
 C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\bin\Debug\SimplePhysicalEngine.dll
 C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\bin\Debug\SimplePhysicalEngine.pdb
 C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.ActiveQuestControl.resources
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.CallJournalButton.resources
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.Journal.resources

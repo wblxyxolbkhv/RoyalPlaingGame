@@ -37,14 +37,14 @@ namespace RoyalPlayingGame.Quests.QuestStages
             return Targets[0];
         }
 
-        public void AddTarget(Unit target, int reqAmount)
+        public void AddTarget(Unit target, int reqAmount, string objective)
         {
-            KillUnitStageGroup kusg = new KillUnitStageGroup(target, reqAmount);
+            KillUnitStageGroup kusg = new KillUnitStageGroup(target, reqAmount,objective);
             Targets.Add(kusg);
         }
-        public void AddTarget(int ID,int reqAmount)
+        public void AddTarget(int ID,int reqAmount,string objective)
         {
-            KillUnitStageGroup kusg = new KillUnitStageGroup(ID, reqAmount);
+            KillUnitStageGroup kusg = new KillUnitStageGroup(ID, reqAmount,objective);
             Targets.Add(kusg);
         }
         public void AddTarget(KillUnitStageGroup kusg)

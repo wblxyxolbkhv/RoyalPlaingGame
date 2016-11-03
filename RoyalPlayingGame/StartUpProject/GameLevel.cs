@@ -49,7 +49,7 @@ namespace StartUpProject
         public PlayerMenuManager PlayerMenuManager { get; private set; }
         public DialogManager DialogManager { get; private set; }
         public ActiveQuestManager ActiveQuestManager { get; private set; }
-
+     
         private List<string> HintQueue = new List<string>();
 
         public void OnPrintAllObjects(object sender, PaintEventArgs e)
@@ -72,6 +72,7 @@ namespace StartUpProject
         }
         public void OnRefresh(object sender, EventArgs e)
         {
+            OnPositionRefresh();
             CheckTemporaryObjects();
             RemoveRealObjects();
             // TODO: заменить магическое число 10
@@ -188,15 +189,16 @@ namespace StartUpProject
 
             CameraBias = 0;
 
-            
+            CreateTriggers();
 
             DebugBear bear = new DebugBear(new List<RealObject>(), null);
             bear.RealObject.Position = new Vector2(600, 440);
 
-            //Minotaur enemy = new Minotaur(CollisionDomain, Gravity);
+            Minotaur enemy = new Minotaur(CollisionDomain, Gravity);
 
-            //enemy.RealObject.Position = new Vector2(600, 400);
-            //enemy.RealObject.CollisionDetected += OnCollisionDetected;
+            enemy.RealObject.Position = new Vector2(2000, 400);
+            enemy.RealObject.CollisionDetected += OnCollisionDetected;
+            Enemies.Add(enemy);
 
             NPCs.Add(bear);
         }
@@ -434,6 +436,30 @@ namespace StartUpProject
                 DialogManager.TalkingObject = unit;
                 HintQueue.Clear();
             }
+        }
+        // убрать это дерьмо
+        int a = 1000;
+        private void OnPositionRefresh()
+        {
+            a -= 20;
+            if (a < 0)
+            {
+                a = 1000;
+                CreateTemporaryTitle(string.Format("{0}:{1}", Player.RealObject.Position.X, Player.RealObject.Position.Y),
+                    new Vector2(Player.RealObject.Position.X, Player.RealObject.Position.Y),
+                    false);
+            }
+            //HintQueue.Add(string.Format("{0}:{1}", Player.RealObject.Position.X, Player.RealObject.Position.Y));
+        }
+        private void CreateTriggers()
+        {
+
+            RealObject Trigger1 = new RealObject(CollisionDomain, 1);
+            Trigger1.Position = new Vector2(2000, 400);
+            Trigger1.Height = 100;
+            Trigger1.Width = 100;
+            CollisionDomain.Add(Trigger1);
+            Trigger1.IsTrigger = true;
         }
     }
 }

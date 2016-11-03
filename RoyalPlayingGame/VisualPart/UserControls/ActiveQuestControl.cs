@@ -46,12 +46,13 @@ namespace VisualPart.UserControls
             {
                 KillUnitStage kus = ActiveQuest.CurrentQuestStage as KillUnitStage;
                 KillUnitStageGroup k = kus.GetCurrentTarget();
-                label2.Text = string.Format("Убито минотавров {0}/{1}", k.CurrentAmount, k.RequiredAmount);
+                label2.Text = string.Format("{0} {1}/{2}", k.Objective, k.CurrentAmount, k.RequiredAmount);
             } 
             else if (ActiveQuest.CurrentQuestStage is ToPointStage)
             {
-                ToPointStage kus = ActiveQuest.CurrentQuestStage as ToPointStage;
-                label2.Text = string.Format("Дойти до места 0/1");
+                ToPointStage tps = ActiveQuest.CurrentQuestStage as ToPointStage;
+                ToPointStageGroup t = tps.GetCurrentPoint();
+                label2.Text = string.Format("{0} 0/1", t.Objective);
             }
         }
 

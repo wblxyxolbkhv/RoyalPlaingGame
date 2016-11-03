@@ -53,13 +53,17 @@
     <Compile Include="Exceptions\NoManaException.cs" />
     <Compile Include="Exceptions\NotAQuestItemException.cs" />
     <Compile Include="Exceptions\SpellCoolDownException.cs" />
+    <Compile Include="Journal\JournalNote.cs" />
+    <Compile Include="Journal\PlayerJournal.cs" />
     <Compile Include="QuestManager.cs" />
     <Compile Include="Quests\Quest.cs" />
     <Compile Include="Quests\QuestStage.cs" />
     <Compile Include="Quests\QuestStages\KillUnitStage.cs" />
     <Compile Include="Quests\QuestStages\KillUnitStageGroup.cs" />
     <Compile Include="Quests\QuestStages\PickItemStage.cs" />
+    <Compile Include="Quests\QuestStages\PickItemStageGroup.cs" />
     <Compile Include="Quests\QuestStages\ToPointStage.cs" />
+    <Compile Include="Quests\QuestStages\ToPointStageGroup.cs" />
     <Compile Include="Quests\QuestStages\ToUnitStage.cs" />
     <Compile Include="Spell\NegativeSpells\DragonBreath.cs" />
     <Compile Include="Spell\NegativeSpells\FrostDragonHead.cs" />

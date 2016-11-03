@@ -32,6 +32,7 @@ namespace RoyalPlayingGame.Quests
             ExperienceReward = 10;
             ItemReward = new List<Item.Item>();
         }
+        //public List<string> Objective { get; set; }
         public event Action QuestStageCompleted;
         public int MoneyReward { get; set; }
         public List<Item.Item> ItemReward { get; set; }

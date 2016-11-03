@@ -4,11 +4,16 @@
 	<stage id = "1" type = "KillUnit">
 		<name>Порешай голубя </name>
 		<description>Они говорили, что голубей сложно поймать.. Мне показалось это забавно.</description>
-    <target id ="1001" amount ="1"></target>
+    <target id ="1001" amount ="1" objective ="Убито голубей"></target>
 	</stage>
 	<stage id = "2" type = "ToPoint">
 		<name>Вернуться назад </name>
 		<description>А по дороге попытайся понять причем тут голуби.</description>
-    <point id ="1"></point>
+    <point id ="1" objective ="Вернуться к ДебагБиру"></point>
+	</stage>
+    <stage id = "3" type = "KillUnit">
+		<name>Порешай голубя </name>
+		<description>Они говорили, что голубей сложно поймать.. Мне показалось это забавно.</description>
+    <target id ="1001" amount ="1" objective ="Убито голубей"></target>
 	</stage>
 </quest> 

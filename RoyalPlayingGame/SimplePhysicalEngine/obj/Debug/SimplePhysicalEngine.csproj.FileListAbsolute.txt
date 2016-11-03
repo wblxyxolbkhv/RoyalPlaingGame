@@ -17,3 +17,4 @@ C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGam
 C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\SimplePhysicalEngine\obj\Debug\SimplePhysicalEngine.csprojResolveAssemblyReference.cache
 C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\SimplePhysicalEngine\obj\Debug\SimplePhysicalEngine.dll
 C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\SimplePhysicalEngine\obj\Debug\SimplePhysicalEngine.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\SimplePhysicalEngine\obj\Debug\SimplePhysicalEngine.csprojResolveAssemblyReference.cache
