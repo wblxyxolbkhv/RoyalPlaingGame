@@ -11,7 +11,7 @@ namespace RoyalPlayingGame.Dialogs
     /// </summary>
     public class PlayerChoice : Replic
     {
-        public PlayerChoice()
+        public PlayerChoice() : base()
         {
             Answers = new List<Answer>();
             Duration = 100000;

@@ -13,6 +13,8 @@ namespace RoyalPlayingGame
         public static event DeathSomeUnitHandler DeathSomeUnit;
         public static void SomeUnitDeath(Unit unit)
         {
+            if (unit == null)
+                return;
             DeathSomeUnit?.Invoke(unit);
         }
     }

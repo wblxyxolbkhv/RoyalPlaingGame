@@ -11,7 +11,7 @@ namespace RoyalPlayingGame.Dialogs
     /// </summary>
     public class Answer : Replic
     {
-        public Answer()
+        public Answer() : base()
         {
             PlayerPhrases = new List<string>();
         }

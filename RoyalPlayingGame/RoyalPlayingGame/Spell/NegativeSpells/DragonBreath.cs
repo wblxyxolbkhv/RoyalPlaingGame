@@ -11,7 +11,7 @@ namespace RoyalPlayingGame.Spell.NegativeSpells
         public const string name = "dragonBreath";
         public const int castTime = 2;
         public const int manaCost = 50;
-        public const int coolDown = 10;
+        public const int coolDown = 1;
         public DragonBreath(int realIntelligence, int realAgility):base(realIntelligence,realAgility,name,castTime,manaCost,coolDown)
         {
             BasicSpellDamage = 50;

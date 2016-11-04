@@ -7,6 +7,7 @@ using RoyalPlayingGame.Units;
 using RoyalPlayingGame.Item;
 using System.Xml;
 using RoyalPlayingGame.Quests.QuestStages;
+using RoyalPlayingGame.Journal;
 
 namespace RoyalPlayingGame.Quests
 {
@@ -21,6 +22,7 @@ namespace RoyalPlayingGame.Quests
             QuestGiver = giver;
             QuestStages = new List<QuestStage>();
             IsActive = false;
+            Notes = new List<JournalNote>();
         }
 
         public Quest(int ID, string name, string description)
@@ -30,12 +32,14 @@ namespace RoyalPlayingGame.Quests
             Description = description;
             QuestStages = new List<QuestStage>();
             IsActive = false;
+            Notes = new List<JournalNote>();
         }
 
         public Quest()
         {
             IsActive = true;
-            QuestStages = new List<QuestStage>();           
+            QuestStages = new List<QuestStage>();
+            Notes = new List<JournalNote>();         
         }
 
         private void OnNextStage()
@@ -49,15 +53,43 @@ namespace RoyalPlayingGame.Quests
             else QuestCompleted?.Invoke();
         }
 
+        public List<JournalNote> Notes { get; set; }
         public int ID { get; set; }
-        public bool IsActive { get; set; }
+        private bool isActive;
+        public bool IsActive
+        {
+            get { return isActive; }
+            set
+            {
+                isActive = value;
+                if (!string.IsNullOrEmpty(ShownReplic))
+                    QuestListener.ReplicShow(Convert.ToInt32(ShownReplic));
+
+                if (!string.IsNullOrEmpty(HiddenReplic))
+                    QuestListener.ReplicHide(Convert.ToInt32(HiddenReplic));
+            }
+        }
         public static event Action QuestCompleted;
         private Player Player { get; set; }
         public List<QuestStage> QuestStages { get; set; }
-        public QuestStage CurrentQuestStage { get; set; }
+        private QuestStage currentQuestStage;
+        public QuestStage CurrentQuestStage
+        {
+            get { return currentQuestStage; }
+            set
+            {
+                if (currentQuestStage!=null)
+                    currentQuestStage.IsCurrent = false;
+                currentQuestStage = value;
+                currentQuestStage.IsCurrent = true;
+            }
+        }
         public string Name { get; set; }
         public string Description { get; set; }
         public Unit QuestGiver { get; set; }
+
+        private string ShownReplic { get; set; }
+        private string HiddenReplic { get; set; }
 
         public void AddQuestStage(QuestStage questStage)
         {
@@ -79,10 +111,15 @@ namespace RoyalPlayingGame.Quests
             ID = Convert.ToInt32(rootElement.Attributes.GetNamedItem("id").Value);
             Name = rootElement.Attributes.GetNamedItem("name").Value;
             Description = rootElement.Attributes.GetNamedItem("description").Value;
+            if (rootElement.Attributes.GetNamedItem("shownReplic") != null)
+                ShownReplic = rootElement.Attributes.GetNamedItem("shownReplic").Value;
+            if (rootElement.Attributes.GetNamedItem("hiddenReplic") != null)
+                HiddenReplic = rootElement.Attributes.GetNamedItem("hiddenReplic").Value;
+
 
             foreach (XmlNode xnode in rootElement)
             {
-                int StageID = Convert.ToInt32(xnode.Attributes.GetNamedItem("id").Value);
+                string StageID = xnode.Attributes.GetNamedItem("id").Value;
                 string StageType = xnode.Attributes.GetNamedItem("type").Value;
                 switch (StageType)
                 {
@@ -106,7 +143,17 @@ namespace RoyalPlayingGame.Quests
                                         }
                                     case "point":
                                         {
-                                            tps.AddPoint(Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value));
+                                            tps.AddPoint(Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value), stageParams.Attributes.GetNamedItem("objective").Value);
+                                            break;
+                                        }
+                                    case "shownReplic":
+                                        {
+                                            tps.ShownReplic = stageParams.Attributes.GetNamedItem("id").Value;
+                                            break;
+                                        }
+                                    case "hiddenReplic":
+                                        {
+                                            tps.HiddenReplic = stageParams.Attributes.GetNamedItem("id").Value;
                                             break;
                                         }
                                 }
@@ -118,7 +165,7 @@ namespace RoyalPlayingGame.Quests
                         {
                             ToUnitStage tus = new ToUnitStage();
                             foreach (XmlNode stageParams in xnode)
-                                switch (stageParams.Name)
+                            switch (stageParams.Name)
                             {
                                 case "name":
                                     {
@@ -129,8 +176,18 @@ namespace RoyalPlayingGame.Quests
                                     {
                                         tus.Description = stageParams.LastChild.Value;
                                         break;
-                                    }
-                            }
+                                        }
+                                    case "shownReplic":
+                                        {
+                                            tus.ShownReplic = stageParams.Attributes.GetNamedItem("id").Value;
+                                            break;
+                                        }
+                                    case "hiddenReplic":
+                                        {
+                                            tus.HiddenReplic = stageParams.Attributes.GetNamedItem("id").Value;
+                                            break;
+                                        }
+                                }
                             AddQuestStage(tus);
                             break;
                         }
@@ -153,9 +210,20 @@ namespace RoyalPlayingGame.Quests
                                         }
                                     case "target":
                                         {
-                                            int TargetID = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value));
-                                            int ReqAmount = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("amount").Value));
-                                            kus.AddTarget(TargetID, ReqAmount);
+                                            int targetID = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value));
+                                            int reqAmount = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("amount").Value));
+                                            string objective = stageParams.Attributes.GetNamedItem("objective").Value;
+                                            kus.AddTarget(targetID, reqAmount,objective);
+                                            break;
+                                        }
+                                    case "shownReplic":
+                                        {
+                                            kus.ShownReplic = stageParams.Attributes.GetNamedItem("id").Value;
+                                            break;
+                                        }
+                                    case "hiddenReplic":
+                                        {
+                                            kus.HiddenReplic = stageParams.Attributes.GetNamedItem("id").Value;
                                             break;
                                         }
                                 }
@@ -182,10 +250,21 @@ namespace RoyalPlayingGame.Quests
                                         }
                                     case "item":
                                         {
-                                            int ItemID = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value));
-                                            int ReqAmount = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("amount").Value));
-                                            string Name = stageParams.Attributes.GetNamedItem("name").Value;
-                                            pis.AddQuestItem(ItemID, Name, ReqAmount);
+                                            int itemID = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value));
+                                            int reqAmount = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("amount").Value));
+                                            string name = stageParams.Attributes.GetNamedItem("name").Value;
+                                            string objective = stageParams.Attributes.GetNamedItem("objective").Value;
+                                            pis.AddQuestItem(itemID, name, reqAmount, objective);
+                                            break;
+                                        }
+                                    case "shownReplic":
+                                        {
+                                            pis.ShownReplic = stageParams.Attributes.GetNamedItem("id").Value;
+                                            break;
+                                        }
+                                    case "hiddenReplic":
+                                        {
+                                            pis.HiddenReplic = stageParams.Attributes.GetNamedItem("id").Value;
                                             break;
                                         }
                                 }
@@ -194,6 +273,7 @@ namespace RoyalPlayingGame.Quests
                             break;
                         }
                 }
+                StageID = ID.ToString() + StageID;
             }
 
         }

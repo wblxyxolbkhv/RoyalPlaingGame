@@ -30,3 +30,7 @@ C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\Ro
 C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\RoyalPlayingGame.pdb
 C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\SimplePhysicalEngine.dll
 C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\SimplePhysicalEngine.pdb
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\SimplePhysicalEngine.dll
+C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\SimplePhysicalEngine.pdb
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\SimplePhysicalEngine.dll
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\SimplePhysicalEngine.pdb

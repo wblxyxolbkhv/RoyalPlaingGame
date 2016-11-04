@@ -30,15 +30,21 @@ namespace RoyalPlayingGame.Quests.QuestStages
         }
 
         private List<KillUnitStageGroup> Targets { get; set; }
-
-        public void AddTarget(Unit target, int reqAmount)
+        
+        // сраный костыль, надо исправить
+        public KillUnitStageGroup GetCurrentTarget()
         {
-            KillUnitStageGroup kusg = new KillUnitStageGroup(target, reqAmount);
+            return Targets[0];
+        }
+
+        public void AddTarget(Unit target, int reqAmount, string objective)
+        {
+            KillUnitStageGroup kusg = new KillUnitStageGroup(target, reqAmount,objective);
             Targets.Add(kusg);
         }
-        public void AddTarget(int ID,int reqAmount)
+        public void AddTarget(int ID,int reqAmount,string objective)
         {
-            KillUnitStageGroup kusg = new KillUnitStageGroup(ID, reqAmount);
+            KillUnitStageGroup kusg = new KillUnitStageGroup(ID, reqAmount,objective);
             Targets.Add(kusg);
         }
         public void AddTarget(KillUnitStageGroup kusg)
@@ -47,6 +53,8 @@ namespace RoyalPlayingGame.Quests.QuestStages
         }
         private void OnSomeUnitDeath(Unit unit)
         {
+            if (!IsCurrent)
+                return;
             foreach(KillUnitStageGroup kusg in Targets)
             {
                 if (kusg.Target.ID == unit.ID)

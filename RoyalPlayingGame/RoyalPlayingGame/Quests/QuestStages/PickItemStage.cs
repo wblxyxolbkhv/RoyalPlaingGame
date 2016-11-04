@@ -29,39 +29,42 @@ namespace RoyalPlayingGame.Quests.QuestStages
             Unit.QuestItemDroped += OnItemDroped;
         }
 
-        private List<Item.Item> PickedQuestItems { get; set; }
+        private List<PickItemStageGroup> PickedQuestItems { get; set; }
 
-        public void AddQuestItem(int ID, string name, int maxAmount)
+        public void AddQuestItem(int ID, string name, int maxAmount, string objective)
         {
             Item.Item item = new Item.Item(name, ID, maxAmount);
-            PickedQuestItems.Add(item);
+            PickItemStageGroup pisg = new PickItemStageGroup(item, objective);
+            PickedQuestItems.Add(pisg);
         }
 
-        public void RemoveQuestItem(Item.Item item)
+        public void RemoveQuestItem(PickItemStageGroup pisg)
         {
-            PickedQuestItems.Remove(item);
+            PickedQuestItems.Remove(pisg);
         }
 
         private void OnItemDroped(int ID)
         {
-            foreach(Item.Item item in PickedQuestItems)
+            foreach(PickItemStageGroup pisg in PickedQuestItems)
             {
-                if (item.ID == ID)
-                if (item.Amount > 0)
-                     item.Amount--;
+                if (pisg.Item.ID == ID)
+                if (pisg.Item.Amount > 0)
+                        pisg.Item.Amount--;
             }
         }
 
         private void OnItemPicked(int ID)
         {
-         foreach (Item.Item item in PickedQuestItems)
+            if (!IsCurrent)
+                return;
+         foreach (PickItemStageGroup pisg in PickedQuestItems)
             {
-                if (item.ID == ID)
-                    item.Amount++;
+                if (pisg.Item.ID == ID)
+                    pisg.Item.Amount++;
             }
-         foreach(Item.Item item in PickedQuestItems)
+         foreach(PickItemStageGroup pisg in PickedQuestItems)
             {
-                if (item.Amount < item.MaxAmount)
+                if (pisg.Item.Amount < pisg.Item.MaxAmount)
                     return;
             }
             CallQSCEvent();

@@ -1,16 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoyalPlayingGame.Dialogs
 {
     public abstract class Replic
     {
-        public string Number
+        public Replic()
+        {
+            QuestListener.ReplicHidden += OnAnyReplicHidden;
+            QuestListener.ReplicShown += OnAnyReplicShown;
+
+            IsHidden = false;
+        }
+
+        private void OnAnyReplicShown(int replicID)
+        {
+            if (replicID.ToString() == ID)
+                IsHidden = false;
+        }
+
+        private void OnAnyReplicHidden(int replicID)
+        {
+            if (replicID.ToString() == ID)
+                IsHidden = true;
+        }
+
+        public string ID
         {
             get;set;
+        }
+        public string Number
+        {
+            get; set;
         }
         public string Next
         {
@@ -27,5 +47,7 @@ namespace RoyalPlayingGame.Dialogs
         public int? GiveQuest { get; set; } = null;
         public int? ReceiveQuest { get; set; } = null;
         public abstract Replic GetNextReplic();
+
+        public bool IsHidden { get; set; }
     }
 }

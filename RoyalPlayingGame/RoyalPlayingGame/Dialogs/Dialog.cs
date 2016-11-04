@@ -20,6 +20,10 @@ namespace RoyalPlayingGame.Dialogs
         {
             get; set;
         } = false;
+        public string ID
+        {
+            get; set;
+        }
         public void LoadDialog(string path)
         {
             XmlDocument dialogXml = new XmlDocument();
@@ -28,6 +32,8 @@ namespace RoyalPlayingGame.Dialogs
             XmlElement rootElement = dialogXml.DocumentElement;
             List<NPCReplic> NPCReplics = new List<NPCReplic>();
             List<PlayerChoice> choices = new List<PlayerChoice>();
+            
+            ID = rootElement.Attributes.GetNamedItem("id").Value;
 
             #region Парсинг xml
             foreach (XmlNode xnode in rootElement)
@@ -38,6 +44,7 @@ namespace RoyalPlayingGame.Dialogs
                         {
                             NPCReplic rep = new NPCReplic();
                             XmlNode num = xnode.Attributes.GetNamedItem("number");
+                            rep.ID = ID + num.Value;
                             rep.Number = num.Value;
                             num = xnode.Attributes.GetNamedItem("next");
                             rep.Next = num.Value;
@@ -55,6 +62,7 @@ namespace RoyalPlayingGame.Dialogs
                         {
                             PlayerChoice rep = new PlayerChoice();
                             XmlNode num = xnode.Attributes.GetNamedItem("number");
+                            rep.ID = ID + num.Value;
                             rep.Number = num.Value;
                             XmlNode newQuest = xnode.Attributes.GetNamedItem("newQuest");
                             if (newQuest !=null)
@@ -68,9 +76,16 @@ namespace RoyalPlayingGame.Dialogs
                             {
                                 Answer a = new Answer();
                                 XmlNode number = ans.Attributes.GetNamedItem("number");
+                                a.ID = ID + number.Value;
                                 a.Number = number.Value;
                                 number = ans.Attributes.GetNamedItem("next");
                                 a.Next = number.Value;
+
+                                XmlNode hidden = ans.Attributes.GetNamedItem("hide");
+                                if (hidden == null)
+                                    a.IsHidden = false;
+                                else a.IsHidden = Convert.ToBoolean(hidden.Value);
+
                                 newQuest = ans.Attributes.GetNamedItem("newQuest");
                                 if (newQuest != null)
                                     a.GiveQuest = Convert.ToInt32(newQuest.Value);
@@ -130,9 +145,9 @@ namespace RoyalPlayingGame.Dialogs
             if (CurrentReplic.CurrentDuration > CurrentReplic.Duration)
             {
                 if (CurrentReplic.GiveQuest != null)
-                    QuestManager.GiveQuest(CurrentReplic.GiveQuest.Value);
+                    QuestListener.GiveQuest(CurrentReplic.GiveQuest.Value);
                 if (CurrentReplic.ReceiveQuest != null)
-                    QuestManager.ReceiveQuest(CurrentReplic.ReceiveQuest.Value);
+                    QuestListener.ReceiveQuest(CurrentReplic.ReceiveQuest.Value);
                 CurrentReplic = CurrentReplic.GetNextReplic();
                 if (CurrentReplic!=null)
                     CurrentReplic.CurrentDuration = 0;

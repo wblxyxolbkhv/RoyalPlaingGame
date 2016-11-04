@@ -34,7 +34,10 @@ namespace VisualPart.UserControls
         private void OnLabelClick(object sender, EventArgs e)
         {
             Label l = sender as Label;
-            int index = Labels.IndexOf(l);
+            int index = 0;
+            foreach (Answer a in Choice.Answers)
+                if (a.PlayerPhrases[0] == l.Text)
+                    index = Choice.Answers.IndexOf(a);
             if (index < Choice.Answers.Count)
                 AnswerChoosen?.Invoke(Choice.Answers[index]);
         }
@@ -70,14 +73,19 @@ namespace VisualPart.UserControls
         private PlayerChoice choice;
         public void SetLabelsText()
         {
-            for (int i = 0; i < Labels.Count; i++)
+            int count = Choice != null ? Choice.Answers.Count : Labels.Count;
+            int j = 0;
+            for (int i = 0; i < count; i++)
             {
-                Labels[i].Text = "";
+                Labels[j].Text = "";
                 try
                 {
-                    Labels[i].Text = Choice.Answers[i].PlayerPhrases[0]; 
+                    if (Choice.Answers[i].IsHidden)
+                        continue;
+                    Labels[j].Text = Choice.Answers[i].PlayerPhrases[0]; 
                 }
                 catch { }
+                j++;
             }
             this.Refresh();
         }

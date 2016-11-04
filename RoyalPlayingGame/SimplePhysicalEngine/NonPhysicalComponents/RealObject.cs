@@ -110,11 +110,12 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
         public bool IsTrigger { get; set; }
         protected double DoCollision(double step, RealObject ro)
         {
-            if (!IsTrigger)
+            if (!IsTrigger && !ro.IsTrigger)
             {
                 if (CollisionDetected != null && !ro.Equals(this))
                     CollisionDetected(ro, this);
                 step = Math.Min(this.Position.X - ro.Position.X - ro.Width, step);
+                step = Math.Max(0, step);
             }
             else
             {
@@ -130,7 +131,6 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             double step = SpeedX;
             foreach (RealObject ro in NearbyObjects)
             {
-                
                 if (this.Position.Y - ro.Position.Y >= 0 && this.Position.Y - ro.Position.Y < this.Height ||
                     this.Position.Y - ro.Position.Y <= 0 && ro.Position.Y - this.Position.Y < ro.Height)
                 {

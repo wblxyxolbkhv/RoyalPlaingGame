@@ -11,7 +11,7 @@ namespace RoyalPlayingGame.Spell.NegativeSpells
         public const string name = "frostdragonhead";
         public const int castTime = 2;
         public const int manaCost = 40;
-        public const int coolDown = 8;
+        public const int coolDown = 1;
 
         public FrostDragonHead(int realIntelligence, int realAgility):base(realIntelligence,realAgility, name, castTime, manaCost, coolDown) { BasicSpellDamage = 30; }
 

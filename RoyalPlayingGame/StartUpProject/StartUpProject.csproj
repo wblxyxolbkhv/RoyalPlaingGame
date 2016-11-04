@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveQuestManager.cs" />
     <Compile Include="ComplexEnemy.cs" />
     <Compile Include="ComplexObject.cs" />
     <Compile Include="ComplexSpell.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="PlayerMenuManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestJournalManager.cs" />
     <Compile Include="Spells\AutoAttack.cs" />
     <Compile Include="Spells\DragonBreath.cs" />
     <Compile Include="Spells\Fireball.cs" />

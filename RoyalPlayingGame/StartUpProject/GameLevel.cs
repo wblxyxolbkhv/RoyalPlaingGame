@@ -26,6 +26,9 @@ namespace StartUpProject
 
             DialogManager = new DialogManager();
             DialogManager.Player = Player;
+            
+            ActiveQuestManager = new ActiveQuestManager();
+            ActiveQuestManager.Player = Player.Unit as Player;
 
         }
         ComplexUnit Player { get; set; }
@@ -45,7 +48,8 @@ namespace StartUpProject
 
         public PlayerMenuManager PlayerMenuManager { get; private set; }
         public DialogManager DialogManager { get; private set; }
-
+        public ActiveQuestManager ActiveQuestManager { get; private set; }
+     
         private List<string> HintQueue = new List<string>();
 
         public void OnPrintAllObjects(object sender, PaintEventArgs e)
@@ -68,11 +72,13 @@ namespace StartUpProject
         }
         public void OnRefresh(object sender, EventArgs e)
         {
+            OnPositionRefresh();
             CheckTemporaryObjects();
             RemoveRealObjects();
             // TODO: заменить магическое число 10
             DialogManager.Refresh(10);
             PlayerMenuManager.OnMenuRefresh(sender, e);
+            ActiveQuestManager.OnRefresh();
             Player.OnRefresh(sender, e);
             foreach (ComplexEnemy o in Enemies)
             {
@@ -183,30 +189,52 @@ namespace StartUpProject
 
             CameraBias = 0;
 
-            
+            CreateTriggers();
+
+            CreateEnemies();
+
 
             DebugBear bear = new DebugBear(new List<RealObject>(), null);
             bear.RealObject.Position = new Vector2(600, 440);
 
-            //Minotaur enemy = new Minotaur(CollisionDomain, Gravity);
-
-            //enemy.RealObject.Position = new Vector2(600, 400);
-            //enemy.RealObject.CollisionDetected += OnCollisionDetected;
+            
 
             NPCs.Add(bear);
         }
+        private void CreateEnemies()
+        {
+            Minotaur enemy = new Minotaur(CollisionDomain, Gravity);
 
+            enemy.RealObject.Position = new Vector2(2000, 400);
+            enemy.RealObject.CollisionDetected += OnCollisionDetected;
+            enemy.PatrolPoint = new Vector2(2000, 400);
+            Enemies.Add(enemy);
+
+            Minotaur enemy1 = new Minotaur(CollisionDomain, Gravity);
+
+            enemy1.RealObject.Position = new Vector2(2500, 400);
+            enemy1.RealObject.CollisionDetected += OnCollisionDetected;
+            enemy1.PatrolPoint = new Vector2(2500, 400);
+            Enemies.Add(enemy1);
+
+            Minotaur enemy2 = new Minotaur(CollisionDomain, Gravity);
+
+            enemy2.RealObject.Position = new Vector2(3000, 400);
+            enemy2.RealObject.CollisionDetected += OnCollisionDetected;
+            enemy2.PatrolPoint = new Vector2(3000, 400);
+            Enemies.Add(enemy2);
+        }
         private void InitPlayer()
         {
             Player = new ComplexUnit();
 
             Player.Unit = new Player();
             Player.Unit.Health = 200;
-            Player.Unit.Mana = 200;
+            Player.Unit.Mana = 100000;
             Player.Unit.RealHealth = 200;
             Player.Unit.RealMana = 200;
 
-            Player.RealObject = new RealObject(CollisionDomain, Gravity);
+            Player.RealObject = new RealObject(CollisionDomain, 0, Gravity);
             Player.RealObject.Position = new Vector2(400, 400);
             Player.RealObject.Height = 72;
             Player.RealObject.Width = 72;
@@ -429,6 +457,30 @@ namespace StartUpProject
                 DialogManager.TalkingObject = unit;
                 HintQueue.Clear();
             }
+        }
+        // убрать это дерьмо
+        int a = 1000;
+        private void OnPositionRefresh()
+        {
+            a -= 20;
+            if (a < 0)
+            {
+                a = 1000;
+                CreateTemporaryTitle(string.Format("{0}:{1}", Player.RealObject.Position.X, Player.RealObject.Position.Y),
+                    new Vector2(Player.RealObject.Position.X, Player.RealObject.Position.Y),
+                    false);
+            }
+            //HintQueue.Add(string.Format("{0}:{1}", Player.RealObject.Position.X, Player.RealObject.Position.Y));
+        }
+        private void CreateTriggers()
+        {
+
+            RealObject Trigger1 = new RealObject(CollisionDomain, 1);
+            Trigger1.Position = new Vector2(2000, 400);
+            Trigger1.Height = 100;
+            Trigger1.Width = 100;
+            CollisionDomain.Add(Trigger1);
+            Trigger1.IsTrigger = true;
         }
     }
 }

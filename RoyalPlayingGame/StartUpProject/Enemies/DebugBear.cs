@@ -40,8 +40,6 @@ namespace StartUpProject.Enemies
             CurrentDialog = new RoyalPlayingGame.Dialogs.Dialog();
             CurrentDialog.LoadDialog("TestDialog.xml");
 
-            RealObject Trigger1 = new RealObject(CollisionDomain, 1);
-            Trigger1.IsTrigger = true;
             Quest quest = new Quest();
             quest.LoadQuest("PigeonQuest.xml");
         }
