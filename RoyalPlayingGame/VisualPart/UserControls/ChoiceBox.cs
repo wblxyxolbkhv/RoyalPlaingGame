@@ -73,21 +73,32 @@ namespace VisualPart.UserControls
         private PlayerChoice choice;
         public void SetLabelsText()
         {
-            int count = Choice != null ? Choice.Answers.Count : Labels.Count;
+            int count = Choice != null ? Choice.Answers.Count : 0;
+            ClearLabelsText();
             int j = 0;
-            for (int i = 0; i < count; i++)
+            int i = 0;
+            while (i < count && j < Labels.Count)
             {
                 Labels[j].Text = "";
                 try
                 {
                     if (Choice.Answers[i].IsHidden)
+                    {
+                        i++;
                         continue;
-                    Labels[j].Text = Choice.Answers[i].PlayerPhrases[0]; 
+                    }
+                    Labels[j].Text = Choice.Answers[i].PlayerPhrases[0];
                 }
                 catch { }
                 j++;
+                i++;
             }
             this.Refresh();
+        }
+        private void ClearLabelsText()
+        {
+            foreach (Label l in Labels)
+                l.Text = string.Empty;
         }
         private List<Label> Labels
         {

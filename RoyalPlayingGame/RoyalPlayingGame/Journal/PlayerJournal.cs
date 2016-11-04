@@ -9,9 +9,15 @@ namespace RoyalPlayingGame.Journal
 {
     public class PlayerJournal
     {
-        private List<Quest> ActiveQuests { get; set; }
-        private List<Quest> CompletedQuests { get; set; }
-        private List<JournalNote> Notes { get; set; }
+        public PlayerJournal()
+        {
+            ActiveQuests = new List<Quest>();
+            CompletedQuests = new List<Quest>();
+            Notes = new List<JournalNote>();
+        }
+        public List<Quest> ActiveQuests { get; set; }
+        public List<Quest> CompletedQuests { get; set; }
+        public List<JournalNote> Notes { get; set; }
 
         public void AddActiveQuest(Quest quest)
         {
