@@ -30,6 +30,9 @@ namespace StartUpProject
             ActiveQuestManager = new ActiveQuestManager();
             ActiveQuestManager.Player = Player.Unit as Player;
 
+            QuestJournalManager = new QuestJournalManager();
+            QuestJournalManager.Player = Player.Unit as Player;
+
         }
         ComplexUnit Player { get; set; }
         List<ComplexEnemy> Enemies { get; set; }
@@ -49,7 +52,8 @@ namespace StartUpProject
         public PlayerMenuManager PlayerMenuManager { get; private set; }
         public DialogManager DialogManager { get; private set; }
         public ActiveQuestManager ActiveQuestManager { get; private set; }
-     
+        public QuestJournalManager QuestJournalManager { get; set; }
+
         private List<string> HintQueue = new List<string>();
 
         public void OnPrintAllObjects(object sender, PaintEventArgs e)
@@ -79,6 +83,7 @@ namespace StartUpProject
             DialogManager.Refresh(10);
             PlayerMenuManager.OnMenuRefresh(sender, e);
             ActiveQuestManager.OnRefresh();
+            QuestJournalManager.OnRefresh();
             Player.OnRefresh(sender, e);
             foreach (ComplexEnemy o in Enemies)
             {
@@ -127,6 +132,9 @@ namespace StartUpProject
                 case Keys.Escape:
                     HintQueue.Clear();
                     break;
+                case Keys.J:
+                    QuestJournalManager.Show();
+                    break;
             }
         }
         private void CastSpell(Keys k)
@@ -162,6 +170,9 @@ namespace StartUpProject
                     break;
                 case Keys.A:
                     Player.RealObject.direction = Direction.NoneLeft;
+                    break;
+                case Keys.J:
+                    QuestJournalManager.Hide();
                     break;
             }
         }

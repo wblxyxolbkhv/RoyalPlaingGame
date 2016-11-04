@@ -27,7 +27,7 @@ namespace StartUpProject
         {
             get
             {
-                foreach (Quest q in Player.QuestJournal)
+                foreach (Quest q in Player.QuestJournal.ActiveQuests)
                 {
                     if (q.IsActive)
                         return q;
