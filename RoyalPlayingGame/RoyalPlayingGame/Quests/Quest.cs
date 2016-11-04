@@ -123,7 +123,7 @@ namespace RoyalPlayingGame.Quests
                         {
                             ToUnitStage tus = new ToUnitStage();
                             foreach (XmlNode stageParams in xnode)
-                                switch (stageParams.Name)
+                            switch (stageParams.Name)
                             {
                                 case "name":
                                     {

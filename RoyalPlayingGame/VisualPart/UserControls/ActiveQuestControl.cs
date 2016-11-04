@@ -42,6 +42,11 @@ namespace VisualPart.UserControls
                 return;
             }
 
+            if (ActiveQuest.CurrentQuestStage.IsCompleted)
+            {
+                label2.Text = string.Format("Задание выполнено");
+                return;
+            }
             if (ActiveQuest.CurrentQuestStage is KillUnitStage)
             {
                 KillUnitStage kus = ActiveQuest.CurrentQuestStage as KillUnitStage;

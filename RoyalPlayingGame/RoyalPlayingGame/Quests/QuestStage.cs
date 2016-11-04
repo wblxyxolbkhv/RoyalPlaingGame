@@ -16,6 +16,7 @@ namespace RoyalPlayingGame.Quests
             ExperienceReward = experieneReward;
             ItemReward = itemReward;
             MoneyReward = moneyReward;
+            IsCompleted = false;
         }
         public QuestStage(string name, string description, int index)
         {
@@ -24,6 +25,7 @@ namespace RoyalPlayingGame.Quests
             MoneyReward = 0;
             ExperienceReward = 10;
             ItemReward = new List<Item.Item>();
+            IsCompleted = false;
         }
 
         public QuestStage()
@@ -31,6 +33,7 @@ namespace RoyalPlayingGame.Quests
             MoneyReward = 0;
             ExperienceReward = 10;
             ItemReward = new List<Item.Item>();
+            IsCompleted = false;
         }
         //public List<string> Objective { get; set; }
         public event Action QuestStageCompleted;
@@ -39,10 +42,12 @@ namespace RoyalPlayingGame.Quests
         public int ExperienceReward { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public bool IsCompleted { get; set; }
 
         public void CallQSCEvent()
         {
             QuestStageCompleted?.Invoke();
+            IsCompleted = true;
         }
     }
 }

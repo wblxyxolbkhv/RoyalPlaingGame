@@ -191,18 +191,39 @@ namespace StartUpProject
 
             CreateTriggers();
 
+            CreateEnemies();
+
+
             DebugBear bear = new DebugBear(new List<RealObject>(), null);
             bear.RealObject.Position = new Vector2(600, 440);
 
+            
+
+            NPCs.Add(bear);
+        }
+        private void CreateEnemies()
+        {
             Minotaur enemy = new Minotaur(CollisionDomain, Gravity);
 
             enemy.RealObject.Position = new Vector2(2000, 400);
             enemy.RealObject.CollisionDetected += OnCollisionDetected;
+            enemy.PatrolPoint = new Vector2(2000, 400);
             Enemies.Add(enemy);
 
-            NPCs.Add(bear);
-        }
+            Minotaur enemy1 = new Minotaur(CollisionDomain, Gravity);
 
+            enemy1.RealObject.Position = new Vector2(2500, 400);
+            enemy1.RealObject.CollisionDetected += OnCollisionDetected;
+            enemy1.PatrolPoint = new Vector2(2500, 400);
+            Enemies.Add(enemy1);
+
+            Minotaur enemy2 = new Minotaur(CollisionDomain, Gravity);
+
+            enemy2.RealObject.Position = new Vector2(3000, 400);
+            enemy2.RealObject.CollisionDetected += OnCollisionDetected;
+            enemy2.PatrolPoint = new Vector2(3000, 400);
+            Enemies.Add(enemy2);
+        }
         private void InitPlayer()
         {
             Player = new ComplexUnit();

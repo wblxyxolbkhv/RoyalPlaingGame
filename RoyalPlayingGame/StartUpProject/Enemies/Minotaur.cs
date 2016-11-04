@@ -22,12 +22,10 @@ namespace StartUpProject.Enemies
             Unit.RealHealth = 100;
 
             RealObject = new RealObject(CollisionDomain, Gravity);
-            RealObject.Position = new Vector2(600, 400);
             RealObject.Height = 110;
             RealObject.Width = 110;
             RealObject.SpeedX = 2;
             RealObject.direction = Direction.Right;
-            PatrolPoint = new Vector2(RealObject.Position.X, RealObject.Position.Y);
             PatrolRadius = 4000;
 
             WalkAnimationLeft = new Animation("Minotaur/WalkLeft", 100);
