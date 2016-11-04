@@ -62,7 +62,7 @@ namespace RoyalPlayingGame.Quests
         public void AddQuestStage(QuestStage questStage)
         {
             QuestStages.Add(questStage);
-            if (QuestStages.IndexOf(questStage) == 1)
+            if (QuestStages.IndexOf(questStage) == 0)
             {
                 CurrentQuestStage = questStage;
                 CurrentQuestStage.QuestStageCompleted += OnNextStage;
