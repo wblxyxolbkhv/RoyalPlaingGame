@@ -230,7 +230,7 @@ namespace StartUpProject
 
             Player.Unit = new Player();
             Player.Unit.Health = 200;
-            Player.Unit.Mana = 200;
+            Player.Unit.Mana = 100000;
             Player.Unit.RealHealth = 200;
             Player.Unit.RealMana = 200;
 

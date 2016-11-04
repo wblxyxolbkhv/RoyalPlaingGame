@@ -12,7 +12,7 @@ namespace RoyalPlayingGame.Dialogs
     /// </summary>
     public class NPCReplic : Replic
     {
-        public NPCReplic()
+        public NPCReplic() : base()
         {
             Phrases = new List<string>();
         }

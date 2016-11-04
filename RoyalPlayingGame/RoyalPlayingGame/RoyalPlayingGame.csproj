@@ -55,7 +55,7 @@
     <Compile Include="Exceptions\SpellCoolDownException.cs" />
     <Compile Include="Journal\JournalNote.cs" />
     <Compile Include="Journal\PlayerJournal.cs" />
-    <Compile Include="QuestManager.cs" />
+    <Compile Include="QuestListener.cs" />
     <Compile Include="Quests\Quest.cs" />
     <Compile Include="Quests\QuestStage.cs" />
     <Compile Include="Quests\QuestStages\KillUnitStage.cs" />

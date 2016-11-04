@@ -15,7 +15,7 @@ namespace StartUpProject
     {
         public ActiveQuestManager()
         {
-            QuestManager.QuestGave += GiveQuest;
+            QuestListener.QuestGave += GiveQuest;
         }
 
 

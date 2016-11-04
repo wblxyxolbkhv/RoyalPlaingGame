@@ -49,7 +49,7 @@ namespace RoyalPlayingGame.Quests.QuestStages
         {
             foreach (ToPointStageGroup tpsg in Points)
             {
-                if (tpsg.ID == TriggerID)
+                if (tpsg.ID == TriggerID && IsCurrent)
                 {
                     CallQSCEvent();
                 }

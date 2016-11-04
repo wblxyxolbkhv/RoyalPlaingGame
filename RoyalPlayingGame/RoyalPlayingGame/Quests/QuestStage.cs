@@ -17,6 +17,7 @@ namespace RoyalPlayingGame.Quests
             ItemReward = itemReward;
             MoneyReward = moneyReward;
             IsCompleted = false;
+            IsCurrent = false;
         }
         public QuestStage(string name, string description, int index)
         {
@@ -26,6 +27,7 @@ namespace RoyalPlayingGame.Quests
             ExperienceReward = 10;
             ItemReward = new List<Item.Item>();
             IsCompleted = false;
+            IsCurrent = false;
         }
 
         public QuestStage()
@@ -34,6 +36,7 @@ namespace RoyalPlayingGame.Quests
             ExperienceReward = 10;
             ItemReward = new List<Item.Item>();
             IsCompleted = false;
+            IsCurrent = false;
         }
         //public List<string> Objective { get; set; }
         public event Action QuestStageCompleted;
@@ -43,9 +46,21 @@ namespace RoyalPlayingGame.Quests
         public string Name { get; set; }
         public string Description { get; set; }
         public bool IsCompleted { get; set; }
+        public string ID { get; set; }
+        public bool IsCurrent { get; set; }
+
+
+        public string ShownReplic { get; set; }
+        public string HiddenReplic { get; set; }
 
         public void CallQSCEvent()
         {
+            if (!string.IsNullOrEmpty(ShownReplic))
+                QuestListener.ReplicShow(Convert.ToInt32(ShownReplic));
+
+            if (!string.IsNullOrEmpty(HiddenReplic))
+                QuestListener.ReplicHide(Convert.ToInt32(HiddenReplic));
+
             QuestStageCompleted?.Invoke();
             IsCompleted = true;
         }

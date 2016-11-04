@@ -55,6 +55,8 @@ namespace RoyalPlayingGame.Quests.QuestStages
 
         private void OnItemPicked(int ID)
         {
+            if (!IsCurrent)
+                return;
          foreach (PickItemStageGroup pisg in PickedQuestItems)
             {
                 if (pisg.Item.ID == ID)

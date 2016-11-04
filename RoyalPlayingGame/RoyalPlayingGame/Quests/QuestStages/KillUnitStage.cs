@@ -53,6 +53,8 @@ namespace RoyalPlayingGame.Quests.QuestStages
         }
         private void OnSomeUnitDeath(Unit unit)
         {
+            if (!IsCurrent)
+                return;
             foreach(KillUnitStageGroup kusg in Targets)
             {
                 if (kusg.Target.ID == unit.ID)
