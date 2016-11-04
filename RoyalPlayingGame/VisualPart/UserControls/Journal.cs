@@ -17,9 +17,11 @@ namespace VisualPart.UserControls
         public Journal()
         {
             InitializeComponent();
+            Visible = false;
         }
         
       public List<Quest> QuestList { get; set; }
+
       public void RefreshLabels()
         {
             if (QuestList != null)
