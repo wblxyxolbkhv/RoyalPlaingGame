@@ -25,5 +25,17 @@ namespace RoyalPlayingGame.Journal
         {
             Notes.Add(note);
         }
+        public void RemoveActiveQuest(Quest quest)
+        {
+            ActiveQuests.Remove(quest);
+        }
+        public void RemoveCompletedQuest(Quest quest)
+        {
+            CompletedQuests.Remove(quest);
+        }
+        public void RemoveNote(JournalNote note)
+        {
+            Notes.Remove(note);
+        }
     }
 }
