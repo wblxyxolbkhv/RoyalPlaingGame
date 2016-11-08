@@ -130,10 +130,15 @@ namespace StartUpProject
                     Talk(AvailableForTalkingNPC);
                     break;
                 case Keys.Escape:
-                    HintQueue.Clear();
-                    break;
+                    {
+                        QuestJournalManager.Hide();
+                        HintQueue.Clear();
+                        break;
+                    }
                 case Keys.J:
-                    QuestJournalManager.Show();
+                    {
+                            QuestJournalManager.Show();
+                    }
                     break;
             }
         }
@@ -170,9 +175,6 @@ namespace StartUpProject
                     break;
                 case Keys.A:
                     Player.RealObject.direction = Direction.NoneLeft;
-                    break;
-                case Keys.J:
-                    QuestJournalManager.Hide();
                     break;
             }
         }
@@ -242,8 +244,8 @@ namespace StartUpProject
             Player.Unit = new Player();
             Player.Unit.Health = 200;
             Player.Unit.Mana = 100000;
+            Player.Unit.RealMana = 100000;
             Player.Unit.RealHealth = 200;
-            Player.Unit.RealMana = 200;
 
             Player.RealObject = new RealObject(CollisionDomain, 0, Gravity);
             Player.RealObject.Position = new Vector2(400, 400);

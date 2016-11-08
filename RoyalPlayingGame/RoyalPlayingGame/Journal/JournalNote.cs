@@ -9,11 +9,19 @@ namespace RoyalPlayingGame.Journal
 {
     public class JournalNote
     {
+        public JournalNote(string name, string description, string time, string linkedStageID)
+        {
+            Name = name;
+            Description = description;
+            Time = time;
+            LinkedQuestStageID = linkedStageID;
+        }
         public string Name { get; set; }
         public string Month { get; set; }
         public string Time { get; set; }
         public string Description { get; set; }
-        public Quest LinkedQuest { get; set; }
-        
+        //public Quest LinkedQuest { get; set; }
+        public string LinkedQuestStageID { get; set; }
+
     }
 }

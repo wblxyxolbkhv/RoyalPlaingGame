@@ -50,10 +50,10 @@ namespace RoyalPlayingGame.Dialogs
                             rep.Next = num.Value;
                             XmlNode newQuest = xnode.Attributes.GetNamedItem("newQuest");
                             if (newQuest != null)
-                                rep.GiveQuest = Convert.ToInt32(newQuest.Value);
-                            XmlNode recQuest = xnode.Attributes.GetNamedItem("recQuest");
-                            if (recQuest != null)
-                                rep.ReceiveQuest = Convert.ToInt32(recQuest.Value);
+                                rep.ReceiveQuest = newQuest.Value;
+                            XmlNode passQuest = xnode.Attributes.GetNamedItem("passQuest");
+                            if (passQuest != null)
+                                rep.PassedQuest = passQuest.Value;
                             rep.Phrases.Add(xnode.LastChild.Value);
                             NPCReplics.Add(rep);
                             break;
@@ -65,11 +65,11 @@ namespace RoyalPlayingGame.Dialogs
                             rep.ID = ID + num.Value;
                             rep.Number = num.Value;
                             XmlNode newQuest = xnode.Attributes.GetNamedItem("newQuest");
-                            if (newQuest !=null)
-                                rep.GiveQuest = Convert.ToInt32(newQuest.Value);
-                            XmlNode recQuest = xnode.Attributes.GetNamedItem("recQuest");
-                            if (recQuest != null)
-                                rep.ReceiveQuest = Convert.ToInt32(recQuest.Value);
+                            if (newQuest != null)
+                                rep.ReceiveQuest = newQuest.Value;
+                            XmlNode passQuest = xnode.Attributes.GetNamedItem("passQuest");
+                            if (passQuest != null)
+                                rep.PassedQuest = passQuest.Value;
                             choices.Add(rep);
 
                             foreach (XmlNode ans in xnode)
@@ -88,10 +88,10 @@ namespace RoyalPlayingGame.Dialogs
 
                                 newQuest = ans.Attributes.GetNamedItem("newQuest");
                                 if (newQuest != null)
-                                    a.GiveQuest = Convert.ToInt32(newQuest.Value);
-                                recQuest = ans.Attributes.GetNamedItem("recQuest");
-                                if (recQuest != null)
-                                    a.ReceiveQuest = Convert.ToInt32(recQuest.Value);
+                                    a.ReceiveQuest = newQuest.Value;
+                                passQuest = ans.Attributes.GetNamedItem("passQuest");
+                                if (passQuest != null)
+                                    a.PassedQuest = passQuest.Value;
                                 a.PlayerPhrases.Add(ans.LastChild.Value);
                                 rep.Answers.Add(a);
                             }
@@ -144,10 +144,10 @@ namespace RoyalPlayingGame.Dialogs
             CurrentReplic.CurrentDuration += deltaTime;
             if (CurrentReplic.CurrentDuration > CurrentReplic.Duration)
             {
-                if (CurrentReplic.GiveQuest != null)
-                    QuestListener.GiveQuest(CurrentReplic.GiveQuest.Value);
+                if (CurrentReplic.PassedQuest != null)
+                    QuestListener.PassQuest(CurrentReplic.PassedQuest);
                 if (CurrentReplic.ReceiveQuest != null)
-                    QuestListener.ReceiveQuest(CurrentReplic.ReceiveQuest.Value);
+                    QuestListener.ReceiveQuest(CurrentReplic.ReceiveQuest);
                 CurrentReplic = CurrentReplic.GetNextReplic();
                 if (CurrentReplic!=null)
                     CurrentReplic.CurrentDuration = 0;

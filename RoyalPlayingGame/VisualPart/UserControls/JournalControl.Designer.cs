@@ -1,6 +1,6 @@
 ﻿namespace VisualPart.UserControls
 {
-    partial class Journal
+    partial class JournalControl
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -32,14 +32,13 @@
             this.Quests = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.listBoxQuests = new System.Windows.Forms.ListBox();
             this.labelStageDescription = new System.Windows.Forms.Label();
             this.labelStageObjective = new System.Windows.Forms.Label();
             this.labelStageName = new System.Windows.Forms.Label();
             this.labelQuestDescription = new System.Windows.Forms.Label();
             this.labelQuestName = new System.Windows.Forms.Label();
             this.JournalNotes = new System.Windows.Forms.TabPage();
-            this.listBoxQuests = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.Quests.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -84,6 +83,10 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Size = new System.Drawing.Size(625, 388);
             this.splitContainer1.SplitterDistance = 289;
             this.splitContainer1.TabIndex = 0;
@@ -102,7 +105,7 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.vScrollBar1);
+            this.splitContainer2.Panel2.AutoScroll = true;
             this.splitContainer2.Panel2.Controls.Add(this.labelStageDescription);
             this.splitContainer2.Panel2.Controls.Add(this.labelStageObjective);
             this.splitContainer2.Panel2.Controls.Add(this.labelStageName);
@@ -112,17 +115,18 @@
             this.splitContainer2.SplitterDistance = 162;
             this.splitContainer2.TabIndex = 0;
             // 
-            // vScrollBar1
+            // listBoxQuests
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(272, 0);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 222);
-            this.vScrollBar1.TabIndex = 5;
+            this.listBoxQuests.FormattingEnabled = true;
+            this.listBoxQuests.Location = new System.Drawing.Point(19, 13);
+            this.listBoxQuests.Name = "listBoxQuests";
+            this.listBoxQuests.Size = new System.Drawing.Size(255, 134);
+            this.listBoxQuests.TabIndex = 0;
             // 
             // labelStageDescription
             // 
             this.labelStageDescription.AutoSize = true;
-            this.labelStageDescription.Location = new System.Drawing.Point(16, 155);
+            this.labelStageDescription.Location = new System.Drawing.Point(26, 147);
             this.labelStageDescription.Name = "labelStageDescription";
             this.labelStageDescription.Size = new System.Drawing.Size(88, 13);
             this.labelStageDescription.TabIndex = 4;
@@ -166,6 +170,7 @@
             // 
             // JournalNotes
             // 
+            this.JournalNotes.AutoScroll = true;
             this.JournalNotes.Location = new System.Drawing.Point(4, 4);
             this.JournalNotes.Name = "JournalNotes";
             this.JournalNotes.Padding = new System.Windows.Forms.Padding(3);
@@ -174,20 +179,12 @@
             this.JournalNotes.Text = "Notes";
             this.JournalNotes.UseVisualStyleBackColor = true;
             // 
-            // listBoxQuests
-            // 
-            this.listBoxQuests.FormattingEnabled = true;
-            this.listBoxQuests.Location = new System.Drawing.Point(19, 13);
-            this.listBoxQuests.Name = "listBoxQuests";
-            this.listBoxQuests.Size = new System.Drawing.Size(255, 134);
-            this.listBoxQuests.TabIndex = 0;
-            // 
-            // Journal
+            // JournalControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControl1);
-            this.Name = "Journal";
+            this.Name = "JournalControl";
             this.Size = new System.Drawing.Size(639, 420);
             this.tabControl1.ResumeLayout(false);
             this.Quests.ResumeLayout(false);
@@ -211,7 +208,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label labelQuestName;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Label labelStageDescription;
         private System.Windows.Forms.Label labelStageObjective;
         private System.Windows.Forms.Label labelStageName;

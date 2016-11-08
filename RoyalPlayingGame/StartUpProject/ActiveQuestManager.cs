@@ -15,7 +15,7 @@ namespace StartUpProject
     {
         public ActiveQuestManager()
         {
-            QuestListener.QuestGave += GiveQuest;
+            QuestListener.QuestReceived += ReceiveQuest;
         }
 
 
@@ -54,9 +54,9 @@ namespace StartUpProject
             ActiveQuestControl.RefreshLables();
         }
 
-        private void GiveQuest(int id)
+        private void ReceiveQuest(string id)
         {
-            if (id == 1000)
+            if (id == "1000")
             {
                 Quest q = new Quest();
                 q.LoadQuest("PigeonQuest.xml");

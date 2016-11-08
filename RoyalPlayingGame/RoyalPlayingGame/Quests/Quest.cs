@@ -13,7 +13,7 @@ namespace RoyalPlayingGame.Quests
 {
     public class Quest
     {
-        public Quest(int ID, string name, string description, Unit giver, Player player)
+        public Quest(string ID, string name, string description, Unit giver, Player player)
         {
             Player = player;
             this.ID = ID;
@@ -25,7 +25,7 @@ namespace RoyalPlayingGame.Quests
             Notes = new List<JournalNote>();
         }
 
-        public Quest(int ID, string name, string description)
+        public Quest(string ID, string name, string description)
         {
             this.ID = ID;
             Name = name;
@@ -54,7 +54,7 @@ namespace RoyalPlayingGame.Quests
         }
 
         public List<JournalNote> Notes { get; set; }
-        public int ID { get; set; }
+        public string ID { get; set; }
         private bool isActive;
         public bool IsActive
         {
@@ -108,7 +108,7 @@ namespace RoyalPlayingGame.Quests
             questXml.Load(path);
 
             XmlElement rootElement = questXml.DocumentElement;
-            ID = Convert.ToInt32(rootElement.Attributes.GetNamedItem("id").Value);
+            ID = rootElement.Attributes.GetNamedItem("id").Value;
             Name = rootElement.Attributes.GetNamedItem("name").Value;
             Description = rootElement.Attributes.GetNamedItem("description").Value;
             if (rootElement.Attributes.GetNamedItem("shownReplic") != null)
@@ -126,7 +126,7 @@ namespace RoyalPlayingGame.Quests
                     case "ToPoint":
                         {
                             ToPointStage tps = new ToPointStage();
-                            
+                            tps.ID = ID + StageID;
                             foreach (XmlNode stageParams in xnode)
                             {
                                 switch (stageParams.Name)
@@ -164,6 +164,7 @@ namespace RoyalPlayingGame.Quests
                     case "ToUnit":
                         {
                             ToUnitStage tus = new ToUnitStage();
+                            tus.ID = ID + StageID;
                             foreach (XmlNode stageParams in xnode)
                             switch (stageParams.Name)
                             {
@@ -194,6 +195,7 @@ namespace RoyalPlayingGame.Quests
                     case "KillUnit":
                         {
                             KillUnitStage kus = new KillUnitStage();
+                            kus.ID = ID + StageID;
                             foreach (XmlNode stageParams in xnode)
                             {
                                 switch (stageParams.Name)
@@ -234,6 +236,7 @@ namespace RoyalPlayingGame.Quests
                     case "PickItem":
                         {
                             PickItemStage pis = new PickItemStage();
+                            pis.ID = ID + StageID;
                             foreach (XmlNode stageParams in xnode)
                             {
                                 switch (stageParams.Name)
@@ -273,7 +276,7 @@ namespace RoyalPlayingGame.Quests
                             break;
                         }
                 }
-                StageID = ID.ToString() + StageID;
+                //StageID = ID + StageID;
             }
 
         }

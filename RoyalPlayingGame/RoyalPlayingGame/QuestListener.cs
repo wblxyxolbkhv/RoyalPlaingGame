@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace RoyalPlayingGame
 {
-    public delegate void QuestHandler(int questID);
+    public delegate void QuestHandler(string questID);
+    public delegate void QuestStageHandler(string stageID);
     public delegate void ReplicVisibleChange(int replicID);
     public static class QuestListener
     {
         // события и методы для дачи/принятия квеста
-        public static event QuestHandler QuestGave;
+        public static event QuestHandler QuestPassed;
         public static event QuestHandler QuestReceived;
-        public static void GiveQuest(int questID)
+        public static void PassQuest(string questID)
         {
-            QuestGave?.Invoke(questID);
+            QuestPassed?.Invoke(questID);
         }
-        public static void ReceiveQuest(int questID)
+        public static void ReceiveQuest(string questID)
         {
             QuestReceived?.Invoke(questID);
         }
@@ -32,6 +33,13 @@ namespace RoyalPlayingGame
         public static void ReplicShow(int replicID)
         {
             ReplicShown?.Invoke(replicID);
+        }
+
+        // события и методы для отлова событий на окончание квестовой стадии
+        public static event QuestStageHandler QuestStageComplited;
+        public static void CompleteQuestStage(string stageID)
+        {
+            QuestStageComplited?.Invoke(stageID);
         }
     }
 }

@@ -28,7 +28,5 @@ namespace RoyalPlayingGame.Dialogs
         {
             return NextChoice;
         }
-        public int? GiveQuest { get; set; } = null;
-        public int? ReceiveQuest { get; set; } = null;
     }
 }

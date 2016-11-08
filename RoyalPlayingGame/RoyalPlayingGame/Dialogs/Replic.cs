@@ -44,8 +44,8 @@ namespace RoyalPlayingGame.Dialogs
         {
             get; set;
         } = 0;
-        public int? GiveQuest { get; set; } = null;
-        public int? ReceiveQuest { get; set; } = null;
+        public string PassedQuest { get; set; } = null;
+        public string ReceiveQuest { get; set; } = null;
         public abstract Replic GetNextReplic();
 
         public bool IsHidden { get; set; }

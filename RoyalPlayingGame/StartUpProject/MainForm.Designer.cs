@@ -36,7 +36,7 @@
             this.scaleMP = new VisualPart.UserControls.Scale();
             this.scaleHP = new VisualPart.UserControls.Scale();
             this.playerMenu1 = new VisualPart.UserControls.PlayerMenu();
-            this.journal1 = new VisualPart.UserControls.Journal();
+            this.journal1 = new VisualPart.UserControls.JournalControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,9 +134,8 @@
             // 
             // journal1
             // 
-            this.journal1.Location = new System.Drawing.Point(230, 52);
+            this.journal1.Location = new System.Drawing.Point(251, 38);
             this.journal1.Name = "journal1";
-            this.journal1.QuestList = null;
             this.journal1.Size = new System.Drawing.Size(639, 420);
             this.journal1.TabIndex = 7;
             this.journal1.Visible = false;
@@ -170,7 +169,7 @@
         private VisualPart.UserControls.SkillPanel skillPanel1;
         private VisualPart.UserControls.ChoiceBox choiceBox1;
         private VisualPart.UserControls.ActiveQuestControl activeQuestControl1;
-        private VisualPart.UserControls.Journal journal1;
+        private VisualPart.UserControls.JournalControl journal1;
     }
 }
 

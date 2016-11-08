@@ -61,6 +61,7 @@ namespace RoyalPlayingGame.Quests
             if (!string.IsNullOrEmpty(HiddenReplic))
                 QuestListener.ReplicHide(Convert.ToInt32(HiddenReplic));
 
+            QuestListener.CompleteQuestStage(ID);
             QuestStageCompleted?.Invoke();
             IsCompleted = true;
         }

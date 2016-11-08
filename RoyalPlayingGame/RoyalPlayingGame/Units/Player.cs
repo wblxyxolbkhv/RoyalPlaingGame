@@ -37,6 +37,23 @@ namespace RoyalPlayingGame.Units
             SpellHotKey2 = SpellBook[frost.Name];
             SpellHotKey3 = SpellBook[breath.Name];
             SpellHotKey4 = SpellBook[wave.Name];
+
+            // убрать отладочное говно
+            for (int i = 0; i < 5; i++)
+            {
+                QuestJournal.Notes.Add(new JournalNote(i.ToString() + "note",
+                    i.ToString() + "description",
+                    i.ToString() + "time",
+                    null));
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                QuestJournal.Notes.Add(new JournalNote(i.ToString() + "note",
+                    i.ToString() + "description",
+                    i.ToString() + "time",
+                    "1000"));
+            }
         }
         public int experience;
         public PlayerJournal QuestJournal { get; set; } = null;
