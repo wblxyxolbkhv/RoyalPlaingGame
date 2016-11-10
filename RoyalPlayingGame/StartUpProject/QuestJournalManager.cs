@@ -46,6 +46,7 @@ namespace StartUpProject
             }
             Player.QuestJournal.ActiveQuests.Remove(passedQuest);
             Player.QuestJournal.CompletedQuests.Add(passedQuest);
+            Journal.RemoveListBoxItem(passedQuest);
         }
 
         public Player Player { get; set; }
@@ -54,7 +55,6 @@ namespace StartUpProject
         public void OnRefresh()
         {
             Journal.Journal = Player.QuestJournal;
-            
             Journal.RefreshLabels();
             Journal.RefreshLinkedNotes();
             Journal.RefreshNotes();

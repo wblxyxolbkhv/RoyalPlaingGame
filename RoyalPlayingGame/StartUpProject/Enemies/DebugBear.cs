@@ -10,6 +10,7 @@ using VisualPart;
 using RoyalPlayingGame.Spell;
 using RoyalPlayingGame.Units;
 using RoyalPlayingGame.Quests;
+using RoyalPlayingGame;
 
 
 namespace StartUpProject.Enemies
@@ -42,6 +43,8 @@ namespace StartUpProject.Enemies
 
             Quest quest = new Quest();
             quest.LoadQuest("PigeonQuest.xml");
+
+            
         }
     }
 }
