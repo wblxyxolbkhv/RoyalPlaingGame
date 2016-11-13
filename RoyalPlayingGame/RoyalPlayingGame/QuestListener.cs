@@ -41,5 +41,11 @@ namespace RoyalPlayingGame
         {
             QuestStageComplited?.Invoke(stageID);
         }
+        //события и методы для отлова завершения выполнения квеста
+        public static event QuestHandler QuestCompleted;
+        public static void QuestComplete(string questID)
+        {
+            QuestCompleted?.Invoke(questID);
+        }
     }
 }

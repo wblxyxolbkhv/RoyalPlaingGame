@@ -7,6 +7,7 @@ using VisualPart.UserControls;
 using RoyalPlayingGame.Quests;
 using RoyalPlayingGame.Units;
 using RoyalPlayingGame;
+using RoyalPlayingGame.Quests.QuestStages;
 
 namespace StartUpProject
 {
@@ -16,7 +17,20 @@ namespace StartUpProject
         {
             QuestListener.QuestPassed += OnQuestPassed;
             QuestListener.QuestStageComplited += OnQuestStageComplited;
+            QuestListener.QuestCompleted += OnQuestCompleted;
         }
+
+        private void OnQuestCompleted(string questID)
+        {
+            foreach (Quest quest in Journal.Journal.ActiveQuests)
+            {
+                if(quest.ID == questID)
+                {
+                    Journal.SetObjective("Задание выполнено");
+                }
+            }
+        }
+    
 
         private void OnQuestStageComplited(string stageID)
         {
