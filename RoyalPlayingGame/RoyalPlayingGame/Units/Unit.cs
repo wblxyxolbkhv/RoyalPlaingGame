@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RoyalPlayingGame.Item.Items;
+using RoyalPlayingGame.Items;
 using RoyalPlayingGame.Effect;
 using RoyalPlayingGame.Spell;
 
@@ -16,7 +16,7 @@ namespace RoyalPlayingGame.Units
     {
         public Unit()
         {
-            Inventory = new List<Item.Item>();
+            Inventory = new List<Item>();
             SpellBook = new SpellBookCollection();
             ArmorSet = new List<Armor>();
             WeaponSet = new List<Weapon>();
@@ -28,7 +28,7 @@ namespace RoyalPlayingGame.Units
         public Unit(int ID)
         {
             this.ID = ID;
-            Inventory = new List<Item.Item>();
+            Inventory = new List<Item>();
             SpellBook = new SpellBookCollection();
             ArmorSet = new List<Armor>();
             WeaponSet = new List<Weapon>();
@@ -151,7 +151,7 @@ namespace RoyalPlayingGame.Units
 
 
         public int ID {get;protected set; }
-        public List<Item.Item> Inventory { get; set; }
+        public List<Item> Inventory { get; set; }
         public List<Effect.Effect> Effects { get; set; }
         public List<Armor> ArmorSet { get; set; }
         public List<Weapon> WeaponSet { get; set; }
@@ -220,18 +220,18 @@ namespace RoyalPlayingGame.Units
                 ArmorSet.Add(armor);
             }
         }
-        public bool CheckRequiredLvl(Item.Item item)
+        public bool CheckRequiredLvl(Item item)
         {
             if (item.Lvl >= Level)
                 return true;
             else return false;
         }
 
-        public void AddItem(Item.Item item)
+        public void AddItem(Item item)
         {
             if (item.IsAQuestItem)
                 QuestItemPicked?.Invoke(item.ID);
-            foreach (Item.Item addedItem in Inventory)
+            foreach (Item addedItem in Inventory)
             {
                 if (addedItem.ID == item.ID)
                 {
@@ -244,9 +244,9 @@ namespace RoyalPlayingGame.Units
             }
         }
 
-        public void AddItem(Item.Item item, ushort amount)
+        public void AddItem(Item item, ushort amount)
         {
-            foreach (Item.Item addedItem in Inventory)
+            foreach (Item addedItem in Inventory)
             {
                 if (addedItem.ID == item.ID)
                     addedItem.Amount += amount;
@@ -255,7 +255,7 @@ namespace RoyalPlayingGame.Units
 
         public void DropItem(int ID)
         {
-            foreach(Item.Item addedItem in Inventory)
+            foreach(Item addedItem in Inventory)
             {
                 if (addedItem.ID == ID)
                 {

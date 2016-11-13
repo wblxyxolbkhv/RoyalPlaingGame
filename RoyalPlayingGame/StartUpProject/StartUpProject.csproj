@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="ActiveQuestManager.cs" />
     <Compile Include="ComplexEnemy.cs" />
+    <Compile Include="ComplexItem.cs" />
     <Compile Include="ComplexObject.cs" />
     <Compile Include="ComplexSpell.cs" />
     <Compile Include="ComplexStructure.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Enemies\DebugBear.cs" />
     <Compile Include="Enemies\Minotaur.cs" />
     <Compile Include="GameLevel.cs" />
+    <Compile Include="HintQueue.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

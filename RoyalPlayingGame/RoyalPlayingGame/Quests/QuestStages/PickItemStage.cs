@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RoyalPlayingGame.Item;
+using RoyalPlayingGame.Items;
 using RoyalPlayingGame.Units;
 
 namespace RoyalPlayingGame.Quests.QuestStages
 {
     public class PickItemStage : QuestStage
     {
-        public PickItemStage(int moneyReward, int experieneReward, List<Item.Item> itemReward, string name, string description, int index)
+        public PickItemStage(int moneyReward, int experieneReward, List<Item> itemReward, string name, string description, int index)
             : base(moneyReward, experieneReward, itemReward, name, description, index)
         {
             Unit.QuestItemPicked += OnItemPicked;
@@ -33,7 +33,7 @@ namespace RoyalPlayingGame.Quests.QuestStages
 
         public void AddQuestItem(int ID, string name, int maxAmount, string objective)
         {
-            Item.Item item = new Item.Item(name, ID, maxAmount);
+            Item item = new Item(ID, name, maxAmount);
             PickItemStageGroup pisg = new PickItemStageGroup(item, objective);
             PickedQuestItems.Add(pisg);
         }

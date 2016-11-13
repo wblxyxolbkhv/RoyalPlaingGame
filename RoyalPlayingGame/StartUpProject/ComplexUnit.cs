@@ -4,14 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RoyalPlayingGame.Spell;
+using RoyalPlayingGame;
+using RoyalPlayingGame.Items;
 using RoyalPlayingGame.Dialogs;
 using SimplePhysicalEngine.NonPhysicalComponents;
+using SimplePhysicalEngine;
 using VisualPart;
 
 namespace StartUpProject
 {
     public class ComplexUnit : ComplexObject
     {
+        public ComplexUnit()
+        {
+            TriggersColiisionsListener.TriggerCollisionDetected += OnTriggerCollisionDetected;
+        }
+
         public Animation JumpAnimationLeft { get; set; }
         public Animation JumpAnimationRight { get; set; }
         public Animation Cast1AnimationLeft { get; set; }
@@ -100,6 +108,14 @@ namespace StartUpProject
                         Animation = NonActivityAnimationRight;
                         break;
                 }
+        }
+
+        private void OnTriggerCollisionDetected(int TriggerID)
+        {
+            if (TriggerID < 1000)
+                return;
+            Item item = ItemsManager.GetItem(TriggerID);
+            //Unit.AddItem(item);
         }
 
     }

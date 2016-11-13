@@ -24,9 +24,23 @@ namespace VisualPart.UserControls
         }
 
 
+        Quest activeQuest;
+        public Quest ActiveQuest
+        {
+            get { return activeQuest; }
+            set
+            {
+                activeQuest = value;
+                if (value !=null)
+                    activeQuest.QuestCompleted += OnCurrentQuestComplited;
+            }
+        }
 
-        public Quest ActiveQuest { get; set; }
-        
+        private void OnCurrentQuestComplited()
+        {
+            throw new NotImplementedException();
+        }
+
         public void RefreshLables()
         {
             if (ActiveQuest != null)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoyalPlayingGame.Item.Items
+namespace RoyalPlayingGame.Items
 {
     public enum ArmorType { Cloth, Leather, Mail, Plate }
     public enum ArmorSlot { Head, Sholders, Back, Chest, Hands, Belt, Legs, Boots, Ring1, Ring2 }

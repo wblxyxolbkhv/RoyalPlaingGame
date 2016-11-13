@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoyalPlayingGame.Item
+namespace RoyalPlayingGame.Items
 {
     public class Item
     {
@@ -27,7 +27,7 @@ namespace RoyalPlayingGame.Item
             Amount = amount;
             IsAQuestItem = false;
         }
-        public Item(string name, int ID, int maxAmount)
+        public Item(int ID, string name,  int maxAmount)
         {
             this.ID = ID;
             Name = name;

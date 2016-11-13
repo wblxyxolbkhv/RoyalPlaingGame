@@ -35,6 +35,8 @@ namespace StartUpProject
             QuestJournalManager = new QuestJournalManager();
             QuestJournalManager.Player = Player.Unit as Player;
 
+            HintQueue = new HintQueue();
+
             JournalNotesPublisher.Journal = (Player.Unit as Player).QuestJournal;
 
         }
@@ -43,6 +45,7 @@ namespace StartUpProject
         List<ComplexUnit> NPCs { get; set; }
         List<ComplexSpell> Spells { get; set; }
         List<ComplexStructure> Structures { get; set; }
+        List<ComplexItem> DroppedItems { get; set; }
 
         List<RealObject> CollisionDomain { get; set; }
         List<RealObject> EnemiesCollisionDomain { get; set; }
@@ -57,8 +60,7 @@ namespace StartUpProject
         public DialogManager DialogManager { get; private set; }
         public ActiveQuestManager ActiveQuestManager { get; private set; }
         public QuestJournalManager QuestJournalManager { get; set; }
-
-        private List<string> HintQueue = new List<string>();
+        private HintQueue HintQueue { get; set; }
 
         public void OnPrintAllObjects(object sender, PaintEventArgs e)
         {
@@ -71,20 +73,23 @@ namespace StartUpProject
                 o.PrintObject(e, CameraBias);
             foreach (ComplexObject o in Spells)
                 o.PrintObject(e, CameraBias);
+            foreach (ComplexItem o in DroppedItems)
+                o.PrintObject(e, CameraBias);
             foreach (TemporaryTitle o in TemporaryObjects)
                 o.PrintObject(e, CameraBias);
+
+            HintQueue.PrintHints(e);
             DialogManager.PrintDialog(e, CameraBias);
-            foreach (string s in HintQueue)
-                e.Graphics.DrawString(s, new Font("Arial", 12), Brushes.Black, 400, 400);
+            
             //PlayerMenuManager.OnPrint(sender, e);
         }
         public void OnRefresh(object sender, EventArgs e)
         {
-            OnPositionRefresh();
             CheckTemporaryObjects();
-            RemoveRealObjects();
+            ChangeRealObjects();
             // TODO: заменить магическое число 10
             DialogManager.Refresh(10);
+            HintQueue.OnRefresh(10);
             PlayerMenuManager.OnMenuRefresh(sender, e);
             ActiveQuestManager.OnRefresh();
             QuestJournalManager.OnRefresh();
@@ -101,6 +106,8 @@ namespace StartUpProject
                 o.OnRefresh(sender, e);
                 CleanObject(o);
             }
+            foreach (ComplexItem o in DroppedItems)
+                o.OnRefresh(sender, e);
             foreach (TemporaryTitle o in TemporaryObjects)
                 o.RealObject.OnRefreshPosition(sender, e);
             OnTalkAvailable();
@@ -136,7 +143,6 @@ namespace StartUpProject
                 case Keys.Escape:
                     {
                         QuestJournalManager.Hide();
-                        HintQueue.Clear();
                         break;
                     }
                 case Keys.J:
@@ -155,12 +161,12 @@ namespace StartUpProject
             }
             catch (RoyalPlayingGame.Exceptions.NoManaException)
             {
-                CreateTemporaryTitle("Недостаточно маны", Player.RealObject.Position, false);
+                HintQueue.AddHint("Недостаточно маны");
                 return;
             }
             catch (RoyalPlayingGame.Exceptions.SpellCoolDownException)
             {
-                CreateTemporaryTitle("Заклинание еще не готово", Player.RealObject.Position, false);
+                HintQueue.AddHint("Заклинание еще не готово");
                 return;
             }
             ComplexSpell s = Player.Cast(spell, CollisionDomain);
@@ -188,6 +194,7 @@ namespace StartUpProject
             CollisionDomain = new List<RealObject>();
             EnemiesCollisionDomain = new List<RealObject>();
             Structures = new List<ComplexStructure>();
+            DroppedItems = new List<ComplexItem>();
             Spells = new List<ComplexSpell>();
             Enemies = new List<ComplexEnemy>();
             NPCs = new List<ComplexUnit>();
@@ -225,6 +232,7 @@ namespace StartUpProject
             enemy.RealObject.Position = new Vector2(2000, 400);
             enemy.RealObject.CollisionDetected += OnCollisionDetected;
             enemy.PatrolPoint = new Vector2(2000, 400);
+            enemy.LootDroped += DropLoot;
             Enemies.Add(enemy);
 
             Minotaur enemy1 = new Minotaur(CollisionDomain, Gravity);
@@ -232,6 +240,7 @@ namespace StartUpProject
             enemy1.RealObject.Position = new Vector2(2500, 400);
             enemy1.RealObject.CollisionDetected += OnCollisionDetected;
             enemy1.PatrolPoint = new Vector2(2500, 400);
+            enemy1.LootDroped += DropLoot;
             Enemies.Add(enemy1);
 
             Minotaur enemy2 = new Minotaur(CollisionDomain, Gravity);
@@ -239,6 +248,7 @@ namespace StartUpProject
             enemy2.RealObject.Position = new Vector2(3000, 400);
             enemy2.RealObject.CollisionDetected += OnCollisionDetected;
             enemy2.PatrolPoint = new Vector2(3000, 400);
+            enemy2.LootDroped += DropLoot;
             Enemies.Add(enemy2);
         }
         private void InitPlayer()
@@ -370,7 +380,7 @@ namespace StartUpProject
         }
 
         private List<ComplexObject> RemoveQueue = new List<ComplexObject>();
-        private void RemoveRealObjects()
+        private void ChangeRealObjects()
         {
             foreach(ComplexObject o in RemoveQueue)
             {
@@ -395,6 +405,19 @@ namespace StartUpProject
                 }
             }
             RemoveQueue.Clear();
+
+
+
+
+
+            foreach (RealObject o in CollisionDomainAddQueue)
+                CollisionDomain.Add(o);
+            CollisionDomainAddQueue.Clear();
+
+
+            foreach (ComplexItem item in DropQueue)
+                DroppedItems.Add(item);
+            DropQueue.Clear();
         }
 
         private List<ComplexObject> TemporaryObjects = new List<ComplexObject>();
@@ -446,7 +469,7 @@ namespace StartUpProject
                             unit.RealObject.Position.X - Player.RealObject.Position.X > range - 20)
                         {
                             if (!HintQueue.Contains("Нажмите E чтобы заговорить с ЭТИМ"))
-                                HintQueue.Add("Нажмите E чтобы заговорить с ЭТИМ");
+                                HintQueue.AddHint("Нажмите E чтобы заговорить с ЭТИМ");
                             AvailableForTalkingNPC = unit;
                         }
                         break;
@@ -456,7 +479,7 @@ namespace StartUpProject
                             -unit.RealObject.Position.X + Player.RealObject.Position.X > range - 20)
                         {
                             if (!HintQueue.Contains("Нажмите E чтобы заговорить с ЭТИМ"))
-                                HintQueue.Add("Нажмите E чтобы заговорить с ЭТИМ");
+                                HintQueue.AddHint("Нажмите E чтобы заговорить с ЭТИМ");
                             AvailableForTalkingNPC = unit;
                         }
                         break;
@@ -472,22 +495,7 @@ namespace StartUpProject
                 DialogManager.Dialog.IsActive = true;
                 DialogManager.Dialog.GoToDialogBeginning();
                 DialogManager.TalkingObject = unit;
-                HintQueue.Clear();
             }
-        }
-        // убрать это дерьмо
-        int a = 1000;
-        private void OnPositionRefresh()
-        {
-            a -= 20;
-            if (a < 0)
-            {
-                a = 1000;
-                CreateTemporaryTitle(string.Format("{0}:{1}", Player.RealObject.Position.X, Player.RealObject.Position.Y),
-                    new Vector2(Player.RealObject.Position.X, Player.RealObject.Position.Y),
-                    false);
-            }
-            //HintQueue.Add(string.Format("{0}:{1}", Player.RealObject.Position.X, Player.RealObject.Position.Y));
         }
         private void CreateTriggers()
         {
@@ -498,6 +506,24 @@ namespace StartUpProject
             Trigger1.Width = 100;
             CollisionDomain.Add(Trigger1);
             Trigger1.IsTrigger = true;
+        }
+        private List<ComplexItem> DropQueue = new List<ComplexItem>();
+        private List<RealObject> CollisionDomainAddQueue = new List<RealObject>();
+        private void DropLoot(List<int> itemsIDs, Vector2 dropPoint)
+        {
+            foreach (int id in itemsIDs)
+            {
+                ComplexItem item = new ComplexItem();
+                item.Item = ItemsManager.GetItem(id);
+                item.RealObject = new RealObject(CollisionDomain, 1000, Gravity);
+                item.RealObject.Position = new Vector2(dropPoint.X, dropPoint.Y);
+                item.RealObject.Height = item.Texture.Height;
+                item.RealObject.Width = item.Texture.Width;
+                CollisionDomainAddQueue.Add(item.RealObject);
+                item.RealObject.IsTrigger = true;
+
+                DropQueue.Add(item);
+            }
         }
     }
 }

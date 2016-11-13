@@ -69,11 +69,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelQuestName);
             this.Name = "ActiveQuestControl";
-            this.Size = new System.Drawing.Size(244, 73);
+            this.Size = new System.Drawing.Size(242, 71);
             this.ResumeLayout(false);
             this.PerformLayout();
 

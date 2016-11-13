@@ -60,7 +60,6 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
         {
             NearbyObjects = objs;
             direction = Direction.NoneRight;
-            NearbyObjects.Add(this);
 
             this.gravity = gravity;
             SpeedY = 0;
