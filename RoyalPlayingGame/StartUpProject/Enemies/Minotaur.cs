@@ -44,6 +44,9 @@ namespace StartUpProject.Enemies
             DefaultAnimation = WalkAnimationLeft;
             Animation = WalkAnimationLeft;
 
+            LootList = new List<int>();
+            LootList.Add(1000);
+
         }
         
     }

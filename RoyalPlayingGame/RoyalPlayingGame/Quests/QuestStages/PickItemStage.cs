@@ -33,7 +33,7 @@ namespace RoyalPlayingGame.Quests.QuestStages
 
         public void AddQuestItem(int ID, string name, int maxAmount, string objective)
         {
-            Item item = new Item(name, ID, maxAmount);
+            Item item = new Item(ID, name, maxAmount);
             PickItemStageGroup pisg = new PickItemStageGroup(item, objective);
             PickedQuestItems.Add(pisg);
         }

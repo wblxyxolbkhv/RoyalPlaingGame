@@ -62,6 +62,8 @@ namespace StartUpProject
                  (float)(RealObject.Width*percent),
                  4f);
         }
+
+
         public ComplexUnit Target { get; set; }
         public Vector2 PatrolPoint { get; set; }
         public double PatrolRadius { get; set; }
@@ -100,5 +102,16 @@ namespace StartUpProject
         {
             //Cast(CollisionDomain);
         }
+
+        protected List<int> LootList = new List<int>();
+        public override void OnUnitDeath()
+        {
+            base.OnUnitDeath();
+
+            LootDroped?.Invoke(LootList, this.RealObject.Position);
+        }
+        
+        public event LootDropHandler LootDroped;
     }
+    public delegate void LootDropHandler(List<int> itemIDs, Vector2 dropPoint);  
 }
