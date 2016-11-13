@@ -21,7 +21,7 @@ namespace RoyalPlayingGame.Quests
             Description = description;
             QuestGiver = giver;
             QuestStages = new List<QuestStage>();
-            IsActive = false;
+            isComplited = false;
             Notes = new List<JournalNote>();
         }
 
@@ -31,13 +31,13 @@ namespace RoyalPlayingGame.Quests
             Name = name;
             Description = description;
             QuestStages = new List<QuestStage>();
-            IsActive = false;
+            isComplited = false;
             Notes = new List<JournalNote>();
         }
 
         public Quest()
         {
-            IsActive = true;
+            isComplited = false;
             QuestStages = new List<QuestStage>();
             Notes = new List<JournalNote>();         
         }
@@ -55,13 +55,13 @@ namespace RoyalPlayingGame.Quests
 
         public List<JournalNote> Notes { get; set; }
         public string ID { get; set; }
-        private bool isActive;
-        public bool IsActive
+        private bool isComplited;
+        public bool IsComplited
         {
-            get { return isActive; }
+            get { return isComplited; }
             set
             {
-                isActive = value;
+                isComplited = value;
                 if (!string.IsNullOrEmpty(ShownReplic))
                     QuestListener.ReplicShow(Convert.ToInt32(ShownReplic));
 
@@ -69,7 +69,13 @@ namespace RoyalPlayingGame.Quests
                     QuestListener.ReplicHide(Convert.ToInt32(HiddenReplic));
             }
         }
-        public static event Action QuestCompleted;
+        private bool isActive;
+        public bool IsActive
+        {
+            get { return isActive; }
+            set { isActive = value; }
+        }
+        public event Action QuestCompleted;
         private Player Player { get; set; }
         public List<QuestStage> QuestStages { get; set; }
         private QuestStage currentQuestStage;
