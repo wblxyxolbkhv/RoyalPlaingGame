@@ -12,6 +12,8 @@ using RoyalPlayingGame.Units;
 using System.Drawing;
 using StartUpProject.Enemies;
 using StartUpProject.Dialogs;
+using RoyalPlayingGame;
+
 
 namespace StartUpProject
 {
@@ -32,6 +34,8 @@ namespace StartUpProject
 
             QuestJournalManager = new QuestJournalManager();
             QuestJournalManager.Player = Player.Unit as Player;
+
+            JournalNotesPublisher.Journal = (Player.Unit as Player).QuestJournal;
 
         }
         ComplexUnit Player { get; set; }

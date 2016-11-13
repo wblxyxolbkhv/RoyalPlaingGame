@@ -20,8 +20,7 @@ namespace VisualPart.UserControls
             InitializeComponent();
             Visible = false;
             NoteControls = new List<JournalNoteControl>();
-            LinkedNoteControls = new List<JournalNoteControl>();
-            
+            LinkedNoteControls = new List<JournalNoteControl>();        
             listBoxQuests.SelectedIndexChanged += OnListBoxQuestSelectedItemChanged;
         }
 
@@ -32,8 +31,6 @@ namespace VisualPart.UserControls
         }
 
         public PlayerJournal Journal { get; set; }
-        //public List<Quest> Journal.ActiveQuests { get { if (ql.Count > 0) return ql;  return null; } set { ql = value; } }
-        //List<Quest> ql;
         public void RefreshListBox()
         {
             if (Journal!= null && Journal.ActiveQuests != null && Journal.ActiveQuests.Count>0)
@@ -44,7 +41,11 @@ namespace VisualPart.UserControls
                     listBoxQuests.Items.Add(q.Name);
                 }
         }
-
+        public void RemoveListBoxItem(Quest quest)
+        {
+            if (listBoxQuests.Items.Contains(quest.Name))
+                listBoxQuests.Items.Remove(quest.Name);
+        }
         public void RefreshLabels()
         {
             if (Journal != null && Journal.ActiveQuests != null && Journal.ActiveQuests.Count > 0 && listBoxQuests.SelectedItem != null)
@@ -60,12 +61,12 @@ namespace VisualPart.UserControls
                         KillUnitStageGroup k = kus.GetCurrentTarget();
                         labelStageObjective.Text = string.Format("{0} {1}/{2}", k.Objective, k.CurrentAmount, k.RequiredAmount);
                     }
-                else if (Journal.ActiveQuests[listBoxQuests.SelectedIndex].CurrentQuestStage is ToPointStage)
-                {
-                    ToPointStage tps = Journal.ActiveQuests[listBoxQuests.SelectedIndex].CurrentQuestStage as ToPointStage;
-                    ToPointStageGroup t = tps.GetCurrentPoint();
-                    labelStageObjective.Text = string.Format("{0} 0/1", t.Objective);
-                }
+                    else if (Journal.ActiveQuests[listBoxQuests.SelectedIndex].CurrentQuestStage is ToPointStage)
+                    {
+                        ToPointStage tps = Journal.ActiveQuests[listBoxQuests.SelectedIndex].CurrentQuestStage as ToPointStage;
+                        ToPointStageGroup t = tps.GetCurrentPoint();
+                        labelStageObjective.Text = string.Format("{0} 0/1", t.Objective);
+                    }
             }
             else
             {
