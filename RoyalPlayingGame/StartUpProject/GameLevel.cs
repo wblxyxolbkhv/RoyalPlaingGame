@@ -35,6 +35,8 @@ namespace StartUpProject
             QuestJournalManager = new QuestJournalManager();
             QuestJournalManager.Player = Player.Unit as Player;
 
+            HintQueue = new HintQueue();
+
             JournalNotesPublisher.Journal = (Player.Unit as Player).QuestJournal;
 
         }
@@ -57,8 +59,7 @@ namespace StartUpProject
         public DialogManager DialogManager { get; private set; }
         public ActiveQuestManager ActiveQuestManager { get; private set; }
         public QuestJournalManager QuestJournalManager { get; set; }
-
-        private List<string> HintQueue = new List<string>();
+        private HintQueue HintQueue { get; set; }
 
         public void OnPrintAllObjects(object sender, PaintEventArgs e)
         {
@@ -73,9 +74,10 @@ namespace StartUpProject
                 o.PrintObject(e, CameraBias);
             foreach (TemporaryTitle o in TemporaryObjects)
                 o.PrintObject(e, CameraBias);
+
+            HintQueue.PrintHints(e);
             DialogManager.PrintDialog(e, CameraBias);
-            foreach (string s in HintQueue)
-                e.Graphics.DrawString(s, new Font("Arial", 12), Brushes.Black, 400, 400);
+            
             //PlayerMenuManager.OnPrint(sender, e);
         }
         public void OnRefresh(object sender, EventArgs e)
@@ -88,6 +90,7 @@ namespace StartUpProject
             PlayerMenuManager.OnMenuRefresh(sender, e);
             ActiveQuestManager.OnRefresh();
             QuestJournalManager.OnRefresh();
+            HintQueue.OnRefresh(10);
             Player.OnRefresh(sender, e);
             foreach (ComplexEnemy o in Enemies)
             {
@@ -136,7 +139,6 @@ namespace StartUpProject
                 case Keys.Escape:
                     {
                         QuestJournalManager.Hide();
-                        HintQueue.Clear();
                         break;
                     }
                 case Keys.J:
@@ -155,12 +157,12 @@ namespace StartUpProject
             }
             catch (RoyalPlayingGame.Exceptions.NoManaException)
             {
-                CreateTemporaryTitle("Недостаточно маны", Player.RealObject.Position, false);
+                HintQueue.AddHint("Недостаточно маны");
                 return;
             }
             catch (RoyalPlayingGame.Exceptions.SpellCoolDownException)
             {
-                CreateTemporaryTitle("Заклинание еще не готово", Player.RealObject.Position, false);
+                HintQueue.AddHint("Заклинание еще не готово");
                 return;
             }
             ComplexSpell s = Player.Cast(spell, CollisionDomain);
@@ -446,7 +448,7 @@ namespace StartUpProject
                             unit.RealObject.Position.X - Player.RealObject.Position.X > range - 20)
                         {
                             if (!HintQueue.Contains("Нажмите E чтобы заговорить с ЭТИМ"))
-                                HintQueue.Add("Нажмите E чтобы заговорить с ЭТИМ");
+                                HintQueue.AddHint("Нажмите E чтобы заговорить с ЭТИМ");
                             AvailableForTalkingNPC = unit;
                         }
                         break;
@@ -456,7 +458,7 @@ namespace StartUpProject
                             -unit.RealObject.Position.X + Player.RealObject.Position.X > range - 20)
                         {
                             if (!HintQueue.Contains("Нажмите E чтобы заговорить с ЭТИМ"))
-                                HintQueue.Add("Нажмите E чтобы заговорить с ЭТИМ");
+                                HintQueue.AddHint("Нажмите E чтобы заговорить с ЭТИМ");
                             AvailableForTalkingNPC = unit;
                         }
                         break;
@@ -472,7 +474,6 @@ namespace StartUpProject
                 DialogManager.Dialog.IsActive = true;
                 DialogManager.Dialog.GoToDialogBeginning();
                 DialogManager.TalkingObject = unit;
-                HintQueue.Clear();
             }
         }
         // убрать это дерьмо

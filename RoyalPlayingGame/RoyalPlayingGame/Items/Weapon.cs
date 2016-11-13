@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoyalPlayingGame.Item.Items
+namespace RoyalPlayingGame.Items
 {
     public enum WeaponType { Sword, Staff, Shield, Dagger, Mace, Spear }
     public enum WeaponSlot { LeftHand, RightHand, TwoHands }

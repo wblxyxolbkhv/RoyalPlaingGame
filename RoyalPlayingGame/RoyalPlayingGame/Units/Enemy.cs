@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RoyalPlayingGame.Items;
 
 namespace RoyalPlayingGame.Units
 {
@@ -16,7 +17,7 @@ namespace RoyalPlayingGame.Units
             Agility = RealAgility = agility;
             PhysicalDamageReduction = RealPhysicalDamageReduction = physicalDamageReduction;
             MagicalDamageReduction = RealMagicalDamageReduction = magicalDamegeReduction;
-            Loot = new List<Item.Item>();
+            Loot = new List<Item>();
         }
         
         public Enemy():base()
@@ -27,12 +28,12 @@ namespace RoyalPlayingGame.Units
             Agility = RealAgility = 4;
             PhysicalDamageReduction = RealPhysicalDamageReduction = 5;
             MagicalDamageReduction = RealMagicalDamageReduction = 8;
-            Loot = new List<Item.Item>();
+            Loot = new List<Item>();
         }
 
-        protected List<Item.Item> Loot;
+        protected List<Item> Loot;
 
-        public void AddLoot(Item.Item item)
+        public void AddLoot(Item item)
         {
             Loot.Add(item);
         }

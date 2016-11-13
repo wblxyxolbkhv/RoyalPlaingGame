@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RoyalPlayingGame.Item;
+using RoyalPlayingGame.Items;
 using SimplePhysicalEngine;
 
 namespace RoyalPlayingGame.Quests.QuestStages
 {
     public class ToPointStage : QuestStage
     {
-        public ToPointStage(int moneyReward, int experieneReward, List<Item.Item> itemReward, string name, string description, int index) 
+        public ToPointStage(int moneyReward, int experieneReward, List<Item> itemReward, string name, string description, int index) 
             : base(moneyReward, experieneReward, itemReward, name, description, index)
         {
             Points = new List<ToPointStageGroup>();

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoyalPlayingGame.Item.Items
+namespace RoyalPlayingGame.Items
 {
     public enum PotionType { MP, HP }
     public class Potion : Item

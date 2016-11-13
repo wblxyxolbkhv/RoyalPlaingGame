@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="ActiveQuestManager.cs" />
     <Compile Include="ComplexEnemy.cs" />
+    <Compile Include="ComplexItem.cs" />
     <Compile Include="ComplexObject.cs" />
     <Compile Include="ComplexSpell.cs" />
     <Compile Include="ComplexStructure.cs" />

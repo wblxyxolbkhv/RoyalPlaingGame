@@ -73,10 +73,10 @@
     <Compile Include="Spell\SpellBookCollection.cs" />
     <Compile Include="Units\Enemy.cs" />
     <Compile Include="Interfaces\ITargetObject.cs" />
-    <Compile Include="Item\Item.cs" />
-    <Compile Include="Item\Items\Armor.cs" />
-    <Compile Include="Item\Items\Potion.cs" />
-    <Compile Include="Item\Items\Weapon.cs" />
+    <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\Armor.cs" />
+    <Compile Include="Items\Potion.cs" />
+    <Compile Include="Items\Weapon.cs" />
     <Compile Include="Spell\NegativeSpell.cs" />
     <Compile Include="Spell\NegativeSpells\FireBall.cs" />
     <Compile Include="Units\Player.cs" />

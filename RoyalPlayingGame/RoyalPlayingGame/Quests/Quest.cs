@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RoyalPlayingGame.Units;
-using RoyalPlayingGame.Item;
+using RoyalPlayingGame.Items;
 using System.Xml;
 using RoyalPlayingGame.Quests.QuestStages;
 using RoyalPlayingGame.Journal;

@@ -31,7 +31,8 @@ namespace VisualPart.UserControls
             set
             {
                 activeQuest = value;
-                activeQuest.QuestCompleted += OnCurrentQuestComplited;
+                if (value !=null)
+                    activeQuest.QuestCompleted += OnCurrentQuestComplited;
             }
         }
 

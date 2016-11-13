@@ -19,7 +19,17 @@ namespace StartUpProject
             public int LifeTime;
             public string Message;
         }
-        private List<Hint> Hints { get; set; }
+        private List<Hint> Hints { get; set; } = new List<Hint>();
+
+        public bool Contains(string hintMessage)
+        {
+            foreach (Hint h in Hints)
+            {
+                if (h.Message == hintMessage)
+                    return true;
+            }
+            return false;
+        }
         public void AddHint(string message)
         {
             Hints.Add(new Hint(message));
@@ -37,9 +47,20 @@ namespace StartUpProject
                 Hints.Remove(h);
             removeList.Clear();
         }
-        public void PrintHints(PaintEventArgs e, int CameraBias)
+        public void PrintHints(PaintEventArgs e)
         {
+            for (int i = 1;i <= 3; i++)
+            {
+                if (Hints.Count < i)
+                    break;
+                Hint hint = Hints[Hints.Count - i];
 
+                e.Graphics.DrawString(hint.Message,
+                    new System.Drawing.Font("Arial", 10),
+                    System.Drawing.Brushes.Black,
+                    700,
+                    100 - i*20);
+            }
         }
     }
 }

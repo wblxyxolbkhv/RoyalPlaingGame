@@ -13,7 +13,7 @@ namespace RoyalPlayingGame
         static JournalNotesPublisher()
         {
             Notes = new List<JournalNote>();
-            QuestListener.QuestStageComplited += OnQuestStageComplited
+            QuestListener.QuestStageComplited += OnQuestStageComplited;
             LoadJournalNotes("PigeonQuestNotes.xml");
         }
 
