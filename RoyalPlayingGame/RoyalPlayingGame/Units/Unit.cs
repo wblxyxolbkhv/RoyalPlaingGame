@@ -226,31 +226,34 @@ namespace RoyalPlayingGame.Units
                 return true;
             else return false;
         }
-
-        public void AddItem(Item item)
+        // булевое значение показывает, удалось ли поднять предмет (есть ли место)
+        public bool AddItem(Item item)
         {
             if (item.IsAQuestItem)
                 QuestItemPicked?.Invoke(item.ID);
-            foreach (Item addedItem in Inventory)
-            {
-                if (addedItem.ID == item.ID)
-                {
-                    addedItem.Amount ++;
-                }
-                else
-                {
-                    Inventory.Add(item);
-                }
-            }
+            //foreach (Item addedItem in Inventory)
+            //{
+            //    if (addedItem.ID == item.ID)
+            //    {
+            //        addedItem.Amount ++;
+            //    }
+            //    else
+            //    {
+            //        Inventory.Add(item);
+            //    }
+            //}
+            Inventory.Add(item);
+            return true;
         }
 
-        public void AddItem(Item item, ushort amount)
+        public bool AddItem(Item item, ushort amount)
         {
             foreach (Item addedItem in Inventory)
             {
                 if (addedItem.ID == item.ID)
                     addedItem.Amount += amount;
             }
+            return true;
         }
 
         public void DropItem(int ID)

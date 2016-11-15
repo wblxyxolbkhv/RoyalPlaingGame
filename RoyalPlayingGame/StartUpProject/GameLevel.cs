@@ -38,8 +38,11 @@ namespace StartUpProject
             HintQueue = new HintQueue();
 
             JournalNotesPublisher.Journal = (Player.Unit as Player).QuestJournal;
+            TriggersColiisionsListener.ItemCollisionDetected += PickUpItem; ;
 
         }
+
+
         ComplexUnit Player { get; set; }
         List<ComplexEnemy> Enemies { get; set; }
         List<ComplexUnit> NPCs { get; set; }
@@ -384,6 +387,11 @@ namespace StartUpProject
         {
             foreach(ComplexObject o in RemoveQueue)
             {
+                if (o is ComplexItem)
+                {
+                    DroppedItems.Remove(o as ComplexItem);
+                    CollisionDomain.Remove(o.RealObject);
+                }
                 if (o is ComplexSpell)
                 {
                     if (Spells.Contains(o))
@@ -525,5 +533,20 @@ namespace StartUpProject
                 DropQueue.Add(item);
             }
         }
+        private void PickUpItem(RealObject item)
+        {
+            ComplexItem pickedItem = new ComplexItem();
+            foreach (ComplexItem c in DroppedItems)
+                if (c.RealObject == item)
+                {
+                    pickedItem = c;
+                    break;
+                }
+
+            (Player.Unit as Player).AddItem(pickedItem.Item);
+            RemoveQueue.Add(pickedItem);
+
+        }
+
     }
 }
