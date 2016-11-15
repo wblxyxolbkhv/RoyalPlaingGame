@@ -22,6 +22,7 @@ namespace VisualPart.UserControls
             NoteControls = new List<JournalNoteControl>();
             LinkedNoteControls = new List<JournalNoteControl>();        
             listBoxQuests.SelectedIndexChanged += OnListBoxQuestSelectedItemChanged;
+            
         }
 
         private void OnListBoxQuestSelectedItemChanged(object sender, EventArgs e)
@@ -59,12 +60,14 @@ namespace VisualPart.UserControls
                     {
                         KillUnitStage kus = Journal.ActiveQuests[listBoxQuests.SelectedIndex].CurrentQuestStage as KillUnitStage;
                         KillUnitStageGroup k = kus.GetCurrentTarget();
+                        if(labelStageObjective.Text!="Задание выполнено")
                         labelStageObjective.Text = string.Format("{0} {1}/{2}", k.Objective, k.CurrentAmount, k.RequiredAmount);
                     }
                     else if (Journal.ActiveQuests[listBoxQuests.SelectedIndex].CurrentQuestStage is ToPointStage)
                     {
                         ToPointStage tps = Journal.ActiveQuests[listBoxQuests.SelectedIndex].CurrentQuestStage as ToPointStage;
                         ToPointStageGroup t = tps.GetCurrentPoint();
+                        if (labelStageObjective.Text != "Задание выполнено")
                         labelStageObjective.Text = string.Format("{0} 0/1", t.Objective);
                     }
             }
@@ -82,7 +85,10 @@ namespace VisualPart.UserControls
                 jnc.Refresh();
         }
         
-
+        public void SetObjective(string objective)
+        {
+            labelStageObjective.Text = objective;
+        }
 
 
         private List<JournalNoteControl> LinkedNoteControls { get; set; }

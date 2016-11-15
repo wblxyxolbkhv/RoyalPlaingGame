@@ -44,13 +44,13 @@ namespace RoyalPlayingGame.Quests
 
         private void OnNextStage()
         {
-            if (QuestStages.IndexOf(CurrentQuestStage) < QuestStages.Count-1)
+            if (QuestStages.IndexOf(CurrentQuestStage) < QuestStages.Count - 1)
             {
                 CurrentQuestStage.QuestStageCompleted -= OnNextStage;
-                CurrentQuestStage = QuestStages[QuestStages.IndexOf(CurrentQuestStage) +1];
+                CurrentQuestStage = QuestStages[QuestStages.IndexOf(CurrentQuestStage) + 1];
                 CurrentQuestStage.QuestStageCompleted += OnNextStage;
             }
-            else QuestCompleted?.Invoke();
+            else QuestListener.QuestComplete(ID);
         }
 
         public List<JournalNote> Notes { get; set; }
@@ -163,6 +163,7 @@ namespace RoyalPlayingGame.Quests
                                             break;
                                         }
                                 }
+                                
                             }
                             AddQuestStage(tps);
                             break;
