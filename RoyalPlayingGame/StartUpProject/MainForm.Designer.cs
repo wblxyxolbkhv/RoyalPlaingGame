@@ -142,6 +142,18 @@
             this.playerMenu1.TabIndex = 1;
             this.playerMenu1.Visible = false;
             // 
+<<<<<<< HEAD
+=======
+            // journal1
+            // 
+            this.journal1.Journal = null;
+            this.journal1.Location = new System.Drawing.Point(251, 38);
+            this.journal1.Name = "journal1";
+            this.journal1.Size = new System.Drawing.Size(639, 420);
+            this.journal1.TabIndex = 7;
+            this.journal1.Visible = false;
+            // 
+>>>>>>> a0477597b35f4208daec335b0d89e0fb3aba0282
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

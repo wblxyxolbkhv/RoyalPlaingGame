@@ -221,8 +221,8 @@ namespace RoyalPlayingGame.Units
                 return true;
             else return false;
         }
-
-        public void AddItem(Item item)
+        // булевое значение показывает, удалось ли поднять предмет (есть ли место)
+        public bool AddItem(Item item)
         {
             if (item.IsAQuestItem)
                 QuestItemPicked?.Invoke(item.ID);
@@ -237,15 +237,21 @@ namespace RoyalPlayingGame.Units
             //        Inventory.Add(item);
             //    }
             //}
+<<<<<<< HEAD
+=======
+            Inventory.Add(item);
+            return true;
+>>>>>>> a0477597b35f4208daec335b0d89e0fb3aba0282
         }
 
-        public void AddItem(Item item, ushort amount)
+        public bool AddItem(Item item, ushort amount)
         {
             foreach (Item addedItem in Inventory)
             {
                 if (addedItem.ID == item.ID)
                     addedItem.Amount += amount;
             }
+            return true;
         }
 
         public void DropItem(int ID)
