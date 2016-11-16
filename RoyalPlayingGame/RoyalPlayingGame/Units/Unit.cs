@@ -16,23 +16,18 @@ namespace RoyalPlayingGame.Units
     {
         public Unit()
         {
-            Inventory = new List<Item>();
+            Inventory = new Inventory(10);
             SpellBook = new SpellBookCollection();
-            ArmorSet = new List<Armor>();
-            WeaponSet = new List<Weapon>();
-            Potions = new List<Potion>();
-            SpellBook = new SpellBookCollection();
+            //ArmorSet = new List<Armor>();
+            //WeaponSet = new List<Weapon>();
+            //Potions = new List<Potion>();
             Effects = new List<Effect.Effect>();
             IsAlive = true;
         }
         public Unit(int ID)
         {
             this.ID = ID;
-            Inventory = new List<Item>();
-            SpellBook = new SpellBookCollection();
-            ArmorSet = new List<Armor>();
-            WeaponSet = new List<Weapon>();
-            Potions = new List<Potion>();
+      
             SpellBook = new SpellBookCollection();
             Effects = new List<Effect.Effect>();
             IsAlive = true;
@@ -151,7 +146,7 @@ namespace RoyalPlayingGame.Units
 
 
         public int ID {get;protected set; }
-        public List<Item> Inventory { get; set; }
+        public Inventory Inventory { get; set; }
         public List<Effect.Effect> Effects { get; set; }
         public List<Armor> ArmorSet { get; set; }
         public List<Weapon> WeaponSet { get; set; }
@@ -231,17 +226,17 @@ namespace RoyalPlayingGame.Units
         {
             if (item.IsAQuestItem)
                 QuestItemPicked?.Invoke(item.ID);
-            foreach (Item addedItem in Inventory)
-            {
-                if (addedItem.ID == item.ID)
-                {
-                    addedItem.Amount ++;
-                }
-                else
-                {
-                    Inventory.Add(item);
-                }
-            }
+            //foreach (Item addedItem in Inventory)
+            //{
+            //    if (addedItem.ID == item.ID)
+            //    {
+            //        addedItem.Amount ++;
+            //    }
+            //    else
+            //    {
+            //        Inventory.Add(item);
+            //    }
+            //}
         }
 
         public void AddItem(Item item, ushort amount)
@@ -255,17 +250,17 @@ namespace RoyalPlayingGame.Units
 
         public void DropItem(int ID)
         {
-            foreach(Item addedItem in Inventory)
-            {
-                if (addedItem.ID == ID)
-                {
-                    if (addedItem.IsAQuestItem)
-                        QuestItemDroped?.Invoke(ID);
-                    addedItem.Amount--;
-                    if (addedItem.Amount == 0)
-                        Inventory.Remove(addedItem);
-                }
-            }
+            //foreach(Item addedItem in Inventory)
+            //{
+            //    if (addedItem.ID == ID)
+            //    {
+            //        if (addedItem.IsAQuestItem)
+            //            QuestItemDroped?.Invoke(ID);
+            //        addedItem.Amount--;
+            //        if (addedItem.Amount == 0)
+            //            Inventory.Remove(addedItem);
+            //    }
+            //}
         }
 
         public virtual Spell.Spell CastSpell()

@@ -58,6 +58,7 @@
     <Compile Include="Enemies\Minotaur.cs" />
     <Compile Include="GameLevel.cs" />
     <Compile Include="HintQueue.cs" />
+    <Compile Include="InventoryManager.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

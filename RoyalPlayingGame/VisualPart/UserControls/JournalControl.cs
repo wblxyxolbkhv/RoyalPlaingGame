@@ -22,7 +22,10 @@ namespace VisualPart.UserControls
             NoteControls = new List<JournalNoteControl>();
             LinkedNoteControls = new List<JournalNoteControl>();        
             listBoxQuests.SelectedIndexChanged += OnListBoxQuestSelectedItemChanged;
-            
+            //button1.Parent = listBoxQuests;
+            ////button1.Size = new Size(100, 40);
+            //listBoxQuests.Items.Add(button1);
+            //listBoxQuests.ItemHeight = 40;
         }
 
         private void OnListBoxQuestSelectedItemChanged(object sender, EventArgs e)

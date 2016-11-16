@@ -35,6 +35,8 @@ namespace StartUpProject
             QuestJournalManager = new QuestJournalManager();
             QuestJournalManager.Player = Player.Unit as Player;
 
+            InventoryManager = new InventoryManager();
+            
             HintQueue = new HintQueue();
 
             JournalNotesPublisher.Journal = (Player.Unit as Player).QuestJournal;
@@ -60,6 +62,7 @@ namespace StartUpProject
         public DialogManager DialogManager { get; private set; }
         public ActiveQuestManager ActiveQuestManager { get; private set; }
         public QuestJournalManager QuestJournalManager { get; set; }
+        public InventoryManager InventoryManager { get; set; }
         private HintQueue HintQueue { get; set; }
 
         public void OnPrintAllObjects(object sender, PaintEventArgs e)
@@ -146,9 +149,7 @@ namespace StartUpProject
                         break;
                     }
                 case Keys.J:
-                    {
-                            QuestJournalManager.Show();
-                    }
+                    QuestJournalManager.Show();
                     break;
             }
         }
