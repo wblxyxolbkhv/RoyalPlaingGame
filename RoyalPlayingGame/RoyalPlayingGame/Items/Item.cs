@@ -41,6 +41,7 @@ namespace RoyalPlayingGame.Items
         public int Amount { get; set; }
         public uint Lvl { get; set; }
         public bool IsAQuestItem { get; set; }
+        public string Description { get; set; }
         public Effect.Effect ItemEffect { get; set; }
     }
 }

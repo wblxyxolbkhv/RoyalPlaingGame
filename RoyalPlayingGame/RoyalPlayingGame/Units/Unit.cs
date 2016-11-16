@@ -18,10 +18,7 @@ namespace RoyalPlayingGame.Units
         {
             Inventory = new List<Item>();
             SpellBook = new SpellBookCollection();
-            ArmorSet = new List<Armor>();
-            WeaponSet = new List<Weapon>();
-            Potions = new List<Potion>();
-            SpellBook = new SpellBookCollection();
+            Equipment = new List<Item>();
             Effects = new List<Effect.Effect>();
             IsAlive = true;
         }
@@ -30,10 +27,7 @@ namespace RoyalPlayingGame.Units
             this.ID = ID;
             Inventory = new List<Item>();
             SpellBook = new SpellBookCollection();
-            ArmorSet = new List<Armor>();
-            WeaponSet = new List<Weapon>();
-            Potions = new List<Potion>();
-            SpellBook = new SpellBookCollection();
+            Equipment = new List<Item>();
             Effects = new List<Effect.Effect>();
             IsAlive = true;
         }
@@ -153,9 +147,7 @@ namespace RoyalPlayingGame.Units
         public int ID {get;protected set; }
         public List<Item> Inventory { get; set; }
         public List<Effect.Effect> Effects { get; set; }
-        public List<Armor> ArmorSet { get; set; }
-        public List<Weapon> WeaponSet { get; set; }
-        public List<Potion> Potions { get; set; }
+        public List<Item> Equipment { get; set; }
         public SpellBookCollection SpellBook { get; set; }
         public int MoneyAmount { get; set; }
         public int Level { get; protected set; }
@@ -210,14 +202,14 @@ namespace RoyalPlayingGame.Units
         {
             if (CheckRequiredLvl(weapon))
             {
-                WeaponSet.Add(weapon);
+                Equipment.Add(weapon);
             }
         }
         public void EquipArmor(Armor armor)
         {
             if (CheckRequiredLvl(armor))
             {
-                ArmorSet.Add(armor);
+                Equipment.Add(armor);
             }
         }
         public bool CheckRequiredLvl(Item item)
@@ -226,6 +218,8 @@ namespace RoyalPlayingGame.Units
                 return true;
             else return false;
         }
+
+        // переделать
         // булевое значение показывает, удалось ли поднять предмет (есть ли место)
         public bool AddItem(Item item)
         {
