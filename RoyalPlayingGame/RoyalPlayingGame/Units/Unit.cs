@@ -16,18 +16,31 @@ namespace RoyalPlayingGame.Units
     {
         public Unit()
         {
+<<<<<<< HEAD
             Inventory = new List<Item>();
             SpellBook = new SpellBookCollection();
             Equipment = new List<Item>();
+=======
+            Inventory = new Inventory(10);
+            SpellBook = new SpellBookCollection();
+            //ArmorSet = new List<Armor>();
+            //WeaponSet = new List<Weapon>();
+            //Potions = new List<Potion>();
+>>>>>>> c0ebb8f61a95d8d115517ffaed3f2431e0bac6f2
             Effects = new List<Effect.Effect>();
             IsAlive = true;
         }
         public Unit(int ID)
         {
             this.ID = ID;
+<<<<<<< HEAD
             Inventory = new List<Item>();
             SpellBook = new SpellBookCollection();
             Equipment = new List<Item>();
+=======
+      
+            SpellBook = new SpellBookCollection();
+>>>>>>> c0ebb8f61a95d8d115517ffaed3f2431e0bac6f2
             Effects = new List<Effect.Effect>();
             IsAlive = true;
         }
@@ -145,7 +158,7 @@ namespace RoyalPlayingGame.Units
 
 
         public int ID {get;protected set; }
-        public List<Item> Inventory { get; set; }
+        public Inventory Inventory { get; set; }
         public List<Effect.Effect> Effects { get; set; }
         public List<Item> Equipment { get; set; }
         public SpellBookCollection SpellBook { get; set; }
@@ -236,8 +249,11 @@ namespace RoyalPlayingGame.Units
             //        Inventory.Add(item);
             //    }
             //}
+<<<<<<< HEAD
+=======
             Inventory.Add(item);
             return true;
+>>>>>>> a0477597b35f4208daec335b0d89e0fb3aba0282
         }
 
         public bool AddItem(Item item, ushort amount)
@@ -252,17 +268,17 @@ namespace RoyalPlayingGame.Units
 
         public void DropItem(int ID)
         {
-            foreach(Item addedItem in Inventory)
-            {
-                if (addedItem.ID == ID)
-                {
-                    if (addedItem.IsAQuestItem)
-                        QuestItemDroped?.Invoke(ID);
-                    addedItem.Amount--;
-                    if (addedItem.Amount == 0)
-                        Inventory.Remove(addedItem);
-                }
-            }
+            //foreach(Item addedItem in Inventory)
+            //{
+            //    if (addedItem.ID == ID)
+            //    {
+            //        if (addedItem.IsAQuestItem)
+            //            QuestItemDroped?.Invoke(ID);
+            //        addedItem.Amount--;
+            //        if (addedItem.Amount == 0)
+            //            Inventory.Remove(addedItem);
+            //    }
+            //}
         }
 
         public virtual Spell.Spell CastSpell()

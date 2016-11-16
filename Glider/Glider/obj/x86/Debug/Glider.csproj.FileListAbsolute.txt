@@ -1,0 +1,16 @@
+C:\Users\student.CLASS\Desktop\Glider\Glider\bin\Debug\Glider.exe
+C:\Users\student.CLASS\Desktop\Glider\Glider\bin\Debug\Glider.pdb
+C:\Users\student.CLASS\Desktop\Glider\Glider\obj\x86\Debug\Glider.Form1.resources
+C:\Users\student.CLASS\Desktop\Glider\Glider\obj\x86\Debug\Glider.Properties.Resources.resources
+C:\Users\student.CLASS\Desktop\Glider\Glider\obj\x86\Debug\Glider.csproj.GenerateResource.Cache
+C:\Users\student.CLASS\Desktop\Glider\Glider\obj\x86\Debug\Glider.exe
+C:\Users\student.CLASS\Desktop\Glider\Glider\obj\x86\Debug\Glider.pdb
+C:\Users\student.CLASS\Desktop\Glider\Glider\obj\x86\Debug\Glider.csprojResolveAssemblyReference.cache
+C:\Users\юшевенифени\Desktop\Visual Studio\Glider\Glider\bin\Debug\Glider.exe
+C:\Users\юшевенифени\Desktop\Visual Studio\Glider\Glider\bin\Debug\Glider.pdb
+C:\Users\юшевенифени\Desktop\Visual Studio\Glider\Glider\obj\x86\Debug\Glider.csprojResolveAssemblyReference.cache
+C:\Users\юшевенифени\Desktop\Visual Studio\Glider\Glider\obj\x86\Debug\Glider.Form1.resources
+C:\Users\юшевенифени\Desktop\Visual Studio\Glider\Glider\obj\x86\Debug\Glider.Properties.Resources.resources
+C:\Users\юшевенифени\Desktop\Visual Studio\Glider\Glider\obj\x86\Debug\Glider.csproj.GenerateResource.Cache
+C:\Users\юшевенифени\Desktop\Visual Studio\Glider\Glider\obj\x86\Debug\Glider.exe
+C:\Users\юшевенифени\Desktop\Visual Studio\Glider\Glider\obj\x86\Debug\Glider.pdb

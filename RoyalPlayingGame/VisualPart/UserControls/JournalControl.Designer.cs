@@ -117,10 +117,12 @@
             // 
             // listBoxQuests
             // 
+            this.listBoxQuests.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBoxQuests.FormattingEnabled = true;
+            this.listBoxQuests.ItemHeight = 16;
             this.listBoxQuests.Location = new System.Drawing.Point(19, 13);
             this.listBoxQuests.Name = "listBoxQuests";
-            this.listBoxQuests.Size = new System.Drawing.Size(255, 134);
+            this.listBoxQuests.Size = new System.Drawing.Size(255, 132);
             this.listBoxQuests.TabIndex = 0;
             // 
             // labelStageDescription

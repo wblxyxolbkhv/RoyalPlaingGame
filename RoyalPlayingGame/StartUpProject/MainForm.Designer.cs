@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.journalControl1 = new VisualPart.UserControls.JournalControl();
             this.activeQuestControl1 = new VisualPart.UserControls.ActiveQuestControl();
             this.choiceBox1 = new VisualPart.UserControls.ChoiceBox();
             this.skillPanel1 = new VisualPart.UserControls.SkillPanel();
             this.scaleMP = new VisualPart.UserControls.Scale();
             this.scaleHP = new VisualPart.UserControls.Scale();
             this.playerMenu1 = new VisualPart.UserControls.PlayerMenu();
-            this.journal1 = new VisualPart.UserControls.JournalControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,11 +51,21 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // journalControl1
+            // 
+            this.journalControl1.Journal = null;
+            this.journalControl1.Location = new System.Drawing.Point(273, 52);
+            this.journalControl1.Name = "journalControl1";
+            this.journalControl1.Size = new System.Drawing.Size(639, 420);
+            this.journalControl1.TabIndex = 7;
+            this.journalControl1.Visible = false;
+            // 
             // activeQuestControl1
             // 
             this.activeQuestControl1.ActiveQuest = null;
             this.activeQuestControl1.BackColor = System.Drawing.Color.Transparent;
             this.activeQuestControl1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.activeQuestControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.activeQuestControl1.Location = new System.Drawing.Point(410, 13);
             this.activeQuestControl1.Name = "activeQuestControl1";
             this.activeQuestControl1.Size = new System.Drawing.Size(244, 73);
@@ -132,20 +142,24 @@
             this.playerMenu1.TabIndex = 1;
             this.playerMenu1.Visible = false;
             // 
+<<<<<<< HEAD
+=======
             // journal1
             // 
+            this.journal1.Journal = null;
             this.journal1.Location = new System.Drawing.Point(251, 38);
             this.journal1.Name = "journal1";
             this.journal1.Size = new System.Drawing.Size(639, 420);
             this.journal1.TabIndex = 7;
             this.journal1.Visible = false;
             // 
+>>>>>>> a0477597b35f4208daec335b0d89e0fb3aba0282
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 603);
-            this.Controls.Add(this.journal1);
+            this.Controls.Add(this.journalControl1);
             this.Controls.Add(this.activeQuestControl1);
             this.Controls.Add(this.choiceBox1);
             this.Controls.Add(this.skillPanel1);
@@ -169,7 +183,7 @@
         private VisualPart.UserControls.SkillPanel skillPanel1;
         private VisualPart.UserControls.ChoiceBox choiceBox1;
         private VisualPart.UserControls.ActiveQuestControl activeQuestControl1;
-        private VisualPart.UserControls.JournalControl journal1;
+        private VisualPart.UserControls.JournalControl journalControl1;
     }
 }
 

@@ -1,0 +1,14 @@
+C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\VisualRedactor\bin\Debug\VisualRedactor.exe.config
+C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\VisualRedactor\bin\Debug\VisualRedactor.exe
+C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\VisualRedactor\bin\Debug\VisualRedactor.pdb
+C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\VisualRedactor\obj\Debug\VisualRedactor.csprojResolveAssemblyReference.cache
+C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\VisualRedactor\obj\Debug\VisualRedactor.Controls.ReplicControl.resources
+C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\VisualRedactor\obj\Debug\VisualRedactor.Form1.resources
+C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\VisualRedactor\obj\Debug\VisualRedactor.Properties.Resources.resources
+C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\VisualRedactor\obj\Debug\VisualRedactor.csproj.GenerateResource.Cache
+C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\VisualRedactor\obj\Debug\VisualRedactor.exe
+C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\VisualRedactor\obj\Debug\VisualRedactor.pdb
+C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\VisualRedactor\bin\Debug\RoyalPlayingGame.dll
+C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\VisualRedactor\bin\Debug\SimplePhysicalEngine.dll
+C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\VisualRedactor\bin\Debug\RoyalPlayingGame.pdb
+C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\VisualRedactor\bin\Debug\SimplePhysicalEngine.pdb
