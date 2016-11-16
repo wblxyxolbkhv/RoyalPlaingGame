@@ -56,6 +56,7 @@
             this.activeQuestControl1.ActiveQuest = null;
             this.activeQuestControl1.BackColor = System.Drawing.Color.Transparent;
             this.activeQuestControl1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.activeQuestControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.activeQuestControl1.Location = new System.Drawing.Point(410, 13);
             this.activeQuestControl1.Name = "activeQuestControl1";
             this.activeQuestControl1.Size = new System.Drawing.Size(244, 73);
@@ -134,6 +135,7 @@
             // 
             // journal1
             // 
+            this.journal1.Journal = null;
             this.journal1.Location = new System.Drawing.Point(251, 38);
             this.journal1.Name = "journal1";
             this.journal1.Size = new System.Drawing.Size(639, 420);

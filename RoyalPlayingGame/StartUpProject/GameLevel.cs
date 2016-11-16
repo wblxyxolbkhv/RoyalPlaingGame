@@ -208,7 +208,7 @@ namespace StartUpProject
             ComplexStructure ground = new ComplexStructure("Textures/ground.png");
             Structures.Add(ground);
             ground.RealObject = new RealObject(CollisionDomain);
-            ground.RealObject.Position = new Vector2(0, 520);
+            ground.RealObject.Position = new Vector2(0, 523);
             ground.BiasY = 19;
             ground.RealObject.Height = 104;
             ground.RealObject.Width = 4000;

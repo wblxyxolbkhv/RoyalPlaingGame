@@ -17,7 +17,7 @@ namespace StartUpProject
         {
             QuestListener.QuestPassed += OnQuestPassed;
             QuestListener.QuestStageComplited += OnQuestStageComplited;
-            QuestListener.QuestCompleted += OnQuestCompleted;
+            //QuestListener.QuestCompleted += OnQuestCompleted;
         }
 
         private void OnQuestCompleted(string questID)
