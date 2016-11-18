@@ -24,6 +24,7 @@ namespace VisualRedactor
             createToolStripMenuItem.Click += OnCreateReplic;
             this.ContextMenuStrip = contextMenuStrip1;
             this.MouseMove += OnMouseMove;
+            this.MouseUp += OnReplicControlMouseUp;
         }
 
         private void OnMouseMove(object sender, MouseEventArgs e)

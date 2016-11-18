@@ -25,7 +25,7 @@ namespace StartUpProject
             Level.PlayerMenuManager.ScaleMP = this.scaleMP;
 
             Level.DialogManager.ChoiceBox = choiceBox1;
-
+            Level.InventoryManager.InventoryControl = inventoryControl1;
             Level.ActiveQuestManager.ActiveQuestControl = activeQuestControl1;
             Level.QuestJournalManager.Journal = journalControl1;
             #region Инициализация меню, событий

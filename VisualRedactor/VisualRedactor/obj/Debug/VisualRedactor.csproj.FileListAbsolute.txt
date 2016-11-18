@@ -12,3 +12,16 @@ C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\Visual
 C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\VisualRedactor\bin\Debug\SimplePhysicalEngine.dll
 C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\VisualRedactor\bin\Debug\RoyalPlayingGame.pdb
 C:\Users\юшевенифени\Desktop\Visual Studio\Labs\VisualRedactor\VisualRedactor\bin\Debug\SimplePhysicalEngine.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\VisualRedactor\VisualRedactor\bin\Debug\VisualRedactor.exe.config
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\VisualRedactor\VisualRedactor\obj\Debug\VisualRedactor.exe
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\VisualRedactor\VisualRedactor\obj\Debug\VisualRedactor.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\VisualRedactor\VisualRedactor\bin\Debug\VisualRedactor.exe
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\VisualRedactor\VisualRedactor\bin\Debug\VisualRedactor.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\VisualRedactor\VisualRedactor\bin\Debug\SimplePhysicalEngine.dll
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\VisualRedactor\VisualRedactor\bin\Debug\RoyalPlayingGame.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\VisualRedactor\VisualRedactor\bin\Debug\SimplePhysicalEngine.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\VisualRedactor\VisualRedactor\obj\Debug\VisualRedactor.csprojResolveAssemblyReference.cache
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\VisualRedactor\VisualRedactor\obj\Debug\VisualRedactor.Controls.ReplicControl.resources
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\VisualRedactor\VisualRedactor\obj\Debug\VisualRedactor.Form1.resources
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\VisualRedactor\VisualRedactor\obj\Debug\VisualRedactor.Properties.Resources.resources
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\VisualRedactor\VisualRedactor\obj\Debug\VisualRedactor.csproj.GenerateResource.Cache

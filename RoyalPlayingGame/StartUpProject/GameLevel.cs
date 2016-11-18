@@ -36,7 +36,7 @@ namespace StartUpProject
             QuestJournalManager.Player = Player.Unit as Player;
 
             InventoryManager = new InventoryManager();
-            
+            InventoryManager.Player = Player.Unit as Player;
             HintQueue = new HintQueue();
 
             JournalNotesPublisher.Journal = (Player.Unit as Player).QuestJournal;
@@ -148,11 +148,15 @@ namespace StartUpProject
                     break;
                 case Keys.Escape:
                     {
+                        InventoryManager.Hide();
                         QuestJournalManager.Hide();
                         break;
                     }
                 case Keys.J:
                     QuestJournalManager.Show();
+                    break;
+                case Keys.I:
+                    InventoryManager.Show();
                     break;
             }
         }
@@ -544,7 +548,7 @@ namespace StartUpProject
                     break;
                 }
 
-            (Player.Unit as Player).AddItem(pickedItem.Item);
+            (Player.Unit as Player).Inventory.AddItem(pickedItem.Item);
             RemoveQueue.Add(pickedItem);
 
         }

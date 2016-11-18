@@ -32,7 +32,6 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControlInventory = new System.Windows.Forms.TabControl();
             this.tabPageAll = new System.Windows.Forms.TabPage();
-            this.inventoryPage1 = new VisualPart.UserControls.InventoryPage();
             this.tabPageWeapon = new System.Windows.Forms.TabPage();
             this.tabPageArmor = new System.Windows.Forms.TabPage();
             this.tabPagePotions = new System.Windows.Forms.TabPage();
@@ -44,7 +43,6 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControlInventory.SuspendLayout();
-            this.tabPageAll.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.SuspendLayout();
@@ -65,7 +63,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(654, 357);
-            this.splitContainer1.SplitterDistance = 305;
+            this.splitContainer1.SplitterDistance = 307;
             this.splitContainer1.TabIndex = 0;
             // 
             // tabControlInventory
@@ -80,36 +78,27 @@
             this.tabControlInventory.Location = new System.Drawing.Point(0, 0);
             this.tabControlInventory.Name = "tabControlInventory";
             this.tabControlInventory.SelectedIndex = 0;
-            this.tabControlInventory.Size = new System.Drawing.Size(305, 357);
+            this.tabControlInventory.Size = new System.Drawing.Size(307, 357);
             this.tabControlInventory.TabIndex = 1;
             // 
             // tabPageAll
             // 
-            this.tabPageAll.Controls.Add(this.inventoryPage1);
+            this.tabPageAll.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageAll.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPageAll.BackgroundImage")));
+            this.tabPageAll.ImageKey = "(отсутствует)";
             this.tabPageAll.Location = new System.Drawing.Point(4, 22);
             this.tabPageAll.Name = "tabPageAll";
             this.tabPageAll.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAll.Size = new System.Drawing.Size(297, 331);
+            this.tabPageAll.Size = new System.Drawing.Size(299, 331);
             this.tabPageAll.TabIndex = 0;
             this.tabPageAll.Text = "All";
-            this.tabPageAll.UseVisualStyleBackColor = true;
-            // 
-            // inventoryPage1
-            // 
-            this.inventoryPage1.BackColor = System.Drawing.Color.Transparent;
-            this.inventoryPage1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("inventoryPage1.BackgroundImage")));
-            this.inventoryPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inventoryPage1.Location = new System.Drawing.Point(3, 3);
-            this.inventoryPage1.Name = "inventoryPage1";
-            this.inventoryPage1.Size = new System.Drawing.Size(291, 325);
-            this.inventoryPage1.TabIndex = 1;
             // 
             // tabPageWeapon
             // 
             this.tabPageWeapon.Location = new System.Drawing.Point(4, 22);
             this.tabPageWeapon.Name = "tabPageWeapon";
             this.tabPageWeapon.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageWeapon.Size = new System.Drawing.Size(298, 348);
+            this.tabPageWeapon.Size = new System.Drawing.Size(299, 331);
             this.tabPageWeapon.TabIndex = 1;
             this.tabPageWeapon.Text = "Weapon";
             this.tabPageWeapon.UseVisualStyleBackColor = true;
@@ -119,7 +108,7 @@
             this.tabPageArmor.Location = new System.Drawing.Point(4, 22);
             this.tabPageArmor.Name = "tabPageArmor";
             this.tabPageArmor.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageArmor.Size = new System.Drawing.Size(298, 348);
+            this.tabPageArmor.Size = new System.Drawing.Size(299, 331);
             this.tabPageArmor.TabIndex = 2;
             this.tabPageArmor.Text = "Armor";
             this.tabPageArmor.UseVisualStyleBackColor = true;
@@ -129,7 +118,7 @@
             this.tabPagePotions.Location = new System.Drawing.Point(4, 22);
             this.tabPagePotions.Name = "tabPagePotions";
             this.tabPagePotions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePotions.Size = new System.Drawing.Size(298, 348);
+            this.tabPagePotions.Size = new System.Drawing.Size(299, 331);
             this.tabPagePotions.TabIndex = 3;
             this.tabPagePotions.Text = "Potions";
             this.tabPagePotions.UseVisualStyleBackColor = true;
@@ -139,7 +128,7 @@
             this.tabPageOther.Location = new System.Drawing.Point(4, 22);
             this.tabPageOther.Name = "tabPageOther";
             this.tabPageOther.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageOther.Size = new System.Drawing.Size(297, 331);
+            this.tabPageOther.Size = new System.Drawing.Size(299, 331);
             this.tabPageOther.TabIndex = 4;
             this.tabPageOther.Text = "Other";
             this.tabPageOther.UseVisualStyleBackColor = true;
@@ -153,8 +142,8 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.pictureBoxCharacter);
-            this.splitContainer2.Size = new System.Drawing.Size(345, 357);
-            this.splitContainer2.SplitterDistance = 249;
+            this.splitContainer2.Size = new System.Drawing.Size(343, 357);
+            this.splitContainer2.SplitterDistance = 246;
             this.splitContainer2.TabIndex = 0;
             // 
             // pictureBoxCharacter
@@ -162,7 +151,7 @@
             this.pictureBoxCharacter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxCharacter.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxCharacter.Name = "pictureBoxCharacter";
-            this.pictureBoxCharacter.Size = new System.Drawing.Size(249, 357);
+            this.pictureBoxCharacter.Size = new System.Drawing.Size(246, 357);
             this.pictureBoxCharacter.TabIndex = 0;
             this.pictureBoxCharacter.TabStop = false;
             // 
@@ -178,7 +167,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tabControlInventory.ResumeLayout(false);
-            this.tabPageAll.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
@@ -198,6 +186,5 @@
         private System.Windows.Forms.TabPage tabPageArmor;
         private System.Windows.Forms.TabPage tabPagePotions;
         private System.Windows.Forms.TabPage tabPageOther;
-        private InventoryPage inventoryPage1;
     }
 }

@@ -1,18 +1,3 @@
-C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\StartUpProject.exe.config
-C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.exe
-C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.pdb
-C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\StartUpProject.exe
-C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\StartUpProject.pdb
-C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\RoyalPlayingGame.dll
-C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\SimplePhysicalEngine.dll
-C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\VisualPart.dll
-C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\RoyalPlayingGame.pdb
-C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\SimplePhysicalEngine.pdb
-C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\VisualPart.pdb
-C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.csprojResolveAssemblyReference.cache
-C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.MainForm.resources
-C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.Properties.Resources.resources
-C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.csproj.GenerateResource.Cache
 C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\StartUpProject.exe.config
 C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.exe
 C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.pdb
@@ -58,3 +43,18 @@ C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlai
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.csproj.GenerateResource.Cache
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.exe
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\StartUpProject.exe.config
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\StartUpProject.exe
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\StartUpProject.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\RoyalPlayingGame.dll
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\SimplePhysicalEngine.dll
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\VisualPart.dll
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\RoyalPlayingGame.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\SimplePhysicalEngine.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\VisualPart.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.csprojResolveAssemblyReference.cache
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.MainForm.resources
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.Properties.Resources.resources
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.csproj.GenerateResource.Cache
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.exe
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.pdb

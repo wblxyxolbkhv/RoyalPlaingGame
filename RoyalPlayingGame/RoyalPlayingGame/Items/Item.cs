@@ -37,7 +37,7 @@ namespace RoyalPlayingGame.Items
         }
         public int ID { get; set; }
         public string Name { get; set; }
-        public int MaxAmount { get; set; }
+        public int MaxAmount { get; protected set; }
         public int Amount { get; set; }
         public uint Lvl { get; set; }
         public bool IsAQuestItem { get; set; }

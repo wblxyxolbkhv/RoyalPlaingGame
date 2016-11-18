@@ -49,6 +49,8 @@
     <Compile Include="Dialogs\PlayerChoice.cs" />
     <Compile Include="Dialogs\Replic.cs" />
     <Compile Include="Effect\Effect.cs" />
+    <Compile Include="Exceptions\FullBagException.cs" />
+    <Compile Include="Exceptions\ImageNotFoundException.cs" />
     <Compile Include="Exceptions\LoadDialogException.cs" />
     <Compile Include="Exceptions\NoManaException.cs" />
     <Compile Include="Exceptions\NotAQuestItemException.cs" />

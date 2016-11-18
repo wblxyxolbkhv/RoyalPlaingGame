@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.inventoryControl1 = new VisualPart.UserControls.InventoryControl();
             this.journalControl1 = new VisualPart.UserControls.JournalControl();
             this.activeQuestControl1 = new VisualPart.UserControls.ActiveQuestControl();
             this.choiceBox1 = new VisualPart.UserControls.ChoiceBox();
@@ -50,6 +51,17 @@
             this.pictureBox1.Size = new System.Drawing.Size(1008, 603);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // inventoryControl1
+            // 
+            this.inventoryControl1.AllBagSlots = null;
+            this.inventoryControl1.ItemList = null;
+            this.inventoryControl1.Location = new System.Drawing.Point(68, 63);
+            this.inventoryControl1.Name = "inventoryControl1";
+            this.inventoryControl1.Size = new System.Drawing.Size(654, 357);
+            this.inventoryControl1.SlotsAmount = 0;
+            this.inventoryControl1.TabIndex = 8;
+            this.inventoryControl1.Visible = false;
             // 
             // journalControl1
             // 
@@ -142,23 +154,12 @@
             this.playerMenu1.TabIndex = 1;
             this.playerMenu1.Visible = false;
             // 
-<<<<<<< HEAD
-=======
-            // journal1
-            // 
-            this.journal1.Journal = null;
-            this.journal1.Location = new System.Drawing.Point(251, 38);
-            this.journal1.Name = "journal1";
-            this.journal1.Size = new System.Drawing.Size(639, 420);
-            this.journal1.TabIndex = 7;
-            this.journal1.Visible = false;
-            // 
->>>>>>> a0477597b35f4208daec335b0d89e0fb3aba0282
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 603);
+            this.Controls.Add(this.inventoryControl1);
             this.Controls.Add(this.journalControl1);
             this.Controls.Add(this.activeQuestControl1);
             this.Controls.Add(this.choiceBox1);
@@ -184,6 +185,7 @@
         private VisualPart.UserControls.ChoiceBox choiceBox1;
         private VisualPart.UserControls.ActiveQuestControl activeQuestControl1;
         private VisualPart.UserControls.JournalControl journalControl1;
+        private VisualPart.UserControls.InventoryControl inventoryControl1;
     }
 }
 
