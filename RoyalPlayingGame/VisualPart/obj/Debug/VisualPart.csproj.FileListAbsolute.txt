@@ -85,3 +85,4 @@ C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\Vi
 C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.InventoryControl.resources
 C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.InventoryControl.resources
 C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.FastAccessControl.resources
+C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.FastAccessControl.resources
