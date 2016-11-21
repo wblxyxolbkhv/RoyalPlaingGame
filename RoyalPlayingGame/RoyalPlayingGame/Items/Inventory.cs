@@ -20,7 +20,10 @@ namespace RoyalPlayingGame.Items
         }
 
         private List<Item> Bag { get; set; }
-        public int Slots { get; set; }
+        public int Slots { get { return slots; } set { slots = value; ItemsManager.ChangeSlots(value); ; } }
+        int slots;
+        
+
         #region Энумератор
         private int Index { get; set; }
         public object Current { get { return Bag[Index]; } }
@@ -53,7 +56,8 @@ namespace RoyalPlayingGame.Items
         /// <param name="item"></param>
         public void AddItem(Item item)
         {
-            foreach(Item bagItem in Bag)
+            
+            foreach (Item bagItem in Bag)
             {
                 if(bagItem.ID == item.ID)
                 {
@@ -82,6 +86,7 @@ namespace RoyalPlayingGame.Items
             if (item.Amount > 0)
             {
                 Bag.Add(item);
+                //ItemsManager.AddItem();
             }
             
 
@@ -95,6 +100,7 @@ namespace RoyalPlayingGame.Items
         public void ChangeBagSize(int size)
         {
             Bag.Capacity = size;
+            Slots = size;
         }
 
         /// <summary>

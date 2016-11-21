@@ -60,7 +60,7 @@ namespace StartUpProject
         public int WorkAreaWidth { get; set; }
         public int WorkAreaHeight { get; set; }
 
-
+        
         public PlayerMenuManager PlayerMenuManager { get; private set; }
         public DialogManager DialogManager { get; private set; }
         public ActiveQuestManager ActiveQuestManager { get; private set; }
@@ -148,15 +148,13 @@ namespace StartUpProject
                     break;
                 case Keys.Escape:
                     {
-                        InventoryManager.Hide();
-                        QuestJournalManager.Hide();
                         break;
                     }
                 case Keys.J:
-                    QuestJournalManager.Show();
+                    QuestJournalManager.ChangeVisibility();
                     break;
                 case Keys.I:
-                    InventoryManager.Show();
+                    InventoryManager.ChangeVisibility();
                     break;
             }
         }

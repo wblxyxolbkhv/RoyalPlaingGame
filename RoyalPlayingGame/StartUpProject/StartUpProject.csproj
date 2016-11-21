@@ -56,6 +56,7 @@
     <Compile Include="Dialogs\DialogManager.cs" />
     <Compile Include="Enemies\DebugBear.cs" />
     <Compile Include="Enemies\Minotaur.cs" />
+    <Compile Include="FastAccessManager.cs" />
     <Compile Include="GameLevel.cs" />
     <Compile Include="HintQueue.cs" />
     <Compile Include="InventoryManager.cs" />

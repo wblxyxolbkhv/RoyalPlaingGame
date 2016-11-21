@@ -10,6 +10,8 @@ using RoyalPlayingGame.Exceptions;
 
 namespace RoyalPlayingGame
 {
+    //public delegate void ItemAdded();
+    public delegate void BagSlotsChanged(int slots);
     /// <summary>
     /// основная задача класса - подгружать итемы
     ///  и возвращать по id обьект итема
@@ -35,7 +37,7 @@ namespace RoyalPlayingGame
             string[] imageNames = Directory.GetFiles("ItemImages");
             foreach(string name in imageNames)
             {
-                ImageList.Add(name,(Bitmap)Image.FromFile("ItemImages\\" + name));
+                ImageList.Add(name, (Bitmap)Image.FromFile(Path.Combine("ItemImages", name)));//"ItemImages\\" + name));
             }
         }
 
@@ -55,5 +57,16 @@ namespace RoyalPlayingGame
             }
             throw new ImageNotFoundException();
         }
+
+        public static event BagSlotsChanged SlotsChanged;
+        public static void ChangeSlots(int slots)
+        {
+            SlotsChanged?.Invoke(slots);
+        }
+        //public static event ItemAdded ItemAdded;
+        //public static void AddItem()
+        //{
+        //    ItemAdded?.Invoke();
+        //}
     }
 }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.fastAccessControl1 = new VisualPart.UserControls.FastAccessControl();
             this.inventoryControl1 = new VisualPart.UserControls.InventoryControl();
             this.journalControl1 = new VisualPart.UserControls.JournalControl();
             this.activeQuestControl1 = new VisualPart.UserControls.ActiveQuestControl();
@@ -52,16 +53,30 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // fastAccessControl1
+            // 
+            this.fastAccessControl1.InventoryControl = null;
+            this.fastAccessControl1.JournalControl = null;
+            this.fastAccessControl1.Location = new System.Drawing.Point(598, 550);
+            this.fastAccessControl1.Name = "fastAccessControl1";
+            this.fastAccessControl1.Size = new System.Drawing.Size(216, 53);
+            this.fastAccessControl1.TabIndex = 9;
+            this.fastAccessControl1.Visible = false;
+            // 
             // inventoryControl1
             // 
             this.inventoryControl1.AllBagSlots = null;
+            this.inventoryControl1.ArmorBagSlots = null;
             this.inventoryControl1.ItemList = null;
             this.inventoryControl1.Location = new System.Drawing.Point(68, 63);
             this.inventoryControl1.Name = "inventoryControl1";
+            this.inventoryControl1.OtherBagSlots = null;
+            this.inventoryControl1.PotionsBagSlots = null;
             this.inventoryControl1.Size = new System.Drawing.Size(654, 357);
             this.inventoryControl1.SlotsAmount = 0;
             this.inventoryControl1.TabIndex = 8;
             this.inventoryControl1.Visible = false;
+            this.inventoryControl1.WeaponBagSlots = null;
             // 
             // journalControl1
             // 
@@ -159,6 +174,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 603);
+            this.Controls.Add(this.fastAccessControl1);
             this.Controls.Add(this.inventoryControl1);
             this.Controls.Add(this.journalControl1);
             this.Controls.Add(this.activeQuestControl1);
@@ -186,6 +202,7 @@
         private VisualPart.UserControls.ActiveQuestControl activeQuestControl1;
         private VisualPart.UserControls.JournalControl journalControl1;
         private VisualPart.UserControls.InventoryControl inventoryControl1;
+        private VisualPart.UserControls.FastAccessControl fastAccessControl1;
     }
 }
 

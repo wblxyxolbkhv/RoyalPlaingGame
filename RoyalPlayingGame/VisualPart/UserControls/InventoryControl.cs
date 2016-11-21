@@ -19,6 +19,8 @@ namespace VisualPart.UserControls
             InitializeComponent();
             ItemList = new List<Item>();
             AllBagSlots = new List<PictureBox>();
+            ItemsManager.SlotsChanged += PlacePictureBoxes;
+            //ItemsManager.ItemAdded += UpdateAllItemPictureBoxes;
         }
 
         public List<Item> ItemList { get; set; }
@@ -31,7 +33,7 @@ namespace VisualPart.UserControls
         public override void Refresh()
         {
             //PlacePictureBoxes();
-            UpdateAllItemPictureBox();
+            UpdateAllItemPictureBoxes();
             //UpdateItemPictureBox();
             base.Refresh();
         }
@@ -39,7 +41,7 @@ namespace VisualPart.UserControls
         /// <summary>
         /// обновление пикчербокса для вкладки "все предметы"
         /// </summary>
-        public void UpdateAllItemPictureBox()
+        public void UpdateAllItemPictureBoxes()
         {
             if (ItemList.Count != 0)
             {
@@ -55,8 +57,9 @@ namespace VisualPart.UserControls
         /// Расположение и заполнение пикчербоксов 
         /// на всех страницах
         /// </summary>
-        public void PlacePictureBoxes()
+        public void PlacePictureBoxes(int slots)
         {
+            SlotsAmount = slots;
             if (AllBagSlots == null)
             {
                 AllBagSlots = new List<PictureBox>();
@@ -65,13 +68,14 @@ namespace VisualPart.UserControls
                 PotionsBagSlots = new List<PictureBox>();
                 OtherBagSlots = new List<PictureBox>();
             }
+            
             int x1 = 25;
             int y1 = 20;
             for (int i = 0; i < SlotsAmount; i++)
             {
                 LocatePictureBox(AllBagSlots, tabPageAll, ref x1, ref y1, Image.FromFile("NullSlotImage.png"));
             }
-            UpdateAllItemPictureBox();
+           // UpdateAllItemPictureBoxes();
 
             //НЕ УБИРАТЬ, РАСКОММЕНТИТЬ ПОСЛЕ ЗАПОЛНЕНИЯ СПИСКА ИЗОБРАЖЕНИЙ
 
@@ -125,7 +129,8 @@ namespace VisualPart.UserControls
             }
             itemPictureBox.Location = new Point(x, y);
             x += 49;
-            itemPictureBox.Image = image;
+            //itemPictureBox.Image = image;
+            itemPictureBox.BackColor = Color.Red;
             bagSlots.Add(itemPictureBox);
             page.Controls.Add(itemPictureBox);
         }

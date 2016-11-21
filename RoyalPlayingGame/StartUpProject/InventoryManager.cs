@@ -17,8 +17,9 @@ namespace StartUpProject
     {
         public InventoryManager()
         {
-            //InventoryControl.Visible = false;
+            
         }
+
         public Player Player { get; set; }
         public InventoryControl InventoryControl
         {
@@ -28,7 +29,7 @@ namespace StartUpProject
             {
                 inventControl = value;
                 inventControl.ItemList = Player.Inventory.GetItemList();
-                inventControl.SlotsAmount = Player.Inventory.Slots;
+                //inventControl.SlotsAmount = Player.Inventory.Slots;
             }
         }
 
@@ -42,15 +43,26 @@ namespace StartUpProject
             //InventoryControl.SlotsAmount = Player.Inventory.Slots;
             //InventoryControl.ItemList = Player.Inventory.GetItemList();
         }
-        public void Show()
+        public void ChangeVisibility()
         {
-            InventoryControl.PlacePictureBoxes();
+            //InventoryControl.PlacePictureBoxes();
             InventoryControl.Refresh();
-            InventoryControl.Visible = true;
+            if (InventoryControl.Visible)
+            {
+                InventoryControl.Visible = false;
+            }
+            else InventoryControl.Visible = true;
         }
-        public void Hide()
-        {
-            InventoryControl.Visible = false;
-        }
+        //public void Hide()
+        //{
+        //    InventoryControl.Visible = false;
+        //}
+        //public void Show()
+        //{
+        //    InventoryControl.PlacePictureBoxes();
+        //    InventoryControl.Refresh();
+        //    InventoryControl.Visible = true;
+        //}
+        
     }
 }

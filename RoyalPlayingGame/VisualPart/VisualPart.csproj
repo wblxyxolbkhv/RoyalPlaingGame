@@ -61,6 +61,12 @@
     <Compile Include="UserControls\ChoiceBox.Designer.cs">
       <DependentUpon>ChoiceBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\FastAccessControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\FastAccessControl.Designer.cs">
+      <DependentUpon>FastAccessControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\InventoryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ChoiceBox.resx">
       <DependentUpon>ChoiceBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\FastAccessControl.resx">
+      <DependentUpon>FastAccessControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\InventoryControl.resx">
       <DependentUpon>InventoryControl.cs</DependentUpon>
