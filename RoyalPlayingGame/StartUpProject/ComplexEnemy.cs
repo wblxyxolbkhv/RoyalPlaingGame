@@ -108,7 +108,7 @@ namespace StartUpProject
         {
             base.OnUnitDeath();
 
-            LootDroped?.Invoke(LootList, this.RealObject.Position);
+            //LootDroped?.Invoke(LootList, this.RealObject.Position);
         }
         
         public event LootDropHandler LootDroped;

@@ -62,7 +62,7 @@ namespace StartUpProject
         public Animation NonActivityAnimationRight { get; set; }
         public Animation WalkAnimationLeft { get; set; }
         public Animation WalkAnimationRight { get; set; }
-        public Animation DeathAnimation { get;set;}
+        public Animation DeathAnimation { get; set; }
 
         public virtual void OnRefresh(object sender, EventArgs e)
         {
@@ -75,18 +75,18 @@ namespace StartUpProject
                 return;
             switch (RealObject.direction)
             {
-                 case Direction.Left:
-                     Animation = WalkAnimationLeft;
-                     break;
-                 case Direction.Right:
-                     Animation = WalkAnimationRight;
-                     break;
-                 case Direction.NoneLeft:
-                     Animation = NonActivityAnimationLeft;
-                     break;
-                 case Direction.NoneRight:
-                     Animation = NonActivityAnimationRight;
-                     break;
+                case Direction.Left:
+                    Animation = WalkAnimationLeft;
+                    break;
+                case Direction.Right:
+                    Animation = WalkAnimationRight;
+                    break;
+                case Direction.NoneLeft:
+                    Animation = NonActivityAnimationLeft;
+                    break;
+                case Direction.NoneRight:
+                    Animation = NonActivityAnimationRight;
+                    break;
             }
         }
 
@@ -106,7 +106,14 @@ namespace StartUpProject
                     (float)RealObject.Position.Y);
         }
 
-
+        public virtual object Interact()
+        {
+            if (!Unit.IsAlive)
+            {
+                return Unit.Loot;
+            }
+            else return null;
+        }
         
         
     }
