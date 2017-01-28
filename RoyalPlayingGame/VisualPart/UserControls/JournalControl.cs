@@ -22,7 +22,6 @@ namespace VisualPart.UserControls
             NoteControls = new List<JournalNoteControl>();
             LinkedNoteControls = new List<JournalNoteControl>();        
             listBoxQuests.SelectedIndexChanged += OnListBoxQuestSelectedItemChanged;
-            
         }
 
         private void OnListBoxQuestSelectedItemChanged(object sender, EventArgs e)

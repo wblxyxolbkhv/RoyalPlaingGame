@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace RoyalPlayingGame.Items
 {
-    public enum ArmorType { Cloth, Leather, Mail, Plate }
-    public enum ArmorSlot { Head, Sholders, Back, Chest, Hands, Belt, Legs, Boots, Ring1, Ring2 }
+    //public enum ArmorType { Cloth, Leather, Mail, Plate }
+    public enum ArmorSlot { Head, Back, Chest, Hands, Belt, Boots, Ring1, Ring2, Neck }
     public class Armor : Item
     {
         Random randomArmorGeneration;
-        public Armor(int ID, string name, ArmorType AType, ArmorSlot ASlot, Effect.Effect effect, uint armorLvl) : base(ID, name, 1, 1, armorLvl, effect)
+        public Armor(int ID, string name, ArmorSlot ASlot, Effect.Effect effect, uint armorLvl) : base(ID, name, 1, 1, armorLvl, effect)
         {
             this.ASlot = ASlot;
-            this.AType = AType;
         }
-        public Armor(int ID, string name, ArmorType AType, ArmorSlot ASlot, uint armorLvl, int minValue, int maxValue) : base(ID, name, 1, 1, armorLvl)
+        public Armor(int ID, string name, ArmorSlot ASlot, uint armorLvl, int minValue, int maxValue) : base(ID, name, 1, 1, armorLvl)
         {
             Effect.Effect effect = new Effect.Effect();
             randomArmorGeneration = new Random();
@@ -24,10 +23,8 @@ namespace RoyalPlayingGame.Items
             effect.DIntelligence = randomArmorGeneration.Next(minValue, maxValue);
             effect.DStrength = randomArmorGeneration.Next(minValue, maxValue);
             ItemEffect = effect;
-            this.AType = AType;
             this.ASlot = ASlot;
         }
         public ArmorSlot ASlot { get; private set; }
-        public ArmorType AType { get; private set; }
     }
 }

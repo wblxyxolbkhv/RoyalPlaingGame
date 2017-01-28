@@ -17,7 +17,7 @@ namespace StartUpProject
         {
             QuestListener.QuestPassed += OnQuestPassed;
             QuestListener.QuestStageComplited += OnQuestStageComplited;
-            //QuestListener.QuestCompleted += OnQuestCompleted;
+            QuestListener.QuestCompleted += OnQuestCompleted;
         }
 
         private void OnQuestCompleted(string questID)
@@ -75,14 +75,26 @@ namespace StartUpProject
         }
 
         
-        public void Show()
+        //public void Show()
+        //{
+        //    Journal.RefreshListBox();
+        //    Journal.Visible = true;
+        //}
+        //public void Hide()
+        //{
+        //    journal.Visible = false;
+        //}
+        public void ChangeVisibility()
         {
-            Journal.RefreshListBox();
-            Journal.Visible = true;
-        }
-        public void Hide()
-        {
-            journal.Visible = false;
+            if (Journal.Visible)
+            {
+                Journal.Visible = false;
+            }
+            else
+            {
+                Journal.RefreshListBox();
+                Journal.Visible = true;
+            }
         }
     }
 }

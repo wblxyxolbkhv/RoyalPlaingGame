@@ -30,13 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.fastAccessControl1 = new VisualPart.UserControls.FastAccessControl();
+            this.inventoryControl1 = new VisualPart.UserControls.InventoryControl();
+            this.journalControl1 = new VisualPart.UserControls.JournalControl();
             this.activeQuestControl1 = new VisualPart.UserControls.ActiveQuestControl();
             this.choiceBox1 = new VisualPart.UserControls.ChoiceBox();
             this.skillPanel1 = new VisualPart.UserControls.SkillPanel();
             this.scaleMP = new VisualPart.UserControls.Scale();
             this.scaleHP = new VisualPart.UserControls.Scale();
             this.playerMenu1 = new VisualPart.UserControls.PlayerMenu();
-            this.journal1 = new VisualPart.UserControls.JournalControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,6 +52,40 @@
             this.pictureBox1.Size = new System.Drawing.Size(1008, 603);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // fastAccessControl1
+            // 
+            this.fastAccessControl1.InventoryControl = null;
+            this.fastAccessControl1.JournalControl = null;
+            this.fastAccessControl1.Location = new System.Drawing.Point(598, 550);
+            this.fastAccessControl1.Name = "fastAccessControl1";
+            this.fastAccessControl1.Size = new System.Drawing.Size(216, 53);
+            this.fastAccessControl1.TabIndex = 9;
+            this.fastAccessControl1.Visible = false;
+            // 
+            // inventoryControl1
+            // 
+            this.inventoryControl1.AllBagSlots = null;
+            this.inventoryControl1.ArmorBagSlots = null;
+            this.inventoryControl1.ItemList = null;
+            this.inventoryControl1.Location = new System.Drawing.Point(68, 63);
+            this.inventoryControl1.Name = "inventoryControl1";
+            this.inventoryControl1.OtherBagSlots = null;
+            this.inventoryControl1.PotionsBagSlots = null;
+            this.inventoryControl1.Size = new System.Drawing.Size(654, 357);
+            this.inventoryControl1.SlotsAmount = 0;
+            this.inventoryControl1.TabIndex = 8;
+            this.inventoryControl1.Visible = false;
+            this.inventoryControl1.WeaponBagSlots = null;
+            // 
+            // journalControl1
+            // 
+            this.journalControl1.Journal = null;
+            this.journalControl1.Location = new System.Drawing.Point(273, 52);
+            this.journalControl1.Name = "journalControl1";
+            this.journalControl1.Size = new System.Drawing.Size(639, 420);
+            this.journalControl1.TabIndex = 7;
+            this.journalControl1.Visible = false;
             // 
             // activeQuestControl1
             // 
@@ -133,21 +169,14 @@
             this.playerMenu1.TabIndex = 1;
             this.playerMenu1.Visible = false;
             // 
-            // journal1
-            // 
-            this.journal1.Journal = null;
-            this.journal1.Location = new System.Drawing.Point(251, 38);
-            this.journal1.Name = "journal1";
-            this.journal1.Size = new System.Drawing.Size(639, 420);
-            this.journal1.TabIndex = 7;
-            this.journal1.Visible = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 603);
-            this.Controls.Add(this.journal1);
+            this.Controls.Add(this.fastAccessControl1);
+            this.Controls.Add(this.inventoryControl1);
+            this.Controls.Add(this.journalControl1);
             this.Controls.Add(this.activeQuestControl1);
             this.Controls.Add(this.choiceBox1);
             this.Controls.Add(this.skillPanel1);
@@ -171,7 +200,9 @@
         private VisualPart.UserControls.SkillPanel skillPanel1;
         private VisualPart.UserControls.ChoiceBox choiceBox1;
         private VisualPart.UserControls.ActiveQuestControl activeQuestControl1;
-        private VisualPart.UserControls.JournalControl journal1;
+        private VisualPart.UserControls.JournalControl journalControl1;
+        private VisualPart.UserControls.InventoryControl inventoryControl1;
+        private VisualPart.UserControls.FastAccessControl fastAccessControl1;
     }
 }
 

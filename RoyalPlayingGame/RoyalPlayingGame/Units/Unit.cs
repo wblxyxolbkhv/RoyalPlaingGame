@@ -16,11 +16,8 @@ namespace RoyalPlayingGame.Units
     {
         public Unit()
         {
-            Inventory = new List<Item>();
-            SpellBook = new SpellBookCollection();
-            ArmorSet = new List<Armor>();
-            WeaponSet = new List<Weapon>();
-            Potions = new List<Potion>();
+            Equipment = new List<Item>();
+            Inventory = new Inventory(10);
             SpellBook = new SpellBookCollection();
             Effects = new List<Effect.Effect>();
             IsAlive = true;
@@ -28,11 +25,8 @@ namespace RoyalPlayingGame.Units
         public Unit(int ID)
         {
             this.ID = ID;
-            Inventory = new List<Item>();
-            SpellBook = new SpellBookCollection();
-            ArmorSet = new List<Armor>();
-            WeaponSet = new List<Weapon>();
-            Potions = new List<Potion>();
+            Equipment = new List<Item>();
+            Inventory = new Inventory(10);      
             SpellBook = new SpellBookCollection();
             Effects = new List<Effect.Effect>();
             IsAlive = true;
@@ -151,11 +145,9 @@ namespace RoyalPlayingGame.Units
 
 
         public int ID {get;protected set; }
-        public List<Item> Inventory { get; set; }
+        public Inventory Inventory { get; set; }
         public List<Effect.Effect> Effects { get; set; }
-        public List<Armor> ArmorSet { get; set; }
-        public List<Weapon> WeaponSet { get; set; }
-        public List<Potion> Potions { get; set; }
+        public List<Item> Equipment { get; set; }
         public SpellBookCollection SpellBook { get; set; }
         public int MoneyAmount { get; set; }
         public int Level { get; protected set; }
@@ -210,14 +202,14 @@ namespace RoyalPlayingGame.Units
         {
             if (CheckRequiredLvl(weapon))
             {
-                WeaponSet.Add(weapon);
+                Equipment.Add(weapon);
             }
         }
         public void EquipArmor(Armor armor)
         {
             if (CheckRequiredLvl(armor))
             {
-                ArmorSet.Add(armor);
+                Equipment.Add(armor);
             }
         }
         public bool CheckRequiredLvl(Item item)
@@ -225,50 +217,6 @@ namespace RoyalPlayingGame.Units
             if (item.Lvl >= Level)
                 return true;
             else return false;
-        }
-        // булевое значение показывает, удалось ли поднять предмет (есть ли место)
-        public bool AddItem(Item item)
-        {
-            if (item.IsAQuestItem)
-                QuestItemPicked?.Invoke(item.ID);
-            //foreach (Item addedItem in Inventory)
-            //{
-            //    if (addedItem.ID == item.ID)
-            //    {
-            //        addedItem.Amount ++;
-            //    }
-            //    else
-            //    {
-            //        Inventory.Add(item);
-            //    }
-            //}
-            Inventory.Add(item);
-            return true;
-        }
-
-        public bool AddItem(Item item, ushort amount)
-        {
-            foreach (Item addedItem in Inventory)
-            {
-                if (addedItem.ID == item.ID)
-                    addedItem.Amount += amount;
-            }
-            return true;
-        }
-
-        public void DropItem(int ID)
-        {
-            foreach(Item addedItem in Inventory)
-            {
-                if (addedItem.ID == ID)
-                {
-                    if (addedItem.IsAQuestItem)
-                        QuestItemDroped?.Invoke(ID);
-                    addedItem.Amount--;
-                    if (addedItem.Amount == 0)
-                        Inventory.Remove(addedItem);
-                }
-            }
         }
 
         public virtual Spell.Spell CastSpell()
