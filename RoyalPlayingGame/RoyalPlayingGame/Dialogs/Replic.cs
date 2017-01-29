@@ -44,7 +44,13 @@ namespace RoyalPlayingGame.Dialogs
         {
             get; set;
         } = 0;
+        /// <summary>
+        /// квести, который начинается с этой репликой (его ID)
+        /// </summary>
         public string PassedQuest { get; set; } = null;
+        /// <summary>
+        /// квести, который заканчивается с этой репликой (его ID)
+        /// </summary>
         public string ReceiveQuest { get; set; } = null;
         public abstract Replic GetNextReplic();
 
