@@ -31,12 +31,7 @@ namespace RoyalPlayingGame.Units
             Loot = new List<Item>();
         }
 
-        protected List<Item> Loot;
-
-        public void AddLoot(Item item)
-        {
-            Loot.Add(item);
-        }
+       
         
     }
 }

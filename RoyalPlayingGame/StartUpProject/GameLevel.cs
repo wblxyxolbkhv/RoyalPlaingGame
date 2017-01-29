@@ -38,6 +38,7 @@ namespace StartUpProject
             InventoryManager = new InventoryManager();
             InventoryManager.Player = Player.Unit as Player;
             HintQueue = new HintQueue();
+            HintQueue.Brush = Brushes.White;
 
             JournalNotesPublisher.Journal = (Player.Unit as Player).QuestJournal;
             TriggersColiisionsListener.ItemCollisionDetected += PickUpItem; ;
@@ -144,7 +145,7 @@ namespace StartUpProject
                 //    Enemies[0].Cast(CollisionDomain);
                 //    break;
                 case Keys.E:
-                    Talk(AvailableForTalkingNPC);
+                    Interact(AvailableForTalkingNPC);
                     break;
                 case Keys.Escape:
                     {
@@ -456,6 +457,10 @@ namespace StartUpProject
         {
             if (!s.IsActive)
             {
+                ComplexEnemy enemy = null;
+                if ((enemy = s as ComplexEnemy) != null)
+                    if (enemy.Unit.Loot != null && enemy.Unit.Loot.Count > 0)
+                        return;
                 if (CollisionDomain.Contains(s.RealObject))
                     CollisionDomain.Remove(s.RealObject);
                 if (s.DeathAnimation != null && !s.DeathAnimation.IsActive || s.DeathAnimation == null)
@@ -468,7 +473,7 @@ namespace StartUpProject
         {
             if (DialogManager.Dialog != null && DialogManager.Dialog.IsActive)
                 return;
-            int range = 50;
+            int range = 100;
             AvailableForTalkingNPC = null;
             foreach (ComplexUnit unit in NPCs)
             {
@@ -476,8 +481,8 @@ namespace StartUpProject
                 {
                     case Direction.Right:
                     case Direction.NoneRight:
-                        if (unit.RealObject.Position.X - Player.RealObject.Position.X < range + 20 &&
-                            unit.RealObject.Position.X - Player.RealObject.Position.X > range - 20)
+                        if (unit.RealObject.Position.X - Player.RealObject.Position.X - Player.RealObject.Width <= range &&
+                            unit.RealObject.Position.X - Player.RealObject.Position.X - Player.RealObject.Width > 0)
                         {
                             if (!HintQueue.Contains("Нажмите E чтобы заговорить с ЭТИМ"))
                                 HintQueue.AddHint("Нажмите E чтобы заговорить с ЭТИМ");
@@ -486,8 +491,8 @@ namespace StartUpProject
                         break;
                     case Direction.Left:
                     case Direction.NoneLeft:
-                        if (-unit.RealObject.Position.X + Player.RealObject.Position.X < range + 20 &&
-                            -unit.RealObject.Position.X + Player.RealObject.Position.X > range - 20)
+                        if (Player.RealObject.Position.X > unit.RealObject.Position.X + unit.RealObject.Width &&
+                            Player.RealObject.Position.X < unit.RealObject.Position.X + unit.RealObject.Width + range)
                         {
                             if (!HintQueue.Contains("Нажмите E чтобы заговорить с ЭТИМ"))
                                 HintQueue.AddHint("Нажмите E чтобы заговорить с ЭТИМ");
@@ -496,17 +501,63 @@ namespace StartUpProject
                         break;
                 }
             }
+            foreach (ComplexEnemy enemy in Enemies)
+            {
+                if (enemy.Unit.IsAlive)
+                    continue;
+                switch (Player.RealObject.direction)
+                {
+                    case Direction.Right:
+                    case Direction.NoneRight:
+                        if (enemy.RealObject.Position.X - Player.RealObject.Position.X - Player.RealObject.Width <= range &&
+                            enemy.RealObject.Position.X - Player.RealObject.Position.X - Player.RealObject.Width > 0)
+                        {
+                            if (enemy.Unit.Loot != null && enemy.Unit.Loot.Count > 0)
+                            {
+                                if (!HintQueue.Contains("Нажмите E чтобы подобрать предмет"))
+                                    HintQueue.AddHint("Нажмите E чтобы подобрать предмет");
+                                AvailableForTalkingNPC = enemy;
+                            }
+                            else RemoveQueue.Add(enemy);
+                        }
+                        break;
+                    case Direction.Left:
+                    case Direction.NoneLeft:
+                        if (Player.RealObject.Position.X > enemy.RealObject.Position.X + enemy.RealObject.Width &&
+                            Player.RealObject.Position.X < enemy.RealObject.Position.X + enemy.RealObject.Width + range)
+                        {
+                            if (enemy.Unit.Loot != null && enemy.Unit.Loot.Count > 0)
+                            {
+                                if (!HintQueue.Contains("Нажмите E чтобы подобрать предмет"))
+                                    HintQueue.AddHint("Нажмите E чтобы подобрать предмет");
+                                AvailableForTalkingNPC = enemy;
+                            }
+                            else RemoveQueue.Add(enemy);
+                        }
+                        break;
+                }
+
+            }
         }
-        private ComplexUnit AvailableForTalkingNPC;
-        private void Talk(ComplexUnit unit)
+        private ComplexObject AvailableForTalkingNPC;
+        private void Interact(ComplexObject obj)
         {
-            if (unit != null)
+            if (obj == null)
+                return;
+            ComplexUnit unit = null;
+            if ((unit = obj as ComplexUnit) != null && unit.CurrentDialog!=null)
             {
                 DialogManager.Dialog = unit.CurrentDialog;
                 DialogManager.Dialog.IsActive = true;
                 DialogManager.Dialog.GoToDialogBeginning();
                 DialogManager.TalkingObject = unit;
             }
+            else
+            {
+                // здесь твое поле для творчества
+                obj.Interact();
+            }
+            
         }
         private void CreateTriggers()
         {

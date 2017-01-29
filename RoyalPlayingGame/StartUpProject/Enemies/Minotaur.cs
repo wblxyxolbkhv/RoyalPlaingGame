@@ -20,6 +20,7 @@ namespace StartUpProject.Enemies
             Unit = new Unit(1001);
             Unit.Health = 100;
             Unit.RealHealth = 100;
+            Unit.AddLoot(new RoyalPlayingGame.Items.Item(1000, "Шляпа", 1));
 
             RealObject = new RealObject(CollisionDomain, Gravity);
             RealObject.Height = 110;
@@ -44,8 +45,8 @@ namespace StartUpProject.Enemies
             DefaultAnimation = WalkAnimationLeft;
             Animation = WalkAnimationLeft;
 
-            LootList = new List<int>();
-            LootList.Add(1000);
+            //LootList = new List<int>();
+            //LootList.Add(1000);
 
         }
         

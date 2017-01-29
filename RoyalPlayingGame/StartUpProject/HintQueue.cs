@@ -13,13 +13,14 @@ namespace StartUpProject
         {
             public Hint(string message)
             {
-                LifeTime = 3000;
+                LifeTime = 100;
                 Message = message;
             }
             public int LifeTime;
             public string Message;
         }
         private List<Hint> Hints { get; set; } = new List<Hint>();
+        public System.Drawing.Brush Brush = System.Drawing.Brushes.Black;
 
         public bool Contains(string hintMessage)
         {
@@ -57,7 +58,7 @@ namespace StartUpProject
 
                 e.Graphics.DrawString(hint.Message,
                     new System.Drawing.Font("Arial", 10),
-                    System.Drawing.Brushes.Black,
+                    this.Brush,
                     700,
                     100 - i*20);
             }
