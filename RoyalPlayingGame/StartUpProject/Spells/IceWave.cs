@@ -13,13 +13,13 @@ namespace StartUpProject.Spells
             RealObject.Height = 131;
             RealObject.Width = 84;
             RealObject.SpeedX = 0;
-            WalkAnimationLeft = new Animation("IceWave/Left", 100);
+            WalkAnimationLeft = new Animation("Spells/IceWave/Left", 100);
             WalkAnimationLeft.Mode = AnimationMode.Once;
-            WalkAnimationRight = new Animation("IceWave/Right", 100);
+            WalkAnimationRight = new Animation("Spells/IceWave/Right", 100);
             WalkAnimationLeft.Mode = AnimationMode.Once;
-            NonActivityAnimationLeft = new Animation("IceWave/Left", 100);
+            NonActivityAnimationLeft = new Animation("Spells/IceWave/Left", 100);
             NonActivityAnimationLeft.Mode = AnimationMode.Once;
-            NonActivityAnimationRight = new Animation("IceWave/Right", 100);
+            NonActivityAnimationRight = new Animation("Spells/IceWave/Right", 100);
             NonActivityAnimationRight.Mode = AnimationMode.Once;
             switch (caster.direction)
             {

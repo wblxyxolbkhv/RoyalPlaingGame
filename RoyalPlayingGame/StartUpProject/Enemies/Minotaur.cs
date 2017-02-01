@@ -23,8 +23,10 @@ namespace StartUpProject.Enemies
             Unit.AddLoot(new RoyalPlayingGame.Items.Item(1000, "Шляпа", 1));
 
             RealObject = new RealObject(CollisionDomain, Gravity);
-            RealObject.Height = 110;
+            RealObject.Height = 106;
             RealObject.Width = 110;
+            IndentX = 36;
+            IndentY = 37;
             RealObject.SpeedX = 2;
             RealObject.direction = Direction.Right;
             PatrolRadius = 4000;
@@ -49,6 +51,12 @@ namespace StartUpProject.Enemies
             //LootList.Add(1000);
 
         }
-        
+        public override void OnUnitDeath()
+        {
+            base.OnUnitDeath();
+
+            IndentY = 16;
+        }
+
     }
 }

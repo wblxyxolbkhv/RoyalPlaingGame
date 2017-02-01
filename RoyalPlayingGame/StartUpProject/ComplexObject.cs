@@ -44,6 +44,10 @@ namespace StartUpProject
         protected Unit unit;
 
         public RealObject RealObject { get; set; }
+        public int IndentX { get; set; } = 0;
+        public int IndentY { get; set; } = 0;
+
+
         public Animation Animation { get; set; }
         public Image CurrentFrame
         {
@@ -96,14 +100,14 @@ namespace StartUpProject
         {
             if (CurrentFrame == null)
                 e.Graphics.FillRectangle(System.Drawing.Brushes.Black,
-                    (float)RealObject.Position.X - CameraBias,
-                    (float)RealObject.Position.Y,
+                    (float)RealObject.Position.X - IndentX - CameraBias,
+                    (float)RealObject.Position.Y - IndentY,
                     (float)RealObject.Width,
                     (float)RealObject.Height);
             else
                 e.Graphics.DrawImage(CurrentFrame,
-                    (float)RealObject.Position.X - CameraBias,
-                    (float)RealObject.Position.Y);
+                    (float)RealObject.Position.X - IndentX - CameraBias,
+                    (float)RealObject.Position.Y - IndentY);
         }
 
         public virtual object Interact()
