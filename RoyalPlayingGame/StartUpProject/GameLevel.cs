@@ -45,7 +45,6 @@ namespace StartUpProject
             HintQueue.Brush = Brushes.White;
 
             JournalNotesPublisher.Journal = (Player.Unit as Player).QuestJournal;
-            TriggersColiisionsListener.ItemCollisionDetected += PickUpItem; ;
 
         }
 
@@ -173,12 +172,12 @@ namespace StartUpProject
             }
             catch (RoyalPlayingGame.Exceptions.NoManaException)
             {
-                HintQueue.AddHint("Недостаточно маны");
+                HintQueue.AddHint("Недостаточно маны", 1000);
                 return;
             }
             catch (RoyalPlayingGame.Exceptions.SpellCoolDownException)
             {
-                HintQueue.AddHint("Заклинание еще не готово");
+                HintQueue.AddHint("Заклинание еще не готово", 1000);
                 return;
             }
             ComplexSpell s = Player.Cast(spell, CollisionDomain);
@@ -218,7 +217,7 @@ namespace StartUpProject
             Structures.Add(ground);
             ground.RealObject = new RealObject(CollisionDomain);
             ground.RealObject.Position = new Vector2(0, 523);
-            ground.BiasY = 19;
+            ground.IndentY = 19;
             ground.RealObject.Height = 104;
             ground.RealObject.Width = 4000;
             ground.RealObject.CollisionDetected += OnCollisionDetected;
@@ -241,10 +240,9 @@ namespace StartUpProject
         {
             Minotaur enemy = new Minotaur(CollisionDomain, Gravity);
 
-            enemy.RealObject.Position = new Vector2(2000, 400);
+            enemy.RealObject.Position = new Vector2(2000, 300);
             enemy.RealObject.CollisionDetected += OnCollisionDetected;
             enemy.PatrolPoint = new Vector2(2000, 400);
-            enemy.LootDroped += DropLoot;
             Enemies.Add(enemy);
 
             Minotaur enemy1 = new Minotaur(CollisionDomain, Gravity);
@@ -252,7 +250,6 @@ namespace StartUpProject
             enemy1.RealObject.Position = new Vector2(2500, 400);
             enemy1.RealObject.CollisionDetected += OnCollisionDetected;
             enemy1.PatrolPoint = new Vector2(2500, 400);
-            enemy1.LootDroped += DropLoot;
             Enemies.Add(enemy1);
 
             Minotaur enemy2 = new Minotaur(CollisionDomain, Gravity);
@@ -260,7 +257,6 @@ namespace StartUpProject
             enemy2.RealObject.Position = new Vector2(3000, 400);
             enemy2.RealObject.CollisionDetected += OnCollisionDetected;
             enemy2.PatrolPoint = new Vector2(3000, 400);
-            enemy2.LootDroped += DropLoot;
             Enemies.Add(enemy2);
         }
         private void InitPlayer()
@@ -275,27 +271,29 @@ namespace StartUpProject
 
             Player.RealObject = new RealObject(CollisionDomain, 0, Gravity);
             Player.RealObject.Position = new Vector2(400, 400);
-            Player.RealObject.Height = 72;
-            Player.RealObject.Width = 72;
+            Player.RealObject.Height = 69;
+            Player.RealObject.Width = 42;
+            Player.IndentY = 3;
+            Player.IndentX = 21;
             Player.RealObject.SpeedX = 4;
-            Player.NonActivityAnimationLeft = new Animation("NonActivityAnimationLeft", 100);
+            Player.NonActivityAnimationLeft = new Animation("Player/NonActivityAnimationLeft", 100);
             Player.NonActivityAnimationLeft.Start();
-            Player.NonActivityAnimationRight = new Animation("NonActivityAnimationRight", 100);
+            Player.NonActivityAnimationRight = new Animation("Player/NonActivityAnimationRight", 100);
             Player.NonActivityAnimationRight.Start();
 
-            Player.WalkAnimationLeft = new Animation("WalkAnimationLeft", 100);
+            Player.WalkAnimationLeft = new Animation("Player/WalkAnimationLeft", 100);
             Player.WalkAnimationLeft.Start();
-            Player.WalkAnimationRight = new Animation("WalkAnimationRight", 100);
+            Player.WalkAnimationRight = new Animation("Player/WalkAnimationRight", 100);
             Player.WalkAnimationRight.Start();
 
-            Player.JumpAnimationLeft = new Animation("JumpAnimationLeft", 300);
+            Player.JumpAnimationLeft = new Animation("Player/JumpAnimationLeft", 300);
             Player.JumpAnimationLeft.Start();
-            Player.JumpAnimationRight = new Animation("JumpAnimationRight", 300);
+            Player.JumpAnimationRight = new Animation("Player/JumpAnimationRight", 300);
             Player.JumpAnimationRight.Start();
 
-            Player.Cast1AnimationLeft = new Animation("Cast1/Cast1Left", 100);
+            Player.Cast1AnimationLeft = new Animation("Player/Cast1/Cast1Left", 100);
             Player.Cast1AnimationLeft.Mode = AnimationMode.Once;
-            Player.Cast1AnimationRight = new Animation("Cast1/Cast1Right", 100);
+            Player.Cast1AnimationRight = new Animation("Player/Cast1/Cast1Right", 100);
             Player.Cast1AnimationRight.Mode = AnimationMode.Once;
             Player.DefaultAnimation = Player.NonActivityAnimationRight;
             Player.Animation = Player.NonActivityAnimationRight;
@@ -425,16 +423,9 @@ namespace StartUpProject
 
 
 
+            
 
-
-            foreach (RealObject o in CollisionDomainAddQueue)
-                CollisionDomain.Add(o);
-            CollisionDomainAddQueue.Clear();
-
-
-            foreach (ComplexItem item in DropQueue)
-                DroppedItems.Add(item);
-            DropQueue.Clear();
+            
         }
 
         private List<ComplexObject> TemporaryObjects = new List<ComplexObject>();
@@ -462,12 +453,13 @@ namespace StartUpProject
         {
             if (!s.IsActive)
             {
-                ComplexEnemy enemy = null;
-                if ((enemy = s as ComplexEnemy) != null)
-                    if (enemy.Unit.Loot != null && enemy.Unit.Loot.Count > 0)
-                        return;
+                ComplexEnemy enemy = s as ComplexEnemy;
+
                 if (CollisionDomain.Contains(s.RealObject))
                     CollisionDomain.Remove(s.RealObject);
+                if (enemy != null)
+                    if (enemy.Unit.Loot != null && enemy.Unit.Loot.Count > 0)
+                        return;
                 if (s.DeathAnimation != null && !s.DeathAnimation.IsActive || s.DeathAnimation == null)
                     RemoveQueue.Add(s);
                 
@@ -577,38 +569,7 @@ namespace StartUpProject
             CollisionDomain.Add(Trigger1);
             Trigger1.IsTrigger = true;
         }
-        private List<ComplexItem> DropQueue = new List<ComplexItem>();
-        private List<RealObject> CollisionDomainAddQueue = new List<RealObject>();
-        private void DropLoot(List<int> itemsIDs, Vector2 dropPoint)
-        {
-            foreach (int id in itemsIDs)
-            {
-                ComplexItem item = new ComplexItem();
-                item.Item = ItemsManager.GetItem(id);
-                item.RealObject = new RealObject(CollisionDomain, 1000, Gravity);
-                item.RealObject.Position = new Vector2(dropPoint.X, dropPoint.Y);
-                item.RealObject.Height = item.Texture.Height;
-                item.RealObject.Width = item.Texture.Width;
-                CollisionDomainAddQueue.Add(item.RealObject);
-                item.RealObject.IsTrigger = true;
 
-                DropQueue.Add(item);
-            }
-        }
-        private void PickUpItem(RealObject item)
-        {
-            ComplexItem pickedItem = new ComplexItem();
-            foreach (ComplexItem c in DroppedItems)
-                if (c.RealObject == item)
-                {
-                    pickedItem = c;
-                    break;
-                }
-
-            (Player.Unit as Player).Inventory.AddItem(pickedItem.Item);
-            RemoveQueue.Add(pickedItem);
-
-        }
 
     }
 }

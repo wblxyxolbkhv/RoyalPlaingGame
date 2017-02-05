@@ -15,23 +15,23 @@ namespace StartUpProject
         {
             Texture = Image.FromFile("GroundTextureTransparent.png");
             ((Bitmap)Texture).MakeTransparent(Color.White);
-            BiasY = 0;
         }
         public ComplexStructure(string pathTexture)
         {
             Texture = Image.FromFile(pathTexture);
             ((Bitmap)Texture).MakeTransparent(Color.White);
-            BiasY = 0;
         }
         public RealObject RealObject { get; set; }
+        public int IndentX { get; set; } = 0;
+        public int IndentY { get; set; } = 0;
+
         public Image Texture { get; set; }
-        public int BiasY { get; set; }
         public void PrintTexture(PaintEventArgs e, int CameraBias)
         {
             if (Texture == null)
                 e.Graphics.FillRectangle(System.Drawing.Brushes.Black,
-                    (float)RealObject.Position.X - CameraBias,
-                    (float)RealObject.Position.Y - BiasY,
+                    (float)RealObject.Position.X - IndentX - CameraBias,
+                    (float)RealObject.Position.Y - IndentY,
                     (float)RealObject.Width,
                     (float)RealObject.Height);
             else
@@ -42,13 +42,13 @@ namespace StartUpProject
                     count++;
                     for (int i = 0; i<count;i++)
                         e.Graphics.DrawImage(Texture,
-                        (float)RealObject.Position.X + i*Texture.Width - CameraBias,
-                        (float)RealObject.Position.Y - BiasY);
+                        (float)RealObject.Position.X - IndentX + i*Texture.Width - CameraBias,
+                        (float)RealObject.Position.Y - IndentY);
                 }
                 else
                     e.Graphics.DrawImage(Texture,
-                    (float)RealObject.Position.X + - CameraBias,
-                    (float)RealObject.Position.Y - BiasY);
+                    (float)RealObject.Position.X - IndentX - CameraBias,
+                    (float)RealObject.Position.Y - IndentY);
             }
         }
     }

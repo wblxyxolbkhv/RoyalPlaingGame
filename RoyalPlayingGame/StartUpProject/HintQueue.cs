@@ -16,6 +16,11 @@ namespace StartUpProject
                 LifeTime = 100;
                 Message = message;
             }
+            public Hint(string message, int time)
+            {
+                LifeTime = time;
+                Message = message;
+            }
             public int LifeTime;
             public string Message;
         }
@@ -34,6 +39,10 @@ namespace StartUpProject
         public void AddHint(string message)
         {
             Hints.Add(new Hint(message));
+        }
+        public void AddHint(string message, int time)
+        {
+            Hints.Add(new Hint(message, time));
         }
         public void OnRefresh(int deltaTime)
         {

@@ -88,6 +88,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -115,6 +116,18 @@
       <Project>{51783C6F-4415-48CD-92A1-9B72647A3220}</Project>
       <Name>VisualPart</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Spells\Fireball\WalkRightFireball\fireball_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Spells\Fireball\WalkRightFireball\fireball_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Spells\Fireball\WalkRightFireball\fireball_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Spells\Fireball\WalkRightFireball\fireball_3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
