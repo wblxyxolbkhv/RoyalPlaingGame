@@ -9,11 +9,11 @@ using SimplePhysicalEngine;
 using VisualPart;
 using RoyalPlayingGame.Spell;
 using RoyalPlayingGame.Units;
+using RoyalPlayingGame.Items;
 using System.Drawing;
 using StartUpProject.Enemies;
 using StartUpProject.Dialogs;
 using RoyalPlayingGame;
-
 
 namespace StartUpProject
 {
@@ -37,6 +37,10 @@ namespace StartUpProject
 
             InventoryManager = new InventoryManager();
             InventoryManager.Player = Player.Unit as Player;
+
+            LootPageManager = new LootPageManager();
+            LootPageManager.Player = Player.Unit as Player;
+
             HintQueue = new HintQueue();
             HintQueue.Brush = Brushes.White;
 
@@ -67,6 +71,7 @@ namespace StartUpProject
         public ActiveQuestManager ActiveQuestManager { get; private set; }
         public QuestJournalManager QuestJournalManager { get; set; }
         public InventoryManager InventoryManager { get; set; }
+        public LootPageManager LootPageManager { get; set; }
         private HintQueue HintQueue { get; set; }
 
         public void OnPrintAllObjects(object sender, PaintEventArgs e)
@@ -555,7 +560,10 @@ namespace StartUpProject
             else
             {
                 // здесь твое поле для творчества
-                obj.Interact();
+                
+                List<Item> items = (List<Item>)obj.Interact();
+                LootPageManager.Show(items);
+                
             }
             
         }

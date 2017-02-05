@@ -157,7 +157,7 @@ namespace RoyalPlayingGame.Units
         public Spell.Spell SpellHotKey3 { get; set; }
         public Spell.Spell SpellHotKey4 { get; set; }
 
-        public List<Item> Loot { get; protected set; }
+        public List<Item> Loot { get; set; }
 
         public void AddLoot(Item item)
         {

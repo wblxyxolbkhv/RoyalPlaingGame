@@ -30,6 +30,7 @@ namespace VisualPart.UserControls
         public List<PictureBox> PotionsBagSlots { get; set; }
         public List<PictureBox> OtherBagSlots { get; set; }
         public int SlotsAmount { get; set; }
+
         public override void Refresh()
         {
             //PlacePictureBoxes();

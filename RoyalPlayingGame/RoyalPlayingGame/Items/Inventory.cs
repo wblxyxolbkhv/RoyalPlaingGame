@@ -111,6 +111,7 @@ namespace RoyalPlayingGame.Items
         {
 
         }
+
         public List<Item> GetItemList()
         {
             return Bag;
