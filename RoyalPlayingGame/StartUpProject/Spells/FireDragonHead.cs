@@ -17,13 +17,13 @@ namespace StartUpProject.Spells
             RealObject.Height = 108;
             RealObject.Width = 150;
             RealObject.SpeedX = 0;
-            WalkAnimationLeft = new Animation("FrostDragonHead/WalkLeft", 100);
+            WalkAnimationLeft = new Animation("Spells/FrostDragonHead/WalkLeft", 100);
             WalkAnimationLeft.Mode = AnimationMode.Once;
-            WalkAnimationRight = new Animation("FrostDragonHead/WalkRight", 100);
+            WalkAnimationRight = new Animation("Spells/FrostDragonHead/WalkRight", 100);
             WalkAnimationLeft.Mode = AnimationMode.Once;
-            NonActivityAnimationLeft = new Animation("FrostDragonHead/WalkLeft", 100);
+            NonActivityAnimationLeft = new Animation("Spells/FrostDragonHead/WalkLeft", 100);
             NonActivityAnimationLeft.Mode = AnimationMode.Once;
-            NonActivityAnimationRight = new Animation("FrostDragonHead/WalkRight", 100);
+            NonActivityAnimationRight = new Animation("Spells/FrostDragonHead/WalkRight", 100);
             NonActivityAnimationRight.Mode = AnimationMode.Once;
             switch (caster.direction)
             {

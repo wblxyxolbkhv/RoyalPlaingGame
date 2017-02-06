@@ -20,10 +20,15 @@ namespace StartUpProject.Enemies
             Unit = new Unit(1001);
             Unit.Health = 100;
             Unit.RealHealth = 100;
+            Unit.AddLoot(new RoyalPlayingGame.Items.Item(1000, "Шляпа", 1,1,1));
+            Unit.AddLoot(new RoyalPlayingGame.Items.Item(1001, "Двойная шляпа", 1,1,1));
+            Unit.AddLoot(new RoyalPlayingGame.Items.Item(1002, "Тройная шляпа", 1,1,1));
 
             RealObject = new RealObject(CollisionDomain, Gravity);
-            RealObject.Height = 110;
+            RealObject.Height = 106;
             RealObject.Width = 110;
+            IndentX = 36;
+            IndentY = 37;
             RealObject.SpeedX = 2;
             RealObject.direction = Direction.Right;
             PatrolRadius = 4000;
@@ -44,10 +49,15 @@ namespace StartUpProject.Enemies
             DefaultAnimation = WalkAnimationLeft;
             Animation = WalkAnimationLeft;
 
-            LootList = new List<int>();
-            LootList.Add(1000);
+            
 
         }
-        
+        public override void OnUnitDeath()
+        {
+            base.OnUnitDeath();
+
+            IndentY = 16;
+        }
+
     }
 }

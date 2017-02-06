@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RoyalPlayingGame.Units;
+using RoyalPlayingGame.Items;
 using RoyalPlayingGame.Spell;
 using SimplePhysicalEngine.NonPhysicalComponents;
 using SimplePhysicalEngine;
@@ -44,6 +45,10 @@ namespace StartUpProject
         protected Unit unit;
 
         public RealObject RealObject { get; set; }
+        public int IndentX { get; set; } = 0;
+        public int IndentY { get; set; } = 0;
+
+
         public Animation Animation { get; set; }
         public Image CurrentFrame
         {
@@ -62,7 +67,7 @@ namespace StartUpProject
         public Animation NonActivityAnimationRight { get; set; }
         public Animation WalkAnimationLeft { get; set; }
         public Animation WalkAnimationRight { get; set; }
-        public Animation DeathAnimation { get;set;}
+        public Animation DeathAnimation { get; set; }
 
         public virtual void OnRefresh(object sender, EventArgs e)
         {
@@ -75,18 +80,18 @@ namespace StartUpProject
                 return;
             switch (RealObject.direction)
             {
-                 case Direction.Left:
-                     Animation = WalkAnimationLeft;
-                     break;
-                 case Direction.Right:
-                     Animation = WalkAnimationRight;
-                     break;
-                 case Direction.NoneLeft:
-                     Animation = NonActivityAnimationLeft;
-                     break;
-                 case Direction.NoneRight:
-                     Animation = NonActivityAnimationRight;
-                     break;
+                case Direction.Left:
+                    Animation = WalkAnimationLeft;
+                    break;
+                case Direction.Right:
+                    Animation = WalkAnimationRight;
+                    break;
+                case Direction.NoneLeft:
+                    Animation = NonActivityAnimationLeft;
+                    break;
+                case Direction.NoneRight:
+                    Animation = NonActivityAnimationRight;
+                    break;
             }
         }
 
@@ -96,18 +101,25 @@ namespace StartUpProject
         {
             if (CurrentFrame == null)
                 e.Graphics.FillRectangle(System.Drawing.Brushes.Black,
-                    (float)RealObject.Position.X - CameraBias,
-                    (float)RealObject.Position.Y,
+                    (float)RealObject.Position.X - IndentX - CameraBias,
+                    (float)RealObject.Position.Y - IndentY,
                     (float)RealObject.Width,
                     (float)RealObject.Height);
             else
                 e.Graphics.DrawImage(CurrentFrame,
-                    (float)RealObject.Position.X - CameraBias,
-                    (float)RealObject.Position.Y);
+                    (float)RealObject.Position.X - IndentX - CameraBias,
+                    (float)RealObject.Position.Y - IndentY);
+        }
+
+        public virtual object Interact()
+        {
+            if (!Unit.IsAlive)
+            {
+                return Unit.Loot;
+            }
+            else return null;
         }
 
 
-        
-        
     }
 }

@@ -160,12 +160,23 @@ namespace RoyalPlayingGame.Units
         public Spell.Spell SpellHotKey3 { get; set; }
         public Spell.Spell SpellHotKey4 { get; set; }
 
+<<<<<<< HEAD
         /// <summary>
         /// расчет полученного урона
         /// </summary>
         /// <param name="damage"></param>
         /// <param name="DType"></param>
         /// <returns></returns>
+=======
+        public List<Item> Loot { get; set; }
+
+        public void AddLoot(Item item)
+        {
+            if (Loot == null)
+                Loot = new List<Item>();
+            Loot.Add(item);
+        }
+>>>>>>> 881abcde4b90231ce2b78540c2749caab82ab029
         public int GotDamaged(int damage, DamageType DType)
         {
             if (DType == DamageType.Physical)

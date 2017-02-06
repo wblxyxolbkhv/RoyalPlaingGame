@@ -20,6 +20,9 @@ namespace RoyalPlayingGame.Dialogs
             get;
             set;
         }
+        /// <summary>
+        /// набор фраз, говоримые подряд персонажем
+        /// </summary>
         public List<string> PlayerPhrases
         {
             get;

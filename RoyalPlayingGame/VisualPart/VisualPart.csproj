@@ -79,6 +79,12 @@
     <Compile Include="UserControls\InventoryPage.Designer.cs">
       <DependentUpon>InventoryPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ItemDescriptionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ItemDescriptionControl.Designer.cs">
+      <DependentUpon>ItemDescriptionControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\JournalControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -90,6 +96,18 @@
     </Compile>
     <Compile Include="UserControls\JournalNoteControl.Designer.cs">
       <DependentUpon>JournalNoteControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LootPageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\LootPageControl.Designer.cs">
+      <DependentUpon>LootPageControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LootPageElement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\LootPageElement.Designer.cs">
+      <DependentUpon>LootPageElement.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PlayerMenu.cs">
       <SubType>UserControl</SubType>
@@ -130,11 +148,20 @@
     <EmbeddedResource Include="UserControls\InventoryPage.resx">
       <DependentUpon>InventoryPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ItemDescriptionControl.resx">
+      <DependentUpon>ItemDescriptionControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\JournalControl.resx">
       <DependentUpon>JournalControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\JournalNoteControl.resx">
       <DependentUpon>JournalNoteControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\LootPageControl.resx">
+      <DependentUpon>LootPageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\LootPageElement.resx">
+      <DependentUpon>LootPageElement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PlayerMenu.resx">
       <DependentUpon>PlayerMenu.cs</DependentUpon>
@@ -151,6 +178,18 @@
       <Project>{8369d834-0e0b-4a76-abd3-7d3fd3f61f84}</Project>
       <Name>RoyalPlayingGame</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fireball_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fireball_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fireball_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fireball_3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -55,8 +55,7 @@ namespace RoyalPlayingGame.Items
         /// </summary>
         /// <param name="item"></param>
         public void AddItem(Item item)
-        {
-            
+        {           
             foreach (Item bagItem in Bag)
             {
                 if(bagItem.ID == item.ID)
@@ -86,7 +85,7 @@ namespace RoyalPlayingGame.Items
             if (item.Amount > 0)
             {
                 Bag.Add(item);
-                //ItemsManager.AddItem();
+                ItemsManager.AddItem();
             }
             
 
@@ -111,6 +110,7 @@ namespace RoyalPlayingGame.Items
         {
 
         }
+
         public List<Item> GetItemList()
         {
             return Bag;

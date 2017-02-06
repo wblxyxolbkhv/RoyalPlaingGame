@@ -10,7 +10,7 @@ using RoyalPlayingGame.Exceptions;
 
 namespace RoyalPlayingGame
 {
-    //public delegate void ItemAdded();
+    public delegate void SomeItemAdded();
     public delegate void BagSlotsChanged(int slots);
     /// <summary>
     /// основная задача класса - подгружать итемы
@@ -63,10 +63,10 @@ namespace RoyalPlayingGame
         {
             SlotsChanged?.Invoke(slots);
         }
-        //public static event ItemAdded ItemAdded;
-        //public static void AddItem()
-        //{
-        //    ItemAdded?.Invoke();
-        //}
+        public static event SomeItemAdded ItemAdded;
+        public static void AddItem()
+        {
+            ItemAdded?.Invoke();
+        }
     }
 }

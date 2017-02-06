@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.itemDescriptionControl1 = new VisualPart.UserControls.ItemDescriptionControl();
+            this.lootPageControl1 = new VisualPart.UserControls.LootPageControl();
             this.fastAccessControl1 = new VisualPart.UserControls.FastAccessControl();
             this.inventoryControl1 = new VisualPart.UserControls.InventoryControl();
             this.journalControl1 = new VisualPart.UserControls.JournalControl();
@@ -52,6 +54,26 @@
             this.pictureBox1.Size = new System.Drawing.Size(1008, 603);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // itemDescriptionControl1
+            // 
+            this.itemDescriptionControl1.AutoSize = true;
+            this.itemDescriptionControl1.Item = null;
+            this.itemDescriptionControl1.Location = new System.Drawing.Point(723, 453);
+            this.itemDescriptionControl1.Name = "itemDescriptionControl1";
+            this.itemDescriptionControl1.Size = new System.Drawing.Size(150, 150);
+            this.itemDescriptionControl1.TabIndex = 11;
+            this.itemDescriptionControl1.Visible = false;
+            // 
+            // lootPageControl1
+            // 
+            this.lootPageControl1.AutoScroll = true;
+            this.lootPageControl1.Inventory = null;
+            this.lootPageControl1.Location = new System.Drawing.Point(868, 453);
+            this.lootPageControl1.Name = "lootPageControl1";
+            this.lootPageControl1.Size = new System.Drawing.Size(140, 150);
+            this.lootPageControl1.TabIndex = 10;
+            this.lootPageControl1.Visible = false;
             // 
             // fastAccessControl1
             // 
@@ -174,6 +196,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 603);
+            this.Controls.Add(this.itemDescriptionControl1);
+            this.Controls.Add(this.lootPageControl1);
             this.Controls.Add(this.fastAccessControl1);
             this.Controls.Add(this.inventoryControl1);
             this.Controls.Add(this.journalControl1);
@@ -188,6 +212,7 @@
             this.Text = "RoyalPlayGame";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -202,7 +227,12 @@
         private VisualPart.UserControls.ActiveQuestControl activeQuestControl1;
         private VisualPart.UserControls.JournalControl journalControl1;
         private VisualPart.UserControls.FastAccessControl fastAccessControl1;
+<<<<<<< HEAD
         private VisualPart.UserControls.InventoryControl inventoryControl1;
+=======
+        private VisualPart.UserControls.LootPageControl lootPageControl1;
+        private VisualPart.UserControls.ItemDescriptionControl itemDescriptionControl1;
+>>>>>>> 881abcde4b90231ce2b78540c2749caab82ab029
     }
 }
 

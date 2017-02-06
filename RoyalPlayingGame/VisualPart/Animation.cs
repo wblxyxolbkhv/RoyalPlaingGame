@@ -35,6 +35,52 @@ namespace VisualPart
                 currentFrameIndex = 0;
             }
         }
+        public Animation(int delay, string name)
+        {
+            frames = new List<Image>();
+            //Folder = folder;
+            updateFrameTimer = new Timer();
+            Delay = delay;
+            updateFrameTimer.Interval = Delay;
+            updateFrameTimer.Tick += OnUpdateFrame;
+            Mode = AnimationMode.Loop;
+            IsActive = true;
+
+            GetFramesFromResources(name);
+            if (frames.Count == 0)
+            {
+                CurrentFrame = null;
+                currentFrameIndex = -1;
+            }
+            else
+            {
+                CurrentFrame = frames[0];
+                currentFrameIndex = 0;
+            }
+        }
+
+        private void GetFramesFromResources(string name)
+        {
+            int frameNum = 0;
+            while (true)
+            {
+                Bitmap i = null;
+                try
+                {
+                    //i = (Bitmap)Image.FromFile(Folder + @"/" + frameNum + ".png");
+                    i = (Bitmap)VisualPart.Properties.Resources.ResourceManager.GetObject(name + "_" + frameNum.ToString());
+                    if (i == null)
+                        break;
+                }
+                catch
+                {
+                    break;
+                }
+                i.MakeTransparent(Color.White);
+                frames.Add(i);
+                frameNum++;
+            }
+        }
 
         private void OnUpdateFrame(object sender, EventArgs e)
         {

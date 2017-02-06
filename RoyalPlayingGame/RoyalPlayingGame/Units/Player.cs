@@ -40,9 +40,14 @@ namespace RoyalPlayingGame.Units
             SpellHotKey2 = SpellBook[frost.Name];
             SpellHotKey3 = SpellBook[breath.Name];
             SpellHotKey4 = SpellBook[wave.Name];
+<<<<<<< HEAD
             //отладочное, убрать
             for (int i = 0; i < 4; i++)
                 Inventory.AddItem(ItemsManager.GetItem(1000));
+=======
+            //for (int i = 0; i < 4; i++)
+            //    Inventory.AddItem(ItemsManager.GetItem(1000));
+>>>>>>> 881abcde4b90231ce2b78540c2749caab82ab029
         }
         public int experience;
         public PlayerJournal QuestJournal { get; set; } = null;

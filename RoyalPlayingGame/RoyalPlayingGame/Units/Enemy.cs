@@ -34,6 +34,7 @@ namespace RoyalPlayingGame.Units
             Loot = new List<Item>();
         }
 
+<<<<<<< HEAD
         protected List<Item> Loot;
 
         /// <summary>
@@ -44,6 +45,9 @@ namespace RoyalPlayingGame.Units
         {
             Loot.Add(item);
         }
+=======
+       
+>>>>>>> 881abcde4b90231ce2b78540c2749caab82ab029
         
     }
 }

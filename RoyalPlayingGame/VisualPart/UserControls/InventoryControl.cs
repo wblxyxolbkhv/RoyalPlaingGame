@@ -20,7 +20,7 @@ namespace VisualPart.UserControls
             ItemList = new List<Item>();
             AllBagSlots = new List<PictureBox>();
             ItemsManager.SlotsChanged += PlacePictureBoxes;
-            //ItemsManager.ItemAdded += UpdateAllItemPictureBoxes;
+            ItemsManager.ItemAdded += UpdateAllItemPictureBoxes;
         }
 
         public List<Item> ItemList { get; set; }
@@ -30,6 +30,7 @@ namespace VisualPart.UserControls
         public List<PictureBox> PotionsBagSlots { get; set; }
         public List<PictureBox> OtherBagSlots { get; set; }
         public int SlotsAmount { get; set; }
+
         public override void Refresh()
         {
             //PlacePictureBoxes();
