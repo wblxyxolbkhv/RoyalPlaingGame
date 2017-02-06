@@ -28,6 +28,8 @@ namespace StartUpProject
             Level.InventoryManager.InventoryControl = inventoryControl1;
             Level.ActiveQuestManager.ActiveQuestControl = activeQuestControl1;
             Level.QuestJournalManager.Journal = journalControl1;
+            fastAccessControl1.JournalControl = journalControl1;
+            fastAccessControl1.InventoryControl = inventoryControl1;
             #region Инициализация меню, событий
 
 

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RoyalPlayingGame.Items
 {
+    /// <summary>
+    /// игровой предмет
+    /// </summary>
     public class Item
     {
         public Item(int ID, string name, int maxAmount, int amount, uint itemLvl, Effect.Effect effect)
@@ -27,6 +30,12 @@ namespace RoyalPlayingGame.Items
             Amount = amount;
             IsAQuestItem = false;
         }
+        /// <summary>
+        /// конструктор для квестового предмета
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="name"></param>
+        /// <param name="maxAmount"></param>
         public Item(int ID, string name,  int maxAmount)
         {
             this.ID = ID;
@@ -37,8 +46,17 @@ namespace RoyalPlayingGame.Items
         }
         public int ID { get; set; }
         public string Name { get; set; }
+        /// <summary>
+        /// максимальное значение в стопке
+        /// </summary>
         public int MaxAmount { get; protected set; }
+        /// <summary>
+        /// текущее количество
+        /// </summary>
         public int Amount { get; set; }
+        /// <summary>
+        /// требуемый для предмета уровень
+        /// </summary>
         public uint Lvl { get; set; }
         public bool IsAQuestItem { get; set; }
         public string Description { get; set; }

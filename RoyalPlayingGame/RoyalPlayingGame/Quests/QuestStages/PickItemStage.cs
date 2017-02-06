@@ -8,25 +8,28 @@ using RoyalPlayingGame.Units;
 
 namespace RoyalPlayingGame.Quests.QuestStages
 {
+    /// <summary>
+    /// стадия на сбор предмета
+    /// </summary>
     public class PickItemStage : QuestStage
     {
         public PickItemStage(int moneyReward, int experieneReward, List<Item> itemReward, string name, string description, int index)
             : base(moneyReward, experieneReward, itemReward, name, description, index)
         {
-            Unit.QuestItemPicked += OnItemPicked;
-            Unit.QuestItemDroped += OnItemDroped;
+            //Unit.QuestItemPicked += OnItemPicked;
+            //Unit.QuestItemDroped += OnItemDroped;
         }
 
         public PickItemStage(string name,string description, int index):base(name,description,index)
         {
-            Unit.QuestItemPicked += OnItemPicked;
-            Unit.QuestItemDroped += OnItemDroped;
+            //Unit.QuestItemPicked += OnItemPicked;
+            //Unit.QuestItemDroped += OnItemDroped;
         }
 
         public PickItemStage():base()
         {
-            Unit.QuestItemPicked += OnItemPicked;
-            Unit.QuestItemDroped += OnItemDroped;
+            //Unit.QuestItemPicked += OnItemPicked;
+            //Unit.QuestItemDroped += OnItemDroped;
         }
 
         private List<PickItemStageGroup> PickedQuestItems { get; set; }

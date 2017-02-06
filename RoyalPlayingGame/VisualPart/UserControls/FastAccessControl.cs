@@ -33,5 +33,19 @@ namespace VisualPart.UserControls
                 
             }
         }
+
+        private void buttonJournal_Click(object sender, EventArgs e)
+        {
+            if (JournalControl.Visible)
+            {
+                JournalControl.Visible = false;
+            }
+            else
+            {
+                JournalControl.Refresh();
+                JournalControl.Visible = true;
+
+            }
+        }
     }
 }

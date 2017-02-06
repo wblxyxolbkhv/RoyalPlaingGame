@@ -11,6 +11,9 @@ using RoyalPlayingGame.Journal;
 
 namespace RoyalPlayingGame.Quests
 {
+    /// <summary>
+    /// класс задания 
+    /// </summary>
     public class Quest
     {
         public Quest(string ID, string name, string description, Unit giver, Player player)
@@ -19,10 +22,10 @@ namespace RoyalPlayingGame.Quests
             this.ID = ID;
             Name = name;
             Description = description;
-            QuestGiver = giver;
+            //QuestGiver = giver;
             QuestStages = new List<QuestStage>();
             isComplited = false;
-            Notes = new List<JournalNote>();
+           // Notes = new List<JournalNote>();
         }
 
         public Quest(string ID, string name, string description)
@@ -32,16 +35,19 @@ namespace RoyalPlayingGame.Quests
             Description = description;
             QuestStages = new List<QuestStage>();
             isComplited = false;
-            Notes = new List<JournalNote>();
+           // Notes = new List<JournalNote>();
         }
 
         public Quest()
         {
             isComplited = false;
             QuestStages = new List<QuestStage>();
-            Notes = new List<JournalNote>();         
+           // Notes = new List<JournalNote>();         
         }
 
+        /// <summary>
+        /// переход на другую стадию
+        /// </summary>
         private void OnNextStage()
         {
             if (QuestStages.IndexOf(CurrentQuestStage) < QuestStages.Count - 1)
@@ -53,7 +59,7 @@ namespace RoyalPlayingGame.Quests
             else QuestListener.QuestComplete(ID);
         }
 
-        public List<JournalNote> Notes { get; set; }
+        //public List<JournalNote> Notes { get; set; }
         public string ID { get; set; }
         private bool isComplited;
         public bool IsComplited
@@ -75,7 +81,7 @@ namespace RoyalPlayingGame.Quests
             get { return isActive; }
             set { isActive = value; }
         }
-        public event Action QuestCompleted;
+        //public event Action QuestCompleted;
         private Player Player { get; set; }
         public List<QuestStage> QuestStages { get; set; }
         private QuestStage currentQuestStage;
@@ -92,11 +98,15 @@ namespace RoyalPlayingGame.Quests
         }
         public string Name { get; set; }
         public string Description { get; set; }
-        public Unit QuestGiver { get; set; }
+        //public Unit QuestGiver { get; set; }
 
         private string ShownReplic { get; set; }
         private string HiddenReplic { get; set; }
 
+        /// <summary>
+        /// добавление стадии в коллекцию
+        /// </summary>
+        /// <param name="questStage"></param>
         public void AddQuestStage(QuestStage questStage)
         {
             QuestStages.Add(questStage);
@@ -107,7 +117,10 @@ namespace RoyalPlayingGame.Quests
             }
         }
 
-
+        /// <summary>
+        /// загрузка квеста из XML
+        /// </summary>
+        /// <param name="path"></param>
         public void LoadQuest(string path)
         {
             XmlDocument questXml = new XmlDocument();

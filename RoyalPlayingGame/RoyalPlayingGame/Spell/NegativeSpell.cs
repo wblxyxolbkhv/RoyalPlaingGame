@@ -30,6 +30,7 @@ namespace RoyalPlayingGame.Spell
         public double SpellDamage { get; set; }
         public int UnitIntellegence { get; set; }
         public int UnitAgility { get; set; }
+
         public int DealtDamage(out bool CriticalStrike)
         {
             SpellDamage = BasicSpellDamage + (UnitIntellegence* 0.5);

@@ -5,7 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RoyalPlayingGame.Quests.QuestStages
-{
+{   /// <summary>
+    /// единица для стадии достижения конкретной точки, содержит в себе 
+    /// айди точки
+    /// </summary>
     public class ToPointStageGroup
     {
         public ToPointStageGroup()
@@ -18,6 +21,9 @@ namespace RoyalPlayingGame.Quests.QuestStages
             Objective = objective;
         }
         public int ID { get; set; }
+        /// <summary>
+        /// описание цели, необходимо для отображения в контроле
+        /// </summary>
         public string Objective { get; set; }
     }
 }

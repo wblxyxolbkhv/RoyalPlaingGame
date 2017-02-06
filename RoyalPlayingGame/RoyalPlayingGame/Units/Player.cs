@@ -10,6 +10,9 @@ using RoyalPlayingGame.Journal;
 
 namespace RoyalPlayingGame.Units
 {
+    /// <summary>
+    /// класс игрока 
+    /// </summary>
    public class Player:Unit
     {
         public Player():base()
@@ -37,6 +40,7 @@ namespace RoyalPlayingGame.Units
             SpellHotKey2 = SpellBook[frost.Name];
             SpellHotKey3 = SpellBook[breath.Name];
             SpellHotKey4 = SpellBook[wave.Name];
+            //отладочное, убрать
             for (int i = 0; i < 4; i++)
                 Inventory.AddItem(ItemsManager.GetItem(1000));
         }
@@ -57,7 +61,11 @@ namespace RoyalPlayingGame.Units
             }
         }
         
-        
+        /// <summary>
+        /// генерация спелла относительно нажатой клавиши
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public Spell.Spell CastSpell(Keys key)
         {
             switch (key)
@@ -90,9 +98,13 @@ namespace RoyalPlayingGame.Units
             }
         }
 
+        /// <summary>
+        /// добавление квеста в журнал
+        /// </summary>
+        /// <param name="quest"></param>
         public void AddQuest(Quest quest)
         {
-            QuestJournal.AddActiveQuest(quest);
+            QuestJournal.ActiveQuests.Add(quest);
         }
 
     }

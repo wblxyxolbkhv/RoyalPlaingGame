@@ -9,6 +9,9 @@ using RoyalPlayingGame.Units;
 
 namespace RoyalPlayingGame.Quests.QuestStages
 {
+    /// <summary>
+    /// стадия на убийство цели
+    /// </summary>
     public class KillUnitStage:QuestStage
     {
         public KillUnitStage(int moneyReward, int experieneReward, List<Item> itemReward, string name, string description, int index)

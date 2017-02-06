@@ -129,13 +129,13 @@ namespace VisualPart.UserControls
             }
             itemPictureBox.Location = new Point(x, y);
             x += 49;
-            //itemPictureBox.Image = image;
-            itemPictureBox.BackColor = Color.Red;
+            itemPictureBox.Image = image;
+            //itemPictureBox.BackColor = Color.Red;
             bagSlots.Add(itemPictureBox);
             page.Controls.Add(itemPictureBox);
         }
 
-
+       
     }
 
 }

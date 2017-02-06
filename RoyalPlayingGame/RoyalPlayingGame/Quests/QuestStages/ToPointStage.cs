@@ -8,6 +8,9 @@ using SimplePhysicalEngine;
 
 namespace RoyalPlayingGame.Quests.QuestStages
 {
+    /// <summary>
+    /// стадия достижения конкретной точки
+    /// </summary>
     public class ToPointStage : QuestStage
     {
         public ToPointStage(int moneyReward, int experieneReward, List<Item> itemReward, string name, string description, int index) 
@@ -31,6 +34,7 @@ namespace RoyalPlayingGame.Quests.QuestStages
 
         private List<ToPointStageGroup> Points { get; set; }
 
+        //костыль
         public ToPointStageGroup GetCurrentPoint()
         {
             return Points[0];

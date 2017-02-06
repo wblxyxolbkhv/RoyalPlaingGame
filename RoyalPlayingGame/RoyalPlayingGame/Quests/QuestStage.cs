@@ -7,6 +7,9 @@ using RoyalPlayingGame.Items;
 
 namespace RoyalPlayingGame.Quests
 {
+    /// <summary>
+    /// стадия квеста
+    /// </summary>
     public abstract class QuestStage
     {
         public QuestStage(int moneyReward, int experieneReward, List<Item> itemReward, string name, string description, int index)
@@ -53,6 +56,9 @@ namespace RoyalPlayingGame.Quests
         public string ShownReplic { get; set; }
         public string HiddenReplic { get; set; }
 
+        /// <summary>
+        /// вызов события завершения квестовой стадии
+        /// </summary>
         public void CallQSCEvent()
         {
             if (!string.IsNullOrEmpty(ShownReplic))

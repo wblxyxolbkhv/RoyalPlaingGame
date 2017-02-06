@@ -7,6 +7,9 @@ using RoyalPlayingGame.Items;
 
 namespace RoyalPlayingGame.Units
 {
+    /// <summary>
+    /// класс врага
+    /// </summary>
     public class Enemy:Unit
     {
         public Enemy(int health, int intellegence, int strength, int agility, int physicalDamageReduction, int magicalDamegeReduction):base()
@@ -33,6 +36,10 @@ namespace RoyalPlayingGame.Units
 
         protected List<Item> Loot;
 
+        /// <summary>
+        /// добавление лута
+        /// </summary>
+        /// <param name="item"></param>
         public void AddLoot(Item item)
         {
             Loot.Add(item);

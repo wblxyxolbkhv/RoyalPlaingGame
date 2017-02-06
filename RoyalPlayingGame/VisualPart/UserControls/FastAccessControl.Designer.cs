@@ -35,16 +35,17 @@
             // 
             // buttonJournal
             // 
-            this.buttonJournal.Location = new System.Drawing.Point(0, 3);
+            this.buttonJournal.Location = new System.Drawing.Point(0, 0);
             this.buttonJournal.Name = "buttonJournal";
             this.buttonJournal.Size = new System.Drawing.Size(50, 50);
             this.buttonJournal.TabIndex = 0;
             this.buttonJournal.Text = "Journal (J)";
             this.buttonJournal.UseVisualStyleBackColor = true;
+            this.buttonJournal.Click += new System.EventHandler(this.buttonJournal_Click);
             // 
             // buttonInventory
             // 
-            this.buttonInventory.Location = new System.Drawing.Point(47, 3);
+            this.buttonInventory.Location = new System.Drawing.Point(52, 0);
             this.buttonInventory.Name = "buttonInventory";
             this.buttonInventory.Size = new System.Drawing.Size(50, 50);
             this.buttonInventory.TabIndex = 1;
@@ -54,7 +55,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(94, 3);
+            this.button3.Location = new System.Drawing.Point(104, 0);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(50, 50);
             this.button3.TabIndex = 2;
@@ -69,7 +70,7 @@
             this.Controls.Add(this.buttonInventory);
             this.Controls.Add(this.buttonJournal);
             this.Name = "FastAccessControl";
-            this.Size = new System.Drawing.Size(216, 53);
+            this.Size = new System.Drawing.Size(215, 50);
             this.ResumeLayout(false);
 
         }

@@ -8,6 +8,9 @@ namespace RoyalPlayingGame.Items
 {
     //public enum ArmorType { Cloth, Leather, Mail, Plate }
     public enum ArmorSlot { Head, Back, Chest, Hands, Belt, Boots, Ring1, Ring2, Neck }
+    /// <summary>
+    /// броня
+    /// </summary>
     public class Armor : Item
     {
         Random randomArmorGeneration;

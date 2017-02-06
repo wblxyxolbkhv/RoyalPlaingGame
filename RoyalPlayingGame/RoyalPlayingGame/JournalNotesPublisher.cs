@@ -8,6 +8,7 @@ using System.Xml;
 
 namespace RoyalPlayingGame
 {
+
     public static class JournalNotesPublisher
     {
         static JournalNotesPublisher()
@@ -27,8 +28,13 @@ namespace RoyalPlayingGame
                 }
             }
         }
+
         private static List<JournalNote> Notes { get; set; }
         public static PlayerJournal Journal { get; set; }
+        /// <summary>
+        /// парсинг заметок из XML
+        /// </summary>
+        /// <param name="path"></param>
         private static void LoadJournalNotes(string path)
         {
             XmlDocument journalNotesXml = new XmlDocument();

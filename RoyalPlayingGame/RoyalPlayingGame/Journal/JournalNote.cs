@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using RoyalPlayingGame.Quests;
 
 namespace RoyalPlayingGame.Journal
-{
+{   /// <summary>
+    /// записка журнала
+    /// </summary>
     public class JournalNote
     {
         public JournalNote(string name, string description, string time, string linkedStageID)
@@ -21,6 +23,9 @@ namespace RoyalPlayingGame.Journal
         public string Time { get; set; }
         public string Description { get; set; }
         //public Quest LinkedQuest { get; set; }
+        /// <summary>
+        /// айди связанного квеста
+        /// </summary>
         public string LinkedQuestStageID { get; set; }
 
     }

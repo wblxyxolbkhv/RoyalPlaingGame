@@ -57,22 +57,21 @@
             // 
             this.fastAccessControl1.InventoryControl = null;
             this.fastAccessControl1.JournalControl = null;
-            this.fastAccessControl1.Location = new System.Drawing.Point(598, 550);
+            this.fastAccessControl1.Location = new System.Drawing.Point(908, 554);
             this.fastAccessControl1.Name = "fastAccessControl1";
-            this.fastAccessControl1.Size = new System.Drawing.Size(216, 53);
+            this.fastAccessControl1.Size = new System.Drawing.Size(100, 49);
             this.fastAccessControl1.TabIndex = 9;
-            this.fastAccessControl1.Visible = false;
             // 
             // inventoryControl1
             // 
             this.inventoryControl1.AllBagSlots = null;
             this.inventoryControl1.ArmorBagSlots = null;
             this.inventoryControl1.ItemList = null;
-            this.inventoryControl1.Location = new System.Drawing.Point(68, 63);
+            this.inventoryControl1.Location = new System.Drawing.Point(82, 79);
             this.inventoryControl1.Name = "inventoryControl1";
             this.inventoryControl1.OtherBagSlots = null;
             this.inventoryControl1.PotionsBagSlots = null;
-            this.inventoryControl1.Size = new System.Drawing.Size(654, 357);
+            this.inventoryControl1.Size = new System.Drawing.Size(572, 357);
             this.inventoryControl1.SlotsAmount = 0;
             this.inventoryControl1.TabIndex = 8;
             this.inventoryControl1.Visible = false;
@@ -81,7 +80,7 @@
             // journalControl1
             // 
             this.journalControl1.Journal = null;
-            this.journalControl1.Location = new System.Drawing.Point(273, 52);
+            this.journalControl1.Location = new System.Drawing.Point(212, 63);
             this.journalControl1.Name = "journalControl1";
             this.journalControl1.Size = new System.Drawing.Size(639, 420);
             this.journalControl1.TabIndex = 7;
@@ -91,6 +90,7 @@
             // 
             this.activeQuestControl1.ActiveQuest = null;
             this.activeQuestControl1.BackColor = System.Drawing.Color.Transparent;
+            this.activeQuestControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("activeQuestControl1.BackgroundImage")));
             this.activeQuestControl1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.activeQuestControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.activeQuestControl1.Location = new System.Drawing.Point(410, 13);
@@ -201,8 +201,8 @@
         private VisualPart.UserControls.ChoiceBox choiceBox1;
         private VisualPart.UserControls.ActiveQuestControl activeQuestControl1;
         private VisualPart.UserControls.JournalControl journalControl1;
-        private VisualPart.UserControls.InventoryControl inventoryControl1;
         private VisualPart.UserControls.FastAccessControl fastAccessControl1;
+        private VisualPart.UserControls.InventoryControl inventoryControl1;
     }
 }
 

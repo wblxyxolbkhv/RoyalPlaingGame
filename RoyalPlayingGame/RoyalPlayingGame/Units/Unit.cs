@@ -12,6 +12,9 @@ namespace RoyalPlayingGame.Units
 {
     public enum DamageType { Physical, Magic }
     public delegate void QuestItemHendler(int ID);
+    /// <summary>
+    /// класс всех игровых юнитов
+    /// </summary>
     public class Unit : Interfaces.ITargetObject
     {
         public Unit()
@@ -40,8 +43,8 @@ namespace RoyalPlayingGame.Units
         protected int realPhysicalDamageReduction;
         protected int realMagicalDamageReduction;
         public event Action Death;
-        public static event QuestItemHendler QuestItemPicked;
-        public static event QuestItemHendler QuestItemDroped;
+        //public static event QuestItemHendler QuestItemPicked;
+        //public static event QuestItemHendler QuestItemDroped;
         public bool IsAlive { get; set; }
 
         public int Health { get; set; }
@@ -145,19 +148,24 @@ namespace RoyalPlayingGame.Units
 
 
         public int ID {get;protected set; }
-        public Inventory Inventory { get; set; }
+        public  Inventory Inventory { get; protected set; }
         public List<Effect.Effect> Effects { get; set; }
-        public List<Item> Equipment { get; set; }
-        public SpellBookCollection SpellBook { get; set; }
+        protected  List<Item> Equipment { get; set; }
+        public SpellBookCollection SpellBook { get; protected set; }
         public int MoneyAmount { get; set; }
         public int Level { get; protected set; }
-        public Random CriticalChance { get; set; }
+        private Random CriticalChance { get; set; }
         public Spell.Spell SpellHotKey1 { get; set; }
         public Spell.Spell SpellHotKey2 { get; set; }
         public Spell.Spell SpellHotKey3 { get; set; }
         public Spell.Spell SpellHotKey4 { get; set; }
 
-
+        /// <summary>
+        /// расчет полученного урона
+        /// </summary>
+        /// <param name="damage"></param>
+        /// <param name="DType"></param>
+        /// <returns></returns>
         public int GotDamaged(int damage, DamageType DType)
         {
             if (DType == DamageType.Physical)
@@ -172,25 +180,25 @@ namespace RoyalPlayingGame.Units
             }
         }
   
-        public void CalcStatsEffects()
-        {
-            foreach (Effect.Effect effect in Effects)
-            {
-                if (effect.effectTimer != null && effect.CurrentTime <=0)
-                    Effects.Remove(effect);
-            }
-            foreach (Effect.Effect effect in Effects)
-            {
-                RealAgility += effect.DAgility;
-                RealHealth += effect.DHealth;
-                RealMana += effect.DMana;
-                RealStrength += effect.DStrength;
-                RealIntelligence += effect.DIntelligence;
-                RealMagicalDamageReduction += effect.DMagicalDamageReduction;
-                RealPhysicalDamageReduction += effect.DPhysicalDamageReduction;
-            }
+        //public void CalcStatsEffects()
+        //{
+        //    foreach (Effect.Effect effect in Effects)
+        //    {
+        //        if (effect.effectTimer != null && effect.CurrentTime <=0)
+        //            Effects.Remove(effect);
+        //    }
+        //    foreach (Effect.Effect effect in Effects)
+        //    {
+        //        RealAgility += effect.DAgility;
+        //        RealHealth += effect.DHealth;
+        //        RealMana += effect.DMana;
+        //        RealStrength += effect.DStrength;
+        //        RealIntelligence += effect.DIntelligence;
+        //        RealMagicalDamageReduction += effect.DMagicalDamageReduction;
+        //        RealPhysicalDamageReduction += effect.DPhysicalDamageReduction;
+        //    }
 
-        }
+        //}
 
         public void AddEffect(Effect.Effect effect)
         {
@@ -224,6 +232,12 @@ namespace RoyalPlayingGame.Units
             Spell.NegativeSpells.FireBall fireball = new Spell.NegativeSpells.FireBall(RealIntelligence, RealAgility);
             return fireball;
         }
+
+        /// <summary>
+        /// генерация спелла 
+        /// </summary>
+        /// <param name="spell"></param>
+        /// <returns></returns>
         public virtual Spell.Spell CastSpell(Spell.Spell spell)
         {
             if (RealMana - spell.ManaCost < 0)
@@ -238,6 +252,12 @@ namespace RoyalPlayingGame.Units
             }
             throw new Exceptions.SpellCoolDownException();
         }
+
+        /// <summary>
+        /// расчет урона от автоатаки юнита
+        /// </summary>
+        /// <param name="CriticalStrike"></param>
+        /// <returns></returns>
         public int AutoAttack(out bool CriticalStrike)
         {
             CriticalChance = new Random();  

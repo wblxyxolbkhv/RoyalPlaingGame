@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace RoyalPlayingGame.Quests.QuestStages
 {
+    /// <summary>
+    /// единица для стадии сбора предмета
+    /// </summary>
     public class PickItemStageGroup
     {
         public PickItemStageGroup()
@@ -19,6 +22,9 @@ namespace RoyalPlayingGame.Quests.QuestStages
             Objective = objective;
         }
         public Item Item { get; set; }
+        /// <summary>
+        /// описание цели, необходимо для отображения в контроле
+        /// </summary>
         public string Objective { get; set; }
     }
 }
