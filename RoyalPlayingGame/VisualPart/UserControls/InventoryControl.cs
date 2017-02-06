@@ -20,7 +20,7 @@ namespace VisualPart.UserControls
             ItemList = new List<Item>();
             AllBagSlots = new List<PictureBox>();
             ItemsManager.SlotsChanged += PlacePictureBoxes;
-            //ItemsManager.ItemAdded += UpdateAllItemPictureBoxes;
+            ItemsManager.ItemAdded += UpdateAllItemPictureBoxes;
         }
 
         public List<Item> ItemList { get; set; }

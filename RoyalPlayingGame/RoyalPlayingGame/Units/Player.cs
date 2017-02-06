@@ -37,8 +37,8 @@ namespace RoyalPlayingGame.Units
             SpellHotKey2 = SpellBook[frost.Name];
             SpellHotKey3 = SpellBook[breath.Name];
             SpellHotKey4 = SpellBook[wave.Name];
-            for (int i = 0; i < 4; i++)
-                Inventory.AddItem(ItemsManager.GetItem(1000));
+            //for (int i = 0; i < 4; i++)
+            //    Inventory.AddItem(ItemsManager.GetItem(1000));
         }
         public int experience;
         public PlayerJournal QuestJournal { get; set; } = null;
