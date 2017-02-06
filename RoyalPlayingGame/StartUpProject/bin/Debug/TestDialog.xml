@@ -1,0 +1,24 @@
+﻿<?xml version="1.0"?>
+<dialog id = "1000" name="TestDialog">
+    <replic  number="0" next = "1">Здравствуй, герой!</replic>
+    <choice number ="1">
+        <answer number = "2" next = "5" > Где я? </answer>
+        <answer number = "3" next = "6"> Есть работенка? </answer>
+        <answer number = "4" next = "7"> Как пройти в релиз?</answer>
+        <answer number = "17" next = "16" hide = "true"> Хороший голубь - мертвый голубь</answer>
+    </choice>
+    <replic  number="5" next = "1">Ты в дебаге, дружок!</replic>
+    <replic  number="6" next = "13">Как ты относишься к голубям?</replic>
+    <replic  number="7" next = "8">Направо.</replic>
+    <choice number ="8">
+        <answer number = "9" next = "11"> Ну я пошел тогда..</answer>
+        <answer number = "10" next = "12"> А вообще мне и тут неплохо..</answer>
+    </choice>
+    <replic  number="11" next = "null">Давай, удачи!</replic>
+    <replic  number="12" next = "null">Располагайся тогда, чувствуй себя как дома.</replic>
+    <choice number ="13">
+        <answer number = "14" next = "null" newQuest = "1000"> Понял, пошел выполнять</answer>
+        <answer number = "15" next = "1"> Кажется, ты наркоман</answer>
+    </choice>
+    <replic  number="16" next = "1" passQuest = "1000"> Отлично, ты меня понял </replic>
+</dialog>
