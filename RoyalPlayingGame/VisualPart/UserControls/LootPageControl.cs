@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using RoyalPlayingGame.Items;
 using RoyalPlayingGame;
+using RoyalPlayingGame.Exceptions;
 
 namespace VisualPart.UserControls
 {
@@ -69,11 +70,18 @@ namespace VisualPart.UserControls
             {
                 if(item == (sender as LootPageElement).CurItem)
                 {
-                    Inventory.AddItem(item);
-                    lootList.Remove(item);
-                    splitContainer1.Panel2.Controls.Clear();
-                    Update(lootList);
-                    break;
+                    try
+                    {
+                        Inventory.AddItem(item);
+                        lootList.Remove(item);
+                        splitContainer1.Panel2.Controls.Clear();
+                        Update(lootList);
+                        break;
+                    }
+                    catch(FullBagException fbe)
+                    {
+                        ItemsManager.BagFull(fbe.Message, 1000);
+                    }
                 }
             }
         }

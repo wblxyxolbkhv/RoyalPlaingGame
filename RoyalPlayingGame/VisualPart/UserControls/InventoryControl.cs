@@ -48,8 +48,8 @@ namespace VisualPart.UserControls
             {
                 for (int i = 0; i < ItemList.Count; i++)
                 {
-                    AllBagSlots[i].BackColor = Color.Black;
-                    //AllBagSlots[i].Image = ItemsManager.GetItemImage(ItemList[i].Name);
+                    //AllBagSlots[i].BackColor = Color.Black;
+                    AllBagSlots[i].Image = ItemsManager.GetItemImage(ItemList[i].Name);
                 }
             }
         }
@@ -130,8 +130,8 @@ namespace VisualPart.UserControls
             }
             itemPictureBox.Location = new Point(x, y);
             x += 49;
-            //itemPictureBox.Image = image;
-            itemPictureBox.BackColor = Color.Red;
+            itemPictureBox.Image = image;
+            //itemPictureBox.BackColor = Color.Red;
             bagSlots.Add(itemPictureBox);
             page.Controls.Add(itemPictureBox);
         }
