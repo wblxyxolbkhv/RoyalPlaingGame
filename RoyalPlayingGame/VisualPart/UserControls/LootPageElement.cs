@@ -16,6 +16,10 @@ namespace VisualPart.UserControls
         public LootPageElement()
         {
             InitializeComponent();
+            pictureBox1.MouseMove += OnMouseMove;
+            pictureBox1.MouseLeave += OnMouseLeave;
+            label1.MouseMove += OnMouseMove;
+            label1.MouseLeave += OnMouseLeave;
         }
         public Item CurItem { get; set; }
 
@@ -29,6 +33,16 @@ namespace VisualPart.UserControls
         {
             if(Parent.Parent.Parent as LootPageControl != null)
             (Parent.Parent.Parent as LootPageControl).OnDoubleClick(this, e);
+        }
+        private void OnMouseMove(object sender, MouseEventArgs e)
+        {
+            if (Parent.Parent.Parent as LootPageControl != null)
+                (Parent.Parent.Parent as LootPageControl).OnMouseMove(this, e);
+        }
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            if (Parent.Parent.Parent as LootPageControl != null)
+                (Parent.Parent.Parent as LootPageControl).OnMouseLeave(this, e);
         }
     }
 }

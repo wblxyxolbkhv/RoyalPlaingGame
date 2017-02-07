@@ -10,6 +10,7 @@ using RoyalPlayingGame.Exceptions;
 
 namespace RoyalPlayingGame
 {
+    public delegate void ShowHint(string message, int time);
     public delegate void SomeItemAdded();
     public delegate void BagSlotsChanged(int slots);
     /// <summary>
@@ -18,6 +19,11 @@ namespace RoyalPlayingGame
     /// </summary>
     public static class ItemsManager
     {
+        static ItemsManager()
+        {
+            LoadItemImageList();
+        }
+
         public static Item GetItem(int id)
         {
             // заготовка, здесь должен быть парсер и выбор из коллекции
@@ -27,7 +33,7 @@ namespace RoyalPlayingGame
             return item;
         }
 
-        public static Dictionary<string,Bitmap> ImageList { get; set; }
+        public static Dictionary<string, Bitmap> ImageList { get; set; } = new Dictionary<string, Bitmap>();
 
         /// <summary>
         /// Загрузка изображений предметов в базу
@@ -37,7 +43,11 @@ namespace RoyalPlayingGame
             string[] imageNames = Directory.GetFiles("ItemImages");
             foreach(string name in imageNames)
             {
-                ImageList.Add(name, (Bitmap)Image.FromFile(Path.Combine("ItemImages", name)));//"ItemImages\\" + name));
+                string newName = Path.GetFileName(name);
+                newName = newName.Split('.')[0];
+                Bitmap b = (Bitmap)Image.FromFile(name);
+                ImageList.Add(newName, b);
+                
             }
         }
 
@@ -68,5 +78,12 @@ namespace RoyalPlayingGame
         {
             ItemAdded?.Invoke();
         }
+        public static event ShowHint FullBag;
+        public static void BagFull(string message, int time)
+        {
+            FullBag?.Invoke(message,time);
+        }
+        
+        
     }
 }

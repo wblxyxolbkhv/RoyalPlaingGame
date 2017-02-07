@@ -17,19 +17,14 @@ namespace RoyalPlayingGame.Units
         public Unit()
         {
             Equipment = new List<Item>();
-            Inventory = new Inventory(10);
+            Inventory = new Inventory(2);
             SpellBook = new SpellBookCollection();
             Effects = new List<Effect.Effect>();
             IsAlive = true;
         }
-        public Unit(int ID)
+        public Unit(int ID):this()
         {
             this.ID = ID;
-            Equipment = new List<Item>();
-            Inventory = new Inventory(10);      
-            SpellBook = new SpellBookCollection();
-            Effects = new List<Effect.Effect>();
-            IsAlive = true;
         }
         #region Stats
         protected int realHealth;
