@@ -16,3 +16,4 @@ C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\SimplePhysicalEn
 C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\SimplePhysicalEngine\bin\Debug\SimplePhysicalEngine.pdb
 C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\SimplePhysicalEngine\obj\Debug\SimplePhysicalEngine.dll
 C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\SimplePhysicalEngine\obj\Debug\SimplePhysicalEngine.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\SimplePhysicalEngine\obj\Debug\SimplePhysicalEngine.csprojResolveAssemblyReference.cache

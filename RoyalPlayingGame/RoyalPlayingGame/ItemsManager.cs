@@ -19,18 +19,17 @@ namespace RoyalPlayingGame
     /// </summary>
     public static class ItemsManager
     {
-        static ItemsManager()
+        //public static Item GetItem(int id)
+        //{
+        //    // заготовка, здесь должен быть парсер и выбор из коллекции
+        //    Item item = null;
+        //    if (id == 1000)
+        //        item = new Item(id, "wizard_hat", 1, 1, 1);
+        //    return item;
+        //}
+        public static void Init()
         {
             LoadItemImageList();
-        }
-
-        public static Item GetItem(int id)
-        {
-            // заготовка, здесь должен быть парсер и выбор из коллекции
-            Item item = null;
-            if (id == 1000)
-                item = new Item(id, "wizard_hat", 1, 1, 1);
-            return item;
         }
 
         public static Dictionary<string, Bitmap> ImageList { get; set; } = new Dictionary<string, Bitmap>();

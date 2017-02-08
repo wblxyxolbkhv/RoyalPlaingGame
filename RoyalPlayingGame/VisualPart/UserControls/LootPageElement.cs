@@ -31,18 +31,28 @@ namespace VisualPart.UserControls
 
         private void OnDoubleClick(object sender, EventArgs e)
         {
-            if(Parent.Parent.Parent as LootPageControl != null)
+            if(Parent!=null)
+                if(Parent.Parent!=null)
+                    if(Parent.Parent.Parent as LootPageControl != null)
             (Parent.Parent.Parent as LootPageControl).OnDoubleClick(this, e);
         }
         private void OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (Parent.Parent.Parent as LootPageControl != null)
+            if (Parent != null)
+                if (Parent.Parent != null)
+                    if (Parent.Parent.Parent as LootPageControl != null)
                 (Parent.Parent.Parent as LootPageControl).OnMouseMove(this, e);
         }
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            if (Parent.Parent.Parent as LootPageControl != null)
+            if (Parent != null)
+                if (Parent.Parent != null)
+                    if (Parent.Parent.Parent as LootPageControl != null)
                 (Parent.Parent.Parent as LootPageControl).OnMouseLeave(this, e);
+        }
+        public void SetBitmapImage(Bitmap bm)
+        {
+            pictureBox1.Image = bm;
         }
     }
 }

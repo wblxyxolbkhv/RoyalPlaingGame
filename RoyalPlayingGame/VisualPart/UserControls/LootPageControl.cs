@@ -27,6 +27,7 @@ namespace VisualPart.UserControls
         private void ChangeVisibility(object sender, EventArgs e)
         {
             Visible = false;
+            splitContainer1.Panel2.Controls.Clear();
         }
 
         public void Update(List<Item> loot)
@@ -43,6 +44,7 @@ namespace VisualPart.UserControls
                 lpe.MouseMove += OnMouseMove;
                 lpe.MouseLeave += OnMouseLeave;
                 lpe.Update(item);
+                lpe.SetBitmapImage(ItemsManager.GetItemImage(item.Name));
                 lpe.Location = new Point(x, y);
                 splitContainer1.Panel2.Controls.Add(lpe);
                 y += 50;

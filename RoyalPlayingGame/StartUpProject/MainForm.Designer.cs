@@ -58,8 +58,9 @@
             // itemDescriptionControl1
             // 
             this.itemDescriptionControl1.AutoSize = true;
+            this.itemDescriptionControl1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.itemDescriptionControl1.Item = null;
-            this.itemDescriptionControl1.Location = new System.Drawing.Point(723, 453);
+            this.itemDescriptionControl1.Location = new System.Drawing.Point(712, 453);
             this.itemDescriptionControl1.Name = "itemDescriptionControl1";
             this.itemDescriptionControl1.Size = new System.Drawing.Size(150, 150);
             this.itemDescriptionControl1.TabIndex = 11;
@@ -68,10 +69,12 @@
             // lootPageControl1
             // 
             this.lootPageControl1.AutoScroll = true;
+            this.lootPageControl1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lootPageControl1.IDC = null;
             this.lootPageControl1.Inventory = null;
-            this.lootPageControl1.Location = new System.Drawing.Point(868, 453);
+            this.lootPageControl1.Location = new System.Drawing.Point(860, 453);
             this.lootPageControl1.Name = "lootPageControl1";
-            this.lootPageControl1.Size = new System.Drawing.Size(140, 150);
+            this.lootPageControl1.Size = new System.Drawing.Size(148, 150);
             this.lootPageControl1.TabIndex = 10;
             this.lootPageControl1.Visible = false;
             // 
