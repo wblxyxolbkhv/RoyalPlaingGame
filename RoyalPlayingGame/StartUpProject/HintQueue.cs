@@ -59,6 +59,8 @@ namespace StartUpProject
         }
         public void PrintHints(PaintEventArgs e)
         {
+            if (StopPrint)
+                return;
             for (int i = 1;i <= 3; i++)
             {
                 if (Hints.Count < i)
@@ -72,5 +74,6 @@ namespace StartUpProject
                     100 - i*20);
             }
         }
+        public bool StopPrint { get; set; } = false;
     }
 }

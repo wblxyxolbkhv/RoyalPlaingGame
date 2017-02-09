@@ -14,6 +14,8 @@ using System.Drawing;
 using StartUpProject.Enemies;
 using StartUpProject.Dialogs;
 using RoyalPlayingGame;
+using StartUpProject.Scripts;
+using StartUpProject.GlobalGameComponents;
 
 namespace StartUpProject
 {
@@ -74,6 +76,9 @@ namespace StartUpProject
         public LootPageManager LootPageManager { get; set; }
         private HintQueue HintQueue { get; set; }
 
+        public int Interval { get; set; }
+        bool IsControlStop = false;
+
         public void OnPrintAllObjects(object sender, PaintEventArgs e)
         {
             Player.PrintObject(e, CameraBias);
@@ -92,16 +97,18 @@ namespace StartUpProject
 
             HintQueue.PrintHints(e);
             DialogManager.PrintDialog(e, CameraBias);
+            PrintScriptInfo(e);
+            PrintTime(e);
             
             //PlayerMenuManager.OnPrint(sender, e);
         }
+
         public void OnRefresh(object sender, EventArgs e)
         {
             CheckTemporaryObjects();
             ChangeRealObjects();
-            // TODO: заменить магическое число 10
-            DialogManager.Refresh(10);
-            HintQueue.OnRefresh(10);
+            DialogManager.Refresh(Interval);
+            HintQueue.OnRefresh(Interval);
             PlayerMenuManager.OnMenuRefresh(sender, e);
             ActiveQuestManager.OnRefresh();
             QuestJournalManager.OnRefresh();
@@ -124,9 +131,28 @@ namespace StartUpProject
                 o.RealObject.OnRefreshPosition(sender, e);
             OnTalkAvailable();
             CameraBias = GetCameraBiasX();
+            OnScriptsCheck();
+        }
+        private void OnScriptsCheck()
+        {
+            if (ScriptManager.CurrentScript.isWaiting)
+            {
+                IsControlStop = false;
+                Game.SetControlVisible(true);
+                HintQueue.StopPrint = false;
+            }
+            else
+            {
+                IsControlStop = true;
+                Game.SetControlVisible(false);
+                HintQueue.StopPrint = true;
+
+            }
         }
         public void OnKeyDownExternal(object sender, KeyEventArgs e)
         {
+            if (IsControlStop)
+                return;
             if (DialogManager.Dialog!=null && DialogManager.Dialog.IsActive)
                 return;
             switch (e.KeyCode)
@@ -188,6 +214,8 @@ namespace StartUpProject
         }
         public void OnKeyUpExternal(object sender, KeyEventArgs e)
         {
+            if (IsControlStop)
+                return;
             if (DialogManager.Dialog != null && DialogManager.Dialog.IsActive)
                 return;
             switch (e.KeyCode)
@@ -201,6 +229,22 @@ namespace StartUpProject
             }
         }
 
+        private void PrintTime(PaintEventArgs e)
+        {
+            string time = Game.CurrentTime.ToLongTimeString();
+            time += " " + Game.CurrentTime.Millisecond;
+            string time1 = DateTime.Now.ToLongTimeString();
+            time1 += " " + DateTime.Now.Millisecond;
+            e.Graphics.DrawString(time, new Font("Arial", 13), Brushes.White, 1, 1);
+            e.Graphics.DrawString(time1, new Font("Arial", 13), Brushes.White, 1, 15);
+        }
+        private void PrintScriptInfo(PaintEventArgs e)
+        {
+            string info = ScriptManager.GetInfoString();
+            if (info == null)
+                return;
+            DialogManager.PrintDialogWindow(e, 600, 50, new Vector2(300, 200), 0, info, 17);
+        }
         private void GenerateLevel()
         {
             CollisionDomain = new List<RealObject>();
@@ -236,6 +280,20 @@ namespace StartUpProject
             
 
             NPCs.Add(bear);
+
+
+
+
+            
+            ScriptManager.RootScript.IsFinishedExternal += () =>
+            {
+                foreach (ComplexEnemy e in Enemies)
+                {
+                    if (e.Unit.IsAlive)
+                        return false;
+                }
+                return true;
+            };
         }
         private void CreateEnemies()
         {
