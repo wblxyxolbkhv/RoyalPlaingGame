@@ -36,11 +36,11 @@
             this.inventoryControl1 = new VisualPart.UserControls.InventoryControl();
             this.journalControl1 = new VisualPart.UserControls.JournalControl();
             this.activeQuestControl1 = new VisualPart.UserControls.ActiveQuestControl();
-            this.choiceBox1 = new VisualPart.UserControls.ChoiceBox();
             this.skillPanel1 = new VisualPart.UserControls.SkillPanel();
             this.scaleMP = new VisualPart.UserControls.Scale();
             this.scaleHP = new VisualPart.UserControls.Scale();
             this.playerMenu1 = new VisualPart.UserControls.PlayerMenu();
+            this.choiceBox1 = new VisualPart.UserControls.ChoiceBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,6 +68,7 @@
             // lootPageControl1
             // 
             this.lootPageControl1.AutoScroll = true;
+            this.lootPageControl1.IDC = null;
             this.lootPageControl1.Inventory = null;
             this.lootPageControl1.Location = new System.Drawing.Point(868, 453);
             this.lootPageControl1.Name = "lootPageControl1";
@@ -103,7 +104,7 @@
             // journalControl1
             // 
             this.journalControl1.Journal = null;
-            this.journalControl1.Location = new System.Drawing.Point(273, 52);
+            this.journalControl1.Location = new System.Drawing.Point(274, 63);
             this.journalControl1.Name = "journalControl1";
             this.journalControl1.Size = new System.Drawing.Size(639, 420);
             this.journalControl1.TabIndex = 7;
@@ -120,18 +121,6 @@
             this.activeQuestControl1.Name = "activeQuestControl1";
             this.activeQuestControl1.Size = new System.Drawing.Size(244, 73);
             this.activeQuestControl1.TabIndex = 6;
-            // 
-            // choiceBox1
-            // 
-            this.choiceBox1.BackColor = System.Drawing.Color.Transparent;
-            this.choiceBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("choiceBox1.BackgroundImage")));
-            this.choiceBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.choiceBox1.Choice = null;
-            this.choiceBox1.Location = new System.Drawing.Point(283, 79);
-            this.choiceBox1.Name = "choiceBox1";
-            this.choiceBox1.Size = new System.Drawing.Size(547, 163);
-            this.choiceBox1.TabIndex = 5;
-            this.choiceBox1.Visible = false;
             // 
             // skillPanel1
             // 
@@ -192,18 +181,30 @@
             this.playerMenu1.TabIndex = 1;
             this.playerMenu1.Visible = false;
             // 
+            // choiceBox1
+            // 
+            this.choiceBox1.BackColor = System.Drawing.Color.Transparent;
+            this.choiceBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("choiceBox1.BackgroundImage")));
+            this.choiceBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.choiceBox1.Choice = null;
+            this.choiceBox1.Location = new System.Drawing.Point(283, 92);
+            this.choiceBox1.Name = "choiceBox1";
+            this.choiceBox1.Size = new System.Drawing.Size(548, 153);
+            this.choiceBox1.TabIndex = 12;
+            this.choiceBox1.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 603);
+            this.Controls.Add(this.choiceBox1);
             this.Controls.Add(this.itemDescriptionControl1);
             this.Controls.Add(this.lootPageControl1);
             this.Controls.Add(this.fastAccessControl1);
             this.Controls.Add(this.inventoryControl1);
             this.Controls.Add(this.journalControl1);
             this.Controls.Add(this.activeQuestControl1);
-            this.Controls.Add(this.choiceBox1);
             this.Controls.Add(this.skillPanel1);
             this.Controls.Add(this.scaleMP);
             this.Controls.Add(this.scaleHP);
@@ -224,13 +225,13 @@
         private VisualPart.UserControls.Scale scaleHP;
         private VisualPart.UserControls.Scale scaleMP;
         private VisualPart.UserControls.SkillPanel skillPanel1;
-        private VisualPart.UserControls.ChoiceBox choiceBox1;
         private VisualPart.UserControls.ActiveQuestControl activeQuestControl1;
         private VisualPart.UserControls.JournalControl journalControl1;
         private VisualPart.UserControls.InventoryControl inventoryControl1;
         private VisualPart.UserControls.FastAccessControl fastAccessControl1;
         private VisualPart.UserControls.LootPageControl lootPageControl1;
         private VisualPart.UserControls.ItemDescriptionControl itemDescriptionControl1;
+        private VisualPart.UserControls.ChoiceBox choiceBox1;
     }
 }
 
