@@ -24,12 +24,22 @@ namespace VisualPart.UserControls
         private List<Item> lootList { get; set; }
         public Inventory Inventory { get; set; }
         public ItemDescriptionControl IDC { get; set; }
+
+        /// <summary>
+        /// Скрытие контрола и очистка контейнера с LootPageElement'ами 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ChangeVisibility(object sender, EventArgs e)
         {
             Visible = false;
             splitContainer1.Panel2.Controls.Clear();
         }
 
+        /// <summary>
+        /// Обновление данных контрола
+        /// </summary>
+        /// <param name="loot"></param>
         public void Update(List<Item> loot)
         {
             if (lootList == null)
@@ -66,6 +76,11 @@ namespace VisualPart.UserControls
             IDC.Visible = true;
         }
 
+        /// <summary>
+        /// Добавление лута плееру по даблклику
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void OnDoubleClick(object sender, EventArgs e)
         {
             foreach(Item item in lootList)

@@ -130,6 +130,7 @@ namespace VisualPart.UserControls
             }
             itemPictureBox.Location = new Point(x, y);
             x += 49;
+            itemPictureBox.BorderStyle = BorderStyle.Fixed3D;
             itemPictureBox.Image = image;
             //itemPictureBox.BackColor = Color.Red;
             bagSlots.Add(itemPictureBox);

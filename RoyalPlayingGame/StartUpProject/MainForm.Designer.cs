@@ -58,11 +58,12 @@
             // itemDescriptionControl1
             // 
             this.itemDescriptionControl1.AutoSize = true;
+            this.itemDescriptionControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.itemDescriptionControl1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.itemDescriptionControl1.Item = null;
             this.itemDescriptionControl1.Location = new System.Drawing.Point(712, 453);
             this.itemDescriptionControl1.Name = "itemDescriptionControl1";
-            this.itemDescriptionControl1.Size = new System.Drawing.Size(150, 150);
+            this.itemDescriptionControl1.Size = new System.Drawing.Size(119, 49);
             this.itemDescriptionControl1.TabIndex = 11;
             this.itemDescriptionControl1.Visible = false;
             // 
