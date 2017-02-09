@@ -43,6 +43,7 @@ namespace StartUpProject
 
             HintQueue = new HintQueue();
             HintQueue.Brush = Brushes.White;
+            ItemsManager.FullBag += HintQueue.AddHint;
 
             JournalNotesPublisher.Journal = (Player.Unit as Player).QuestJournal;
 

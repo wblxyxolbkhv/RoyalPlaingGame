@@ -16,6 +16,7 @@ namespace StartUpProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            RoyalPlayingGame.ItemsManager.Init();
             Application.Run(new MainForm());
         }
     }

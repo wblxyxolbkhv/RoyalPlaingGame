@@ -10,7 +10,8 @@ using RoyalPlayingGame.Exceptions;
 
 namespace RoyalPlayingGame
 {
-    //public delegate void ItemAdded();
+    public delegate void ShowHint(string message, int time);
+    public delegate void SomeItemAdded();
     public delegate void BagSlotsChanged(int slots);
     /// <summary>
     /// основная задача класса - подгружать итемы
@@ -18,16 +19,20 @@ namespace RoyalPlayingGame
     /// </summary>
     public static class ItemsManager
     {
-        public static Item GetItem(int id)
+        //public static Item GetItem(int id)
+        //{
+        //    // заготовка, здесь должен быть парсер и выбор из коллекции
+        //    Item item = null;
+        //    if (id == 1000)
+        //        item = new Item(id, "wizard_hat", 1, 1, 1);
+        //    return item;
+        //}
+        public static void Init()
         {
-            // заготовка, здесь должен быть парсер и выбор из коллекции
-            Item item = null;
-            if (id == 1000)
-                item = new Item(id, "wizard_hat", 1, 1, 1);
-            return item;
+            LoadItemImageList();
         }
 
-        public static Dictionary<string,Bitmap> ImageList { get; set; }
+        public static Dictionary<string, Bitmap> ImageList { get; set; } = new Dictionary<string, Bitmap>();
 
         /// <summary>
         /// Загрузка изображений предметов в базу
@@ -37,7 +42,11 @@ namespace RoyalPlayingGame
             string[] imageNames = Directory.GetFiles("ItemImages");
             foreach(string name in imageNames)
             {
-                ImageList.Add(name, (Bitmap)Image.FromFile(Path.Combine("ItemImages", name)));//"ItemImages\\" + name));
+                string newName = Path.GetFileName(name);
+                newName = newName.Split('.')[0];
+                Bitmap b = (Bitmap)Image.FromFile(name);
+                ImageList.Add(newName, b);
+                
             }
         }
 
@@ -63,10 +72,17 @@ namespace RoyalPlayingGame
         {
             SlotsChanged?.Invoke(slots);
         }
-        //public static event ItemAdded ItemAdded;
-        //public static void AddItem()
-        //{
-        //    ItemAdded?.Invoke();
-        //}
+        public static event SomeItemAdded ItemAdded;
+        public static void AddItem()
+        {
+            ItemAdded?.Invoke();
+        }
+        public static event ShowHint FullBag;
+        public static void BagFull(string message, int time)
+        {
+            FullBag?.Invoke(message,time);
+        }
+        
+        
     }
 }
