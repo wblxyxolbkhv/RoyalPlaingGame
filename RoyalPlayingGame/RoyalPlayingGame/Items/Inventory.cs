@@ -70,7 +70,7 @@ namespace RoyalPlayingGame.Items
                         }
                         else
                         {
-                            break;
+                            return;
                         }
                         
                     }
