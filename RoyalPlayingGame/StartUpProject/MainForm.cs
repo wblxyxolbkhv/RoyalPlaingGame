@@ -28,6 +28,7 @@ namespace StartUpProject
             Level.QuestJournalManager.Journal = journalControl1;
             Level.LootPageManager.LootPage = lootPageControl1;
             Level.LootPageManager.ItemDescription = itemDescriptionControl1;
+            Level.InventoryManager.PIC = playerInventoryControl1;
            
             #region Инициализация меню, событий
 
@@ -80,7 +81,9 @@ namespace StartUpProject
             choiceBox1.Visible = turn;
         }
 
-        
+        private void playerInventoryControl1_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

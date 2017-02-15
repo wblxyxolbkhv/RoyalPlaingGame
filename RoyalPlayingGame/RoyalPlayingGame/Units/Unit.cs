@@ -11,7 +11,7 @@ namespace RoyalPlayingGame.Units
 
 {
     public enum DamageType { Physical, Magic }
-    public delegate void QuestItemHendler(int ID);
+    public delegate void QuestItemHendler(string ID);
     public class Unit : Interfaces.ITargetObject
     {
         public Unit()

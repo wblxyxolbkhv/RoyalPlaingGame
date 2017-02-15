@@ -41,6 +41,7 @@
             this.scaleMP = new VisualPart.UserControls.Scale();
             this.scaleHP = new VisualPart.UserControls.Scale();
             this.playerMenu1 = new VisualPart.UserControls.PlayerMenu();
+            this.playerInventoryControl1 = new VisualPart.UserControls.PlayerInventoryControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -196,11 +197,21 @@
             this.playerMenu1.TabIndex = 1;
             this.playerMenu1.Visible = false;
             // 
+            // playerInventoryControl1
+            // 
+            this.playerInventoryControl1.Location = new System.Drawing.Point(200, 100);
+            this.playerInventoryControl1.Name = "playerInventoryControl1";
+            this.playerInventoryControl1.PlayerInventory = null;
+            this.playerInventoryControl1.Size = new System.Drawing.Size(600, 300);
+            this.playerInventoryControl1.TabIndex = 12;
+            this.playerInventoryControl1.Load += new System.EventHandler(this.playerInventoryControl1_Load);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 603);
+            this.Controls.Add(this.playerInventoryControl1);
             this.Controls.Add(this.itemDescriptionControl1);
             this.Controls.Add(this.lootPageControl1);
             this.Controls.Add(this.fastAccessControl1);
@@ -235,6 +246,7 @@
         private VisualPart.UserControls.FastAccessControl fastAccessControl1;
         private VisualPart.UserControls.LootPageControl lootPageControl1;
         private VisualPart.UserControls.ItemDescriptionControl itemDescriptionControl1;
+        private VisualPart.UserControls.PlayerInventoryControl playerInventoryControl1;
     }
 }
 

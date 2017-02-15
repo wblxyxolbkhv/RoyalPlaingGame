@@ -11,11 +11,11 @@ namespace RoyalPlayingGame.Items
     public class Armor : Item
     {
         Random randomArmorGeneration;
-        public Armor(int ID, string name, ArmorSlot ASlot, Effect.Effect effect, uint armorLvl) : base(ID, name, 1, 1, armorLvl, effect)
+        public Armor(string ID, string name, ArmorSlot ASlot, Effect.Effect effect, uint armorLvl) : base(ID, name, 1, 1, armorLvl, effect)
         {
             this.ASlot = ASlot;
         }
-        public Armor(int ID, string name, ArmorSlot ASlot, uint armorLvl, int minValue, int maxValue) : base(ID, name, 1, 1, armorLvl)
+        public Armor(string ID, string name, ArmorSlot ASlot, uint armorLvl, int minValue, int maxValue) : base(ID, name, 1, 1, armorLvl)
         {
             Effect.Effect effect = new Effect.Effect();
             randomArmorGeneration = new Random();

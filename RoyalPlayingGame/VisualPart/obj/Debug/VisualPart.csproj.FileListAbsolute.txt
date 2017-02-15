@@ -122,3 +122,5 @@ C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlay
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.csproj.GenerateResource.Cache
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.dll
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.pdb
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.ItemMenuControl.resources
+C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.PlayerInventoryControl.resources

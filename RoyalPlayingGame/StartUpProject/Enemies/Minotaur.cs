@@ -9,6 +9,8 @@ using SimplePhysicalEngine;
 using VisualPart;
 using RoyalPlayingGame.Spell;
 using RoyalPlayingGame.Units;
+using RoyalPlayingGame;
+using RoyalPlayingGame.Items;
 
 namespace StartUpProject.Enemies
 {
@@ -20,9 +22,10 @@ namespace StartUpProject.Enemies
             Unit = new Unit(1001);
             Unit.Health = 100;
             Unit.RealHealth = 100;
-            Unit.AddLoot(new RoyalPlayingGame.Items.Item(1000, "Шляпа", 1,1,1));
-            Unit.AddLoot(new RoyalPlayingGame.Items.Item(1001, "Двойная шляпа", 1,1,1));
-            Unit.AddLoot(new RoyalPlayingGame.Items.Item(1002, "Тройная шляпа", 1,1,1));
+            Unit.AddLoot(new RoyalPlayingGame.Items.Item("hat", "Шляпа", 1,1,1));
+            Unit.AddLoot(new RoyalPlayingGame.Items.Item("double_hat", "Двойная шляпа", 1,1,1));
+            Unit.AddLoot(new RoyalPlayingGame.Items.Item("triple_hat", "Тройная шляпа", 1,1,1));
+            unit.AddLoot(ItemsManager.GetCustomItem("ultra_hat"));
 
             RealObject = new RealObject(CollisionDomain, Gravity);
             RealObject.Height = 106;

@@ -20,6 +20,7 @@ namespace VisualPart.UserControls
             pictureBox1.MouseLeave += OnMouseLeave;
             label1.MouseMove += OnMouseMove;
             label1.MouseLeave += OnMouseLeave;
+            
         }
 
         public Item CurItem { get; set; }

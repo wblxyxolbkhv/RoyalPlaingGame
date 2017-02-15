@@ -31,13 +31,8 @@ namespace StartUpProject.GlobalGameComponents
 
 
 
-
-
-
             Application.Run(MainForm);
-            
-
-            
+                  
         }
 
         
@@ -60,6 +55,13 @@ namespace StartUpProject.GlobalGameComponents
         public static void SetControlVisible(bool turn)
         {
             MainForm.SetControlVisible(turn);
+        }
+        /// <summary>
+        /// переключение возможности управления игроком
+        /// </summary>
+        public static void SetControlAvaible(bool turn)
+        {
+            GameLevel.IsControlStop = !turn;
         }
     }
 }

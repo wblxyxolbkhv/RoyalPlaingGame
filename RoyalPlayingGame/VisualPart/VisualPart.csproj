@@ -85,6 +85,12 @@
     <Compile Include="UserControls\ItemDescriptionControl.Designer.cs">
       <DependentUpon>ItemDescriptionControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ItemMenuControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ItemMenuControl.Designer.cs">
+      <DependentUpon>ItemMenuControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\JournalControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -108,6 +114,12 @@
     </Compile>
     <Compile Include="UserControls\LootPageElement.Designer.cs">
       <DependentUpon>LootPageElement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PlayerInventoryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PlayerInventoryControl.Designer.cs">
+      <DependentUpon>PlayerInventoryControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PlayerMenu.cs">
       <SubType>UserControl</SubType>
@@ -151,6 +163,9 @@
     <EmbeddedResource Include="UserControls\ItemDescriptionControl.resx">
       <DependentUpon>ItemDescriptionControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ItemMenuControl.resx">
+      <DependentUpon>ItemMenuControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\JournalControl.resx">
       <DependentUpon>JournalControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\LootPageElement.resx">
       <DependentUpon>LootPageElement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PlayerInventoryControl.resx">
+      <DependentUpon>PlayerInventoryControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PlayerMenu.resx">
       <DependentUpon>PlayerMenu.cs</DependentUpon>
@@ -190,6 +208,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\fireball_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NullSlotImage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

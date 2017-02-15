@@ -30,9 +30,15 @@ namespace RoyalPlayingGame
         public static void Init()
         {
             LoadItemImageList();
+
+
+            Item ultraHat = new Item("ultra_hat", "Ультра-шляпа", 1, 1, 0);
+            CustomItems.Add(ultraHat);
+            ImageList.Add("ultra_hat", GetItemImage("hat"));
         }
 
         public static Dictionary<string, Bitmap> ImageList { get; set; } = new Dictionary<string, Bitmap>();
+        private static List<Item> CustomItems { get; set; } = new List<Item>();
 
         /// <summary>
         /// Загрузка изображений предметов в базу
@@ -65,6 +71,15 @@ namespace RoyalPlayingGame
                 }
             }
             throw new ImageNotFoundException();
+        }
+        public static Item GetCustomItem(string itemName)
+        {
+            foreach (Item item in CustomItems)
+            {
+                if (item.ID == itemName)
+                    return item;
+            }
+            return null;
         }
 
         public static event BagSlotsChanged SlotsChanged;

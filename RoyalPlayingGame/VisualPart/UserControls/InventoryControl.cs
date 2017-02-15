@@ -44,12 +44,14 @@ namespace VisualPart.UserControls
         /// </summary>
         public void UpdateAllItemPictureBoxes()
         {
+            if (AllBagSlots == null)
+                return;
             if (ItemList.Count != 0)
             {
                 for (int i = 0; i < ItemList.Count; i++)
                 {
                     //AllBagSlots[i].BackColor = Color.Black;
-                    AllBagSlots[i].Image = ItemsManager.GetItemImage(ItemList[i].Name);
+                    AllBagSlots[i].Image = ItemsManager.GetItemImage(ItemList[i].ID);
                 }
             }
         }

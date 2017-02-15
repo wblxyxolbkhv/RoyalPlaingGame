@@ -77,7 +77,7 @@ namespace StartUpProject
         private HintQueue HintQueue { get; set; }
 
         public int Interval { get; set; }
-        bool IsControlStop = false;
+        public bool IsControlStop = false;
 
         public void OnPrintAllObjects(object sender, PaintEventArgs e)
         {
@@ -282,7 +282,12 @@ namespace StartUpProject
             NPCs.Add(bear);
 
 
-
+            Item ultraHat = ItemsManager.GetCustomItem("ultra_hat");
+            ultraHat.UseItemExternal += () =>
+            {
+                HintQueue.AddHint("Ультра режим", 5000);
+                Player.RealObject.SpeedX = 4;
+            };
 
             
             ScriptManager.RootScript.IsFinishedExternal += () =>
@@ -292,6 +297,10 @@ namespace StartUpProject
                     if (e.Unit.IsAlive)
                         return false;
                 }
+                if (Player.RealObject.direction == Direction.Left)
+                    Player.RealObject.direction = Direction.NoneLeft;
+                if (Player.RealObject.direction == Direction.Right)
+                    Player.RealObject.direction = Direction.NoneRight;
                 return true;
             };
         }

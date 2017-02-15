@@ -31,7 +31,7 @@ namespace RoyalPlayingGame.Quests.QuestStages
 
         private List<PickItemStageGroup> PickedQuestItems { get; set; }
 
-        public void AddQuestItem(int ID, string name, int maxAmount, string objective)
+        public void AddQuestItem(string ID, string name, int maxAmount, string objective)
         {
             Item item = new Item(ID, name, maxAmount);
             PickItemStageGroup pisg = new PickItemStageGroup(item, objective);
@@ -43,7 +43,7 @@ namespace RoyalPlayingGame.Quests.QuestStages
             PickedQuestItems.Remove(pisg);
         }
 
-        private void OnItemDroped(int ID)
+        private void OnItemDroped(string ID)
         {
             foreach(PickItemStageGroup pisg in PickedQuestItems)
             {
@@ -53,7 +53,7 @@ namespace RoyalPlayingGame.Quests.QuestStages
             }
         }
 
-        private void OnItemPicked(int ID)
+        private void OnItemPicked(string ID)
         {
             if (!IsCurrent)
                 return;

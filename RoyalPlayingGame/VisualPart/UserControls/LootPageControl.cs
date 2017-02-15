@@ -54,7 +54,7 @@ namespace VisualPart.UserControls
                 lpe.MouseMove += OnMouseMove;
                 lpe.MouseLeave += OnMouseLeave;
                 lpe.Update(item);
-                lpe.SetBitmapImage(ItemsManager.GetItemImage(item.Name));
+                lpe.SetBitmapImage(ItemsManager.GetItemImage(item.ID));
                 lpe.Location = new Point(x, y);
                 splitContainer1.Panel2.Controls.Add(lpe);
                 y += 50;
