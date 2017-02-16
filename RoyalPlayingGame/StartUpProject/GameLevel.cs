@@ -9,11 +9,13 @@ using SimplePhysicalEngine;
 using VisualPart;
 using RoyalPlayingGame.Spell;
 using RoyalPlayingGame.Units;
+using RoyalPlayingGame.Items;
 using System.Drawing;
 using StartUpProject.Enemies;
 using StartUpProject.Dialogs;
 using RoyalPlayingGame;
-
+using StartUpProject.Scripts;
+using StartUpProject.GlobalGameComponents;
 
 namespace StartUpProject
 {
@@ -37,10 +39,15 @@ namespace StartUpProject
 
             InventoryManager = new InventoryManager();
             InventoryManager.Player = Player.Unit as Player;
+
+            LootPageManager = new LootPageManager();
+            LootPageManager.Player = Player.Unit as Player;
+
             HintQueue = new HintQueue();
+            HintQueue.Brush = Brushes.White;
+            ItemsManager.FullBag += HintQueue.AddHint;
 
             JournalNotesPublisher.Journal = (Player.Unit as Player).QuestJournal;
-            TriggersColiisionsListener.ItemCollisionDetected += PickUpItem; ;
 
         }
 
@@ -66,7 +73,11 @@ namespace StartUpProject
         public ActiveQuestManager ActiveQuestManager { get; private set; }
         public QuestJournalManager QuestJournalManager { get; set; }
         public InventoryManager InventoryManager { get; set; }
+        public LootPageManager LootPageManager { get; set; }
         private HintQueue HintQueue { get; set; }
+
+        public int Interval { get; set; }
+        public bool IsControlStop = false;
 
         public void OnPrintAllObjects(object sender, PaintEventArgs e)
         {
@@ -86,16 +97,18 @@ namespace StartUpProject
 
             HintQueue.PrintHints(e);
             DialogManager.PrintDialog(e, CameraBias);
+            PrintScriptInfo(e);
+            PrintTime(e);
             
             //PlayerMenuManager.OnPrint(sender, e);
         }
+
         public void OnRefresh(object sender, EventArgs e)
         {
             CheckTemporaryObjects();
             ChangeRealObjects();
-            // TODO: заменить магическое число 10
-            DialogManager.Refresh(10);
-            HintQueue.OnRefresh(10);
+            DialogManager.Refresh(Interval);
+            HintQueue.OnRefresh(Interval);
             PlayerMenuManager.OnMenuRefresh(sender, e);
             ActiveQuestManager.OnRefresh();
             QuestJournalManager.OnRefresh();
@@ -118,9 +131,28 @@ namespace StartUpProject
                 o.RealObject.OnRefreshPosition(sender, e);
             OnTalkAvailable();
             CameraBias = GetCameraBiasX();
+            OnScriptsCheck();
+        }
+        private void OnScriptsCheck()
+        {
+            if (ScriptManager.CurrentScript.isWaiting)
+            {
+                IsControlStop = false;
+                Game.SetControlVisible(true);
+                HintQueue.StopPrint = false;
+            }
+            else
+            {
+                IsControlStop = true;
+                Game.SetControlVisible(false);
+                HintQueue.StopPrint = true;
+
+            }
         }
         public void OnKeyDownExternal(object sender, KeyEventArgs e)
         {
+            if (IsControlStop)
+                return;
             if (DialogManager.Dialog!=null && DialogManager.Dialog.IsActive)
                 return;
             switch (e.KeyCode)
@@ -144,7 +176,7 @@ namespace StartUpProject
                 //    Enemies[0].Cast(CollisionDomain);
                 //    break;
                 case Keys.E:
-                    Talk(AvailableForTalkingNPC);
+                    Interact(AvailableForTalkingNPC);
                     break;
                 case Keys.Escape:
                     {
@@ -167,12 +199,12 @@ namespace StartUpProject
             }
             catch (RoyalPlayingGame.Exceptions.NoManaException)
             {
-                HintQueue.AddHint("Недостаточно маны");
+                HintQueue.AddHint("Недостаточно маны", 1000);
                 return;
             }
             catch (RoyalPlayingGame.Exceptions.SpellCoolDownException)
             {
-                HintQueue.AddHint("Заклинание еще не готово");
+                HintQueue.AddHint("Заклинание еще не готово", 1000);
                 return;
             }
             ComplexSpell s = Player.Cast(spell, CollisionDomain);
@@ -182,6 +214,8 @@ namespace StartUpProject
         }
         public void OnKeyUpExternal(object sender, KeyEventArgs e)
         {
+            if (IsControlStop)
+                return;
             if (DialogManager.Dialog != null && DialogManager.Dialog.IsActive)
                 return;
             switch (e.KeyCode)
@@ -195,6 +229,22 @@ namespace StartUpProject
             }
         }
 
+        private void PrintTime(PaintEventArgs e)
+        {
+            string time = Game.CurrentTime.ToLongTimeString();
+            time += " " + Game.CurrentTime.Millisecond;
+            string time1 = DateTime.Now.ToLongTimeString();
+            time1 += " " + DateTime.Now.Millisecond;
+            e.Graphics.DrawString(time, new Font("Arial", 13), Brushes.White, 1, 1);
+            e.Graphics.DrawString(time1, new Font("Arial", 13), Brushes.White, 1, 15);
+        }
+        private void PrintScriptInfo(PaintEventArgs e)
+        {
+            string info = ScriptManager.GetInfoString();
+            if (info == null)
+                return;
+            DialogManager.PrintDialogWindow(e, 600, 50, new Vector2(300, 200), 0, info, 17);
+        }
         private void GenerateLevel()
         {
             CollisionDomain = new List<RealObject>();
@@ -212,7 +262,7 @@ namespace StartUpProject
             Structures.Add(ground);
             ground.RealObject = new RealObject(CollisionDomain);
             ground.RealObject.Position = new Vector2(0, 523);
-            ground.BiasY = 19;
+            ground.IndentY = 19;
             ground.RealObject.Height = 104;
             ground.RealObject.Width = 4000;
             ground.RealObject.CollisionDetected += OnCollisionDetected;
@@ -230,15 +280,37 @@ namespace StartUpProject
             
 
             NPCs.Add(bear);
+
+
+            Item ultraHat = ItemsManager.GetCustomItem("ultra_hat");
+            ultraHat.UseItemExternal += () =>
+            {
+                HintQueue.AddHint("Ультра режим", 5000);
+                Player.RealObject.SpeedX = 4;
+            };
+
+            
+            ScriptManager.RootScript.IsFinishedExternal += () =>
+            {
+                foreach (ComplexEnemy e in Enemies)
+                {
+                    if (e.Unit.IsAlive)
+                        return false;
+                }
+                if (Player.RealObject.direction == Direction.Left)
+                    Player.RealObject.direction = Direction.NoneLeft;
+                if (Player.RealObject.direction == Direction.Right)
+                    Player.RealObject.direction = Direction.NoneRight;
+                return true;
+            };
         }
         private void CreateEnemies()
         {
             Minotaur enemy = new Minotaur(CollisionDomain, Gravity);
 
-            enemy.RealObject.Position = new Vector2(2000, 400);
+            enemy.RealObject.Position = new Vector2(2000, 300);
             enemy.RealObject.CollisionDetected += OnCollisionDetected;
             enemy.PatrolPoint = new Vector2(2000, 400);
-            enemy.LootDroped += DropLoot;
             Enemies.Add(enemy);
 
             Minotaur enemy1 = new Minotaur(CollisionDomain, Gravity);
@@ -246,7 +318,6 @@ namespace StartUpProject
             enemy1.RealObject.Position = new Vector2(2500, 400);
             enemy1.RealObject.CollisionDetected += OnCollisionDetected;
             enemy1.PatrolPoint = new Vector2(2500, 400);
-            enemy1.LootDroped += DropLoot;
             Enemies.Add(enemy1);
 
             Minotaur enemy2 = new Minotaur(CollisionDomain, Gravity);
@@ -254,7 +325,6 @@ namespace StartUpProject
             enemy2.RealObject.Position = new Vector2(3000, 400);
             enemy2.RealObject.CollisionDetected += OnCollisionDetected;
             enemy2.PatrolPoint = new Vector2(3000, 400);
-            enemy2.LootDroped += DropLoot;
             Enemies.Add(enemy2);
         }
         private void InitPlayer()
@@ -269,27 +339,29 @@ namespace StartUpProject
 
             Player.RealObject = new RealObject(CollisionDomain, 0, Gravity);
             Player.RealObject.Position = new Vector2(400, 400);
-            Player.RealObject.Height = 72;
-            Player.RealObject.Width = 72;
+            Player.RealObject.Height = 69;
+            Player.RealObject.Width = 42;
+            Player.IndentY = 3;
+            Player.IndentX = 21;
             Player.RealObject.SpeedX = 4;
-            Player.NonActivityAnimationLeft = new Animation("NonActivityAnimationLeft", 100);
+            Player.NonActivityAnimationLeft = new Animation("Player/NonActivityAnimationLeft", 100);
             Player.NonActivityAnimationLeft.Start();
-            Player.NonActivityAnimationRight = new Animation("NonActivityAnimationRight", 100);
+            Player.NonActivityAnimationRight = new Animation("Player/NonActivityAnimationRight", 100);
             Player.NonActivityAnimationRight.Start();
 
-            Player.WalkAnimationLeft = new Animation("WalkAnimationLeft", 100);
+            Player.WalkAnimationLeft = new Animation("Player/WalkAnimationLeft", 100);
             Player.WalkAnimationLeft.Start();
-            Player.WalkAnimationRight = new Animation("WalkAnimationRight", 100);
+            Player.WalkAnimationRight = new Animation("Player/WalkAnimationRight", 100);
             Player.WalkAnimationRight.Start();
 
-            Player.JumpAnimationLeft = new Animation("JumpAnimationLeft", 300);
+            Player.JumpAnimationLeft = new Animation("Player/JumpAnimationLeft", 300);
             Player.JumpAnimationLeft.Start();
-            Player.JumpAnimationRight = new Animation("JumpAnimationRight", 300);
+            Player.JumpAnimationRight = new Animation("Player/JumpAnimationRight", 300);
             Player.JumpAnimationRight.Start();
 
-            Player.Cast1AnimationLeft = new Animation("Cast1/Cast1Left", 100);
+            Player.Cast1AnimationLeft = new Animation("Player/Cast1/Cast1Left", 100);
             Player.Cast1AnimationLeft.Mode = AnimationMode.Once;
-            Player.Cast1AnimationRight = new Animation("Cast1/Cast1Right", 100);
+            Player.Cast1AnimationRight = new Animation("Player/Cast1/Cast1Right", 100);
             Player.Cast1AnimationRight.Mode = AnimationMode.Once;
             Player.DefaultAnimation = Player.NonActivityAnimationRight;
             Player.Animation = Player.NonActivityAnimationRight;
@@ -419,16 +491,9 @@ namespace StartUpProject
 
 
 
+            
 
-
-            foreach (RealObject o in CollisionDomainAddQueue)
-                CollisionDomain.Add(o);
-            CollisionDomainAddQueue.Clear();
-
-
-            foreach (ComplexItem item in DropQueue)
-                DroppedItems.Add(item);
-            DropQueue.Clear();
+            
         }
 
         private List<ComplexObject> TemporaryObjects = new List<ComplexObject>();
@@ -456,8 +521,13 @@ namespace StartUpProject
         {
             if (!s.IsActive)
             {
+                ComplexEnemy enemy = s as ComplexEnemy;
+
                 if (CollisionDomain.Contains(s.RealObject))
                     CollisionDomain.Remove(s.RealObject);
+                if (enemy != null)
+                    if (enemy.Unit.Loot != null && enemy.Unit.Loot.Count > 0)
+                        return;
                 if (s.DeathAnimation != null && !s.DeathAnimation.IsActive || s.DeathAnimation == null)
                     RemoveQueue.Add(s);
                 
@@ -468,7 +538,7 @@ namespace StartUpProject
         {
             if (DialogManager.Dialog != null && DialogManager.Dialog.IsActive)
                 return;
-            int range = 50;
+            int range = 100;
             AvailableForTalkingNPC = null;
             foreach (ComplexUnit unit in NPCs)
             {
@@ -476,8 +546,8 @@ namespace StartUpProject
                 {
                     case Direction.Right:
                     case Direction.NoneRight:
-                        if (unit.RealObject.Position.X - Player.RealObject.Position.X < range + 20 &&
-                            unit.RealObject.Position.X - Player.RealObject.Position.X > range - 20)
+                        if (unit.RealObject.Position.X - Player.RealObject.Position.X - Player.RealObject.Width <= range &&
+                            unit.RealObject.Position.X - Player.RealObject.Position.X - Player.RealObject.Width > 0)
                         {
                             if (!HintQueue.Contains("Нажмите E чтобы заговорить с ЭТИМ"))
                                 HintQueue.AddHint("Нажмите E чтобы заговорить с ЭТИМ");
@@ -486,8 +556,8 @@ namespace StartUpProject
                         break;
                     case Direction.Left:
                     case Direction.NoneLeft:
-                        if (-unit.RealObject.Position.X + Player.RealObject.Position.X < range + 20 &&
-                            -unit.RealObject.Position.X + Player.RealObject.Position.X > range - 20)
+                        if (Player.RealObject.Position.X > unit.RealObject.Position.X + unit.RealObject.Width &&
+                            Player.RealObject.Position.X < unit.RealObject.Position.X + unit.RealObject.Width + range)
                         {
                             if (!HintQueue.Contains("Нажмите E чтобы заговорить с ЭТИМ"))
                                 HintQueue.AddHint("Нажмите E чтобы заговорить с ЭТИМ");
@@ -496,17 +566,66 @@ namespace StartUpProject
                         break;
                 }
             }
+            foreach (ComplexEnemy enemy in Enemies)
+            {
+                if (enemy.Unit.IsAlive)
+                    continue;
+                switch (Player.RealObject.direction)
+                {
+                    case Direction.Right:
+                    case Direction.NoneRight:
+                        if (enemy.RealObject.Position.X - Player.RealObject.Position.X - Player.RealObject.Width <= range &&
+                            enemy.RealObject.Position.X - Player.RealObject.Position.X - Player.RealObject.Width > 0)
+                        {
+                            if (enemy.Unit.Loot != null && enemy.Unit.Loot.Count > 0)
+                            {
+                                if (!HintQueue.Contains("Нажмите E чтобы подобрать предмет"))
+                                    HintQueue.AddHint("Нажмите E чтобы подобрать предмет");
+                                AvailableForTalkingNPC = enemy;
+                            }
+                            else RemoveQueue.Add(enemy);
+                        }
+                        break;
+                    case Direction.Left:
+                    case Direction.NoneLeft:
+                        if (Player.RealObject.Position.X > enemy.RealObject.Position.X + enemy.RealObject.Width &&
+                            Player.RealObject.Position.X < enemy.RealObject.Position.X + enemy.RealObject.Width + range)
+                        {
+                            if (enemy.Unit.Loot != null && enemy.Unit.Loot.Count > 0)
+                            {
+                                if (!HintQueue.Contains("Нажмите E чтобы подобрать предмет"))
+                                    HintQueue.AddHint("Нажмите E чтобы подобрать предмет");
+                                AvailableForTalkingNPC = enemy;
+                            }
+                            else RemoveQueue.Add(enemy);
+                        }
+                        break;
+                }
+
+            }
         }
-        private ComplexUnit AvailableForTalkingNPC;
-        private void Talk(ComplexUnit unit)
+        private ComplexObject AvailableForTalkingNPC;
+        private void Interact(ComplexObject obj)
         {
-            if (unit != null)
+            if (obj == null)
+                return;
+            ComplexUnit unit = null;
+            if ((unit = obj as ComplexUnit) != null && unit.CurrentDialog!=null)
             {
                 DialogManager.Dialog = unit.CurrentDialog;
                 DialogManager.Dialog.IsActive = true;
                 DialogManager.Dialog.GoToDialogBeginning();
                 DialogManager.TalkingObject = unit;
             }
+            else
+            {
+                // здесь твое поле для творчества
+                
+                List<Item> items = (List<Item>)obj.Interact();
+                LootPageManager.Show(items);
+                
+            }
+            
         }
         private void CreateTriggers()
         {
@@ -518,38 +637,7 @@ namespace StartUpProject
             CollisionDomain.Add(Trigger1);
             Trigger1.IsTrigger = true;
         }
-        private List<ComplexItem> DropQueue = new List<ComplexItem>();
-        private List<RealObject> CollisionDomainAddQueue = new List<RealObject>();
-        private void DropLoot(List<int> itemsIDs, Vector2 dropPoint)
-        {
-            foreach (int id in itemsIDs)
-            {
-                ComplexItem item = new ComplexItem();
-                item.Item = ItemsManager.GetItem(id);
-                item.RealObject = new RealObject(CollisionDomain, 1000, Gravity);
-                item.RealObject.Position = new Vector2(dropPoint.X, dropPoint.Y);
-                item.RealObject.Height = item.Texture.Height;
-                item.RealObject.Width = item.Texture.Width;
-                CollisionDomainAddQueue.Add(item.RealObject);
-                item.RealObject.IsTrigger = true;
 
-                DropQueue.Add(item);
-            }
-        }
-        private void PickUpItem(RealObject item)
-        {
-            ComplexItem pickedItem = new ComplexItem();
-            foreach (ComplexItem c in DroppedItems)
-                if (c.RealObject == item)
-                {
-                    pickedItem = c;
-                    break;
-                }
-
-            (Player.Unit as Player).Inventory.AddItem(pickedItem.Item);
-            RemoveQueue.Add(pickedItem);
-
-        }
 
     }
 }

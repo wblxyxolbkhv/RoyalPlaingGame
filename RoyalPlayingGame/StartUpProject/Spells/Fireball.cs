@@ -18,12 +18,13 @@ namespace StartUpProject.Spells
             RealObject.Height = 17;
             RealObject.Width = 26;
             RealObject.SpeedX = 8;
-            WalkAnimationLeft = new Animation("Fireball/WalkLeftFireball", 200);
+            WalkAnimationLeft = new Animation("Spells/Fireball/WalkLeftFireball", 200);
             WalkAnimationLeft.Start();
-            WalkAnimationRight = new Animation("Fireball/WalkRightFireball", 200);
+            WalkAnimationRight = new Animation("Spells/Fireball/WalkRightFireball", 200);
+            //WalkAnimationRight = new Animation(200, "fireball");
             WalkAnimationRight.Start();
 
-            DeathAnimation = new Animation("Fireball/Death", 10);
+            DeathAnimation = new Animation("Spells/Fireball/Death", 10);
             DeathAnimation.Mode = AnimationMode.Once;
             switch (caster.direction)
             {

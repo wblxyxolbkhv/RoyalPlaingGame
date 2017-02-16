@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.itemDescriptionControl1 = new VisualPart.UserControls.ItemDescriptionControl();
+            this.lootPageControl1 = new VisualPart.UserControls.LootPageControl();
             this.fastAccessControl1 = new VisualPart.UserControls.FastAccessControl();
             this.inventoryControl1 = new VisualPart.UserControls.InventoryControl();
             this.journalControl1 = new VisualPart.UserControls.JournalControl();
@@ -39,6 +41,7 @@
             this.scaleMP = new VisualPart.UserControls.Scale();
             this.scaleHP = new VisualPart.UserControls.Scale();
             this.playerMenu1 = new VisualPart.UserControls.PlayerMenu();
+            this.playerInventoryControl1 = new VisualPart.UserControls.PlayerInventoryControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,6 +55,30 @@
             this.pictureBox1.Size = new System.Drawing.Size(1008, 603);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // itemDescriptionControl1
+            // 
+            this.itemDescriptionControl1.AutoSize = true;
+            this.itemDescriptionControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.itemDescriptionControl1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.itemDescriptionControl1.Item = null;
+            this.itemDescriptionControl1.Location = new System.Drawing.Point(712, 453);
+            this.itemDescriptionControl1.Name = "itemDescriptionControl1";
+            this.itemDescriptionControl1.Size = new System.Drawing.Size(119, 49);
+            this.itemDescriptionControl1.TabIndex = 11;
+            this.itemDescriptionControl1.Visible = false;
+            // 
+            // lootPageControl1
+            // 
+            this.lootPageControl1.AutoScroll = true;
+            this.lootPageControl1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lootPageControl1.IDC = null;
+            this.lootPageControl1.Inventory = null;
+            this.lootPageControl1.Location = new System.Drawing.Point(860, 453);
+            this.lootPageControl1.Name = "lootPageControl1";
+            this.lootPageControl1.Size = new System.Drawing.Size(148, 150);
+            this.lootPageControl1.TabIndex = 10;
+            this.lootPageControl1.Visible = false;
             // 
             // fastAccessControl1
             // 
@@ -91,6 +118,7 @@
             // 
             this.activeQuestControl1.ActiveQuest = null;
             this.activeQuestControl1.BackColor = System.Drawing.Color.Transparent;
+            this.activeQuestControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("activeQuestControl1.BackgroundImage")));
             this.activeQuestControl1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.activeQuestControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.activeQuestControl1.Location = new System.Drawing.Point(410, 13);
@@ -133,7 +161,7 @@
             // 
             this.scaleMP.BackColor = System.Drawing.Color.Black;
             this.scaleMP.CurrentValue = 100;
-            this.scaleMP.Location = new System.Drawing.Point(12, 38);
+            this.scaleMP.Location = new System.Drawing.Point(11, 63);
             this.scaleMP.MaxValue = 100;
             this.scaleMP.Name = "scaleMP";
             this.scaleMP.ScaleColor = System.Drawing.Color.Blue;
@@ -144,7 +172,7 @@
             // 
             this.scaleHP.BackColor = System.Drawing.Color.Black;
             this.scaleHP.CurrentValue = 100;
-            this.scaleHP.Location = new System.Drawing.Point(13, 13);
+            this.scaleHP.Location = new System.Drawing.Point(12, 38);
             this.scaleHP.MaxValue = 100;
             this.scaleHP.Name = "scaleHP";
             this.scaleHP.ScaleColor = System.Drawing.Color.Green;
@@ -169,11 +197,23 @@
             this.playerMenu1.TabIndex = 1;
             this.playerMenu1.Visible = false;
             // 
+            // playerInventoryControl1
+            // 
+            this.playerInventoryControl1.Location = new System.Drawing.Point(200, 100);
+            this.playerInventoryControl1.Name = "playerInventoryControl1";
+            this.playerInventoryControl1.PlayerInventory = null;
+            this.playerInventoryControl1.Size = new System.Drawing.Size(600, 300);
+            this.playerInventoryControl1.TabIndex = 12;
+            this.playerInventoryControl1.Load += new System.EventHandler(this.playerInventoryControl1_Load);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 603);
+            this.Controls.Add(this.playerInventoryControl1);
+            this.Controls.Add(this.itemDescriptionControl1);
+            this.Controls.Add(this.lootPageControl1);
             this.Controls.Add(this.fastAccessControl1);
             this.Controls.Add(this.inventoryControl1);
             this.Controls.Add(this.journalControl1);
@@ -188,6 +228,7 @@
             this.Text = "RoyalPlayGame";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -203,6 +244,9 @@
         private VisualPart.UserControls.JournalControl journalControl1;
         private VisualPart.UserControls.InventoryControl inventoryControl1;
         private VisualPart.UserControls.FastAccessControl fastAccessControl1;
+        private VisualPart.UserControls.LootPageControl lootPageControl1;
+        private VisualPart.UserControls.ItemDescriptionControl itemDescriptionControl1;
+        private VisualPart.UserControls.PlayerInventoryControl playerInventoryControl1;
     }
 }
 

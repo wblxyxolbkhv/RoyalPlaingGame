@@ -49,14 +49,16 @@ namespace RoyalPlayingGame.Items
             return true;
         }
         #endregion
+        #region Индексатор
+        public Item this[int i] { get { return Bag[i]; } }
+        #endregion 
 
         /// <summary>
         /// добавление предметов в инвентарь
         /// </summary>
         /// <param name="item"></param>
         public void AddItem(Item item)
-        {
-            
+        {           
             foreach (Item bagItem in Bag)
             {
                 if(bagItem.ID == item.ID)
@@ -71,7 +73,7 @@ namespace RoyalPlayingGame.Items
                         }
                         else
                         {
-                            break;
+                            return;
                         }
                         
                     }
@@ -86,12 +88,48 @@ namespace RoyalPlayingGame.Items
             if (item.Amount > 0)
             {
                 Bag.Add(item);
-                //ItemsManager.AddItem();
+                ItemsManager.AddItem();
             }
             
 
         }
 
+        public void AddItemForUnit(Item item)
+        {
+            foreach (Item bagItem in Bag)
+            {
+                if (bagItem.ID == item.ID)
+                {
+                    if (bagItem.Amount != bagItem.MaxAmount)
+                    {
+                        bagItem.Amount += item.Amount;
+                        if (bagItem.Amount > bagItem.MaxAmount)
+                        {
+                            item.Amount = bagItem.Amount - bagItem.MaxAmount;
+                            bagItem.Amount = bagItem.MaxAmount;
+                        }
+                        else
+                        {
+                            return;
+                        }
+
+                    }
+                }
+
+            }
+            if (Bag.Count == Bag.Capacity)
+            {
+               // throw new FullBagException();
+            }
+
+            if (item.Amount > 0)
+            {
+                Bag.Add(item);
+                //ItemsManager.AddItem();
+            }
+
+
+        }
         /// <summary>
         /// метод для расширения числа слотов 
         /// в сумке
@@ -111,6 +149,7 @@ namespace RoyalPlayingGame.Items
         {
 
         }
+
         public List<Item> GetItemList()
         {
             return Bag;

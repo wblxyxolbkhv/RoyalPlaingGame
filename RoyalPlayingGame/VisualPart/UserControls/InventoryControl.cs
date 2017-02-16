@@ -20,7 +20,7 @@ namespace VisualPart.UserControls
             ItemList = new List<Item>();
             AllBagSlots = new List<PictureBox>();
             ItemsManager.SlotsChanged += PlacePictureBoxes;
-            //ItemsManager.ItemAdded += UpdateAllItemPictureBoxes;
+            ItemsManager.ItemAdded += UpdateAllItemPictureBoxes;
         }
 
         public List<Item> ItemList { get; set; }
@@ -30,6 +30,7 @@ namespace VisualPart.UserControls
         public List<PictureBox> PotionsBagSlots { get; set; }
         public List<PictureBox> OtherBagSlots { get; set; }
         public int SlotsAmount { get; set; }
+
         public override void Refresh()
         {
             //PlacePictureBoxes();
@@ -43,12 +44,14 @@ namespace VisualPart.UserControls
         /// </summary>
         public void UpdateAllItemPictureBoxes()
         {
+            if (AllBagSlots == null)
+                return;
             if (ItemList.Count != 0)
             {
                 for (int i = 0; i < ItemList.Count; i++)
                 {
-                    AllBagSlots[i].BackColor = Color.Black;
-                    //AllBagSlots[i].Image = ItemsManager.GetItemImage(ItemList[i].Name);
+                    //AllBagSlots[i].BackColor = Color.Black;
+                    AllBagSlots[i].Image = ItemsManager.GetItemImage(ItemList[i].ID);
                 }
             }
         }
@@ -129,8 +132,9 @@ namespace VisualPart.UserControls
             }
             itemPictureBox.Location = new Point(x, y);
             x += 49;
-            //itemPictureBox.Image = image;
-            itemPictureBox.BackColor = Color.Red;
+            itemPictureBox.BorderStyle = BorderStyle.Fixed3D;
+            itemPictureBox.Image = image;
+            //itemPictureBox.BackColor = Color.Red;
             bagSlots.Add(itemPictureBox);
             page.Controls.Add(itemPictureBox);
         }

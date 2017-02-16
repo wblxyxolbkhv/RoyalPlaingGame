@@ -13,13 +13,13 @@ namespace StartUpProject.Spells
             RealObject.Height = 108;
             RealObject.Width = 150;
             RealObject.SpeedX = 0;
-            WalkAnimationLeft = new Animation("DragonBreath/Left", 60);
+            WalkAnimationLeft = new Animation("Spells/DragonBreath/Left", 60);
             WalkAnimationLeft.Mode = AnimationMode.Once;
-            WalkAnimationRight = new Animation("DragonBreath/Right", 60);
+            WalkAnimationRight = new Animation("Spells/DragonBreath/Right", 60);
             WalkAnimationLeft.Mode = AnimationMode.Once;
-            NonActivityAnimationLeft = new Animation("DragonBreath/Left", 60);
+            NonActivityAnimationLeft = new Animation("Spells/DragonBreath/Left", 60);
             NonActivityAnimationLeft.Mode = AnimationMode.Once;
-            NonActivityAnimationRight = new Animation("DragonBreath/Right", 60);
+            NonActivityAnimationRight = new Animation("Spells/DragonBreath/Right", 60);
             NonActivityAnimationRight.Mode = AnimationMode.Once;
             switch (caster.direction)
             {

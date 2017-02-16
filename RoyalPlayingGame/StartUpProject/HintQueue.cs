@@ -13,13 +13,19 @@ namespace StartUpProject
         {
             public Hint(string message)
             {
-                LifeTime = 3000;
+                LifeTime = 100;
+                Message = message;
+            }
+            public Hint(string message, int time)
+            {
+                LifeTime = time;
                 Message = message;
             }
             public int LifeTime;
             public string Message;
         }
         private List<Hint> Hints { get; set; } = new List<Hint>();
+        public System.Drawing.Brush Brush = System.Drawing.Brushes.Black;
 
         public bool Contains(string hintMessage)
         {
@@ -33,6 +39,10 @@ namespace StartUpProject
         public void AddHint(string message)
         {
             Hints.Add(new Hint(message));
+        }
+        public void AddHint(string message, int time)
+        {
+            Hints.Add(new Hint(message, time));
         }
         public void OnRefresh(int deltaTime)
         {
@@ -49,6 +59,8 @@ namespace StartUpProject
         }
         public void PrintHints(PaintEventArgs e)
         {
+            if (StopPrint)
+                return;
             for (int i = 1;i <= 3; i++)
             {
                 if (Hints.Count < i)
@@ -57,10 +69,11 @@ namespace StartUpProject
 
                 e.Graphics.DrawString(hint.Message,
                     new System.Drawing.Font("Arial", 10),
-                    System.Drawing.Brushes.Black,
+                    this.Brush,
                     700,
                     100 - i*20);
             }
         }
+        public bool StopPrint { get; set; } = false;
     }
 }

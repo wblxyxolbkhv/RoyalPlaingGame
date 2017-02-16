@@ -260,7 +260,7 @@ namespace RoyalPlayingGame.Quests
                                         }
                                     case "item":
                                         {
-                                            int itemID = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value));
+                                            string itemID = stageParams.Attributes.GetNamedItem("id").Value;
                                             int reqAmount = (Convert.ToInt32(stageParams.Attributes.GetNamedItem("amount").Value));
                                             string name = stageParams.Attributes.GetNamedItem("name").Value;
                                             string objective = stageParams.Attributes.GetNamedItem("objective").Value;

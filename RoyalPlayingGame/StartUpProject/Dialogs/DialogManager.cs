@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using SimplePhysicalEngine.NonPhysicalComponents;
 using System.Drawing;
 using VisualPart.UserControls;
+using SimplePhysicalEngine;
 
 namespace StartUpProject.Dialogs
 {
@@ -33,7 +34,7 @@ namespace StartUpProject.Dialogs
             if (Dialog.CurrentReplic is NPCReplic)
             {
                 ChoiceBox.Visible = false;
-                PrintDialogWindow(e, TalkingObject.RealObject, CameraBias, (Dialog.CurrentReplic as NPCReplic).Phrases[0]);
+                PrintDialogWindow(e, TalkingObject.RealObject.Position, CameraBias, (Dialog.CurrentReplic as NPCReplic).Phrases[0]);
             }
             else if (Dialog.CurrentReplic is PlayerChoice)
             {
@@ -43,7 +44,7 @@ namespace StartUpProject.Dialogs
             else if (Dialog.CurrentReplic is Answer)
             {
                 ChoiceBox.Visible = false;
-                PrintDialogWindow(e, Player.RealObject, CameraBias, (Dialog.CurrentReplic as Answer).PlayerPhrases[0]);
+                PrintDialogWindow(e, Player.RealObject.Position, CameraBias, (Dialog.CurrentReplic as Answer).PlayerPhrases[0]);
             }
         }
         public void Refresh(int deltaTime)
@@ -64,28 +65,39 @@ namespace StartUpProject.Dialogs
         /// <param name="showPoint"></param>
         /// <param name="CameraBias"></param>
         /// <param name="text"></param>
-        public void PrintDialogWindow(PaintEventArgs e, int width, int height, RealObject showPoint, int CameraBias, string text)
+        public void PrintDialogWindow(PaintEventArgs e, int width, int height, Vector2 showPoint, int CameraBias, string text)
+        {
+            PrintDialogWindow(e, width, height, showPoint, CameraBias, text, 12);
+        }
+        /// <summary>
+        /// показывает окно с репликой с пользовательскими параметрами
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="showPoint"></param>
+        /// <param name="CameraBias"></param>
+        /// <param name="text"></param>
+        public void PrintDialogWindow(PaintEventArgs e, int width, int height, Vector2 showPoint, int CameraBias, string text, int size)
         {
 
             e.Graphics.FillRectangle(
                 System.Drawing.Brushes.Black,
-                (float)showPoint.Position.X - CameraBias,
-                (float)showPoint.Position.Y,
+                (float)showPoint.X - CameraBias,
+                (float)showPoint.Y,
                 width,
                 height);
             e.Graphics.DrawRectangle(
                 System.Drawing.Pens.White,
-                (float)showPoint.Position.X - CameraBias,
-                (float)showPoint.Position.Y,
+                (float)showPoint.X - CameraBias,
+                (float)showPoint.Y,
                 width,
                 height);
 
             // отступ от края коробки
             int intent = 10;
-            // размер шрифта
-            int size = 12;
             List<string> printedStrings = new List<string>();
-            if (text.Length * size + 2 * intent >= width)
+            if (text.Length * (size - 2) + 2 * intent >= width)
             {
                 string[] strings = text.Split(' ');
                 string result = "";
@@ -94,14 +106,20 @@ namespace StartUpProject.Dialogs
                     if ((result.Length + s.Length + 1) * size + 2 * intent >= width)
                     {
                         printedStrings.Add(result);
-                        result = "";
+                        result = s + "" ;
                     }
                     else
                     {
                         result += s + " ";
                     }
                 }
-                
+                if (result != "")
+                    printedStrings.Add(result);
+
+            }
+            else
+            {
+                printedStrings.Add(text);
             }
             for (int i = 0; i < printedStrings.Count; i++)
             {
@@ -109,8 +127,8 @@ namespace StartUpProject.Dialogs
                     printedStrings[i],
                     new System.Drawing.Font("Arial", size),
                     System.Drawing.Brushes.White,
-                    (float)showPoint.Position.X - CameraBias,
-                    (float)showPoint.Position.Y + i*14);
+                    (float)showPoint.X - CameraBias,
+                    (float)showPoint.Y + i * (int)(size*1.3));
             }
         }
         /// <summary>
@@ -120,13 +138,13 @@ namespace StartUpProject.Dialogs
         /// <param name="showPoint"></param>
         /// <param name="CameraBias"></param>
         /// <param name="text"></param>
-        public void PrintDialogWindow(PaintEventArgs e, RealObject showPoint, int CameraBias, string text)
+        public void PrintDialogWindow(PaintEventArgs e, Vector2 showPoint, int CameraBias, string text)
         {
-            int width = 45 * 12;
             // отступ от края коробки
             int intent = 10;
             // размер шрифта
             int size = 12;
+            int width = 20 * size;
             List<string> printedStrings = new List<string>();
             if (text.Length * size + 2 * intent >= width)
             {
@@ -144,6 +162,8 @@ namespace StartUpProject.Dialogs
                         result += s + " ";
                     }
                 }
+                if (result != "")
+                    printedStrings.Add(result);
 
             }
             else
@@ -151,7 +171,7 @@ namespace StartUpProject.Dialogs
 
             
             int height = printedStrings.Count * 17 + 2 * intent;
-            width = printedStrings[0].Length * (size - 3) + 2 * intent;
+            width = printedStrings[0].Length * (size - 2) + 2 * intent;
 
 
 
@@ -159,14 +179,14 @@ namespace StartUpProject.Dialogs
 
             e.Graphics.FillRectangle(
                 Brushes.Black,
-                (float)showPoint.Position.X - CameraBias,
-                (float)showPoint.Position.Y - height,
+                (float)showPoint.X - CameraBias,
+                (float)showPoint.Y - height,
                 width,
                 height);
             e.Graphics.DrawRectangle(
                 Pens.White,
-                (float)showPoint.Position.X - CameraBias,
-                (float)showPoint.Position.Y - height,
+                (float)showPoint.X - CameraBias,
+                (float)showPoint.Y - height,
                 width,
                 height);
 
@@ -177,8 +197,8 @@ namespace StartUpProject.Dialogs
                     printedStrings[i],
                     new Font("Arial", size),
                     Brushes.White,
-                    (float)showPoint.Position.X - CameraBias + intent,
-                    (float)showPoint.Position.Y - height + i * 16 + intent);
+                    (float)showPoint.X - CameraBias + intent,
+                    (float)showPoint.Y - height + i * 16 + intent);
             }
         }
     }

@@ -8,7 +8,7 @@ namespace RoyalPlayingGame.Items
 {
     public class Item
     {
-        public Item(int ID, string name, int maxAmount, int amount, uint itemLvl, Effect.Effect effect)
+        public Item(string ID, string name, int maxAmount, int amount, uint itemLvl, Effect.Effect effect)
         {
             this.ID = ID;
             Name = name;
@@ -18,7 +18,7 @@ namespace RoyalPlayingGame.Items
             ItemEffect = effect;
             IsAQuestItem = false;
         }
-        public Item(int ID, string name, int maxAmount, int amount, uint itemLvl)
+        public Item(string ID, string name, int maxAmount, int amount, uint itemLvl)
         {
             this.ID = ID;
             Name = name;
@@ -27,7 +27,13 @@ namespace RoyalPlayingGame.Items
             Amount = amount;
             IsAQuestItem = false;
         }
-        public Item(int ID, string name,  int maxAmount)
+        /// <summary>
+        /// конструктор для квестовых предметов
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="name"></param>
+        /// <param name="maxAmount"></param>
+        public Item(string ID, string name,  int maxAmount)
         {
             this.ID = ID;
             Name = name;
@@ -35,7 +41,7 @@ namespace RoyalPlayingGame.Items
             Amount = 0;
             IsAQuestItem = true;
         }
-        public int ID { get; set; }
+        public string ID { get; set; }
         public string Name { get; set; }
         public int MaxAmount { get; protected set; }
         public int Amount { get; set; }
@@ -43,5 +49,12 @@ namespace RoyalPlayingGame.Items
         public bool IsAQuestItem { get; set; }
         public string Description { get; set; }
         public Effect.Effect ItemEffect { get; set; }
+        public Action UseItemExternal { get; set; }
+
+
+        public virtual void Use()
+        {
+            UseItemExternal?.Invoke();
+        }
     }
 }

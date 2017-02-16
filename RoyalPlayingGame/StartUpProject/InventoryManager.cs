@@ -32,8 +32,20 @@ namespace StartUpProject
                 //inventControl.SlotsAmount = Player.Inventory.Slots;
             }
         }
-
+        public PlayerInventoryControl PIC
+        {
+            get
+            {
+                return pic;
+            }
+            set
+            {
+                pic = value;
+                pic.PlayerInventory = Player.Inventory;
+            }
+        }
         InventoryControl inventControl;
+        PlayerInventoryControl pic;
         public void OnBagOpen()
         {
 
@@ -46,12 +58,18 @@ namespace StartUpProject
         public void ChangeVisibility()
         {
             //InventoryControl.PlacePictureBoxes();
-            InventoryControl.Refresh();
-            if (InventoryControl.Visible)
+            //InventoryControl.Refresh();
+            //if (InventoryControl.Visible)
+            //{
+            //    InventoryControl.Visible = false;
+            //}
+            //else InventoryControl.Visible = true;
+            PIC.Refresh();
+            if (PIC.Visible)
             {
-                InventoryControl.Visible = false;
+                PIC.Visible = false;
             }
-            else InventoryControl.Visible = true;
+            else PIC.Visible = true;
         }
         //public void Hide()
         //{

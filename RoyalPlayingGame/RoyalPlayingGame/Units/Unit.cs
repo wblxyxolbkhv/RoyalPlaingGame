@@ -11,25 +11,20 @@ namespace RoyalPlayingGame.Units
 
 {
     public enum DamageType { Physical, Magic }
-    public delegate void QuestItemHendler(int ID);
+    public delegate void QuestItemHendler(string ID);
     public class Unit : Interfaces.ITargetObject
     {
         public Unit()
         {
             Equipment = new List<Item>();
-            Inventory = new Inventory(10);
+            Inventory = new Inventory(2);
             SpellBook = new SpellBookCollection();
             Effects = new List<Effect.Effect>();
             IsAlive = true;
         }
-        public Unit(int ID)
+        public Unit(int ID):this()
         {
             this.ID = ID;
-            Equipment = new List<Item>();
-            Inventory = new Inventory(10);      
-            SpellBook = new SpellBookCollection();
-            Effects = new List<Effect.Effect>();
-            IsAlive = true;
         }
         #region Stats
         protected int realHealth;
@@ -157,7 +152,14 @@ namespace RoyalPlayingGame.Units
         public Spell.Spell SpellHotKey3 { get; set; }
         public Spell.Spell SpellHotKey4 { get; set; }
 
+        public List<Item> Loot { get; set; }
 
+        public void AddLoot(Item item)
+        {
+            if (Loot == null)
+                Loot = new List<Item>();
+            Loot.Add(item);
+        }
         public int GotDamaged(int damage, DamageType DType)
         {
             if (DType == DamageType.Physical)
