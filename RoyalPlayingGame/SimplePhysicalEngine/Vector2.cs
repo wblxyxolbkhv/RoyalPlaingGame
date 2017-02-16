@@ -72,5 +72,9 @@ namespace SimplePhysicalEngine
 
             return distance;
         }
+        public static bool IsOverlayX(Vector2 v1, Vector2 v2)
+        {
+            return false;
+        }
     }
 }

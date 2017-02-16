@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IGravitable.cs" />
+    <Compile Include="NonPhysicalComponents\AdvancedRealObject.cs" />
     <Compile Include="NonPhysicalComponents\RealObject.cs" />
     <Compile Include="PhysicalObject.cs" />
     <Compile Include="Power.cs" />
