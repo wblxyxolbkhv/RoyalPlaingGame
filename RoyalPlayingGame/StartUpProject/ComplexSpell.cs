@@ -4,15 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RoyalPlayingGame.Spell;
+using SimplePhysicalEngine.NonPhysicalComponents;
 
 namespace StartUpProject
 {
     public class ComplexSpell : ComplexObject
     {
-        public ComplexSpell()
+        public ComplexSpell(List<RealObject> CollisionDomain, RealObject caster)
         {
             IsActive = true;
             DamagedUnits = new List<ComplexUnit>();
+            RealObject = new RealObject(CollisionDomain);
+            RealObject.AddReservedObject(caster);
+            // TODO: подчистить за собой хвосты
+            caster.AddReservedObject(RealObject);
         }
         public NegativeSpell Spell { get; set; }
         public double Damage { get; set; }

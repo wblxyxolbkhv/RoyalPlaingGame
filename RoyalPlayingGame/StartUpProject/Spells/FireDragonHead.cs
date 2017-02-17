@@ -11,9 +11,8 @@ namespace StartUpProject.Spells
 {
     public class FireDragonHead : ComplexSpell
     {
-        public FireDragonHead(List<RealObject> CollisionDomain, RealObject caster)
+        public FireDragonHead(List<RealObject> CollisionDomain, RealObject caster) : base(CollisionDomain, caster)
         {
-            RealObject = new RealObject(CollisionDomain);
             RealObject.Height = 108;
             RealObject.Width = 150;
             RealObject.SpeedX = 0;

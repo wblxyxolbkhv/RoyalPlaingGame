@@ -7,9 +7,8 @@ namespace StartUpProject.Spells
 {
     class DragonBreath : ComplexSpell
     {
-        public DragonBreath(List<RealObject> CollisionDomain, RealObject caster)
+        public DragonBreath(List<RealObject> CollisionDomain, RealObject caster) : base(CollisionDomain, caster)
         {
-            RealObject = new RealObject(CollisionDomain);
             RealObject.Height = 108;
             RealObject.Width = 150;
             RealObject.SpeedX = 0;

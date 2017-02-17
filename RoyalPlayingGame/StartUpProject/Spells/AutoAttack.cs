@@ -9,12 +9,8 @@ namespace StartUpProject.Spells
 {
     public class AutoAttack : ComplexSpell
     {
-        public AutoAttack(List<RealObject> CollisionDomain, ComplexUnit caster)
+        public AutoAttack(List<RealObject> CollisionDomain, ComplexUnit caster):base(CollisionDomain, caster.RealObject)
         {
-            RealObject = new RealObject(CollisionDomain);
-            RealObject.AddReservedObject(caster.RealObject);
-            // TODO: подчистить за собой хвосты
-            caster.RealObject.AddReservedObject(RealObject);
             RealObject.Height = 50;
             RealObject.Width = 50;
             RealObject.SpeedX = 0;
