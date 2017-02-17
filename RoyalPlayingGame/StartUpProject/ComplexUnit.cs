@@ -50,8 +50,15 @@ namespace StartUpProject
 
             return flyingSpell;
         }
+        /// <summary>
+        /// перегрузка для автоатаки
+        /// </summary>
+        /// <param name="CollisionDomain"></param>
+        /// <returns></returns>
         public virtual ComplexSpell Cast(List<RealObject> CollisionDomain)
         {
+            if (cooldownTime.CompareTo(GlobalGameComponents.Game.CurrentTime)>0)
+                return null;
             ComplexSpell flyingSpell = null;
             flyingSpell = new Spells.AutoAttack(CollisionDomain, this);
             switch (RealObject.direction)
@@ -67,7 +74,7 @@ namespace StartUpProject
                     Animation.Start();
                     break;
             }
-
+            cooldownTime = DateTime.Now.AddMilliseconds(AutoAttackCooldown);
             return flyingSpell;
         }
         public override void OnRefresh(object sender, EventArgs e)
@@ -104,7 +111,10 @@ namespace StartUpProject
                         break;
                 }
         }
-        
+
+        DateTime cooldownTime = new DateTime();
+        public int AutoAttackCooldown = 1000;
+
 
     }
 }

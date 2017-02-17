@@ -10,8 +10,8 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
     {
         private bool CheckCollision(AdvancedRealObject aro)
         {
-            // проверка на горизонтальное пересечение
-            Vector2 
+            //// проверка на горизонтальное пересечение
+            //Vector2 
             return false;
         }
     }

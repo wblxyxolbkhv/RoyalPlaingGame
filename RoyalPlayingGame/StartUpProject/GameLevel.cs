@@ -212,6 +212,13 @@ namespace StartUpProject
             s.RealObject.CollisionDetected += OnCollisionDetected;
             Spells.Add(s);
         }
+        private void CastEnemySpell(ComplexSpell spell)
+        {
+            if (spell == null)
+                return;
+            spell.RealObject.CollisionDetected += OnCollisionDetected;
+            Spells.Add(spell);
+        }
         public void OnKeyUpExternal(object sender, KeyEventArgs e)
         {
             if (IsControlStop)
@@ -311,7 +318,10 @@ namespace StartUpProject
             enemy.RealObject.Position = new Vector2(2000, 300);
             enemy.RealObject.CollisionDetected += OnCollisionDetected;
             enemy.PatrolPoint = new Vector2(2000, 400);
+            enemy.Target = Player;
+            enemy.AttackCasted += CastEnemySpell;
             Enemies.Add(enemy);
+
 
             Minotaur enemy1 = new Minotaur(CollisionDomain, Gravity);
 
@@ -432,8 +442,12 @@ namespace StartUpProject
                 spell.ManualyDeath();
             if (enemy != null && !spell.DamagedUnits.Contains((ComplexUnit)enemy))
             {
-                bool critical;
-                int d = spell.Spell.DealtDamage(out critical);
+                bool critical = false;
+                int d = 0 ;
+                if (spell.Spell == null)
+                    d = spell.Damage;
+                else
+                    spell.Spell.DealtDamage(out critical);
                 int dealedDamage = enemy.Unit.GotDamaged(d, DamageType.Magic);
                 spell.DamagedUnits.Add((ComplexUnit)enemy);
                 CreateTemporaryTitle("-" + dealedDamage.ToString(), enemy.RealObject.Position, critical);

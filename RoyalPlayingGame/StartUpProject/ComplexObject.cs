@@ -72,6 +72,8 @@ namespace StartUpProject
         public virtual void OnRefresh(object sender, EventArgs e)
         {
             RealObject.OnRefreshPosition(sender, e);
+            if (Animation == null)
+                return;
             if (Animation.Mode == AnimationMode.Once && Animation.IsActive)
                 return;
             if (Unit != null && !Unit.IsAlive)

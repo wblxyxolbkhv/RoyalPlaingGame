@@ -15,6 +15,7 @@ namespace StartUpProject
             DamagedUnits = new List<ComplexUnit>();
         }
         public NegativeSpell Spell { get; set; }
+        public int Damage { get; set; }
         public void ManualyDeath()
         {
             if (IsActive)

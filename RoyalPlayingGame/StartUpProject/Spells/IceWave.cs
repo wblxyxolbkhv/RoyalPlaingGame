@@ -38,7 +38,7 @@ namespace StartUpProject.Spells
                     Animation.Start();
                     break;
             }
-            Animation.AnumationEnd += OnUnitDeath;
+            Animation.AnimationEnd += OnUnitDeath;
         }
     }
 }

@@ -168,7 +168,11 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             this.Position.X += step;
         }
 
-        public double SpeedX { get; set; }
+        public double SpeedX
+        {
+            get;
+            set;
+        }
         public double SpeedY
         {
             get;

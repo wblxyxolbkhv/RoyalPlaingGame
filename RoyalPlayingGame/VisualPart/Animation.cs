@@ -52,11 +52,6 @@ namespace VisualPart
                 CurrentFrame = null;
                 currentFrameIndex = -1;
             }
-            else
-            {
-                CurrentFrame = frames[0];
-                currentFrameIndex = 0;
-            }
         }
 
         private void GetFramesFromResources(string name)
@@ -95,7 +90,7 @@ namespace VisualPart
                 else
                 {
                     IsActive = false;
-                    AnumationEnd?.Invoke();
+                    AnimationEnd?.Invoke();
                     Stop();
                     return;
                 }
@@ -142,8 +137,10 @@ namespace VisualPart
         }
         public void Stop()
         {
+            currentFrameIndex = 0;
             updateFrameTimer.Stop();
+            IsActive = false;
         }
-        public event Action AnumationEnd;
+        public event Action AnimationEnd;
     }
 }

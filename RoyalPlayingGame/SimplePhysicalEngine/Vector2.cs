@@ -25,7 +25,7 @@ namespace SimplePhysicalEngine
         {
             get
             {
-                return Math.Sqrt(X*X + Y*Y);
+                return Math.Sqrt(SqLength);
             }
         }
         /// <summary>
