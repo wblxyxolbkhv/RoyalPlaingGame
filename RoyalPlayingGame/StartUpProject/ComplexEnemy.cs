@@ -19,6 +19,7 @@ namespace StartUpProject
             if (RealObject.SpeedX > 0)
                 MaxSpeed = RealObject.SpeedX;
             RealObject.OnRefreshPosition(sender, e);
+            Animation.OnUpdateFrame(GlobalGameComponents.Game.DeltaTime);
             if (Animation.Mode == AnimationMode.Once && Animation.IsActive)
                 return;
             if (Unit != null && !Unit.IsAlive)
@@ -72,6 +73,7 @@ namespace StartUpProject
         public double PatrolRadius { get; set; }
         public double AgressiveRadius { get; set; }
         public double AttackRange { get; set; }
+
         private void Decide()
         {
             if (Target == null)

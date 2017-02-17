@@ -74,6 +74,7 @@ namespace StartUpProject
             RealObject.OnRefreshPosition(sender, e);
             if (Animation == null)
                 return;
+            Animation.OnUpdateFrame(GlobalGameComponents.Game.DeltaTime);
             if (Animation.Mode == AnimationMode.Once && Animation.IsActive)
                 return;
             if (Unit != null && !Unit.IsAlive)

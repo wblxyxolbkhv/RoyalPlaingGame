@@ -129,3 +129,5 @@ C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGam
 C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.LootPageControl.resources
 C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.LootPageElement.resources
 C:\Users\ushevenifeni\Desktop\Новая папка\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.PlayerInventoryControl.resources
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.ItemMenuControl.resources
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.PlayerInventoryControl.resources

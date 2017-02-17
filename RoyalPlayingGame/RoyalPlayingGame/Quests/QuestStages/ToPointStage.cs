@@ -39,13 +39,13 @@ namespace RoyalPlayingGame.Quests.QuestStages
         {
             Points.Add(tpsg);
         }
-        public void AddPoint(int ID, string objective)
+        public void AddPoint(string ID, string objective)
         {
             ToPointStageGroup tpsg = new ToPointStageGroup(ID, objective);
             Points.Add(tpsg);
         }
 
-        private void OnTriggerDetected(int TriggerID)
+        private void OnTriggerDetected(string TriggerID)
         {
             foreach (ToPointStageGroup tpsg in Points)
             {

@@ -41,7 +41,7 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             TriggerCollisionDetected += TriggersColiisionsListener.OnTriggerCollisionDetected;
 
         }
-        public RealObject(List<RealObject> objs, int id)
+        public RealObject(List<RealObject> objs, string id)
         {
             NearbyObjects = objs;
             direction = Direction.NoneRight;
@@ -56,10 +56,11 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             IsTrigger = false;
             TriggerCollisionDetected += TriggersColiisionsListener.OnTriggerCollisionDetected;
         }
-        public RealObject(List<RealObject> objs, int id, Power gravity)
+        public RealObject(List<RealObject> objs, string id, Power gravity)
         {
             NearbyObjects = objs;
             direction = Direction.NoneRight;
+            NearbyObjects.Add(this);
 
             this.gravity = gravity;
             SpeedY = 0;
@@ -105,8 +106,19 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
                     break;
             }
         }
-        public int ID { get; protected set; }
+        public string ID { get; protected set; }
         public bool IsTrigger { get; set; }
+
+
+        // объекты, коллизии с которыми не учитываются
+        private List<RealObject> ReservedObjects { get; set; } = new List<RealObject>();
+        public void AddReservedObject(RealObject o)
+        {
+            ReservedObjects.Add(o);
+        }
+
+
+
         protected double DoCollision(double step, RealObject ro)
         {
             if (!IsTrigger && !ro.IsTrigger)
@@ -127,9 +139,13 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
         }
         protected virtual void StepLeft()
         {
+            if (Height == 50)
+            { }
             double step = SpeedX;
             foreach (RealObject ro in NearbyObjects)
             {
+                if (ReservedObjects.Contains(ro))
+                    continue;
                 if (this.Position.Y - ro.Position.Y >= 0 && this.Position.Y - ro.Position.Y < this.Height ||
                     this.Position.Y - ro.Position.Y <= 0 && ro.Position.Y - this.Position.Y < ro.Height)
                 {
@@ -151,6 +167,8 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             double step = SpeedX;
             foreach (RealObject ro in NearbyObjects)
             {
+                if (ReservedObjects.Contains(ro))
+                    continue;
                 if (this.Position.Y - ro.Position.Y >= 0 && this.Position.Y - ro.Position.Y < ro.Height ||
                     this.Position.Y - ro.Position.Y <= 0 && ro.Position.Y - this.Position.Y < this.Height)
                 {
@@ -205,6 +223,8 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
                 return;
             foreach (RealObject ro in NearbyObjects)
             {
+                if (ReservedObjects.Contains(ro))
+                    continue;
                 if (this.Position.X - ro.Position.X >= 0 && this.Position.X - ro.Position.X <= ro.Width ||
                     this.Position.X - ro.Position.X <= 0 && ro.Position.X - this.Position.X <= this.Width)
                 {
@@ -232,6 +252,8 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
                 return;
             foreach (RealObject ro in NearbyObjects)
             {
+                if (ReservedObjects.Contains(ro))
+                    continue;
                 if (this.Equals(ro))
                     continue;
                 if (this.Position.X - ro.Position.X >= 0 && this.Position.X - ro.Position.X <= ro.Width ||

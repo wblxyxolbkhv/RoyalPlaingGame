@@ -22,6 +22,7 @@ namespace StartUpProject.Enemies
             Unit = new Unit(1001);
             Unit.Health = 100;
             Unit.RealHealth = 100;
+            Unit.BaseDamage = 10;
             Unit.AddLoot(new RoyalPlayingGame.Items.Item("hat", "Шляпа", 1,1,1));
             Unit.AddLoot(new RoyalPlayingGame.Items.Item("double_hat", "Двойная шляпа", 1,1,1));
             Unit.AddLoot(new RoyalPlayingGame.Items.Item("triple_hat", "Тройная шляпа", 1,1,1));

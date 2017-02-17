@@ -149,7 +149,7 @@ namespace RoyalPlayingGame.Quests
                                         }
                                     case "point":
                                         {
-                                            tps.AddPoint(Convert.ToInt32(stageParams.Attributes.GetNamedItem("id").Value), stageParams.Attributes.GetNamedItem("objective").Value);
+                                            tps.AddPoint(stageParams.Attributes.GetNamedItem("id").Value, stageParams.Attributes.GetNamedItem("objective").Value);
                                             break;
                                         }
                                     case "shownReplic":

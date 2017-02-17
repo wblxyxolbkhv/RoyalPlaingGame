@@ -12,9 +12,13 @@ namespace StartUpProject.Spells
         public AutoAttack(List<RealObject> CollisionDomain, ComplexUnit caster)
         {
             RealObject = new RealObject(CollisionDomain);
+            RealObject.AddReservedObject(caster.RealObject);
+            // TODO: подчистить за собой хвосты
+            caster.RealObject.AddReservedObject(RealObject);
             RealObject.Height = 50;
             RealObject.Width = 50;
             RealObject.SpeedX = 0;
+            this.Damage = caster.Unit.BaseDamage;
 
             switch (caster.RealObject.direction)
             {
@@ -34,12 +38,6 @@ namespace StartUpProject.Spells
         }
         public override void PrintObject(PaintEventArgs e, int CameraBias)
         {
-                e.Graphics.FillRectangle(System.Drawing.Brushes.White,
-                    (float)RealObject.Position.X - IndentX - CameraBias,
-                    (float)RealObject.Position.Y - IndentY,
-                    (float)RealObject.Width,
-                    (float)RealObject.Height);
-            
         }
     }
 }

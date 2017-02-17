@@ -80,6 +80,7 @@ namespace StartUpProject
         public override void OnRefresh(object sender, EventArgs e)
         {
             RealObject.OnRefreshPosition(sender, e);
+            Animation.OnUpdateFrame(GlobalGameComponents.Game.DeltaTime);
             if (Animation.Mode == AnimationMode.Once && Animation.IsActive)
                 return;
             if (RealObject.IsJumpingDown || RealObject.IsJumpingUp)
@@ -87,27 +88,27 @@ namespace StartUpProject
                 {
                     case Direction.Left:
                     case Direction.NoneLeft:
-                        Animation = JumpAnimationLeft;
+                        Animation = JumpAnimationLeft ?? DefaultAnimation;
                         break;
                     case Direction.Right:
                     case Direction.NoneRight:
-                        Animation = JumpAnimationRight;
+                        Animation = JumpAnimationRight ?? DefaultAnimation;
                         break;
                 }
             else
                 switch (RealObject.direction)
                 {
                     case Direction.Left:
-                        Animation = WalkAnimationLeft;
+                        Animation = WalkAnimationLeft ?? DefaultAnimation;
                         break;
                     case Direction.Right:
-                        Animation = WalkAnimationRight;
+                        Animation = WalkAnimationRight ?? DefaultAnimation;
                         break;
                     case Direction.NoneLeft:
-                        Animation = NonActivityAnimationLeft;
+                        Animation = NonActivityAnimationLeft ?? DefaultAnimation;
                         break;
                     case Direction.NoneRight:
-                        Animation = NonActivityAnimationRight;
+                        Animation = NonActivityAnimationRight ?? DefaultAnimation;
                         break;
                 }
         }

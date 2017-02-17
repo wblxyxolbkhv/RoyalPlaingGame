@@ -12,12 +12,12 @@ namespace RoyalPlayingGame.Quests.QuestStages
         {
 
         }
-        public ToPointStageGroup(int ID, string objective)
+        public ToPointStageGroup(string ID, string objective)
         {
             this.ID = ID;
             Objective = objective;
         }
-        public int ID { get; set; }
+        public string ID { get; set; }
         public string Objective { get; set; }
     }
 }

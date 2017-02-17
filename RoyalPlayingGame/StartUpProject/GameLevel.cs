@@ -118,6 +118,8 @@ namespace StartUpProject
                 o.OnRefresh(sender, e);
                 CleanObject(o);
             }
+            foreach (ComplexUnit o in NPCs)
+                o.OnRefresh(sender, e);
             foreach (ComplexStructure o in Structures)
                 o.RealObject.OnRefreshPosition(sender, e);
             foreach (ComplexSpell o in Spells)
@@ -347,10 +349,11 @@ namespace StartUpProject
             Player.Unit.RealMana = 100000;
             Player.Unit.RealHealth = 200;
 
-            Player.RealObject = new RealObject(CollisionDomain, 0, Gravity);
+            Player.RealObject = new RealObject(CollisionDomain, "player", Gravity);
             Player.RealObject.Position = new Vector2(400, 400);
             Player.RealObject.Height = 69;
             Player.RealObject.Width = 42;
+            Player.RealObject.CollisionDetected += OnCollisionDetected;
             Player.IndentY = 3;
             Player.IndentX = 21;
             Player.RealObject.SpeedX = 4;
@@ -422,35 +425,35 @@ namespace StartUpProject
                 spell = FindSpell(o2);
             else
             {
-                ComplexObject enemy = FindObject(o2);
-                DestroySpell(spell, enemy);
+                ComplexObject unit = FindObject(o2);
+                DestroySpell(spell, unit);
                 return;
             }
             if (spell == null)
                 return;
             else
             {
-                ComplexObject enemy = FindObject(o1);
-                DestroySpell(spell, enemy);
+                ComplexObject unit = FindObject(o1);
+                DestroySpell(spell, unit);
                 return;
             }
 
         }
-        private void DestroySpell(ComplexSpell spell, ComplexObject enemy)
+        private void DestroySpell(ComplexSpell spell, ComplexObject unit)
         {
             if (spell.RealObject.SpeedX != 0)
                 spell.ManualyDeath();
-            if (enemy != null && !spell.DamagedUnits.Contains((ComplexUnit)enemy))
+            if (unit != null && !spell.DamagedUnits.Contains((ComplexUnit)unit))
             {
                 bool critical = false;
                 int d = 0 ;
                 if (spell.Spell == null)
-                    d = spell.Damage;
+                    d = (int)spell.Damage;
                 else
                     spell.Spell.DealtDamage(out critical);
-                int dealedDamage = enemy.Unit.GotDamaged(d, DamageType.Magic);
-                spell.DamagedUnits.Add((ComplexUnit)enemy);
-                CreateTemporaryTitle("-" + dealedDamage.ToString(), enemy.RealObject.Position, critical);
+                int dealedDamage = unit.Unit.GotDamaged(d, DamageType.Magic);
+                spell.DamagedUnits.Add((ComplexUnit)unit);
+                CreateTemporaryTitle("-" + dealedDamage.ToString(), unit.RealObject.Position, critical);
             }
         }
 
@@ -468,6 +471,8 @@ namespace StartUpProject
             foreach (ComplexObject s in Enemies)
                 if (s.RealObject.Equals(o))
                     return s;
+            if (o == Player.RealObject)
+                return Player;
             return null;
         }
 
@@ -644,7 +649,7 @@ namespace StartUpProject
         private void CreateTriggers()
         {
 
-            RealObject Trigger1 = new RealObject(CollisionDomain, 1);
+            RealObject Trigger1 = new RealObject(CollisionDomain, "test_trigger");
             Trigger1.Position = new Vector2(2000, 400);
             Trigger1.Height = 100;
             Trigger1.Width = 100;
