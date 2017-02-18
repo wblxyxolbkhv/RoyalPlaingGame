@@ -47,6 +47,9 @@ namespace RoyalPlayingGame.Units
         public int PhysicalDamageReduction { get; protected set; }
         public int MagicalDamageReduction { get; protected set; }
 
+        // базовый урон для крипов, бьющих с руки
+        public double BaseDamage { get; set; }
+
         public int RealHealth { get { return realHealth; }
             set
             {

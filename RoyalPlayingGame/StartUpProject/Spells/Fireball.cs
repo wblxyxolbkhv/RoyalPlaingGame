@@ -11,9 +11,8 @@ namespace StartUpProject.Spells
 {
     public class Fireball : ComplexSpell
     {
-        public Fireball(List<RealObject> CollisionDomain, RealObject caster)
+        public Fireball(List<RealObject> CollisionDomain, RealObject caster) : base(CollisionDomain, caster)
         {
-            RealObject = new RealObject(CollisionDomain);
             RealObject.Position = caster.GetCastPoint();
             RealObject.Height = 17;
             RealObject.Width = 26;

@@ -11,9 +11,8 @@ namespace StartUpProject.Spells
 {
     public class FireDragonHead : ComplexSpell
     {
-        public FireDragonHead(List<RealObject> CollisionDomain, RealObject caster)
+        public FireDragonHead(List<RealObject> CollisionDomain, RealObject caster) : base(CollisionDomain, caster)
         {
-            RealObject = new RealObject(CollisionDomain);
             RealObject.Height = 108;
             RealObject.Width = 150;
             RealObject.SpeedX = 0;
@@ -42,7 +41,7 @@ namespace StartUpProject.Spells
                     Animation.Start();
                     break;
             }
-            Animation.AnumationEnd += OnUnitDeath;
+            Animation.AnimationEnd += OnUnitDeath;
         }
     }
 }

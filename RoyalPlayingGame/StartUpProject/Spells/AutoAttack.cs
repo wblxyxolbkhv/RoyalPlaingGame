@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using SimplePhysicalEngine.NonPhysicalComponents;
 using VisualPart;
 
@@ -8,12 +9,12 @@ namespace StartUpProject.Spells
 {
     public class AutoAttack : ComplexSpell
     {
-        public AutoAttack(List<RealObject> CollisionDomain, ComplexUnit caster)
+        public AutoAttack(List<RealObject> CollisionDomain, ComplexUnit caster):base(CollisionDomain, caster.RealObject)
         {
-            RealObject = new RealObject(CollisionDomain);
-            RealObject.Height = 200;
-            RealObject.Width = 200;
+            RealObject.Height = 50;
+            RealObject.Width = 50;
             RealObject.SpeedX = 0;
+            this.Damage = caster.Unit.BaseDamage;
 
             switch (caster.RealObject.direction)
             {
@@ -28,7 +29,11 @@ namespace StartUpProject.Spells
                     RealObject.direction = Direction.Right;
                     break;
             }
-            //caster.Animation.AnumationEnd += OnUnitDeath;
+            caster.AttackAnimationLeft.AnimationEnd += OnUnitDeath;
+            caster.AttackAnimationRight.AnimationEnd += OnUnitDeath;
+        }
+        public override void PrintObject(PaintEventArgs e, int CameraBias)
+        {
         }
     }
 }

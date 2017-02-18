@@ -25,7 +25,7 @@ namespace SimplePhysicalEngine
         {
             get
             {
-                return Math.Sqrt(X*X + Y*Y);
+                return Math.Sqrt(SqLength);
             }
         }
         /// <summary>
@@ -71,6 +71,10 @@ namespace SimplePhysicalEngine
             distance = v3.SqLength;
 
             return distance;
+        }
+        public static bool IsOverlayX(Vector2 v1, Vector2 v2)
+        {
+            return false;
         }
     }
 }

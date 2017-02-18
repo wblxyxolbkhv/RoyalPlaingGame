@@ -7,9 +7,8 @@ namespace StartUpProject.Spells
 {
     public class IceWave : ComplexSpell
     {
-        public IceWave(List<RealObject> CollisionDomain, RealObject caster)
+        public IceWave(List<RealObject> CollisionDomain, RealObject caster) : base(CollisionDomain, caster)
         {
-            RealObject = new RealObject(CollisionDomain);
             RealObject.Height = 131;
             RealObject.Width = 84;
             RealObject.SpeedX = 0;
@@ -38,7 +37,7 @@ namespace StartUpProject.Spells
                     Animation.Start();
                     break;
             }
-            Animation.AnumationEnd += OnUnitDeath;
+            Animation.AnimationEnd += OnUnitDeath;
         }
     }
 }

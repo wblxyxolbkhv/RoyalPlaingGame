@@ -28,10 +28,11 @@ namespace StartUpProject.Enemies
             RealObject.Position = new Vector2(600, 400);
             RealObject.Height = 110;
             RealObject.Width = 110;
-            RealObject.SpeedX = 2;
+            RealObject.SpeedX = 0;
             RealObject.direction = Direction.Right;
 
             WalkAnimationLeft = new Animation("DebugBear", 120);
+            WalkAnimationLeft.Mode = AnimationMode.Loop;
             WalkAnimationLeft.Start();
             
 

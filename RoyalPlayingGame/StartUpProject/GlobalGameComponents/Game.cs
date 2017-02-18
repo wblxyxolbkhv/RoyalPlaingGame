@@ -42,12 +42,16 @@ namespace StartUpProject.GlobalGameComponents
 
         static Timer Timer = new Timer();
         private static int Interval = 10;
+        private static TimeSpan timeSpan;
 
 
         public static DateTime CurrentTime;
+        public static int DeltaTime;
 
         private static void OnMainTimerTick(object sender, EventArgs e)
         {
+            timeSpan = DateTime.Now - CurrentTime;
+            DeltaTime = timeSpan.Milliseconds;
             CurrentTime = DateTime.Now;
         }
 

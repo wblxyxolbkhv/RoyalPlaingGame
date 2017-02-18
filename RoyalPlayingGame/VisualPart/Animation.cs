@@ -16,10 +16,10 @@ namespace VisualPart
         {
             frames = new List<Image>();
             Folder = folder;
-            updateFrameTimer = new Timer();
+            //updateFrameTimer = new Timer();
             Delay = delay;
-            updateFrameTimer.Interval = Delay;
-            updateFrameTimer.Tick += OnUpdateFrame;
+            //updateFrameTimer.Interval = Delay;
+            //updateFrameTimer.Tick += OnUpdateFrame;
             Mode = AnimationMode.Loop;
             IsActive = true;
 
@@ -39,10 +39,10 @@ namespace VisualPart
         {
             frames = new List<Image>();
             //Folder = folder;
-            updateFrameTimer = new Timer();
+            //updateFrameTimer = new Timer();
             Delay = delay;
-            updateFrameTimer.Interval = Delay;
-            updateFrameTimer.Tick += OnUpdateFrame;
+            //updateFrameTimer.Interval = Delay;
+            //updateFrameTimer.Tick += OnUpdateFrame;
             Mode = AnimationMode.Loop;
             IsActive = true;
 
@@ -52,13 +52,27 @@ namespace VisualPart
                 CurrentFrame = null;
                 currentFrameIndex = -1;
             }
-            else
-            {
-                CurrentFrame = frames[0];
-                currentFrameIndex = 0;
-            }
         }
 
+        private void GetFrames()
+        {
+            int frameNum = 0;
+            while (true)
+            {
+                Bitmap i = null;
+                try
+                {
+                    i = (Bitmap)Image.FromFile(Folder + @"/" + frameNum + ".png");
+                }
+                catch
+                {
+                    break;
+                }
+                i.MakeTransparent(Color.White);
+                frames.Add(i);
+                frameNum++;
+            }
+        }
         private void GetFramesFromResources(string name)
         {
             int frameNum = 0;
@@ -82,29 +96,37 @@ namespace VisualPart
             }
         }
 
-        private void OnUpdateFrame(object sender, EventArgs e)
+        //private void OnUpdateFrame(object sender, EventArgs e)
+        public void OnUpdateFrame(int deltaTime)
         {
+            if (!IsActive)
+                return;
             if (currentFrameIndex == -1)
                 return;
-
-            currentFrameIndex++;
-            if (currentFrameIndex >= frames.Count)
+            if (currentDelay >= Delay)
             {
-                if (Mode == AnimationMode.Loop)
-                    currentFrameIndex = 0;
-                else
+                currentDelay = 0;
+                currentFrameIndex++;
+                if (currentFrameIndex >= frames.Count)
                 {
-                    IsActive = false;
-                    AnumationEnd?.Invoke();
-                    Stop();
-                    return;
+                    if (Mode == AnimationMode.Loop)
+                        currentFrameIndex = 0;
+                    else
+                    {
+                        IsActive = false;
+                        AnimationEnd?.Invoke();
+                        Stop();
+                        return;
+                    }
                 }
+                CurrentFrame = frames[currentFrameIndex];
             }
-            CurrentFrame = frames[currentFrameIndex];
+            else
+                currentDelay += deltaTime;
         }
 
         public AnimationMode Mode { get; set; }
-        public bool IsActive { get; set; } 
+        public bool IsActive { get; set; } = true;
 
         int Delay { get; set; }
         List<Image> frames;
@@ -113,37 +135,26 @@ namespace VisualPart
         string Folder { get; set; }
 
 
-        Timer updateFrameTimer;
 
-        private void GetFrames()
-        {
-            int frameNum = 0;
-            while (true)
-            {
-                Bitmap i = null;
-                try
-                {
-                    i = (Bitmap)Image.FromFile(Folder + @"/" + frameNum + ".png");
-                }
-                catch
-                {
-                    break;
-                }
-                i.MakeTransparent(Color.White);
-                frames.Add(i);
-                frameNum++;
-            }
-        }
+
+        //Timer updateFrameTimer;
+        int currentDelay;
+
         public void Start()
         {
             currentFrameIndex = 0;
-            updateFrameTimer.Start();
+            CurrentFrame = frames[0];
+            //updateFrameTimer.Start();
+            currentDelay = 0;
             IsActive = true;
         }
         public void Stop()
         {
-            updateFrameTimer.Stop();
+            currentFrameIndex = 0;
+            currentDelay = 0;
+            //updateFrameTimer.Stop();
+            IsActive = false;
         }
-        public event Action AnumationEnd;
+        public event Action AnimationEnd;
     }
 }

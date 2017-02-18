@@ -11,11 +11,15 @@ using SimplePhysicalEngine;
 
 namespace StartUpProject
 {
+    public delegate void SpellCasted(ComplexSpell spell);
     public class ComplexEnemy : ComplexUnit
     {
         public override void OnRefresh(object sender, EventArgs e)
         {
+            if (RealObject.SpeedX > 0)
+                MaxSpeed = RealObject.SpeedX;
             RealObject.OnRefreshPosition(sender, e);
+            Animation.OnUpdateFrame(GlobalGameComponents.Game.DeltaTime);
             if (Animation.Mode == AnimationMode.Once && Animation.IsActive)
                 return;
             if (Unit != null && !Unit.IsAlive)
@@ -67,11 +71,20 @@ namespace StartUpProject
         public ComplexUnit Target { get; set; }
         public Vector2 PatrolPoint { get; set; }
         public double PatrolRadius { get; set; }
-        public double AttackRadius { get; set; }
+        public double AgressiveRadius { get; set; }
         public double AttackRange { get; set; }
+
         private void Decide()
         {
-            PatrolMode();
+            if (Target == null)
+            {
+                PatrolMode();
+                return;
+            }
+            if ((Target.RealObject.Position - this.RealObject.Position).Length > AgressiveRadius)
+                PatrolMode();
+            else AgressiveMode();
+
         }
         private void PatrolMode()
         {
@@ -93,25 +106,59 @@ namespace StartUpProject
                     RealObject.direction = Direction.Left;
             }
         }
-        private void AttackMode()
+        private void AgressiveMode()
         {
-            Vector2 targetDirection = Target.RealObject.Position - RealObject.Position;
+
+            // цель слева
+            if (Target.RealObject.Position.X < RealObject.Position.X)
+            {
+                //поворачиваемся
+                RealObject.direction = Direction.Left;
+                RealObject.SpeedX = MaxSpeed;
+                // бьем
+                if (RealObject.Position.X - 
+                    Target.RealObject.Position.X - 
+                    Target.RealObject.Width <= AttackRange/2)
+                {
+                    RealObject.direction = Direction.Left;
+                    RealObject.SpeedX = 0;
+                    Attack(Target);
+                }
+            }
+            // цель справа
+            else
+            {
+                //поворачиваемся
+                RealObject.direction = Direction.Right;
+                RealObject.SpeedX = MaxSpeed;
+                // бьем
+                if (Target.RealObject.Position.X -
+                    RealObject.Position.X -
+                    RealObject.Width <= AttackRange / 2)
+                {
+                    RealObject.direction = Direction.Right;
+                    RealObject.SpeedX = 0;
+                    Attack(Target);
+                }
+            }
+
+
+
             
         }
+        // TODO: да простят меня боги за этот убогий костыль
+        private double MaxSpeed;
+
+        public event SpellCasted AttackCasted;
         private void Attack(ComplexUnit target)
         {
-            //Cast(CollisionDomain);
+            AttackCasted?.Invoke(Cast(target.RealObject.NearbyObjects));
         }
-
-        protected List<int> LootList = new List<int>();
+        
         public override void OnUnitDeath()
         {
             base.OnUnitDeath();
-
-            //LootDroped?.Invoke(LootList, this.RealObject.Position);
         }
         
-        public event LootDropHandler LootDroped;
     }
-    public delegate void LootDropHandler(List<int> itemIDs, Vector2 dropPoint);  
 }

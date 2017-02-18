@@ -24,7 +24,7 @@
       А по дороге попытайся понять причем тут голуби.
       А по дороге попытайся понять причем тут голуби.
     </description>
-              <point id ="1" objective ="Вернуться к ДебагБиру"></point>
+              <point id ="test_trigger" objective ="Вернуться к ДебагБиру"></point>
 		<shownReplic id = "100017"/>
 	</stage>
 
