@@ -33,7 +33,6 @@
             this.itemDescriptionControl1 = new VisualPart.UserControls.ItemDescriptionControl();
             this.lootPageControl1 = new VisualPart.UserControls.LootPageControl();
             this.fastAccessControl1 = new VisualPart.UserControls.FastAccessControl();
-            this.inventoryControl1 = new VisualPart.UserControls.InventoryControl();
             this.journalControl1 = new VisualPart.UserControls.JournalControl();
             this.activeQuestControl1 = new VisualPart.UserControls.ActiveQuestControl();
             this.choiceBox1 = new VisualPart.UserControls.ChoiceBox();
@@ -89,21 +88,6 @@
             this.fastAccessControl1.Size = new System.Drawing.Size(216, 53);
             this.fastAccessControl1.TabIndex = 9;
             this.fastAccessControl1.Visible = false;
-            // 
-            // inventoryControl1
-            // 
-            this.inventoryControl1.AllBagSlots = null;
-            this.inventoryControl1.ArmorBagSlots = null;
-            this.inventoryControl1.ItemList = null;
-            this.inventoryControl1.Location = new System.Drawing.Point(68, 63);
-            this.inventoryControl1.Name = "inventoryControl1";
-            this.inventoryControl1.OtherBagSlots = null;
-            this.inventoryControl1.PotionsBagSlots = null;
-            this.inventoryControl1.Size = new System.Drawing.Size(654, 357);
-            this.inventoryControl1.SlotsAmount = 0;
-            this.inventoryControl1.TabIndex = 8;
-            this.inventoryControl1.Visible = false;
-            this.inventoryControl1.WeaponBagSlots = null;
             // 
             // journalControl1
             // 
@@ -202,9 +186,9 @@
             this.playerInventoryControl1.Location = new System.Drawing.Point(200, 100);
             this.playerInventoryControl1.Name = "playerInventoryControl1";
             this.playerInventoryControl1.PlayerInventory = null;
-            this.playerInventoryControl1.Size = new System.Drawing.Size(600, 300);
+            this.playerInventoryControl1.Size = new System.Drawing.Size(630, 325);
             this.playerInventoryControl1.TabIndex = 12;
-            this.playerInventoryControl1.Load += new System.EventHandler(this.playerInventoryControl1_Load);
+            this.playerInventoryControl1.Visible = false;
             // 
             // MainForm
             // 
@@ -215,7 +199,6 @@
             this.Controls.Add(this.itemDescriptionControl1);
             this.Controls.Add(this.lootPageControl1);
             this.Controls.Add(this.fastAccessControl1);
-            this.Controls.Add(this.inventoryControl1);
             this.Controls.Add(this.journalControl1);
             this.Controls.Add(this.activeQuestControl1);
             this.Controls.Add(this.choiceBox1);
@@ -242,7 +225,6 @@
         private VisualPart.UserControls.ChoiceBox choiceBox1;
         private VisualPart.UserControls.ActiveQuestControl activeQuestControl1;
         private VisualPart.UserControls.JournalControl journalControl1;
-        private VisualPart.UserControls.InventoryControl inventoryControl1;
         private VisualPart.UserControls.FastAccessControl fastAccessControl1;
         private VisualPart.UserControls.LootPageControl lootPageControl1;
         private VisualPart.UserControls.ItemDescriptionControl itemDescriptionControl1;

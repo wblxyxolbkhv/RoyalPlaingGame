@@ -23,7 +23,6 @@ namespace StartUpProject
             Level.PlayerMenuManager.ScaleMP = this.scaleMP;
             
             Level.DialogManager.ChoiceBox = choiceBox1;
-            Level.InventoryManager.InventoryControl = inventoryControl1;
             Level.ActiveQuestManager.ActiveQuestControl = activeQuestControl1;
             Level.QuestJournalManager.Journal = journalControl1;
             Level.LootPageManager.LootPage = lootPageControl1;
@@ -73,17 +72,17 @@ namespace StartUpProject
             scaleMP.Visible = turn;
             activeQuestControl1.Visible = turn;
             fastAccessControl1.Visible = turn;
-            inventoryControl1.Visible = turn;
             itemDescriptionControl1.Visible = turn;
             journalControl1.Visible = turn;
             lootPageControl1.Visible = turn;
             skillPanel1.Visible = turn;
             choiceBox1.Visible = turn;
+            playerInventoryControl1.Visible = turn;
         }
 
-        private void playerInventoryControl1_Load(object sender, EventArgs e)
-        {
+        //private void playerInventoryControl1_Load(object sender, EventArgs e)
+        //{
 
-        }
+        //}
     }
 }

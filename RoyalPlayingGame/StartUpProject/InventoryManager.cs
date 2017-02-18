@@ -15,23 +15,23 @@ namespace StartUpProject
     /// </summary>
     public class InventoryManager
     {
-        public InventoryManager()
-        {
+        //public InventoryManager()
+        //{
             
-        }
+        //}
 
         public Player Player { get; set; }
-        public InventoryControl InventoryControl
-        {
-            get
-            { return inventControl; }
-            set
-            {
-                inventControl = value;
-                inventControl.ItemList = Player.Inventory.GetItemList();
-                //inventControl.SlotsAmount = Player.Inventory.Slots;
-            }
-        }
+        //public InventoryControl InventoryControl
+        //{
+        //    get
+        //    { return inventControl; }
+        //    set
+        //    {
+        //        inventControl = value;
+        //        inventControl.ItemList = Player.Inventory.GetItemList();
+        //        //inventControl.SlotsAmount = Player.Inventory.Slots;
+        //    }
+        //}
         public PlayerInventoryControl PIC
         {
             get
@@ -44,17 +44,19 @@ namespace StartUpProject
                 pic.PlayerInventory = Player.Inventory;
             }
         }
-        InventoryControl inventControl;
+        //InventoryControl inventControl;
         PlayerInventoryControl pic;
-        public void OnBagOpen()
-        {
 
-        }
-        public void OnRefresh()
-        {
-            //InventoryControl.SlotsAmount = Player.Inventory.Slots;
-            //InventoryControl.ItemList = Player.Inventory.GetItemList();
-        }
+        //public void OnBagOpen()
+        //{
+
+        //}
+        
+        //public void OnRefresh()
+        //{
+        //    //InventoryControl.SlotsAmount = Player.Inventory.Slots;
+        //    //InventoryControl.ItemList = Player.Inventory.GetItemList();
+        //}
         public void ChangeVisibility()
         {
             //InventoryControl.PlacePictureBoxes();

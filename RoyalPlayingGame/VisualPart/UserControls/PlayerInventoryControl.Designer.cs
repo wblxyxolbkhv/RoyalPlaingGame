@@ -33,6 +33,7 @@
             // 
             // itemMenuControl1
             // 
+            this.itemMenuControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemMenuControl1.Location = new System.Drawing.Point(80, 78);
             this.itemMenuControl1.Name = "itemMenuControl1";
             this.itemMenuControl1.Size = new System.Drawing.Size(106, 90);
