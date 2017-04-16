@@ -450,7 +450,7 @@ namespace StartUpProject
                 if (spell.Spell == null)
                     d = (int)spell.Damage;
                 else
-                    spell.Spell.DealtDamage(out critical);
+                    d = spell.Spell.DealtDamage(out critical);
                 int dealedDamage = unit.Unit.GotDamaged(d, DamageType.Magic);
                 spell.DamagedUnits.Add((ComplexUnit)unit);
                 CreateTemporaryTitle("-" + dealedDamage.ToString(), unit.RealObject.Position, critical);

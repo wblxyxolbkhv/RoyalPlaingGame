@@ -20,9 +20,21 @@ namespace RoyalPlayingGame.Items
         }
 
         private List<Item> Bag { get; set; }
-        public int Slots { get { return slots; } set { slots = value; ItemsManager.ChangeSlots(value); ; } }
+        public int Slots {
+            get
+            {
+                return slots;
+            }
+            set
+            {
+               
+                slots = value;
+                ItemsManager.ChangeSlots(value);
+            }
+        }
         int slots;
         
+        public int Count { get { return Bag.Count; } }
 
         #region Энумератор
         private int Index { get; set; }

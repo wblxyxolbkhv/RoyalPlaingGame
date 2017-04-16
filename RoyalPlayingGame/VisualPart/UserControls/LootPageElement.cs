@@ -19,8 +19,7 @@ namespace VisualPart.UserControls
             pictureBox1.MouseMove += OnMouseMove;
             pictureBox1.MouseLeave += OnMouseLeave;
             label1.MouseMove += OnMouseMove;
-            label1.MouseLeave += OnMouseLeave;
-            
+            label1.MouseLeave += OnMouseLeave;           
         }
 
         public Item CurItem { get; set; }
@@ -44,6 +43,9 @@ namespace VisualPart.UserControls
                 amountLabel.BorderStyle = BorderStyle.Fixed3D;
                 amountLabel.AutoSize = true;
                 amountLabel.Anchor = AnchorStyles.Right;
+                amountLabel.MouseDoubleClick += OnDoubleClick;
+                amountLabel.MouseLeave += OnMouseLeave;
+                amountLabel.MouseMove += OnMouseMove;
             }
         }
 

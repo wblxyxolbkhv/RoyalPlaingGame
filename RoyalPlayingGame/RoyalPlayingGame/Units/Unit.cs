@@ -17,7 +17,7 @@ namespace RoyalPlayingGame.Units
         public Unit()
         {
             Equipment = new List<Item>();
-            Inventory = new Inventory(2);
+            Inventory = new Inventory(10);
             SpellBook = new SpellBookCollection();
             Effects = new List<Effect.Effect>();
             IsAlive = true;
@@ -26,6 +26,7 @@ namespace RoyalPlayingGame.Units
         {
             this.ID = ID;
         }
+
         #region Stats
         protected int realHealth;
         protected int realMana;
@@ -140,7 +141,6 @@ namespace RoyalPlayingGame.Units
             }
         }
         #endregion
-
 
         public int ID {get;protected set; }
         public Inventory Inventory { get; set; }

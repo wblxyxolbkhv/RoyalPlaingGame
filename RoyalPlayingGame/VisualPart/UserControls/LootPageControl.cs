@@ -18,7 +18,28 @@ namespace VisualPart.UserControls
         public LootPageControl()
         {
             InitializeComponent();
-            button1.Click += ChangeVisibility;          
+            button1.Click += ChangeVisibility;
+            button2.Click += OnPickAllButtonClick;
+        }
+
+
+        private void OnPickAllButtonClick(object sender, EventArgs e)
+        {
+            for (int i=lootList.Count;i>=lootList.Count && lootList.Count > 0; i--)
+            {
+                try
+                {
+                    Inventory.AddItem(lootList[lootList.Count-i]);
+                    lootList.Remove(lootList[lootList.Count-i]);
+                    splitContainer1.Panel2.Controls.Clear();
+                    Update(lootList);
+                }
+                catch (FullBagException fbe)
+                {
+                    ItemsManager.BagFull(fbe.Message, 1000);
+                }
+            }
+            
         }
 
         private List<Item> lootList { get; set; }
@@ -93,6 +114,7 @@ namespace VisualPart.UserControls
                         lootList.Remove(item);
                         splitContainer1.Panel2.Controls.Clear();
                         Update(lootList);
+                        IDC.Visible = false;
                         break;
                     }
                     catch(FullBagException fbe)

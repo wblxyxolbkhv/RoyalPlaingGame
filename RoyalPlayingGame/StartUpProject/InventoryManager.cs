@@ -42,6 +42,7 @@ namespace StartUpProject
             {
                 pic = value;
                 pic.PlayerInventory = Player.Inventory;
+                pic.PlaceButtons(Player.Inventory.Slots);
             }
         }
         //InventoryControl inventControl;
