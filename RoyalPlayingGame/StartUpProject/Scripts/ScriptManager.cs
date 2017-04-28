@@ -4,39 +4,69 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StartUpProject.GlobalGameComponents;
+using System.Threading;
 
 namespace StartUpProject.Scripts
 {
     public static class ScriptManager
     {
+        //внешние делегаты для проверки условий конца
+        private static Dictionary<string, ScriptFinish> ExternalFinishedDelegates = new Dictionary<string, ScriptFinish>();
+        //внешние делегаты для скриптов экшна
+        private static Dictionary<string, ThreadStart> ExternalActionDelegates = new Dictionary<string, ThreadStart>();
         public static ScriptStage CurrentScript { get; set; }
         public static ScriptStage RootScript { get; set; }
         public static void Init()
         {
             // строим дерево скриптов
-            RootScript = new ScriptStage();
+            RootScript = new ScriptStage("root");
             RootScript.isWaiting = true;
-                ScriptStage s = new InfoStage(5000, "ТЫ УНИЧТОЖИЛ ВСЕ ЖИВОЕ В ЭТОМ МАЛЕНЬКОМ МИРЕ! ТЫ ДОВОЛЕН?");
-                RootScript.NextStage = s;
-                    ScriptStage lastStage = new ScriptStage();
-                    lastStage.isWaiting = true;
-                    lastStage.IsFinishedExternal += () =>
-                    {
-                        return false;
-                    };
-                    s.NextStage = lastStage;
+            RealTimeScriptStage stage = new RealTimeScriptStage("fight_stage");
+            RootScript.NextStage = stage;
+            ScriptStage last = new ScriptStage("last");
+            last.IsFinishedExternal += () =>
+            {
+                return false;
+            };
+            stage.NextStage = last;
 
 
 
 
             CurrentScript = RootScript;
         }
+        public static void AddFinishedDelegate(string name, ScriptFinish Delegate)
+        {
+            ExternalFinishedDelegates.Add(name, Delegate);
+        }
+        public static void AddActionDelegate(string name, ThreadStart Delegate)
+        {
+            ExternalActionDelegates.Add(name, Delegate);
+        }
         public static void OnRefresh(object sender, EventArgs e)
         {
             if (CurrentScript == null)
                 return;
             if (CurrentScript.IsFinished())
+            {
                 CurrentScript = CurrentScript.NextStage;
+                if (CurrentScript == null)
+                    return;
+                CurrentScript.StartTime = DateTime.Now;
+                RealTimeScriptStage r;
+                if ((r = CurrentScript as RealTimeScriptStage)!=null)
+                {
+                    if (ExternalActionDelegates.ContainsKey(r.Name))
+                    {
+                        r.RealTimeAction += ExternalActionDelegates[r.Name];
+                        Thread t = new Thread(r.RealTimeAction);
+                        r.Thread = t;
+                        t.Start();
+                    }
+                }
+                if (ExternalFinishedDelegates.ContainsKey(CurrentScript.Name))
+                    CurrentScript.IsFinishedExternal += ExternalFinishedDelegates[CurrentScript.Name];
+            }
         }
         public static string GetInfoString()
         {

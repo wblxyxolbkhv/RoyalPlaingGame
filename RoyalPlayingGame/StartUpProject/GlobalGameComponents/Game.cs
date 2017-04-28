@@ -16,7 +16,7 @@ namespace StartUpProject.GlobalGameComponents
             CurrentTime = DateTime.Now;
             ItemsManager.Init();
             ScriptManager.Init();
-            GameLevel = new GameLevel();
+            GameLevel = new StartLevel();
             GameLevel.Interval = Interval;
             MainForm = new MainForm(GameLevel);
 
@@ -28,7 +28,7 @@ namespace StartUpProject.GlobalGameComponents
             Timer.Interval = Interval;
             Timer.Start();
             
-
+            
 
 
             Application.Run(MainForm);

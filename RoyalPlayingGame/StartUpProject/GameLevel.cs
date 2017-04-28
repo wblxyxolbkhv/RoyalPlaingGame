@@ -52,29 +52,29 @@ namespace StartUpProject
         }
 
 
-        ComplexUnit Player { get; set; }
-        List<ComplexEnemy> Enemies { get; set; }
-        List<ComplexUnit> NPCs { get; set; }
-        List<ComplexSpell> Spells { get; set; }
-        List<ComplexStructure> Structures { get; set; }
-        List<ComplexItem> DroppedItems { get; set; }
+        protected ComplexUnit Player { get; set; }
+        protected List<ComplexEnemy> Enemies { get; set; }
+        protected List<ComplexUnit> NPCs { get; set; }
+        protected List<ComplexSpell> Spells { get; set; }
+        protected List<ComplexStructure> Structures { get; set; }
+        protected List<ComplexItem> DroppedItems { get; set; }
 
-        List<RealObject> CollisionDomain { get; set; }
-        List<RealObject> EnemiesCollisionDomain { get; set; }
-        Power Gravity { get; set; }
+        protected List<RealObject> CollisionDomain { get; set; }
+        protected List<RealObject> EnemiesCollisionDomain { get; set; }
+        protected Power Gravity { get; set; }
 
-        int CameraBias { get; set; }
+        protected int CameraBias { get; set; }
         public int WorkAreaWidth { get; set; }
         public int WorkAreaHeight { get; set; }
 
         
-        public PlayerMenuManager PlayerMenuManager { get; private set; }
-        public DialogManager DialogManager { get; private set; }
-        public ActiveQuestManager ActiveQuestManager { get; private set; }
+        public PlayerMenuManager PlayerMenuManager { get; protected set; }
+        public DialogManager DialogManager { get; protected set; }
+        public ActiveQuestManager ActiveQuestManager { get; protected set; }
         public QuestJournalManager QuestJournalManager { get; set; }
         public InventoryManager InventoryManager { get; set; }
         public LootPageManager LootPageManager { get; set; }
-        private HintQueue HintQueue { get; set; }
+        protected HintQueue HintQueue { get; set; }
 
         public int Interval { get; set; }
         public bool IsControlStop = false;
@@ -135,7 +135,7 @@ namespace StartUpProject
             CameraBias = GetCameraBiasX();
             OnScriptsCheck();
         }
-        private void OnScriptsCheck()
+        protected void OnScriptsCheck()
         {
             if (ScriptManager.CurrentScript.isWaiting)
             {
@@ -192,7 +192,7 @@ namespace StartUpProject
                     break;
             }
         }
-        private void CastSpell(Keys k)
+        protected void CastSpell(Keys k)
         {
             NegativeSpell spell;
             try
@@ -214,7 +214,7 @@ namespace StartUpProject
             s.RealObject.CollisionDetected += OnCollisionDetected;
             Spells.Add(s);
         }
-        private void CastEnemySpell(ComplexSpell spell)
+        protected void CastEnemySpell(ComplexSpell spell)
         {
             if (spell == null)
                 return;
@@ -238,7 +238,7 @@ namespace StartUpProject
             }
         }
 
-        private void PrintTime(PaintEventArgs e)
+        protected void PrintTime(PaintEventArgs e)
         {
             string time = Game.CurrentTime.ToLongTimeString();
             time += " " + Game.CurrentTime.Millisecond;
@@ -247,14 +247,14 @@ namespace StartUpProject
             e.Graphics.DrawString(time, new Font("Arial", 13), Brushes.White, 1, 1);
             e.Graphics.DrawString(time1, new Font("Arial", 13), Brushes.White, 1, 15);
         }
-        private void PrintScriptInfo(PaintEventArgs e)
+        protected void PrintScriptInfo(PaintEventArgs e)
         {
             string info = ScriptManager.GetInfoString();
             if (info == null)
                 return;
             DialogManager.PrintDialogWindow(e, 600, 50, new Vector2(300, 200), 0, info, 17);
         }
-        private void GenerateLevel()
+        protected virtual void GenerateLevel()
         {
             CollisionDomain = new List<RealObject>();
             EnemiesCollisionDomain = new List<RealObject>();
@@ -283,37 +283,39 @@ namespace StartUpProject
             CreateEnemies();
 
 
-            DebugBear bear = new DebugBear(new List<RealObject>(), null);
-            bear.RealObject.Position = new Vector2(600, 440);
+            //DebugBear bear = new DebugBear(new List<RealObject>(), null);
+            //bear.RealObject.Position = new Vector2(600, 440);
 
-            
+            OldMan oldMan = new OldMan(new List<RealObject>(), null);
+            oldMan.RealObject.Position = new Vector2(500, 450);
 
-            NPCs.Add(bear);
+            //NPCs.Add(bear);
+            NPCs.Add(oldMan);
 
 
             Item ultraHat = ItemsManager.GetCustomItem("ultra_hat");
             ultraHat.UseItemExternal += () =>
             {
                 HintQueue.AddHint("Ультра режим", 5000);
-                Player.RealObject.SpeedX = 4;
+                Player.RealObject.SpeedX = 15;
             };
 
             
-            ScriptManager.RootScript.IsFinishedExternal += () =>
-            {
-                foreach (ComplexEnemy e in Enemies)
-                {
-                    if (e.Unit.IsAlive)
-                        return false;
-                }
-                if (Player.RealObject.direction == Direction.Left)
-                    Player.RealObject.direction = Direction.NoneLeft;
-                if (Player.RealObject.direction == Direction.Right)
-                    Player.RealObject.direction = Direction.NoneRight;
-                return true;
-            };
+            //ScriptManager.RootScript.IsFinishedExternal += () =>
+            //{
+            //    foreach (ComplexEnemy e in Enemies)
+            //    {
+            //        if (e.Unit.IsAlive)
+            //            return false;
+            //    }
+            //    if (Player.RealObject.direction == Direction.Left)
+            //        Player.RealObject.direction = Direction.NoneLeft;
+            //    if (Player.RealObject.direction == Direction.Right)
+            //        Player.RealObject.direction = Direction.NoneRight;
+            //    return true;
+            //};
         }
-        private void CreateEnemies()
+        protected void CreateEnemies()
         {
             Minotaur enemy = new Minotaur(CollisionDomain, Gravity);
 
@@ -339,7 +341,7 @@ namespace StartUpProject
             enemy2.PatrolPoint = new Vector2(3000, 400);
             Enemies.Add(enemy2);
         }
-        private void InitPlayer()
+        protected void InitPlayer()
         {
             Player = new ComplexUnit();
 
@@ -398,7 +400,7 @@ namespace StartUpProject
             }
 
         }
-        private int GetCameraBiasX()
+        protected int GetCameraBiasX()
         {
             int limit = 400;
             if (WorkAreaWidth - (int)Player.RealObject.Position.X + CameraBias < limit)
@@ -418,7 +420,7 @@ namespace StartUpProject
 
 
 
-        private void OnCollisionDetected(RealObject o1, RealObject o2)
+        protected void OnCollisionDetected(RealObject o1, RealObject o2)
         {
             ComplexSpell spell = FindSpell(o1);
             if (spell == null)
@@ -439,7 +441,7 @@ namespace StartUpProject
             }
 
         }
-        private void DestroySpell(ComplexSpell spell, ComplexObject unit)
+        protected void DestroySpell(ComplexSpell spell, ComplexObject unit)
         {
             if (spell.RealObject.SpeedX != 0)
                 spell.ManualyDeath();
@@ -450,7 +452,7 @@ namespace StartUpProject
                 if (spell.Spell == null)
                     d = (int)spell.Damage;
                 else
-                    spell.Spell.DealtDamage(out critical);
+                    d = spell.Spell.DealtDamage(out critical);
                 int dealedDamage = unit.Unit.GotDamaged(d, DamageType.Magic);
                 spell.DamagedUnits.Add((ComplexUnit)unit);
                 CreateTemporaryTitle("-" + dealedDamage.ToString(), unit.RealObject.Position, critical);
@@ -459,14 +461,14 @@ namespace StartUpProject
 
 
 
-        private ComplexSpell FindSpell(RealObject o)
+        protected ComplexSpell FindSpell(RealObject o)
         {
             foreach (ComplexSpell s in Spells)
                 if (s.RealObject.Equals(o))
                     return s;
             return null;
         }
-        private ComplexObject FindObject(RealObject o)
+        protected ComplexObject FindObject(RealObject o)
         {
             foreach (ComplexObject s in Enemies)
                 if (s.RealObject.Equals(o))
@@ -476,8 +478,8 @@ namespace StartUpProject
             return null;
         }
 
-        private List<ComplexObject> RemoveQueue = new List<ComplexObject>();
-        private void ChangeRealObjects()
+        protected List<ComplexObject> RemoveQueue = new List<ComplexObject>();
+        protected void ChangeRealObjects()
         {
             foreach(ComplexObject o in RemoveQueue)
             {
@@ -515,8 +517,8 @@ namespace StartUpProject
             
         }
 
-        private List<ComplexObject> TemporaryObjects = new List<ComplexObject>();
-        private void CheckTemporaryObjects()
+        protected List<ComplexObject> TemporaryObjects = new List<ComplexObject>();
+        protected void CheckTemporaryObjects()
         {
             try
             {
@@ -528,7 +530,7 @@ namespace StartUpProject
             }
             catch { }
         }
-        private void CreateTemporaryTitle(string title, Vector2 pos, bool critical)
+        protected void CreateTemporaryTitle(string title, Vector2 pos, bool critical)
         {
             RealObject r = new RealObject(new List<RealObject>());
             r.Position = new Vector2(pos.X, pos.Y);
@@ -536,7 +538,7 @@ namespace StartUpProject
             TemporaryTitle newTitle = new TemporaryTitle(title, 2, r, critical);
             TemporaryObjects.Add(newTitle);
         }
-        private void CleanObject(ComplexObject s)
+        protected void CleanObject(ComplexObject s)
         {
             if (!s.IsActive)
             {
@@ -553,7 +555,7 @@ namespace StartUpProject
             }
         }
 
-        private void OnTalkAvailable()
+        protected void OnTalkAvailable()
         {
             if (DialogManager.Dialog != null && DialogManager.Dialog.IsActive)
                 return;
@@ -623,8 +625,8 @@ namespace StartUpProject
 
             }
         }
-        private ComplexObject AvailableForTalkingNPC;
-        private void Interact(ComplexObject obj)
+        protected ComplexObject AvailableForTalkingNPC;
+        protected void Interact(ComplexObject obj)
         {
             if (obj == null)
                 return;
@@ -646,7 +648,7 @@ namespace StartUpProject
             }
             
         }
-        private void CreateTriggers()
+        protected void CreateTriggers()
         {
 
             RealObject Trigger1 = new RealObject(CollisionDomain, "test_trigger");

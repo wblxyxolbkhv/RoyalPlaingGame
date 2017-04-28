@@ -47,7 +47,6 @@ namespace StartUpProject
                     Animation.Start();
                     break;
             }
-
             return flyingSpell;
         }
         /// <summary>

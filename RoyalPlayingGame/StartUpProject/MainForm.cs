@@ -46,12 +46,12 @@ namespace StartUpProject
 
 
             pictureBox1.MouseClick += Level.OnMouseClick;
-            
+
 
             #endregion
 
 
-
+            playerInventoryControl1.Visible = false;
         }
 
 

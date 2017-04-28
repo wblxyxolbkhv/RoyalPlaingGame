@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.playerInventoryControl1 = new VisualPart.UserControls.PlayerInventoryControl();
             this.itemDescriptionControl1 = new VisualPart.UserControls.ItemDescriptionControl();
             this.lootPageControl1 = new VisualPart.UserControls.LootPageControl();
             this.fastAccessControl1 = new VisualPart.UserControls.FastAccessControl();
@@ -41,7 +42,6 @@
             this.scaleMP = new VisualPart.UserControls.Scale();
             this.scaleHP = new VisualPart.UserControls.Scale();
             this.playerMenu1 = new VisualPart.UserControls.PlayerMenu();
-            this.playerInventoryControl1 = new VisualPart.UserControls.PlayerInventoryControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,6 +55,15 @@
             this.pictureBox1.Size = new System.Drawing.Size(1008, 603);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // playerInventoryControl1
+            // 
+            this.playerInventoryControl1.Location = new System.Drawing.Point(200, 100);
+            this.playerInventoryControl1.Name = "playerInventoryControl1";
+            this.playerInventoryControl1.PlayerInventory = null;
+            this.playerInventoryControl1.Size = new System.Drawing.Size(600, 300);
+            this.playerInventoryControl1.TabIndex = 12;
+            this.playerInventoryControl1.Load += new System.EventHandler(this.playerInventoryControl1_Load);
             // 
             // itemDescriptionControl1
             // 
@@ -196,15 +205,6 @@
             this.playerMenu1.Strengh = 0;
             this.playerMenu1.TabIndex = 1;
             this.playerMenu1.Visible = false;
-            // 
-            // playerInventoryControl1
-            // 
-            this.playerInventoryControl1.Location = new System.Drawing.Point(200, 100);
-            this.playerInventoryControl1.Name = "playerInventoryControl1";
-            this.playerInventoryControl1.PlayerInventory = null;
-            this.playerInventoryControl1.Size = new System.Drawing.Size(600, 300);
-            this.playerInventoryControl1.TabIndex = 12;
-            this.playerInventoryControl1.Load += new System.EventHandler(this.playerInventoryControl1_Load);
             // 
             // MainForm
             // 

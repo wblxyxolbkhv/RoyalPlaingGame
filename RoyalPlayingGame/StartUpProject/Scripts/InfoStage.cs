@@ -9,7 +9,7 @@ namespace StartUpProject.Scripts
 {
     public class InfoStage : ScriptStage
     {
-        public InfoStage(int time, string info)
+        public InfoStage(int time, string info, string name):base(name)
         {
             Time = time;
             InformationString = info;

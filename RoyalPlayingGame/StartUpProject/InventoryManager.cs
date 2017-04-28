@@ -52,6 +52,7 @@ namespace StartUpProject
         }
         public void OnRefresh()
         {
+            pic.Visible = false;
             //InventoryControl.SlotsAmount = Player.Inventory.Slots;
             //InventoryControl.ItemList = Player.Inventory.GetItemList();
         }

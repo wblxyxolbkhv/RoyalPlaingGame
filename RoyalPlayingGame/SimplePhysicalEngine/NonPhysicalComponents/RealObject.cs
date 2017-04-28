@@ -144,19 +144,26 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             double step = SpeedX;
             foreach (RealObject ro in NearbyObjects)
             {
-                if (ReservedObjects.Contains(ro))
-                    continue;
-                if (this.Position.Y - ro.Position.Y >= 0 && this.Position.Y - ro.Position.Y < this.Height ||
-                    this.Position.Y - ro.Position.Y <= 0 && ro.Position.Y - this.Position.Y < ro.Height)
-                {
-                    if (this.Position.X <= ro.Position.X + ro.Width && this.Position.X >= ro.Position.X - this.Width)
-                        if (ro.Width != 4000 && this.Width != 4000 && ro.Width != 72 && this.Width != 72)
-                            DoCollision(step, ro);
-                    if (this.Position.X - ro.Position.X - ro.Width >= 0 && this.Position.X - ro.Position.X - ro.Width < SpeedX)
-                    {
-                        step = DoCollision(step, ro);
+                try
+                { 
+                    if (ReservedObjects.Contains(ro))
                         continue;
+                    if (this.Position.Y - ro.Position.Y >= 0 && this.Position.Y - ro.Position.Y < this.Height ||
+                        this.Position.Y - ro.Position.Y <= 0 && ro.Position.Y - this.Position.Y < ro.Height)
+                    {
+                        if (this.Position.X <= ro.Position.X + ro.Width && this.Position.X >= ro.Position.X - this.Width)
+                            if (ro.Width != 4000 && this.Width != 4000 && ro.Width != 72 && this.Width != 72)
+                                DoCollision(step, ro);
+                        if (this.Position.X - ro.Position.X - ro.Width >= 0 && this.Position.X - ro.Position.X - ro.Width < SpeedX)
+                        {
+                            step = DoCollision(step, ro);
+                            continue;
+                        }
                     }
+                }
+                catch (NullReferenceException n)
+                {
+                    continue;
                 }
 
             }
@@ -169,17 +176,24 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
             {
                 if (ReservedObjects.Contains(ro))
                     continue;
-                if (this.Position.Y - ro.Position.Y >= 0 && this.Position.Y - ro.Position.Y < ro.Height ||
-                    this.Position.Y - ro.Position.Y <= 0 && ro.Position.Y - this.Position.Y < this.Height)
+                try
                 {
-                    if (this.Position.X <= ro.Position.X + ro.Width && this.Position.X >= ro.Position.X - this.Width)
-                        if (ro.Width != 4000 && this.Width != 4000 && ro.Width != 72 && this.Width != 72)
-                            DoCollision(step, ro);
-                    if (ro.Position.X - this.Position.X - this.Width >= 0 && ro.Position.X - this.Position.X - this.Width < SpeedX)
+                    if (this.Position.Y - ro.Position.Y >= 0 && this.Position.Y - ro.Position.Y < ro.Height ||
+                        this.Position.Y - ro.Position.Y <= 0 && ro.Position.Y - this.Position.Y < this.Height)
                     {
-                        step = DoCollision(step, ro);
-                        continue;
+                        if (this.Position.X <= ro.Position.X + ro.Width && this.Position.X >= ro.Position.X - this.Width)
+                            if (ro.Width != 4000 && this.Width != 4000 && ro.Width != 72 && this.Width != 72)
+                                DoCollision(step, ro);
+                        if (ro.Position.X - this.Position.X - this.Width >= 0 && ro.Position.X - this.Position.X - this.Width < SpeedX)
+                        {
+                            step = DoCollision(step, ro);
+                            continue;
+                        }
                     }
+                }
+                catch (NullReferenceException n)
+                {
+                    continue;
                 }
                 
             }
