@@ -23,10 +23,12 @@ namespace StartUpProject.Enemies
             Unit.Health = 100;
             Unit.RealHealth = 100;
             Unit.BaseDamage = 10;
-            Unit.AddLoot(new RoyalPlayingGame.Items.Item("hat", "Шляпа", 1,1,1));
-            Unit.AddLoot(new RoyalPlayingGame.Items.Item("double_hat", "Двойная шляпа", 1,1,1));
-            Unit.AddLoot(new RoyalPlayingGame.Items.Item("triple_hat", "Тройная шляпа", 1,1,1));
-            unit.AddLoot(ItemsManager.GetCustomItem("ultra_hat"));
+            Unit.AddLoot(new Item("hat", "Шляпа", 1,1,1));
+            Unit.AddLoot(new Item("double_hat", "Двойная шляпа", 1,1,1));
+            Unit.AddLoot(new Item("triple_hat", "Тройная шляпа", 1,1,1));
+            Unit.AddLoot(ItemsManager.GetCustomItem("ultra_hat"));
+            Unit.AddLoot(new Item("cool_book", "Книгга", 1, 1, 1));
+
 
             RealObject = new RealObject(CollisionDomain, Gravity);
             RealObject.Height = 106;

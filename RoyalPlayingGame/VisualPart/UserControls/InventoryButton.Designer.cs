@@ -1,6 +1,6 @@
 ﻿namespace VisualPart.UserControls
 {
-    partial class PlayerInventoryControl
+    partial class InventoryButton
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -28,43 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.itemDescriptionControl1 = new VisualPart.UserControls.ItemDescriptionControl();
-            this.itemMenuControl1 = new VisualPart.UserControls.ItemMenuControl();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // itemDescriptionControl1
+            // label1
             // 
-            this.itemDescriptionControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.itemDescriptionControl1.Item = null;
-            this.itemDescriptionControl1.Location = new System.Drawing.Point(151, 40);
-            this.itemDescriptionControl1.Name = "itemDescriptionControl1";
-            this.itemDescriptionControl1.Size = new System.Drawing.Size(121, 54);
-            this.itemDescriptionControl1.TabIndex = 1;
-            this.itemDescriptionControl1.Visible = false;
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Black;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(33, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(2, 15);
+            this.label1.TabIndex = 1;
+            this.label1.Visible = false;
             // 
-            // itemMenuControl1
+            // button1
             // 
-            this.itemMenuControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.itemMenuControl1.Location = new System.Drawing.Point(80, 78);
-            this.itemMenuControl1.Name = "itemMenuControl1";
-            this.itemMenuControl1.Size = new System.Drawing.Size(106, 90);
-            this.itemMenuControl1.TabIndex = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(48, 48);
+            this.button1.TabIndex = 0;
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // PlayerInventoryControl
+            // InventoryButton
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.itemDescriptionControl1);
-            this.Controls.Add(this.itemMenuControl1);
-            this.Name = "PlayerInventoryControl";
-            this.Size = new System.Drawing.Size(275, 234);
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button1);
+            this.Name = "InventoryButton";
+            this.Size = new System.Drawing.Size(48, 48);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private ItemMenuControl itemMenuControl1;
-        private ItemDescriptionControl itemDescriptionControl1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
     }
 }

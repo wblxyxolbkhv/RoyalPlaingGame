@@ -46,12 +46,12 @@ namespace RoyalPlayingGame
         public static void LoadItemImageList()
         {
             string[] imageNames = Directory.GetFiles("ItemImages");
-            foreach(string name in imageNames)
+            foreach(string ID in imageNames)
             {
-                string newName = Path.GetFileName(name);
-                newName = newName.Split('.')[0];
-                Bitmap b = (Bitmap)Image.FromFile(name);
-                ImageList.Add(newName, b);
+                string newID = Path.GetFileName(ID);
+                newID = newID.Split('.')[0];
+                Bitmap b = (Bitmap)Image.FromFile(ID);
+                ImageList.Add(newID, b);
                 
             }
         }
@@ -59,18 +59,18 @@ namespace RoyalPlayingGame
         /// <summary>
         /// Выбор соответствующего предмету изображения
         /// </summary>
-        /// <param name="itemName"></param>
+        /// <param name="itemID"></param>
         /// <returns></returns>
-        public static Bitmap GetItemImage(string itemName)
+        public static Bitmap GetItemImage(string itemID)
         {
             foreach(KeyValuePair<string,Bitmap> pair in ImageList)
             {
-                if (pair.Key == itemName)
+                if (pair.Key == itemID)
                 {
                     return pair.Value;
                 }
             }
-            throw new ImageNotFoundException();
+            return null;
         }
         public static Item GetCustomItem(string itemName)
         {

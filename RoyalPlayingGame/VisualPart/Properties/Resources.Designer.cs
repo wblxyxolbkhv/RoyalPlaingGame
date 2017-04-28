@@ -73,6 +73,16 @@ namespace VisualPart.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BagBackGround {
+            get {
+                object obj = ResourceManager.GetObject("BagBackGround", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fireball_0 {
             get {
                 object obj = ResourceManager.GetObject("fireball_0", resourceCulture);

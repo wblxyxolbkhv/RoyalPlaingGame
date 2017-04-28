@@ -19,8 +19,8 @@ namespace VisualPart.UserControls
             InitializeComponent();
             ItemList = new List<Item>();
             AllBagSlots = new List<PictureBox>();
-            ItemsManager.SlotsChanged += PlacePictureBoxes;
-            ItemsManager.ItemAdded += UpdateAllItemPictureBoxes;
+             //ItemsManager.SlotsChanged += PlacePictureBoxes;
+            // ItemsManager.ItemAdded += UpdateAllItemPictureBoxes;
         }
 
         public List<Item> ItemList { get; set; }
@@ -71,14 +71,14 @@ namespace VisualPart.UserControls
                 PotionsBagSlots = new List<PictureBox>();
                 OtherBagSlots = new List<PictureBox>();
             }
-            
+
             int x1 = 25;
             int y1 = 20;
             for (int i = 0; i < SlotsAmount; i++)
             {
                 LocatePictureBox(AllBagSlots, tabPageAll, ref x1, ref y1, Image.FromFile("NullSlotImage.png"));
             }
-           // UpdateAllItemPictureBoxes();
+            //UpdateAllItemPictureBoxes();
 
             //НЕ УБИРАТЬ, РАСКОММЕНТИТЬ ПОСЛЕ ЗАПОЛНЕНИЯ СПИСКА ИЗОБРАЖЕНИЙ
 
@@ -109,18 +109,18 @@ namespace VisualPart.UserControls
             //        LocatePictureBox(OtherBagSlots, tabPageOther, ref x5, ref y5, ItemsManager.GetItemImage(item.Name));
             //    }
 
-            //}
         }
+
 
         /// <summary>
         /// Располагает пикчербокс для предмета и добавляет его 
         /// в заданную коллекцию контролов
         /// </summary>
-        /// <param name="bagSlots"></param>
-        /// <param name="page"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="image"></param>
+        /// <param name = "bagSlots" ></ param >
+        /// < param name="page"></param>
+        /// <param name = "x" ></ param >
+        /// < param name="y"></param>
+        /// <param name = "image" ></ param >
         private void LocatePictureBox(List<PictureBox> bagSlots, TabPage page, ref int x, ref int y, Image image)
         {
             PictureBox itemPictureBox = new PictureBox();
@@ -141,5 +141,6 @@ namespace VisualPart.UserControls
 
 
     }
-
 }
+
+
