@@ -63,7 +63,7 @@
             this.playerInventoryControl1.PlayerInventory = null;
             this.playerInventoryControl1.Size = new System.Drawing.Size(600, 300);
             this.playerInventoryControl1.TabIndex = 12;
-            this.playerInventoryControl1.Load += new System.EventHandler(this.playerInventoryControl1_Load);
+//            this.playerInventoryControl1.Load += new System.EventHandler(this.playerInventoryControl1_Load);
             // 
             // itemDescriptionControl1
             // 
