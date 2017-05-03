@@ -137,27 +137,10 @@ C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlay
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.TabControl.resources
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.TabItem.resources
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.Inventory.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.csprojResolveAssemblyReference.cache
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.Properties.Resources.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.ActiveQuestControl.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.ChoiceBox.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.FastAccessControl.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.InterfaceControl.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.InventoryControl.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.InventoryInterface.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.InventoryPage.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.ItemDescriptionControl.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.ItemMenuControl.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.JournalControl.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.JournalNoteControl.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.LootPageControl.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.LootPageElement.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.PlayerInventoryControl.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.PlayerMenu.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.Scale.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.SkillPanel.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.TabControl.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.TabItem.resources
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.csproj.GenerateResource.Cache
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.dll
-C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.pdb
+C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.InterfaceControl.resources
+C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.InventoryInterface.resources
+C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.ItemMenuControl.resources
+C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.PlayerInventoryControl.resources
+C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.TabControl.resources
+C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.TabItem.resources
+C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.InventoryButton.resources

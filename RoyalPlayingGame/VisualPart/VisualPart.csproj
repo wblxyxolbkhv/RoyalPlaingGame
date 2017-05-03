@@ -73,6 +73,12 @@
     <Compile Include="UserControls\InterfaceControl.Designer.cs">
       <DependentUpon>InterfaceControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\InventoryButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\InventoryButton.Designer.cs">
+      <DependentUpon>InventoryButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\InventoryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\InterfaceControl.resx">
       <DependentUpon>InterfaceControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\InventoryButton.resx">
+      <DependentUpon>InventoryButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\InventoryControl.resx">
       <DependentUpon>InventoryControl.cs</DependentUpon>

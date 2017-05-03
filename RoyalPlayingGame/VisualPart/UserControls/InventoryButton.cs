@@ -36,7 +36,7 @@ namespace VisualPart.UserControls
             if (Parent != null)
                 (Parent as PlayerInventoryControl).OnMouseMove(this, e);
         }
-        
+
         private void OnMouseLeave(object sender, EventArgs e)
         {
             if (Parent != null)
