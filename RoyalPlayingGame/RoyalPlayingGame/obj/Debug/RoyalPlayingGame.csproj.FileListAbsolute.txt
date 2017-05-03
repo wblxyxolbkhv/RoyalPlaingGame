@@ -41,3 +41,10 @@ C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlay
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.csprojResolveAssemblyReference.cache
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.dll
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.pdb
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\RoyalPlayingGame.dll
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\RoyalPlayingGame.pdb
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\SimplePhysicalEngine.dll
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\SimplePhysicalEngine.pdb
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.csprojResolveAssemblyReference.cache
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.dll
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.pdb
