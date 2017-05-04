@@ -12,6 +12,7 @@ using RoyalPlayingGame.Units;
 using RoyalPlayingGame.Items;
 using System.Drawing;
 using StartUpProject.Enemies;
+using StartUpProject.Spells;
 using StartUpProject.Dialogs;
 using RoyalPlayingGame;
 using StartUpProject.Scripts;
@@ -55,11 +56,31 @@ namespace StartUpProject
 
             ScriptManager.AddActionDelegate("fight_stage", () =>
             {
+                Random rnd = new Random();
                 CastEnemySpell(Player.Cast(new FireBall(0, 0), CollisionDomain));
+                CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
+
                 Thread.Sleep(500);
+                CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
                 Player.RealObject.direction = Direction.Right;
-                Thread.Sleep(500);
+                CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
+
+                Thread.Sleep(900);
+                CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
                 Player.RealObject.direction = Direction.NoneRight;
+                CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
+                CastEnemySpell(Player.Cast(new FrostDragonHead(0, 0), CollisionDomain));
+                CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
+
+                Thread.Sleep(1000);
+                CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
+                CastEnemySpell(Player.Cast(new RoyalPlayingGame.Spell.NegativeSpells.IceWave(0, 0), CollisionDomain));
+                CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
+
+                Thread.Sleep(1000);
+                CastEnemySpell(new Orb(new Vector2(
+                    Player.RealObject.Position.X - 120,
+                    Player.RealObject.Position.Y - 45)));
             }
             );
         }

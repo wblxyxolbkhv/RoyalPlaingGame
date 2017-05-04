@@ -84,6 +84,8 @@
     <Compile Include="Spells\Fireball.cs" />
     <Compile Include="Spells\FireDragonHead.cs" />
     <Compile Include="Spells\IceWave.cs" />
+    <Compile Include="Spells\Lighting.cs" />
+    <Compile Include="Spells\Orb.cs" />
     <Compile Include="StartLevel.cs" />
     <Compile Include="TemporaryTitle.cs" />
     <EmbeddedResource Include="MainForm.resx">
