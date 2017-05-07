@@ -113,6 +113,7 @@ namespace StartUpProject
             ActiveQuestManager.OnRefresh();
             QuestJournalManager.OnRefresh();
             Player.OnRefresh(sender, e);
+            AddSpells();
             foreach (ComplexEnemy o in Enemies)
             {
                 o.OnRefresh(sender, e);
@@ -134,6 +135,15 @@ namespace StartUpProject
             OnTalkAvailable();
             CameraBias = GetCameraBiasX();
             OnScriptsCheck();
+        }
+        protected void AddSpells()
+        {
+            foreach (ComplexSpell spell in AddSpellQueue)
+            {
+                spell.Animation.Start();
+                Spells.Add(spell);
+            }
+            AddSpellQueue.Clear();
         }
         protected void OnScriptsCheck()
         {
@@ -212,14 +222,14 @@ namespace StartUpProject
             ComplexSpell s = Player.Cast(spell, CollisionDomain);
             s.Spell = spell;
             s.RealObject.CollisionDetected += OnCollisionDetected;
-            Spells.Add(s);
+            AddSpellQueue.Add(s);
         }
         protected void CastEnemySpell(ComplexSpell spell)
         {
             if (spell == null)
                 return;
             spell.RealObject.CollisionDetected += OnCollisionDetected;
-            Spells.Add(spell);
+            AddSpellQueue.Add(spell);
         }
         public void OnKeyUpExternal(object sender, KeyEventArgs e)
         {
@@ -479,6 +489,7 @@ namespace StartUpProject
         }
 
         protected List<ComplexObject> RemoveQueue = new List<ComplexObject>();
+        protected List<ComplexSpell> AddSpellQueue = new List<ComplexSpell>();
         protected void ChangeRealObjects()
         {
             foreach(ComplexObject o in RemoveQueue)

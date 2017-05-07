@@ -73,3 +73,18 @@ C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlay
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.csproj.GenerateResource.Cache
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.exe
 C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.pdb
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\StartUpProject.exe.config
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.exe
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.pdb
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.csprojResolveAssemblyReference.cache
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.MainForm.resources
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.Properties.Resources.resources
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\obj\Debug\StartUpProject.csproj.GenerateResource.Cache
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\StartUpProject.exe
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\StartUpProject.pdb
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\RoyalPlayingGame.dll
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\SimplePhysicalEngine.dll
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\VisualPart.dll
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\RoyalPlayingGame.pdb
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\SimplePhysicalEngine.pdb
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\StartUpProject\bin\Debug\VisualPart.pdb

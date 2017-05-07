@@ -63,7 +63,6 @@
             this.playerInventoryControl1.PlayerInventory = null;
             this.playerInventoryControl1.Size = new System.Drawing.Size(600, 300);
             this.playerInventoryControl1.TabIndex = 12;
-//            this.playerInventoryControl1.Load += new System.EventHandler(this.playerInventoryControl1_Load);
             // 
             // itemDescriptionControl1
             // 
@@ -225,6 +224,7 @@
             this.Controls.Add(this.playerMenu1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RoyalPlayGame";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

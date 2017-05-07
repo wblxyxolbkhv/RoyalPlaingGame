@@ -17,7 +17,17 @@ namespace StartUpProject
             RealObject = new RealObject(CollisionDomain);
             RealObject.AddReservedObject(caster);
             // TODO: подчистить за собой хвосты
-            caster.AddReservedObject(RealObject);
+            if (caster != null)
+                caster.AddReservedObject(RealObject);
+        }
+        /// <summary>
+        /// конструктор для спеллов, которые никого не задевают
+        /// </summary>
+        public ComplexSpell()
+        {
+            IsActive = true;
+            DamagedUnits = new List<ComplexUnit>();
+            RealObject = new RealObject();
         }
         public NegativeSpell Spell { get; set; }
         public double Damage { get; set; }

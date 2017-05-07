@@ -23,7 +23,30 @@ namespace VisualPart
             Mode = AnimationMode.Loop;
             IsActive = true;
 
-            GetFrames();
+            GetFrames(Color.White);
+            if (frames.Count == 0)
+            {
+                CurrentFrame = null;
+                currentFrameIndex = -1;
+            }
+            else
+            {
+                CurrentFrame = frames[0];
+                currentFrameIndex = 0;
+            }
+        }
+        public Animation(string folder, int delay, Color c)
+        {
+            frames = new List<Image>();
+            Folder = folder;
+            //updateFrameTimer = new Timer();
+            Delay = delay;
+            //updateFrameTimer.Interval = Delay;
+            //updateFrameTimer.Tick += OnUpdateFrame;
+            Mode = AnimationMode.Loop;
+            IsActive = true;
+
+            GetFrames(c);
             if (frames.Count == 0)
             {
                 CurrentFrame = null;
@@ -54,7 +77,7 @@ namespace VisualPart
             }
         }
 
-        private void GetFrames()
+        private void GetFrames(Color c)
         {
             int frameNum = 0;
             while (true)
@@ -68,7 +91,7 @@ namespace VisualPart
                 {
                     break;
                 }
-                i.MakeTransparent(Color.White);
+                i.MakeTransparent(c);
                 frames.Add(i);
                 frameNum++;
             }
