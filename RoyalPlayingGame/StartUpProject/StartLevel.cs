@@ -81,6 +81,11 @@ namespace StartUpProject
                 CastEnemySpell(new Orb(new Vector2(
                     Player.RealObject.Position.X - 120,
                     Player.RealObject.Position.Y - 45)));
+
+                Thread.Sleep(100);
+                Player.RealObject.Position = new Vector2(-10, 200);
+                Thread.Sleep(300);
+                Game.SetLevelInOtherThread("default");
             }
             );
         }

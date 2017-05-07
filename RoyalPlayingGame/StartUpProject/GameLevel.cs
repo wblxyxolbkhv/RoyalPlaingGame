@@ -74,13 +74,16 @@ namespace StartUpProject
         public QuestJournalManager QuestJournalManager { get; set; }
         public InventoryManager InventoryManager { get; set; }
         public LootPageManager LootPageManager { get; set; }
+
         protected HintQueue HintQueue { get; set; }
+        public Image Background { get; set; }
 
         public int Interval { get; set; }
         public bool IsControlStop = false;
 
         public void OnPrintAllObjects(object sender, PaintEventArgs e)
         {
+            PrintBackground(e);
             Player.PrintObject(e, CameraBias);
             foreach (ComplexStructure o in Structures)
                 o.PrintTexture(e, CameraBias);
@@ -247,7 +250,10 @@ namespace StartUpProject
                     break;
             }
         }
-
+        protected void PrintBackground(PaintEventArgs e)
+        {
+            e.Graphics.DrawImage(Background, new PointF(0, 0));
+        }
         protected void PrintTime(PaintEventArgs e)
         {
             string time = Game.CurrentTime.ToLongTimeString();

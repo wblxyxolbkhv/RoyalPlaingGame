@@ -32,7 +32,7 @@ namespace StartUpProject.Enemies
             RealObject.direction = Direction.NoneLeft;
 
 
-            WalkAnimationLeft = new Animation("DarkLord", 50);
+            WalkAnimationLeft = new Animation("DarkLord", 30);
             WalkAnimationLeft.Mode = AnimationMode.Loop;
             WalkAnimationLeft.Start();
 
