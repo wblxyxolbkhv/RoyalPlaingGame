@@ -24,6 +24,7 @@ namespace StartUpProject.Scripts
             RealTimeScriptStage stage = new RealTimeScriptStage("fight_stage");
             RootScript.NextStage = stage;
             ScriptStage last = new ScriptStage("last");
+            last.isWaiting = true;
             last.IsFinishedExternal += () =>
             {
                 return false;

@@ -53,9 +53,19 @@ namespace StartUpProject.GlobalGameComponents
             timeSpan = DateTime.Now - CurrentTime;
             DeltaTime = timeSpan.Milliseconds;
             CurrentTime = DateTime.Now;
+            if (newLevelName != null)
+                SetLevel(newLevelName);
         }
 
-
+        static string newLevelName = null;
+        /// <summary>
+        /// установка следующего уровня из другого потока
+        /// </summary>
+        /// <param name="levelName"></param>
+        public static void SetLevelInOtherThread(string levelName)
+        {
+            newLevelName = levelName;
+        }
         public static void SetControlVisible(bool turn)
         {
             MainForm.SetControlVisible(turn);
@@ -66,6 +76,31 @@ namespace StartUpProject.GlobalGameComponents
         public static void SetControlAvaible(bool turn)
         {
             GameLevel.IsControlStop = !turn;
+        }
+        /// <summary>
+        /// установка следующего уровня
+        /// </summary>
+        /// <param name="levelName"></param>
+        public static void SetLevel(string levelName)
+        {
+            switch (levelName)
+            {
+                case "start":
+                    break;
+                case "default":
+                    MainForm.ResetLevel(GameLevel);
+                    Timer.Tick -= GameLevel.OnRefresh;
+                    GameLevel = null;
+                    //GC.Collect();
+
+
+                    GameLevel = new GameLevel();
+                    GameLevel.Interval = Interval;
+                    MainForm.SetLevel(GameLevel);
+                    Timer.Tick += GameLevel.OnRefresh;
+                    break;
+            }
+            newLevelName = null;
         }
     }
 }

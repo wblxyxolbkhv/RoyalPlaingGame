@@ -16,7 +16,7 @@ namespace StartUpProject.Spells
             RealObject.Position = caster.GetCastPoint();
             RealObject.Height = 17;
             RealObject.Width = 26;
-            RealObject.SpeedX = 8;
+            RealObject.SpeedX = 12;
             WalkAnimationLeft = new Animation("Spells/Fireball/WalkLeftFireball", 200);
             WalkAnimationLeft.Start();
             WalkAnimationRight = new Animation("Spells/Fireball/WalkRightFireball", 200);
