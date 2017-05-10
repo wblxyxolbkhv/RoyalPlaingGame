@@ -62,6 +62,7 @@ namespace StartUpProject.Scripts
                         r.RealTimeAction += ExternalActionDelegates[r.Name];
                         Thread t = new Thread(r.RealTimeAction);
                         r.Thread = t;
+                        t.Priority = ThreadPriority.Lowest;
                         t.Start();
                     }
                 }

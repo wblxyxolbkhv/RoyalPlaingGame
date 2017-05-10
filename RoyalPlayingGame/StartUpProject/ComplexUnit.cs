@@ -79,7 +79,9 @@ namespace StartUpProject
         public override void OnRefresh(object sender, EventArgs e)
         {
             RealObject.OnRefreshPosition(sender, e);
-            Animation.OnUpdateFrame(GlobalGameComponents.Game.DeltaTime);
+            if (Animation != null)
+                Animation.OnUpdateFrame(GlobalGameComponents.Game.DeltaTime);
+            else return;
             if (Animation.Mode == AnimationMode.Once && Animation.IsActive)
                 return;
             if (RealObject.IsJumpingDown || RealObject.IsJumpingUp)
@@ -110,6 +112,9 @@ namespace StartUpProject
                         Animation = NonActivityAnimationRight ?? DefaultAnimation;
                         break;
                 }
+
+
+            
         }
 
         DateTime cooldownTime = new DateTime();

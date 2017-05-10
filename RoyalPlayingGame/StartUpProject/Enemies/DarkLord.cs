@@ -19,12 +19,12 @@ namespace StartUpProject.Enemies
         public DarkLord(List<RealObject> CollisionDomain, Power Gravity)
         {
 
-            Unit = new Unit(1001);
+            Unit = new Unit(1003);
             Unit.Health = 100;
             Unit.RealHealth = 100;
             RealObject = new RealObject(CollisionDomain, Gravity);
-            RealObject.Height = 106;
-            RealObject.Width = 110;
+            RealObject.Height = 161;
+            RealObject.Width = 216;
             IndentX = 0;
             IndentY = 0;
             RealObject.SpeedX = 0;

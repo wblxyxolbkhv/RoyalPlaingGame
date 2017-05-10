@@ -41,7 +41,7 @@ namespace StartUpProject.GlobalGameComponents
         private static GameLevel GameLevel;
 
         static Timer Timer = new Timer();
-        private static int Interval = 10;
+        private static int Interval = 20;
         private static TimeSpan timeSpan;
 
 

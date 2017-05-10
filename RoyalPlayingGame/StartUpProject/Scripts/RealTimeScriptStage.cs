@@ -8,7 +8,7 @@ using System.Threading;
 namespace StartUpProject.Scripts
 {
     /// <summary>
-    /// класс
+    /// стадия скрипта, выполняемая в отдельном потоке
     /// </summary>
     public class RealTimeScriptStage : ScriptStage
     {

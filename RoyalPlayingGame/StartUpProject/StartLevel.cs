@@ -59,22 +59,31 @@ namespace StartUpProject
                 Random rnd = new Random();
                 CastEnemySpell(Player.Cast(new FireBall(0, 0), CollisionDomain));
                 CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
+                CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
+                CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
 
                 Thread.Sleep(500);
                 CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
+                CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
                 Player.RealObject.direction = Direction.Right;
+                CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
                 CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
 
                 Thread.Sleep(900);
                 CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
+                CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
                 Player.RealObject.direction = Direction.NoneRight;
                 CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
+                CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
                 CastEnemySpell(Player.Cast(new FrostDragonHead(0, 0), CollisionDomain));
+                CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
                 CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
 
                 Thread.Sleep(1000);
                 CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
+                CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
                 CastEnemySpell(Player.Cast(new RoyalPlayingGame.Spell.NegativeSpells.IceWave(0, 0), CollisionDomain));
+                CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
                 CastEnemySpell(new Lighting(new Vector2(rnd.Next(50, 1000), 300)));
 
                 Thread.Sleep(1000);
@@ -83,7 +92,7 @@ namespace StartUpProject
                     Player.RealObject.Position.Y - 45)));
 
                 Thread.Sleep(100);
-                Player.RealObject.Position = new Vector2(-10, 200);
+                Player.RealObject.Position = new Vector2(Player.RealObject.Position.X, 2000);
                 Thread.Sleep(300);
                 Game.SetLevelInOtherThread("default");
             }

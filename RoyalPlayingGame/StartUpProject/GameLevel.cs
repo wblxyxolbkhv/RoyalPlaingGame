@@ -143,6 +143,7 @@ namespace StartUpProject
         {
             foreach (ComplexSpell spell in AddSpellQueue)
             {
+                spell.RealObject.CollisionDetected += OnCollisionDetected;
                 spell.Animation.Start();
                 Spells.Add(spell);
             }
@@ -231,7 +232,6 @@ namespace StartUpProject
         {
             if (spell == null)
                 return;
-            spell.RealObject.CollisionDetected += OnCollisionDetected;
             AddSpellQueue.Add(spell);
         }
         public void OnKeyUpExternal(object sender, KeyEventArgs e)
@@ -279,7 +279,7 @@ namespace StartUpProject
             Spells = new List<ComplexSpell>();
             Enemies = new List<ComplexEnemy>();
             NPCs = new List<ComplexUnit>();
-            Gravity = new Power(0.01 * new Vector2(0, 1));
+            Gravity = new Power(0.02 * new Vector2(0, 1));
 
             InitPlayer();
 
@@ -374,7 +374,7 @@ namespace StartUpProject
             Player.RealObject.CollisionDetected += OnCollisionDetected;
             Player.IndentY = 3;
             Player.IndentX = 21;
-            Player.RealObject.SpeedX = 4;
+            Player.RealObject.SpeedX = 8;
             Player.NonActivityAnimationLeft = new Animation("Player/NonActivityAnimationLeft", 100);
             Player.NonActivityAnimationLeft.Start();
             Player.NonActivityAnimationRight = new Animation("Player/NonActivityAnimationRight", 100);
