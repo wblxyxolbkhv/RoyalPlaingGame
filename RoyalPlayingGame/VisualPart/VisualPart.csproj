@@ -55,11 +55,23 @@
     <Compile Include="UserControls\ActiveQuestControl.Designer.cs">
       <DependentUpon>ActiveQuestControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\AdvancedLabel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AdvancedLabel.Designer.cs">
+      <DependentUpon>AdvancedLabel.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ChoiceBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\ChoiceBox.Designer.cs">
       <DependentUpon>ChoiceBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ChoiceBoxInterface.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ChoiceBoxInterface.Designer.cs">
+      <DependentUpon>ChoiceBoxInterface.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\FastAccessControl.cs">
       <SubType>UserControl</SubType>
@@ -151,6 +163,12 @@
     <Compile Include="UserControls\Scale.Designer.cs">
       <DependentUpon>Scale.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Scroll.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Scroll.Designer.cs">
+      <DependentUpon>Scroll.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SkillPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -178,8 +196,14 @@
     <EmbeddedResource Include="UserControls\ActiveQuestControl.resx">
       <DependentUpon>ActiveQuestControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AdvancedLabel.resx">
+      <DependentUpon>AdvancedLabel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ChoiceBox.resx">
       <DependentUpon>ChoiceBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ChoiceBoxInterface.resx">
+      <DependentUpon>ChoiceBoxInterface.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FastAccessControl.resx">
       <DependentUpon>FastAccessControl.cs</DependentUpon>

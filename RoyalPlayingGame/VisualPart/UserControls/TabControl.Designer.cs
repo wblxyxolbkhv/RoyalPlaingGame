@@ -38,6 +38,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.tabItem1 = new VisualPart.UserControls.TabItem();
+            this.tabItem2 = new VisualPart.UserControls.TabItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -53,9 +54,9 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(9, 165);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 261);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(257, 4);
+            this.pictureBox1.Size = new System.Drawing.Size(324, 4);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
@@ -64,9 +65,9 @@
             this.pbRight.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pbRight.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbRight.BackgroundImage")));
-            this.pbRight.Location = new System.Drawing.Point(264, 1);
+            this.pbRight.Location = new System.Drawing.Point(331, 1);
             this.pbRight.Name = "pbRight";
-            this.pbRight.Size = new System.Drawing.Size(4, 165);
+            this.pbRight.Size = new System.Drawing.Size(4, 261);
             this.pbRight.TabIndex = 4;
             this.pbRight.TabStop = false;
             // 
@@ -77,7 +78,7 @@
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.Location = new System.Drawing.Point(-1, 1);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(4, 165);
+            this.pictureBox2.Size = new System.Drawing.Size(4, 261);
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             // 
@@ -85,7 +86,7 @@
             // 
             this.pbLeftDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pbLeftDown.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbLeftDown.BackgroundImage")));
-            this.pbLeftDown.Location = new System.Drawing.Point(-1, 159);
+            this.pbLeftDown.Location = new System.Drawing.Point(-1, 255);
             this.pbLeftDown.Name = "pbLeftDown";
             this.pbLeftDown.Size = new System.Drawing.Size(11, 10);
             this.pbLeftDown.TabIndex = 6;
@@ -95,7 +96,7 @@
             // 
             this.pbRightDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pbRightDown.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbRightDown.BackgroundImage")));
-            this.pbRightDown.Location = new System.Drawing.Point(257, 159);
+            this.pbRightDown.Location = new System.Drawing.Point(324, 255);
             this.pbRightDown.Name = "pbRightDown";
             this.pbRightDown.Size = new System.Drawing.Size(11, 10);
             this.pbRightDown.TabIndex = 7;
@@ -117,7 +118,7 @@
             this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
             this.pictureBox4.Location = new System.Drawing.Point(9, -10);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(257, 49);
+            this.pictureBox4.Size = new System.Drawing.Size(324, 49);
             this.pictureBox4.TabIndex = 10;
             this.pictureBox4.TabStop = false;
             // 
@@ -125,7 +126,7 @@
             // 
             this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
-            this.pictureBox5.Location = new System.Drawing.Point(258, -10);
+            this.pictureBox5.Location = new System.Drawing.Point(325, -10);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(10, 47);
             this.pictureBox5.TabIndex = 12;
@@ -142,11 +143,23 @@
             this.tabItem1.TabIndex = 13;
             this.tabItem1.Title = "Все предметы";
             // 
+            // tabItem2
+            // 
+            this.tabItem2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabItem2.BackgroundImage")));
+            this.tabItem2.IsActive = false;
+            this.tabItem2.Location = new System.Drawing.Point(167, 0);
+            this.tabItem2.MinimumSize = new System.Drawing.Size(74, 37);
+            this.tabItem2.Name = "tabItem2";
+            this.tabItem2.Size = new System.Drawing.Size(74, 37);
+            this.tabItem2.TabIndex = 14;
+            this.tabItem2.Title = "Все предметы";
+            // 
             // TabControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.Controls.Add(this.tabItem2);
             this.Controls.Add(this.tabItem1);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
@@ -158,7 +171,7 @@
             this.Controls.Add(this.pictureBox1);
             this.MinimumSize = new System.Drawing.Size(268, 169);
             this.Name = "TabControl";
-            this.Size = new System.Drawing.Size(268, 169);
+            this.Size = new System.Drawing.Size(335, 265);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -182,5 +195,6 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
         private TabItem tabItem1;
+        private TabItem tabItem2;
     }
 }

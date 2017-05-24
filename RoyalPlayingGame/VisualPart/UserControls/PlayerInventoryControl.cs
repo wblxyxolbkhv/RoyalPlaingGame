@@ -30,14 +30,13 @@ namespace VisualPart.UserControls
             MouseDown += OnMouseDown;          
             ItemsManager.SlotsChanged += PlaceButtons;
             ItemsManager.ItemAdded += UdpateButtons;
-
         }
 
         private void UdpateButtons()
         {
             for (int i = 0; i < PlayerInventory.Count; i++)
             {
-                foreach (Control c in Controls)
+                foreach (Control c in interfaceControl1.Controls)
                 {
                     InventoryButton ib1 = c as InventoryButton;
                     if (ib1 == null)
@@ -65,7 +64,7 @@ namespace VisualPart.UserControls
                 if (b1 == null)
                     continue;
                 if (b1.AccessibleName == "Кнопка с предметом") 
-                    Controls.Remove(b1);
+                    interfaceControl1.Controls.Remove(b1);
             }
             int x = 25;
             int y = 42;
@@ -134,7 +133,7 @@ namespace VisualPart.UserControls
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            e.Graphics.DrawImage(Properties.Resources.BagBackGround, new Point(0, 33));
+            //e.Graphics.DrawImage(Properties.Resources.BagBackGround, new Point(0, 33));
 
             //int x = 25;
             //int y = 42;
@@ -184,7 +183,7 @@ namespace VisualPart.UserControls
             l1.Location = new Point(x, y);
             l1.Text = labelText;
             l1.AccessibleName = "Вкладки";
-            Controls.Add(l1);
+            interfaceControl1.Controls.Add(l1);
             l1.Width = 50;
             l1.MouseClick += OnLabelMouseClick;
             if (labelText == "All")
@@ -200,7 +199,7 @@ namespace VisualPart.UserControls
 
         private void OnLabelMouseClick(object sender, MouseEventArgs e)
         {
-            foreach (Control c in Controls)
+            foreach (Control c in interfaceControl1.Controls)
             {
                 Label l1 = c as Label;
                 if ((l1 == null)|| (l1.AccessibleName != "Вкладки"))
@@ -223,7 +222,7 @@ namespace VisualPart.UserControls
                 //itemButton.MouseDown += OnButtonClick;
                 //itemButton.MouseMove += OnMouseMove;
                 //itemButton.MouseLeave += OnMouseLeave;
-                Controls.Add(itemButton);
+                interfaceControl1.Controls.Add(itemButton);
 
                 try
                 {

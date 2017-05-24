@@ -76,6 +76,7 @@ namespace StartUpProject
         public LootPageManager LootPageManager { get; set; }
 
         protected HintQueue HintQueue { get; set; }
+        public Image FixedBackground { get; set; }
         public Image Background { get; set; }
 
         public int Interval { get; set; }
@@ -252,7 +253,11 @@ namespace StartUpProject
         }
         protected void PrintBackground(PaintEventArgs e)
         {
-            e.Graphics.DrawImage(Background, new PointF(0, 0));
+            if (Background != null)
+                e.Graphics.DrawImage(Background, new PointF(0, 0));
+            else
+                e.Graphics.DrawImage(FixedBackground, new PointF(0, 0));
+
         }
         protected void PrintTime(PaintEventArgs e)
         {
@@ -272,6 +277,7 @@ namespace StartUpProject
         }
         protected virtual void GenerateLevel()
         {
+            Background = Image.FromFile("Textures/background_dark.png");
             CollisionDomain = new List<RealObject>();
             EnemiesCollisionDomain = new List<RealObject>();
             Structures = new List<ComplexStructure>();

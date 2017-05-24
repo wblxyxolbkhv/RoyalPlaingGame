@@ -17,7 +17,7 @@ namespace StartUpProject.Dialogs
         { get; set; }
         public ComplexObject Player
         { get; set; }
-        public ChoiceBox ChoiceBox
+        public ChoiceBoxInterface ChoiceBox
         {
             get { return choiceBox; }
             set
@@ -26,7 +26,7 @@ namespace StartUpProject.Dialogs
                 choiceBox.AnswerChoosen += OnAnswerChoosen;
             }
         }
-        ChoiceBox choiceBox;
+        ChoiceBoxInterface choiceBox;
         public void PrintDialog(PaintEventArgs e, int CameraBias)
         {
             if (Dialog == null || !Dialog.IsActive)

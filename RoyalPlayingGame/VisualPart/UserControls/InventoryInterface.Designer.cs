@@ -40,7 +40,7 @@
             this.interfaceControl1.Location = new System.Drawing.Point(0, 0);
             this.interfaceControl1.MinimumSize = new System.Drawing.Size(100, 100);
             this.interfaceControl1.Name = "interfaceControl1";
-            this.interfaceControl1.Size = new System.Drawing.Size(613, 429);
+            this.interfaceControl1.Size = new System.Drawing.Size(563, 370);
             this.interfaceControl1.TabIndex = 13;
             // 
             // tabControl1
@@ -52,7 +52,7 @@
             this.tabControl1.Location = new System.Drawing.Point(31, 30);
             this.tabControl1.MinimumSize = new System.Drawing.Size(268, 169);
             this.tabControl1.Name = "tabControl1";
-            this.tabControl1.Size = new System.Drawing.Size(552, 368);
+            this.tabControl1.Size = new System.Drawing.Size(502, 309);
             this.tabControl1.TabIndex = 14;
             // 
             // InventoryInterface
@@ -62,7 +62,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.interfaceControl1);
             this.Name = "InventoryInterface";
-            this.Size = new System.Drawing.Size(613, 429);
+            this.Size = new System.Drawing.Size(563, 370);
             this.ResumeLayout(false);
 
         }

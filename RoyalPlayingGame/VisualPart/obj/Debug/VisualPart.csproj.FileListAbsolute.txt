@@ -206,3 +206,5 @@ C:\Users\Дмитрий\Desktop\Projects\RoyalPlaingGame\RoyalPlayingGame\Visual
 C:\Users\Дмитрий\Desktop\Projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.csproj.GenerateResource.Cache
 C:\Users\Дмитрий\Desktop\Projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.dll
 C:\Users\Дмитрий\Desktop\Projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.pdb
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.AdvancedLabel.resources
+C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.ChoiceBoxInterface.resources

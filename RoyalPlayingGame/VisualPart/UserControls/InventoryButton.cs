@@ -33,20 +33,21 @@ namespace VisualPart.UserControls
 
         private void OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (Parent != null)
-                (Parent as PlayerInventoryControl).OnMouseMove(this, e);
+            // да простят меня боги за этот Parent.Parent
+            if (Parent != null && Parent.Parent!=null)
+                (Parent.Parent as PlayerInventoryControl).OnMouseMove(this, e);
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            if (Parent != null)
-                (Parent as PlayerInventoryControl).OnMouseLeave(this, e);
+            if (Parent != null && Parent.Parent != null)
+                (Parent.Parent as PlayerInventoryControl).OnMouseLeave(this, e);
         }
 
         private void OnButtonClick(object sender, MouseEventArgs e)
         {
-            if (Parent != null)
-                (Parent as PlayerInventoryControl).OnButtonClick(this, e);
+            if (Parent != null && Parent.Parent != null)
+                (Parent.Parent as PlayerInventoryControl).OnButtonClick(this, e);
         }
 
         public void LabelUpdate()
