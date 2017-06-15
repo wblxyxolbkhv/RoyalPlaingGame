@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RoyalPlayingGame.Items
 {
+    /// <summary>
+    /// Базовый класс для всех предметов в игре, автор: Жифарский Д.А.
+    /// </summary>
     public class Item
     {
         public Item(string ID, string name, int maxAmount, int amount, uint itemLvl, Effect.Effect effect)

@@ -11,6 +11,9 @@ using RoyalPlayingGame.Journal;
 
 namespace RoyalPlayingGame.Quests
 {
+    /// <summary>
+    /// Квест, автор: Жифарский Д.А.
+    /// </summary>
     public class Quest
     {
         public Quest(string ID, string name, string description, Unit giver, Player player)

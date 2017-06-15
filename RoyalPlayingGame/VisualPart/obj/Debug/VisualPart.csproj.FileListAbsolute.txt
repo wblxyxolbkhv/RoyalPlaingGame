@@ -208,3 +208,5 @@ C:\Users\Дмитрий\Desktop\Projects\RoyalPlaingGame\RoyalPlayingGame\Visual
 C:\Users\Дмитрий\Desktop\Projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.pdb
 C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.AdvancedLabel.resources
 C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.ChoiceBoxInterface.resources
+C:\Users\Дмитрий\Desktop\Projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.AdvancedLabel.resources
+C:\Users\Дмитрий\Desktop\Projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.ChoiceBoxInterface.resources

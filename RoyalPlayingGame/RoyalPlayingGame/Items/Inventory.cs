@@ -9,7 +9,7 @@ using RoyalPlayingGame.Exceptions;
 namespace RoyalPlayingGame.Items
 {
     /// <summary>
-    /// Инвентарь юнита
+    /// Инвентарь юнита, автор: Жифарский Д.А.
     /// </summary>
     public class Inventory : IEnumerable, IEnumerator
     {

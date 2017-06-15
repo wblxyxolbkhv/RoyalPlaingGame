@@ -22,6 +22,15 @@ namespace VisualPart.UserControls
             button2.Click += OnPickAllButtonClick;
         }
 
+        private void LootPageControl_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            //Location = new Point(Cursor.Position.X - Parent.Location.X + Location.X, Cursor.Position.Y - Parent.Location.Y+Location.Y);
+            //Parent.Location.X;
+            //Location = new Point(Cursor.Position.X - Parent.Location.X-12, Cursor.Position.Y - Parent.Location.Y-40);
+            MouseButtonDown = true;
+            //Size s = Screen.PrimaryScreen.WorkingArea.Size;
+            //int x = Screen.PrimaryScreen.WorkingArea.;
+        }
 
         private void OnPickAllButtonClick(object sender, EventArgs e)
         {
@@ -42,6 +51,7 @@ namespace VisualPart.UserControls
             
         }
 
+        private bool MouseButtonDown { get; set; }
         private List<Item> lootList { get; set; }
         public Inventory Inventory { get; set; }
         public ItemDescriptionControl IDC { get; set; }
@@ -80,8 +90,8 @@ namespace VisualPart.UserControls
                 splitContainer1.Panel2.Controls.Add(lpe);
                 y += 50;
             }
-            if(Visible != true)
-            Location = new Point(Cursor.Position.X - 240, Cursor.Position.Y - 240);
+            if(!Visible)
+            Location = new Point(Cursor.Position.X - Parent.Location.X - 8, Cursor.Position.Y - Parent.Location.Y - 30);
 
         }
 
@@ -123,6 +133,17 @@ namespace VisualPart.UserControls
                     }
                 }
             }
+        }
+
+        private void SplitContainer1_Panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(MouseButtonDown)
+                Location = new Point(Cursor.Position.X - Parent.Location.X - 12, Cursor.Position.Y - Parent.Location.Y - 40);
+        }
+
+        private void splitContainer1_Panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            MouseButtonDown = false;
         }
     }
 }

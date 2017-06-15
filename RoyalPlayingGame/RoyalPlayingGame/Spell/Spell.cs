@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace RoyalPlayingGame.Spell
 {
+    /// <summary>
+    /// Заклинание, автор: Жифарский Д.А.
+    /// </summary>
     public class Spell
     {
         public int ManaCost { get; set; }

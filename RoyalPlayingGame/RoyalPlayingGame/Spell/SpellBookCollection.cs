@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RoyalPlayingGame.Spell
 {
+    /// <summary>
+    /// Коллекция заклинаний, автор: Жифарский Д.А.
+    /// </summary>
     public class SpellBookCollection
     {
         public SpellBookCollection()

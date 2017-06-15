@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RoyalPlayingGame.Spell
 {
+    /// <summary>
+    /// класс является базовым для всех негативных заклинаний, автор: Жифарский Д.А.
+    /// </summary>
     public class NegativeSpell :Spell
     {
         public NegativeSpell(int realIntelligence, int realAgility, string spellName):base (20,2,10,spellName)

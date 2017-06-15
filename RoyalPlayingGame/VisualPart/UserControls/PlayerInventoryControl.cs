@@ -19,8 +19,8 @@ namespace VisualPart.UserControls
             InitializeComponent();
             //MouseClick += OnMouseClick;
             itemMenuControl1.UseItemMenuClick += OnItemMenuClick;
-            int x = 2;
-            int y = 10;
+            int x = 25;
+            int y = 40;
             itemMenuControl1.Visible = false;
             PlaceLabel(ref x, ref y, "All");
             PlaceLabel(ref x, ref y, "Armor");
@@ -67,7 +67,7 @@ namespace VisualPart.UserControls
                     interfaceControl1.Controls.Remove(b1);
             }
             int x = 25;
-            int y = 42;
+            int y = 72;
             PlaceInventoryButtons(x, y, slots);
 
         }
@@ -107,6 +107,8 @@ namespace VisualPart.UserControls
         {
             if (e.Button == MouseButtons.Left)
             {
+                DoDragDrop(sender, DragDropEffects.Move);
+    
 
             }
             else
@@ -222,8 +224,10 @@ namespace VisualPart.UserControls
                 //itemButton.MouseDown += OnButtonClick;
                 //itemButton.MouseMove += OnMouseMove;
                 //itemButton.MouseLeave += OnMouseLeave;
+                itemButton.DragEnter += OnDrag;
+                itemButton.AllowDrop = true;
                 interfaceControl1.Controls.Add(itemButton);
-
+                
                 try
                 {
                     itemButton.SetButtonImage(ItemsManager.GetItemImage(PlayerInventory[i].ID));
@@ -242,6 +246,10 @@ namespace VisualPart.UserControls
             }
         }
 
-        
+        private void OnDrag(object sender, DragEventArgs e)
+        {
+            
+            (sender as InventoryButton).SetButtonImage(Properties.Resources.NullSlotImage);
+        }
     }
 }

@@ -7,6 +7,9 @@ using RoyalPlayingGame.Items;
 
 namespace RoyalPlayingGame.Quests
 {
+    /// <summary>
+    /// Квестовая стадия, автор: Жифарский Д.А.
+    /// </summary>
     public abstract class QuestStage
     {
         public QuestStage(int moneyReward, int experieneReward, List<Item> itemReward, string name, string description, int index)
