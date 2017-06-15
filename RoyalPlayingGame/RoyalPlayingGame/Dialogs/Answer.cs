@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/* Назначение: Ответ игрока в диалоге
+ * Автор: Никитенко А.В.
+ */
+
 namespace RoyalPlayingGame.Dialogs
 {
     /// <summary>

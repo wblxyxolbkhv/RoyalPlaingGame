@@ -12,7 +12,9 @@ using RoyalPlayingGame.Units;
 using RoyalPlayingGame.Quests;
 using RoyalPlayingGame;
 
-
+/* Назначение: Медведь для отладки диалогов
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject.Enemies
 {
     class DebugBear: ComplexUnit

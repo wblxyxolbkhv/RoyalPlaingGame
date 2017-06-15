@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/* Назначение: Базовый класс для стадий сценария
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject.Scripts
 {
     public delegate bool ScriptFinish();
@@ -24,8 +26,12 @@ namespace StartUpProject.Scripts
             }
             return true;
         }
+        /// <summary>
+        /// показывает, является ли стадия ждущей (то есть не выполняет никаких действий и не ограничивает движение)
+        /// </summary>
         public bool isWaiting = false;
         public bool isFinished = false;
+        // делегат для проверки конца
         public ScriptFinish IsFinishedExternal;
         public DateTime StartTime;
         public string Name { get; set; }

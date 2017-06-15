@@ -210,3 +210,6 @@ C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPa
 C:\Users\ushevenifeni\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.ChoiceBoxInterface.resources
 C:\Users\Дмитрий\Desktop\Projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.AdvancedLabel.resources
 C:\Users\Дмитрий\Desktop\Projects\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.ChoiceBoxInterface.resources
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.AdvancedLabel.resources
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.ChoiceBoxInterface.resources
+C:\Users\юшевенифени\Desktop\Visual Studio\RoyalPlayingGame\RoyalPlayGame\RoyalPlaingGame\RoyalPlayingGame\VisualPart\obj\Debug\VisualPart.UserControls.InventoryButton.resources

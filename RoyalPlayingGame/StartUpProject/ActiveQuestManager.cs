@@ -7,7 +7,9 @@ using VisualPart.UserControls;
 using RoyalPlayingGame.Quests;
 using RoyalPlayingGame.Units;
 using RoyalPlayingGame;
-
+/* Назначение: Менеджер для контрола, показывающего текущий квест
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject
 {
     

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using SimplePhysicalEngine.NonPhysicalComponents;
 using VisualPart;
-
+/* Назначение: Спелл Ледяная волна
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject.Spells
 {
     public class IceWave : ComplexSpell

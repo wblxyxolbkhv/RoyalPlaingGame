@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using RoyalPlayingGame.Items;
 using System.Drawing;
 using System.Windows.Forms;
-
+/* Назначение: Предметы в реальном мире (решено не использовать)
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject
 {
     public class ComplexItem : ComplexObject

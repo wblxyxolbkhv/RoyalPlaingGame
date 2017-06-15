@@ -18,8 +18,11 @@ namespace RoyalPlayingGame.Journal
             CompletedQuests = new List<Quest>();
             Notes = new List<JournalNote>();
         }
+        // активные квесты
         public List<Quest> ActiveQuests { get; set; }
+        // завершенные квесты
         public List<Quest> CompletedQuests { get; set; }
+        // неквестовые записи
         public List<JournalNote> Notes { get; set; }
 
         public void AddActiveQuest(Quest quest)

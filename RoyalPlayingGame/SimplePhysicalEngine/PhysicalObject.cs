@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
-
+/* Заменен на RealObject
+ * Автор: Никитенко А.В.
+ */
 namespace SimplePhysicalEngine
 {
     /// <summary>

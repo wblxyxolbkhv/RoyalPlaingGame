@@ -5,13 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
-
+/* Назначение: Класс для анимации
+ * Автор: Никитенко А.В.
+ */
 namespace VisualPart
 {
     public enum AnimationMode { Loop, Once }
     public class Animation
     {
         private Animation() { }
+        /// <summary>
+        /// обычная загрузка из папки
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <param name="delay"></param>
         public Animation(string folder, int delay)
         {
             frames = new List<Image>();
@@ -35,6 +42,12 @@ namespace VisualPart
                 currentFrameIndex = 0;
             }
         }
+        /// <summary>
+        /// загрузка из папки с указанием какой цвет надо считать прозрачным на фреймах (по умолчанию белый)
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <param name="delay"></param>
+        /// <param name="c"></param>
         public Animation(string folder, int delay, Color c)
         {
             frames = new List<Image>();
@@ -58,6 +71,11 @@ namespace VisualPart
                 currentFrameIndex = 0;
             }
         }
+        /// <summary>
+        ///  тестовая перегрузка для загрузки фреймов из ресурсов
+        /// </summary>
+        /// <param name="delay"></param>
+        /// <param name="name"></param>
         public Animation(int delay, string name)
         {
             frames = new List<Image>();

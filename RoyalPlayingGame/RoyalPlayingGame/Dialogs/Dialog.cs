@@ -2,7 +2,11 @@
 using System.Xml;
 using System;
 using RoyalPlayingGame.Exceptions;
-
+/* Назначение: Класс для диалога
+ * представляет из себя граф с узлами Replic, 
+ * которые могут оказаться любым из наследников
+ * Автор: Никитенко А.В.
+ */
 namespace RoyalPlayingGame.Dialogs
 {
     public class Dialog
@@ -24,6 +28,10 @@ namespace RoyalPlayingGame.Dialogs
         {
             get; set;
         }
+        /// <summary>
+        /// загрузка диалога из xml
+        /// </summary>
+        /// <param name="path"></param>
         public void LoadDialog(string path)
         {
             XmlDocument dialogXml = new XmlDocument();

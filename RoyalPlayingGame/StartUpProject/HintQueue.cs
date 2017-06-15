@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+/* Назначение: Очередь всплывающих подсказок справа вверху
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject
 {
     public class HintQueue

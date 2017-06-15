@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/* Назначение: Слушатель для координации работы между диалогами и репликам
+ * Автор: Никитенко А.В.
+ */
 namespace RoyalPlayingGame
 {
     public delegate void QuestHandler(string questID);

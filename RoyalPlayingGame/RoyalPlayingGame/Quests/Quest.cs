@@ -72,6 +72,7 @@ namespace RoyalPlayingGame.Quests
                     QuestListener.ReplicHide(Convert.ToInt32(HiddenReplic));
             }
         }
+        // флаг для обозначения того, что квест помечен как активный и выведен на главный экран
         private bool isActive;
         public bool IsActive
         {

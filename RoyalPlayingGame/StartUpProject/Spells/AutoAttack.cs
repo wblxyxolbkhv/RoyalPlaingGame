@@ -4,7 +4,9 @@ using System.Windows.Forms;
 using SimplePhysicalEngine.NonPhysicalComponents;
 using VisualPart;
 
-
+/* Назначение: Автоатака для юнитов ближнего боя
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject.Spells
 {
     public class AutoAttack : ComplexSpell
@@ -32,6 +34,7 @@ namespace StartUpProject.Spells
             caster.AttackAnimationLeft.AnimationEnd += OnUnitDeath;
             caster.AttackAnimationRight.AnimationEnd += OnUnitDeath;
         }
+        // она невидимая
         public override void PrintObject(PaintEventArgs e, int CameraBias)
         {
         }

@@ -73,7 +73,7 @@ namespace StartUpProject
             Level.PlayerMenuManager.ScaleHP = this.scaleHP;
             Level.PlayerMenuManager.ScaleMP = this.scaleMP;
 
-            Level.DialogManager.ChoiceBox = choiceBoxInterface1;
+            Level.DialogManager.ChoiceBox = choiceBox1;
             Level.ActiveQuestManager.ActiveQuestControl = activeQuestControl1;
             Level.QuestJournalManager.Journal = journalControl1;
             Level.LootPageManager.LootPage = lootPageControl1;
@@ -124,7 +124,7 @@ namespace StartUpProject
             journalControl1.Visible = turn;
             lootPageControl1.Visible = turn;
             skillPanel1.Visible = turn;
-            choiceBoxInterface1.Visible = turn;
+            choiceBox1.Visible = turn;
             playerInventoryControl1.Visible = turn;
         }
         

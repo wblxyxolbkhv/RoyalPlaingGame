@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StartUpProject.GlobalGameComponents;
-
+/* Назначение: Стадия сценария, для показа текста на экране
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject.Scripts
 {
     public class InfoStage : ScriptStage

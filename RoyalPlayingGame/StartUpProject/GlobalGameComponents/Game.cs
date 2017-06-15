@@ -7,6 +7,10 @@ using System.Windows.Forms;
 using StartUpProject.Scripts;
 using RoyalPlayingGame;
 
+/* Назначение: Глобаный класс для взаимодейтсвия между формой и уровнями
+ * Автор: Никитенко А.В.
+ */
+
 namespace StartUpProject.GlobalGameComponents
 {
     static class Game

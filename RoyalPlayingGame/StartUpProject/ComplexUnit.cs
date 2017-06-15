@@ -10,7 +10,9 @@ using RoyalPlayingGame.Dialogs;
 using SimplePhysicalEngine.NonPhysicalComponents;
 using SimplePhysicalEngine;
 using VisualPart;
-
+/* Назначение: Базовый класс для всех юнитов
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject
 {
     public class ComplexUnit : ComplexObject
@@ -116,7 +118,7 @@ namespace StartUpProject
 
             
         }
-
+        // время перезарядки для удара
         DateTime cooldownTime = new DateTime();
         public int AutoAttackCooldown = 1000;
 

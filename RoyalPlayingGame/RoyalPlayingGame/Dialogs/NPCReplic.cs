@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/* Назначение: Реплика NPC
+ * Автор: Никитенко А.В.
+ */
 namespace RoyalPlayingGame.Dialogs
 {
     public delegate void QuestHandler(int questID);

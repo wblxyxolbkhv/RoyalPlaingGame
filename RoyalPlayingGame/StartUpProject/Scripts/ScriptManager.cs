@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using StartUpProject.GlobalGameComponents;
 using System.Threading;
-
+/* Назначение: Менеджер, хранящий в себе функциональность сценариев
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject.Scripts
 {
     public static class ScriptManager

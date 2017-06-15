@@ -7,7 +7,9 @@ using RoyalPlayingGame.Units;
 using VisualPart.UserControls;
 using System.Windows.Forms;
 using System.Drawing;
-
+/* Назначение: Менеджер для взаимодействия между меню и игроком
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject
 {
     public class PlayerMenuManager

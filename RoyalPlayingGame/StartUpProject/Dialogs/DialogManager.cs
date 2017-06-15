@@ -6,18 +6,21 @@ using SimplePhysicalEngine.NonPhysicalComponents;
 using System.Drawing;
 using VisualPart.UserControls;
 using SimplePhysicalEngine;
-
+/* Назначение: Менеджер для координации между интерфейсом и моделью диалогов
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject.Dialogs
 {
     public class DialogManager
     {
         public Dialog Dialog
-        { get; set; }
+        { get;
+            set; }
         public ComplexObject TalkingObject
         { get; set; }
         public ComplexObject Player
         { get; set; }
-        public ChoiceBoxInterface ChoiceBox
+        public ChoiceBox ChoiceBox
         {
             get { return choiceBox; }
             set
@@ -26,7 +29,7 @@ namespace StartUpProject.Dialogs
                 choiceBox.AnswerChoosen += OnAnswerChoosen;
             }
         }
-        ChoiceBoxInterface choiceBox;
+        ChoiceBox choiceBox;
         public void PrintDialog(PaintEventArgs e, int CameraBias)
         {
             if (Dialog == null || !Dialog.IsActive)

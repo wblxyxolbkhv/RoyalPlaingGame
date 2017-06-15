@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/* Назначение: Интерфейс для любого обьекта, который можно продамажить
+ * Автор: Жифарский Д.А.
+ */
 namespace RoyalPlayingGame.Interfaces
 {
     public interface ITargetObject

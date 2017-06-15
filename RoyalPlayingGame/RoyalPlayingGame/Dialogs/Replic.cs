@@ -1,5 +1,8 @@
 ﻿using System;
-
+/* Назначение: Базовый класс для реплик
+ * предполагается, что диалог будет графом из реплик
+ * Автор: Никитенко А.В.
+ */
 namespace RoyalPlayingGame.Dialogs
 {
     public abstract class Replic

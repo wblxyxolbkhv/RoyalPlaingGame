@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+/* Назначение: Класс для эффекта
+ * в данный момент НЕ ИСПОЛЬЗУЕТСЯ
+ * Автор: Жифарский Д.А.
+ */
 namespace RoyalPlayingGame.Effect
 {
     public class Effect
