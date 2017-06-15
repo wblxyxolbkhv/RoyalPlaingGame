@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -50,6 +50,9 @@
             this.splitContainer1.Panel1.Controls.Add(this.button2);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LootPageControl_MouseDoubleClick);
+            this.splitContainer1.Panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SplitContainer1_Panel1_MouseMove);
+            this.splitContainer1.Panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_Panel1_MouseUp);
             // 
             // splitContainer1.Panel2
             // 
@@ -57,6 +60,15 @@
             this.splitContainer1.Size = new System.Drawing.Size(140, 168);
             this.splitContainer1.SplitterDistance = 46;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(25, 18);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(86, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Собрать все";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -76,15 +88,6 @@
             this.label1.Size = new System.Drawing.Size(61, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Добыча";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(25, 18);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Собрать все";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // LootPageControl
             // 

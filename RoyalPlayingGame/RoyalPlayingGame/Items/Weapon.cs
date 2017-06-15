@@ -8,6 +8,9 @@ namespace RoyalPlayingGame.Items
 {
     public enum WeaponType { Sword, Staff, Shield, Dagger, Mace, Spear }
     public enum WeaponSlot { LeftHand, RightHand, TwoHands }
+    /// <summary>
+    /// Оружие юнита, автор: Жифарский Д.А.
+    /// </summary>
     public class Weapon : Item
     {
         Random randomWeaponGeneration;

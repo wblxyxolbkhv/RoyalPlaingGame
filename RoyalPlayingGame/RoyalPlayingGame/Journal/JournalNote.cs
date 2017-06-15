@@ -7,6 +7,9 @@ using RoyalPlayingGame.Quests;
 
 namespace RoyalPlayingGame.Journal
 {
+    /// <summary>
+    /// Запись в журнале игрока, автор: Жифарский Д.А.
+    /// </summary>
     public class JournalNote
     {
         public JournalNote(string name, string description, string time, string linkedStageID)

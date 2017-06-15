@@ -4,10 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace RoyalPlayingGame.Items
 {
+    
     //public enum ArmorType { Cloth, Leather, Mail, Plate }
     public enum ArmorSlot { Head, Back, Chest, Hands, Belt, Boots, Ring1, Ring2, Neck }
+    /// <summary>
+    /// Броня юнита, автор: Жифарский Д.А.
+    /// </summary>
     public class Armor : Item
     {
         Random randomArmorGeneration;
