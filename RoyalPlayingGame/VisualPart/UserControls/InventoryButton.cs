@@ -22,13 +22,16 @@ namespace VisualPart.UserControls
             label1.MouseMove += OnMouseMove;
             label1.MouseLeave += OnMouseLeave;
             label1.MouseDown += OnButtonClick;
+            
         }
 
         public Item CurItem { get; set; }
+        public Image ItemImage { get; set; }
 
         public void SetButtonImage(Bitmap bm)
         {
             button1.Image = bm;
+            ItemImage = bm;
         }
 
         private void OnMouseMove(object sender, MouseEventArgs e)
@@ -52,8 +55,20 @@ namespace VisualPart.UserControls
 
         public void LabelUpdate()
         {
-            label1.Text = CurItem.Amount.ToString();
-            label1.Visible = true;
+            if (CurItem == null)
+            {
+                label1.Visible = false;
+            }
+            else
+            {
+                label1.Text = CurItem.Amount.ToString();
+                label1.Visible = true;
+            }
+        }
+
+        public void SetButtonStyle(FlatStyle fs)
+        {
+            button1.FlatStyle = fs;
         }
     }
 }

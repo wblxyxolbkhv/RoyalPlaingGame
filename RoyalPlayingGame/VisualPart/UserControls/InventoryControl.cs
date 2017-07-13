@@ -17,13 +17,13 @@ namespace VisualPart.UserControls
         public InventoryControl()
         {
             InitializeComponent();
-            ItemList = new List<Item>();
+            ItemList = new Dictionary<int, Item>();
             AllBagSlots = new List<PictureBox>();
              //ItemsManager.SlotsChanged += PlacePictureBoxes;
             // ItemsManager.ItemAdded += UpdateAllItemPictureBoxes;
         }
 
-        public List<Item> ItemList { get; set; }
+        public Dictionary<int,Item> ItemList { get; set; }
         public List<PictureBox> AllBagSlots { get; set; }
         public List<PictureBox> ArmorBagSlots { get; set; }
         public List<PictureBox> WeaponBagSlots { get; set; }

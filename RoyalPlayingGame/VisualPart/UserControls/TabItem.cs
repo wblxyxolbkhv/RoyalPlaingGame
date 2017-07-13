@@ -25,14 +25,14 @@ namespace VisualPart.UserControls
             activeLeftDown = (Bitmap)pbLeftDown.BackgroundImage;
             activeDown = (Bitmap)pbDown.BackgroundImage;
 
-            not_activeUp = VisualPart.Properties.Resources.up;
-            not_activeUpLeft = VisualPart.Properties.Resources.left_up;
-            not_activeUpRight = VisualPart.Properties.Resources.right_up;
-            not_activeRight = VisualPart.Properties.Resources.right;
-            not_activeLeft = VisualPart.Properties.Resources.left;
-            not_activeRightDown = VisualPart.Properties.Resources.right_down;
-            not_activeLeftDown = VisualPart.Properties.Resources.left_down;
-            not_activeDown = VisualPart.Properties.Resources.down;
+            //not_activeUp = VisualPart.Properties.Resources.up;
+            //not_activeUpLeft = VisualPart.Properties.Resources.left_up;
+            //not_activeUpRight = VisualPart.Properties.Resources.right_up;
+            //not_activeRight = VisualPart.Properties.Resources.right;
+            //not_activeLeft = VisualPart.Properties.Resources.left;
+            //not_activeRightDown = VisualPart.Properties.Resources.right_down;
+            //not_activeLeftDown = VisualPart.Properties.Resources.left_down;
+            //not_activeDown = VisualPart.Properties.Resources.down;
 
             IsActive = false;
         }

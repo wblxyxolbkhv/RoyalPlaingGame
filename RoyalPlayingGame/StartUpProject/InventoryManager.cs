@@ -42,6 +42,8 @@ namespace StartUpProject
             {
                 pic = value;
                 pic.PlayerInventory = Player.Inventory;
+                //pic.PlayerMoneyAmount = Player.MoneyAmount;
+                pic.PlayerEquipment = Player.Equipment;
             }
         }
         InventoryControl inventControl;

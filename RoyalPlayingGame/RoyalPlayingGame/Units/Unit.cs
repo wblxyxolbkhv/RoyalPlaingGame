@@ -17,7 +17,7 @@ namespace RoyalPlayingGame.Units
         public Unit()
         {
             Equipment = new List<Item>();
-            Inventory = new Inventory(10);
+            Inventory = new Inventory();
             SpellBook = new SpellBookCollection();
             Effects = new List<Effect.Effect>();
             IsAlive = true;
@@ -147,7 +147,7 @@ namespace RoyalPlayingGame.Units
         public List<Effect.Effect> Effects { get; set; }
         public List<Item> Equipment { get; set; }
         public SpellBookCollection SpellBook { get; set; }
-        public int MoneyAmount { get; set; }
+        public virtual int MoneyAmount { get; set; }
         public int Level { get; protected set; }
         public Random CriticalChance { get; set; }
         public Spell.Spell SpellHotKey1 { get; set; }

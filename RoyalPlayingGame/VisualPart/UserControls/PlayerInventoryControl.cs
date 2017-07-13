@@ -27,40 +27,91 @@ namespace VisualPart.UserControls
             PlaceLabel(ref x, ref y, "Weapon");
             PlaceLabel(ref x, ref y, "Potion");
             PlaceLabel(ref x, ref y, "Other");
-            MouseDown += OnMouseDown;          
+            //MouseDown += OnMouseDown;          
             ItemsManager.SlotsChanged += PlaceButtons;
-            ItemsManager.ItemAdded += UdpateButtons;
+            ItemsManager.ItemAdded += UpdateButtons;
+            ItemsManager.MoneyChanged += UpdateMoneyAmount;
+            PlacePlayerItemSlots();
+            PlacePlayerPB();
+            PlaceMoneyControls();
         }
 
-        private void UdpateButtons()
+        private void UpdateMoneyAmount(int amount)
         {
-            for (int i = 0; i < PlayerInventory.Count; i++)
+            foreach (Control c in interfaceControl1.Controls)
             {
-                foreach (Control c in interfaceControl1.Controls)
+                Label l1 = c as Label;
+                if (l1 == null)
+                    continue;
+                if(l1.Name == "Money")
                 {
-                    InventoryButton ib1 = c as InventoryButton;
-                    if (ib1 == null)
-                        continue;
-                    if (PlayerInventory[i] != null)
-                    {
-                        if (i == Convert.ToInt32(ib1.Name))
-                        {
-                            ib1.CurItem = PlayerInventory[i];
-                            ib1.SetButtonImage(ItemsManager.GetItemImage(ib1.CurItem.ID));
-                            ib1.LabelUpdate();
-                            break;
-                        }
-                    }
-
-                }                   
+                    l1.Text = amount.ToString();
+                }
             }
+
+        }
+
+        private Item ButtonDataItem { get; set; }
+        private Bitmap ButtonDataImage { get; set; }
+        public Inventory PlayerInventory { get; set; }
+        public List<Item> PlayerEquipment { get; set; }
+
+        private void UpdateButtons()
+        {
+            if (PlayerInventory != null)
+                foreach (KeyValuePair<int, Item> pair in PlayerInventory)
+                {
+                    foreach (Control c in interfaceControl1.Controls)
+                    {
+                        InventoryButton ib1 = c as InventoryButton;
+                        if (ib1 == null)
+                            continue;
+                        if (pair.Value != null)
+                        {
+                            if (ib1.AccessibleName == "Кнопка с экипировкой")
+                                continue;
+                            if ((Convert.ToInt32(ib1.Name) == pair.Key))
+                            {
+                                ib1.CurItem = pair.Value;
+                                ib1.SetButtonImage(ItemsManager.GetItemImage(ib1.CurItem.ID));
+                                ib1.LabelUpdate();
+                                break;
+                            }
+                        }
+                        if (ib1.CurItem == null)
+                            ib1.SetButtonImage(Properties.Resources.NullSlotImage);
+
+                    }
+                }
+            //for (int i = 0; i < PlayerInventory.Count; i++)
+            //{
+            //    foreach (Control c in interfaceControl1.Controls)
+            //    {
+            //        InventoryButton ib1 = c as InventoryButton;
+            //        if (ib1 == null)
+            //            continue;
+            //        if (PlayerInventory[i] != null)
+            //        {
+            //            if (ib1.AccessibleName == "Кнопка с экипировкой")
+            //                continue;
+            //            if (i == Convert.ToInt32(ib1.Name))
+            //            {
+            //                ib1.CurItem = PlayerInventory[i];
+            //                ib1.SetButtonImage(ItemsManager.GetItemImage(ib1.CurItem.ID));
+            //                ib1.LabelUpdate();
+            //                break;
+            //            }
+            //        }
+
+            //    }                   
+            //}
         }
 
         public void PlaceButtons(int slots)
         {
-            foreach (Control c in Controls)
+            foreach (Control c in interfaceControl1.Controls)
             {
-                Button b1 = c as Button;
+                InventoryButton b1 = c as InventoryButton;
                 if (b1 == null)
                     continue;
                 if (b1.AccessibleName == "Кнопка с предметом") 
@@ -69,16 +120,20 @@ namespace VisualPart.UserControls
             int x = 25;
             int y = 72;
             PlaceInventoryButtons(x, y, slots);
-
         }
 
-        private void OnMouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                
-            }
-        }
+        //private void OnMouseDown(object sender, MouseEventArgs e)
+        //{
+        //    if (e.Button == MouseButtons.Left)
+        //    {
+        //        var img = (sender as Button).Image;
+        //        if (img == null) return;
+        //        if(DoDragDrop(img,DragDropEffects.Move) == DragDropEffects.Move)
+        //        {
+        //            (sender as Button).Image = null;
+        //        }
+        //    }
+        //}
 
         public void OnMouseMove(object sender, MouseEventArgs e)
         {
@@ -107,13 +162,34 @@ namespace VisualPart.UserControls
         {
             if (e.Button == MouseButtons.Left)
             {
-                DoDragDrop(sender, DragDropEffects.Move);
-    
-
+                //DoDragDrop(sender, DragDropEffects.Move);
+                var img = (sender as InventoryButton).ItemImage;
+                if (img == null) return;
+                if (DoDragDrop(sender, DragDropEffects.Move) == DragDropEffects.Move)
+                {
+                    if (ButtonDataItem != null)
+                    {
+                        //(sender as InventoryButton).CurItem = ButtonDataItem;
+                        //(sender as InventoryButton).CurItem.Position = Convert.ToInt32((sender as InventoryButton).Name);
+                        //foreach (Item item in PlayerInventory)
+                        //{
+                        //    if (item == (sender as InventoryButton).CurItem)
+                        //        item.Position = (sender as InventoryButton).CurItem.Position;
+                        //}
+                        (sender as InventoryButton).CurItem = ButtonDataItem;
+                        PlayerInventory.ChangeKey((sender as InventoryButton).CurItem, Convert.ToInt32((sender as InventoryButton).Name));
+                    }
+                    else
+                    {
+                        (sender as InventoryButton).CurItem = null;
+                        //(sender as InventoryButton).CurItem.Position = Convert.ToInt32((sender as InventoryButton).Name);
+                    }
+                    (sender as InventoryButton).SetButtonImage(ButtonDataImage);
+                    (sender as InventoryButton).LabelUpdate();
+                }
             }
             else
-            {
-                
+            {              
                 if (itemDescriptionControl1.Visible)
                     itemDescriptionControl1.Visible = false;
                 itemMenuControl1.Item = (sender as InventoryButton).CurItem;
@@ -130,11 +206,11 @@ namespace VisualPart.UserControls
 
         //Image DefaultImage { get; set; } = Properties.Resources.NullSlotImage;
         //SplitContainer sc { get; set; } = new SplitContainer();
-        public Inventory PlayerInventory { get; set; }
+        
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
+        //protected override void OnPaint(PaintEventArgs e)
+        //{
+        //    base.OnPaint(e);
             //e.Graphics.DrawImage(Properties.Resources.BagBackGround, new Point(0, 33));
 
             //int x = 25;
@@ -158,7 +234,7 @@ namespace VisualPart.UserControls
             //        x = 25;
             //    }
             //}
-        }
+        //}
 
         //private Item GetItem(int x, int y)
         //{
@@ -209,6 +285,75 @@ namespace VisualPart.UserControls
                 l1.BorderStyle = BorderStyle.FixedSingle;
             }
             (sender as Label).BorderStyle = BorderStyle.Fixed3D;
+            switch ((sender as Label).Text)
+            {
+                case "All":
+                    foreach (Control c in interfaceControl1.Controls)
+                    {
+                        InventoryButton ib1 = c as InventoryButton;
+                        if (ib1 == null)
+                            continue;
+                        if (ib1.AccessibleName == "Кнопка с предметом")
+                        {
+                            ib1.CurItem = null;
+                            ib1.SetButtonImage(Properties.Resources.NullSlotImage);
+                            ib1.Visible = true;
+                        }
+                    }
+                    UpdateButtons();
+                        break;
+                case "Armor": HideInventoryButtons(ItemType.Armor);
+                    break;
+                case "Weapon": HideInventoryButtons(ItemType.Weapon);
+                    break;
+                case "Potion": HideInventoryButtons(ItemType.Potion);
+                    break;
+                case "Other": HideInventoryButtons(ItemType.Other);
+                    break;
+            }
+        }
+
+        private void HideInventoryButtons(ItemType itemType)
+        {
+            int i = 0;
+            foreach (KeyValuePair<int,Item> pair in PlayerInventory)
+            {
+                if (pair.Value.Type == itemType)
+                {
+                    foreach (Control c in interfaceControl1.Controls)
+                    {
+                        InventoryButton ib1 = c as InventoryButton;
+                        if (ib1 == null)
+                            continue;
+                        {
+                            if (ib1.AccessibleName == "Кнопка с экипировкой")
+                                continue;
+                            if (i == Convert.ToInt32(ib1.Name))
+                            {
+                                ib1.CurItem = pair.Value;
+                                ib1.SetButtonImage(ItemsManager.GetItemImage(ib1.CurItem.ID));
+                                ib1.LabelUpdate();
+                                ib1.Visible = true;
+                                i++;
+                                break;
+                            }
+                        }
+
+                    }
+                }
+            }
+            foreach (Control c in interfaceControl1.Controls)
+            {
+                InventoryButton ib1 = c as InventoryButton;
+                if (ib1 == null)
+                    continue;
+                if (ib1.AccessibleName == "Кнопка с предметом")
+                    if ((ib1.CurItem == null) || (ib1.Name == i.ToString()))
+                    {
+                        ib1.Visible = false;
+                        i++;
+                    }
+            }
         }
 
         private void PlaceInventoryButtons(int x1, int y1, int slots)
@@ -221,22 +366,23 @@ namespace VisualPart.UserControls
                 itemButton.Name = count++.ToString();
                 itemButton.Location = new Point(x1, y1);
                 //itemButton.Size = new Size(48, 48);
-                //itemButton.MouseDown += OnButtonClick;
+                itemButton.MouseDown += OnButtonClick;
                 //itemButton.MouseMove += OnMouseMove;
                 //itemButton.MouseLeave += OnMouseLeave;
                 itemButton.DragEnter += OnDrag;
+                itemButton.DragDrop += OnDrop;
                 itemButton.AllowDrop = true;
                 interfaceControl1.Controls.Add(itemButton);
                 
-                try
-                {
-                    itemButton.SetButtonImage(ItemsManager.GetItemImage(PlayerInventory[i].ID));
-                    itemButton.CurItem = PlayerInventory[i];
-                }
-                catch
-                {
+                //try
+                //{
+                //    itemButton.SetButtonImage(ItemsManager.GetItemImage(PlayerInventory[i].ID));
+                //    itemButton.CurItem = PlayerInventory[i];
+                //}
+                //catch
+                //{
                     itemButton.SetButtonImage(Properties.Resources.NullSlotImage);
-                }
+                //}
                 x1 += 50;
                 if (x1 > 258)
                 {
@@ -244,12 +390,101 @@ namespace VisualPart.UserControls
                     x1 = 25;
                 }
             }
+            if(PlayerInventory.Count>0)
+            UpdateButtons();
+        }
+
+        private void OnDrop(object sender, DragEventArgs e)
+        {
+            ButtonDataItem = (sender as InventoryButton).CurItem;
+            ButtonDataImage = (Bitmap)(sender as InventoryButton).ItemImage;
+            InventoryButton ib = (InventoryButton)e.Data.GetData(e.Data.GetFormats()[0]);
+            if(ib.CurItem!=null)
+            (sender as InventoryButton).CurItem = ib.CurItem;
+            //(sender as InventoryButton).CurItem.Position = Convert.ToInt32((sender as InventoryButton).Name);
+            PlayerInventory.ChangeKey((sender as InventoryButton).CurItem, Convert.ToInt32((sender as InventoryButton).Name));
+            (sender as InventoryButton).SetButtonImage((Bitmap)ib.ItemImage);
+            (sender as InventoryButton).LabelUpdate();
         }
 
         private void OnDrag(object sender, DragEventArgs e)
         {
-            
-            (sender as InventoryButton).SetButtonImage(Properties.Resources.NullSlotImage);
+            //(sender as InventoryButton).SetButtonStyle(FlatStyle.System);
+            e.Effect = DragDropEffects.Move;     
         }
+
+        /// <summary>
+        /// Добавление слотов под снаряжение игрока
+        /// </summary>
+        private void PlacePlayerItemSlots()
+        {
+            //Добавление слотов под доспехи
+            int x = 310;
+            int y = 40;
+            for (int i = 0; i < 6; i++)
+            {
+                InventoryButton armorButton = new InventoryButton();
+                armorButton.AccessibleName = "Кнопка с экипировкой";
+                armorButton.Name = i.ToString();
+                armorButton.Location = new Point(x, y);
+                armorButton.MouseDown += OnButtonClick;
+                interfaceControl1.Controls.Add(armorButton);
+                armorButton.DragEnter += OnDrag;
+                armorButton.DragDrop += OnDrop;
+                armorButton.AllowDrop = true;
+                y += 50;
+                if (y>150)
+                {
+                    y = 40;
+                    x = 512;
+                }
+            }
+            //Добавление слота под оружие
+            InventoryButton weaponButton = new InventoryButton();
+            weaponButton.AccessibleName = "Кнопка с экипировкой";
+            weaponButton.Name = 6.ToString();
+            weaponButton.Location = new Point(411, 240);
+            weaponButton.MouseDown += OnButtonClick;
+            interfaceControl1.Controls.Add(weaponButton);
+            weaponButton.DragEnter += OnDrag;
+            weaponButton.DragDrop += OnDrop;
+            weaponButton.AllowDrop = true;
+        }
+
+
+        /// <summary>
+        /// Добавление пикчербокса с изображением игрока
+        /// </summary>
+        private void PlacePlayerPB()
+        {
+            PictureBox pb = new PictureBox();
+            pb.Location = new Point(360, 40);
+            pb.Size = new Size(150, 200);
+            interfaceControl1.Controls.Add(pb);
+        }
+
+        /// <summary>
+        /// Добавление контролов, свзянных с отображением денег
+        /// </summary>
+        private void PlaceMoneyControls()
+        {
+            //Добавление на форму пикчербокса с монетой
+            PictureBox pb = new PictureBox();
+            pb.Size = new Size(15, 18);
+            pb.Location = new Point(200, 15);
+            pb.Image = Properties.Resources.coin;
+            interfaceControl1.Controls.Add(pb);
+            //Добавление лейбла с количеством денег у игрока
+            Label lb = new Label();
+            lb.Location = new Point(225, 15);
+            lb.Size = new Size(50, 20);
+            //lb.Text = PlayerMoneyAmount.ToString();
+            interfaceControl1.Controls.Add(lb);
+            lb.Name = "Money";
+            lb.Font = new Font(lb.Font.FontFamily, 9.25F);
+            lb.BorderStyle = BorderStyle.Fixed3D;
+        }
+
+
     }
 }

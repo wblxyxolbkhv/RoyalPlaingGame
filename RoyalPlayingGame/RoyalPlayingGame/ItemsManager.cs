@@ -13,6 +13,7 @@ namespace RoyalPlayingGame
     public delegate void ShowHint(string message, int time);
     public delegate void SomeItemAdded();
     public delegate void BagSlotsChanged(int slots);
+    public delegate void MoneyAmountChanged(int amount);
     /// <summary>
     /// основная задача класса - подгружать итемы
     ///  и возвращать по id обьект итема
@@ -30,9 +31,7 @@ namespace RoyalPlayingGame
         public static void Init()
         {
             LoadItemImageList();
-
-
-            Item ultraHat = new Item("ultra_hat", "Ультра-шляпа", 1, 1, 0);
+            Item ultraHat = new Item("ultra_hat", "Ультра-шляпа", 1, 1, 0, ItemType.Armor);
             CustomItems.Add(ultraHat);
             ImageList.Add("ultra_hat", GetItemImage("hat"));
         }
@@ -96,6 +95,11 @@ namespace RoyalPlayingGame
         public static void BagFull(string message, int time)
         {
             FullBag?.Invoke(message,time);
+        }
+        public static event MoneyAmountChanged MoneyChanged;
+        public static void ChangeMoneyAmount(int amount)
+        {
+            MoneyChanged?.Invoke(amount);
         }
         
         

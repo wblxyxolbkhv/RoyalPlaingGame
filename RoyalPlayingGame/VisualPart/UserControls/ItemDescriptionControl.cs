@@ -24,7 +24,7 @@ namespace VisualPart.UserControls
         {
             Item = item;
             label1.Text = Item.Name;
-            label2.Text = Item.Description;
+
         }
     }
 }

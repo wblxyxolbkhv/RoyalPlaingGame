@@ -23,11 +23,11 @@ namespace StartUpProject.Enemies
             Unit.Health = 100;
             Unit.RealHealth = 100;
             Unit.BaseDamage = 10;
-            Unit.AddLoot(new Item("hat", "Шляпа", 1,1,1));
-            Unit.AddLoot(new Item("double_hat", "Двойная шляпа", 1,1,1));
-            Unit.AddLoot(new Item("triple_hat", "Тройная шляпа", 1,1,1));
+            Unit.AddLoot(new Item("hat", "Шляпа", 1,1,1, ItemType.Other));
+            Unit.AddLoot(new Item("double_hat", "Двойная шляпа", 1,1,1, ItemType.Potion));
+            Unit.AddLoot(new Item("triple_hat", "Тройная шляпа", 1,1,1, ItemType.Armor));
             Unit.AddLoot(ItemsManager.GetCustomItem("ultra_hat"));
-            Unit.AddLoot(new Item("cool_book", "Книгга", 1, 1, 1));
+            Unit.AddLoot(new Item("cool_book", "Книгга", 1, 1, 1, ItemType.Weapon));
 
 
             RealObject = new RealObject(CollisionDomain, Gravity);

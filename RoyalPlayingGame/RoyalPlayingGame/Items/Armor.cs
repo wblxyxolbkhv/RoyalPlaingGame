@@ -20,7 +20,7 @@ namespace RoyalPlayingGame.Items
         {
             this.ASlot = ASlot;
         }
-        public Armor(string ID, string name, ArmorSlot ASlot, uint armorLvl, int minValue, int maxValue) : base(ID, name, 1, 1, armorLvl)
+        public Armor(string ID, string name, ArmorSlot ASlot, uint armorLvl, int minValue, int maxValue) : base(ID, name, 1, 1, armorLvl, ItemType.Armor)
         {
             Effect.Effect effect = new Effect.Effect();
             randomArmorGeneration = new Random();

@@ -9,6 +9,7 @@ namespace RoyalPlayingGame.Items
     /// <summary>
     /// Базовый класс для всех предметов в игре, автор: Жифарский Д.А.
     /// </summary>
+    public enum ItemType { Armor, Weapon, Potion, Other }
     public class Item
     {
         public Item(string ID, string name, int maxAmount, int amount, uint itemLvl, Effect.Effect effect)
@@ -21,7 +22,8 @@ namespace RoyalPlayingGame.Items
             ItemEffect = effect;
             IsAQuestItem = false;
         }
-        public Item(string ID, string name, int maxAmount, int amount, uint itemLvl)
+
+        public Item(string ID, string name, int maxAmount, int amount, uint itemLvl, ItemType type)
         {
             this.ID = ID;
             Name = name;
@@ -29,7 +31,9 @@ namespace RoyalPlayingGame.Items
             Lvl = itemLvl;
             Amount = amount;
             IsAQuestItem = false;
+            Type = type;
         }
+
         /// <summary>
         /// конструктор для квестовых предметов
         /// </summary>
@@ -44,6 +48,9 @@ namespace RoyalPlayingGame.Items
             Amount = 0;
             IsAQuestItem = true;
         }
+
+        //public int Position { get; set; }
+        public ItemType Type { get; set; }
         public string ID { get; set; }
         public string Name { get; set; }
         public int MaxAmount { get; protected set; }
