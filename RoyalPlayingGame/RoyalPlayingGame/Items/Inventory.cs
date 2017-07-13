@@ -49,7 +49,7 @@ namespace RoyalPlayingGame.Items
 
         public IEnumerator GetEnumerator()
         {
-            return this;
+            return Bag.GetEnumerator();
         }
 
         public void Reset()
@@ -186,8 +186,10 @@ namespace RoyalPlayingGame.Items
             foreach(KeyValuePair<int, Item> pair in Bag)
             {
                 if (pair.Value == item)
+                {
                     Bag.Remove(pair.Key);
-                break;        
+                    break;
+                }
             }              
         }
 
@@ -196,7 +198,10 @@ namespace RoyalPlayingGame.Items
             foreach(KeyValuePair<int, Item> pair in Bag)
             {
                 if (pair.Value.ID == item.ID)
+                {
                     pair.Value.Amount -= item.Amount;
+                    break;
+                }
             }
         }
 
@@ -209,6 +214,7 @@ namespace RoyalPlayingGame.Items
                 {
                     Bag.Remove(pair.Key);
                     Bag.Add(newPosition, item);
+                    break;
                 }
             }
         }
