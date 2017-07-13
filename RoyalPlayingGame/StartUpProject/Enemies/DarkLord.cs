@@ -11,7 +11,9 @@ using RoyalPlayingGame.Spell;
 using RoyalPlayingGame.Units;
 using RoyalPlayingGame;
 using RoyalPlayingGame.Items;
-
+/* Назначение: Темный лорд на стартовой заставке
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject.Enemies
 {
     public class DarkLord : ComplexUnit

@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SimplePhysicalEngine.NonPhysicalComponents;
-
+/* Назначение: Слушатель столкновений с триггерами
+ * слушает все столкновения с триггерами и уведомляет об этом нужные классы
+ * Автор: Никитенко А.В.
+ */
 namespace SimplePhysicalEngine
 {
     public delegate void TriggerCollisionHandler(string TriggerID);

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using SimplePhysicalEngine.NonPhysicalComponents;
 using System.Drawing;
 using System.Windows.Forms;
-
+/* Назначение: Класс для структур в реальном мире
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject
 {
     public class ComplexStructure

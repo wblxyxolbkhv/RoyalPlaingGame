@@ -16,7 +16,9 @@ using StartUpProject.Dialogs;
 using RoyalPlayingGame;
 using StartUpProject.Scripts;
 using StartUpProject.GlobalGameComponents;
-
+/* Назначение: Базовый класс для уровня, несет в себе львиную долю функционала
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject
 {
     public class GameLevel

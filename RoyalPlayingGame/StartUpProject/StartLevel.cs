@@ -18,7 +18,9 @@ using RoyalPlayingGame;
 using StartUpProject.Scripts;
 using StartUpProject.GlobalGameComponents;
 using System.Threading;
-
+/* Назначение: Стартовый уровень со сценкой битвы
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject
 {
     class StartLevel : GameLevel

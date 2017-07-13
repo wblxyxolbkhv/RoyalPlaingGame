@@ -5,7 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SimplePhysicalEngine;
-
+/* Назначение: Основной класс для придания физики обьекту
+ * пока что ограничен только прямоугольной формой
+ * Автор: Никитенко А.В.
+ */
 namespace SimplePhysicalEngine.NonPhysicalComponents
 {
     public enum Direction { Left, Right, NoneLeft, NoneRight}
@@ -106,7 +109,13 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
                     break;
             }
         }
+        /// <summary>
+        /// глобаный идентификатор
+        /// </summary>
         public string ID { get; protected set; }
+        /// <summary>
+        /// является ли обьект триггером
+        /// </summary>
         public bool IsTrigger { get; set; }
 
 
@@ -216,6 +225,7 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
         public double Width { get; set; }
 
         public Direction direction { get; set; }
+        // домен коллизий
         public List<RealObject> NearbyObjects { get; set; }
 
 
@@ -296,7 +306,7 @@ namespace SimplePhysicalEngine.NonPhysicalComponents
 
         }
         /// <summary>
-        /// передать отрицательное
+        /// прыжок (для прыжка вверх передать отрицательное значение)
         /// </summary>
         /// <param name="speed"></param>
         public void Jump(double speed)

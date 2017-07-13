@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/* НЕ ИСПОЛЬЗУЕТСЯ
+ * Автор: Никитенко А.В.
+ */
 namespace SimplePhysicalEngine
 {
     /// <summary>

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using RoyalPlayingGame.Spell;
 using SimplePhysicalEngine.NonPhysicalComponents;
 using VisualPart;
-
+/* Назначение: Спелл Огненный шар
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject.Spells
 {
     public class Fireball : ComplexSpell

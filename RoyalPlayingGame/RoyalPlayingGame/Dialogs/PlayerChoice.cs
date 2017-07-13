@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/* Назначение: Выбор следующей реплики для игрока
+ * Автор: Никитенко А.В.
+ */
 namespace RoyalPlayingGame.Dialogs
 {
     /// <summary>

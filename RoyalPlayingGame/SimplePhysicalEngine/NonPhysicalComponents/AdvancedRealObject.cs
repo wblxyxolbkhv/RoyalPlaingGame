@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/* Назначение: Улучшенная версия RealObject
+ * в разработке
+ * Автор: Никитенко А.В.
+ */
 namespace SimplePhysicalEngine.NonPhysicalComponents
 {
     class AdvancedRealObject : RealObject

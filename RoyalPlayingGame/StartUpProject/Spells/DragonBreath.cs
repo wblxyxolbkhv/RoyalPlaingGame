@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using SimplePhysicalEngine.NonPhysicalComponents;
 using VisualPart;
-
+/* Назначение: Спелл Дыхание дракона
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject.Spells
 {
     class DragonBreath : ComplexSpell

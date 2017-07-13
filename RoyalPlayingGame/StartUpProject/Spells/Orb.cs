@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using SimplePhysicalEngine.NonPhysicalComponents;
 using SimplePhysicalEngine;
 using VisualPart;
-
+/* Назначение: Шар энергии(используется для телепортации)
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject.Spells
 {
     public class Orb : ComplexSpell

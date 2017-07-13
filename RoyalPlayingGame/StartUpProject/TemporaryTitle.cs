@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SimplePhysicalEngine.NonPhysicalComponents;
-
+/* Назначение: Класс для всплывающих записей (вроде урона)
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject
 {
     /// <summary>

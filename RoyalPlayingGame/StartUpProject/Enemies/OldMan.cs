@@ -8,7 +8,9 @@ using SimplePhysicalEngine;
 using VisualPart;
 using RoyalPlayingGame.Quests;
 using RoyalPlayingGame.Units;
-
+/* Назначение: Старичок на 1 уровне
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject.Enemies
 {
     class OldMan : ComplexUnit

@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using RoyalPlayingGame.Spell;
 using SimplePhysicalEngine.NonPhysicalComponents;
-
+/* Назначение: Базовый класс для всех спеллов
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject
 {
     public class ComplexSpell : ComplexObject

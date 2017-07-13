@@ -8,7 +8,9 @@ using SimplePhysicalEngine.NonPhysicalComponents;
 using VisualPart;
 using System.Drawing;
 using SimplePhysicalEngine;
-
+/* Назначение: Базовый класс для всех врагов
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject
 {
     public delegate void SpellCasted(ComplexSpell spell);
@@ -147,6 +149,7 @@ namespace StartUpProject
             
         }
         // TODO: да простят меня боги за этот убогий костыль
+        // для предотвращения того, что враг не останавливается при ударе
         private double MaxSpeed;
 
         public event SpellCasted AttackCasted;

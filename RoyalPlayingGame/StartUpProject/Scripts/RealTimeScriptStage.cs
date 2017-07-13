@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-
+/* Назначение: Стадия для экшоновых действий
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject.Scripts
 {
     /// <summary>

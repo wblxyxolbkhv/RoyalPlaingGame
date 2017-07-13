@@ -41,7 +41,7 @@
             this.scaleMP = new VisualPart.UserControls.Scale();
             this.scaleHP = new VisualPart.UserControls.Scale();
             this.playerMenu1 = new VisualPart.UserControls.PlayerMenu();
-            this.choiceBoxInterface1 = new VisualPart.UserControls.ChoiceBoxInterface();
+            this.choiceBox1 = new VisualPart.UserControls.ChoiceBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -193,20 +193,23 @@
             this.playerMenu1.TabIndex = 1;
             this.playerMenu1.Visible = false;
             // 
-            // choiceBoxInterface1
+            // choiceBox1
             // 
-            this.choiceBoxInterface1.Choice = null;
-            this.choiceBoxInterface1.Location = new System.Drawing.Point(273, 113);
-            this.choiceBoxInterface1.Name = "choiceBoxInterface1";
-            this.choiceBoxInterface1.Size = new System.Drawing.Size(466, 132);
-            this.choiceBoxInterface1.TabIndex = 13;
+            this.choiceBox1.BackColor = System.Drawing.Color.Transparent;
+            this.choiceBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("choiceBox1.BackgroundImage")));
+            this.choiceBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.choiceBox1.Choice = null;
+            this.choiceBox1.Location = new System.Drawing.Point(283, 123);
+            this.choiceBox1.Name = "choiceBox1";
+            this.choiceBox1.Size = new System.Drawing.Size(548, 153);
+            this.choiceBox1.TabIndex = 14;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 603);
-            this.Controls.Add(this.choiceBoxInterface1);
+            this.Controls.Add(this.choiceBox1);
             this.Controls.Add(this.playerInventoryControl1);
             this.Controls.Add(this.itemDescriptionControl1);
             this.Controls.Add(this.lootPageControl1);
@@ -242,7 +245,7 @@
         private VisualPart.UserControls.LootPageControl lootPageControl1;
         private VisualPart.UserControls.ItemDescriptionControl itemDescriptionControl1;
         private VisualPart.UserControls.PlayerInventoryControl playerInventoryControl1;
-        private VisualPart.UserControls.ChoiceBoxInterface choiceBoxInterface1;
+        private VisualPart.UserControls.ChoiceBox choiceBox1;
     }
 }
 

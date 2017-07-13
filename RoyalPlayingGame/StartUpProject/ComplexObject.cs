@@ -12,7 +12,9 @@ using VisualPart;
 using System.Drawing;
 using System.Windows.Forms;
 using RoyalPlayingGame;
-
+/* Назначение: Базовый класс для всех обьектов в реальном мире
+ * Автор: Никитенко А.В.
+ */
 namespace StartUpProject
 {
     public class ComplexObject
