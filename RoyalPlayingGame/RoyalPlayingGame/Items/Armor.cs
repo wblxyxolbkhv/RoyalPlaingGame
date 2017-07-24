@@ -11,7 +11,7 @@ namespace RoyalPlayingGame.Items
 {
     
     //public enum ArmorType { Cloth, Leather, Mail, Plate }
-    public enum ArmorSlot { Head, Back, Chest, Hands, Belt, Boots, Ring1, Ring2, Neck }
+    public enum ArmorSlot { Head, Neck, Back, Chest, Boots, Ring, None }
     /// <summary>
     /// Броня юнита, автор: Жифарский Д.А.
     /// </summary>
@@ -29,6 +29,7 @@ namespace RoyalPlayingGame.Items
             effect.DAgility = randomArmorGeneration.Next(minValue, maxValue);
             effect.DIntelligence = randomArmorGeneration.Next(minValue, maxValue);
             effect.DStrength = randomArmorGeneration.Next(minValue, maxValue);
+            effect.DHealth = randomArmorGeneration.Next(minValue, maxValue);
             ItemEffect = effect;
             this.ASlot = ASlot;
         }

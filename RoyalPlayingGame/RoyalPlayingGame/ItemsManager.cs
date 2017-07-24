@@ -102,6 +102,26 @@ namespace RoyalPlayingGame
             MoneyChanged?.Invoke(amount);
         }
         
-        
+        public static Dictionary<string,int> GetItemStats(Item item)
+        {
+            Dictionary<string, int> stats = new Dictionary<string, int>();
+            if(item is Armor)
+            {
+                stats.Add("Health", (item as Armor).ItemEffect.DHealth);
+                stats.Add("Agility", (item as Armor).ItemEffect.DAgility);
+                stats.Add("Strength", (item as Armor).ItemEffect.DStrength);
+                stats.Add("Intelligence", (item as Armor).ItemEffect.DIntelligence);
+                return stats;
+            }
+            if(item is Weapon)
+            {
+                stats.Add("Health", (item as Weapon).ItemEffect.DHealth);
+                stats.Add("Agility", (item as Weapon).ItemEffect.DAgility);
+                stats.Add("Strength", (item as Weapon).ItemEffect.DStrength);
+                stats.Add("Intelligence", (item as Weapon).ItemEffect.DIntelligence);
+                return stats;
+            }
+            return null;
+        }
     }
 }

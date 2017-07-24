@@ -56,6 +56,7 @@
     <Compile Include="Exceptions\NotAQuestItemException.cs" />
     <Compile Include="Exceptions\SpellCoolDownException.cs" />
     <Compile Include="ItemsManager.cs" />
+    <Compile Include="Items\Equipment.cs" />
     <Compile Include="Items\Inventory.cs" />
     <Compile Include="JournalNotesPublisher.cs" />
     <Compile Include="Journal\JournalNote.cs" />

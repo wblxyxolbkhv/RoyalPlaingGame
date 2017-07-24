@@ -29,7 +29,7 @@ namespace VisualPart.UserControls
             PlaceLabel(ref x, ref y, "Other");
             //MouseDown += OnMouseDown;          
             ItemsManager.SlotsChanged += PlaceButtons;
-            ItemsManager.ItemAdded += UpdateButtons;
+            ItemsManager.ItemAdded += UpdateItemButtons;
             ItemsManager.MoneyChanged += UpdateMoneyAmount;
             PlacePlayerItemSlots();
             PlacePlayerPB();
@@ -53,19 +53,35 @@ namespace VisualPart.UserControls
 
         private Item ButtonDataItem { get; set; }
         private Bitmap ButtonDataImage { get; set; }
+        private int ButtonDataPosition { get; set; }
+        private bool DropBlocking { get; set; } = false;
         public Inventory PlayerInventory { get; set; }
-        public List<Item> PlayerEquipment { get; set; }
+        public Equipment PlayerEquipment { get; set; }
 
-        private void UpdateButtons()
+
+        private void UpdateItemButtons()
         {
             if (PlayerInventory != null)
+            {
+                //foreach (Control c in interfaceControl1.Controls)
+                //{
+                //    InventoryButton ib1 = c as InventoryButton;
+                //    if (ib1 == null)
+                //        continue;
+                //    if (ib1.AccessibleName == "Кнопка с экипировкой")
+                //        continue;
+                //    ib1.CurItem = null;
+                //    ib1.LabelUpdate();
+                //}
                 foreach (KeyValuePair<int, Item> pair in PlayerInventory)
                 {
+
                     foreach (Control c in interfaceControl1.Controls)
                     {
                         InventoryButton ib1 = c as InventoryButton;
                         if (ib1 == null)
                             continue;
+                        ib1.LabelUpdate();
                         if (pair.Value != null)
                         {
                             if (ib1.AccessibleName == "Кнопка с экипировкой")
@@ -80,7 +96,32 @@ namespace VisualPart.UserControls
                         }
                         if (ib1.CurItem == null)
                             ib1.SetButtonImage(Properties.Resources.NullSlotImage);
-
+                    }
+                }
+            }
+            if (PlayerEquipment != null)
+                foreach (KeyValuePair<int, Item> pair in PlayerEquipment)
+                {
+                    foreach (Control c in interfaceControl1.Controls)
+                    {
+                        InventoryButton ib1 = c as InventoryButton;
+                        if (ib1 == null)
+                            continue;
+                        ib1.LabelUpdate();
+                        if (pair.Value != null)
+                        {
+                            if (ib1.AccessibleName == "Кнопка с предметом")
+                                continue;
+                            if ((Convert.ToInt32(ib1.Name) == pair.Key))
+                            {
+                                ib1.CurItem = pair.Value;
+                                ib1.SetButtonImage(ItemsManager.GetItemImage(ib1.CurItem.ID));
+                                ib1.LabelUpdate();
+                                break;
+                            }
+                        }
+                        //if (ib1.CurItem == null)
+                            //ib1.SetButtonImage(Properties.Resources.NullSlotImage);
                     }
                 }
             //for (int i = 0; i < PlayerInventory.Count; i++)
@@ -176,16 +217,46 @@ namespace VisualPart.UserControls
                         //    if (item == (sender as InventoryButton).CurItem)
                         //        item.Position = (sender as InventoryButton).CurItem.Position;
                         //}
+                        if ((sender as InventoryButton).AccessibleName == "Кнопка с экипировкой")
+                        {
+                            //PlayerEquipment.UnEquipItem((sender as InventoryButton).CurItem);
+                            //PlayerInventory.AddItem((sender as InventoryButton).CurItem);
+                        }
+                        else
+                        {
+                            if ((sender as InventoryButton).CurItem != null)
+                            {
+                                PlayerInventory.ChangeKey((sender as InventoryButton).CurItem, ButtonDataItem, ButtonDataPosition, Convert.ToInt32((sender as InventoryButton).Name));
+                            }
+                            else
+                            {
+                                PlayerInventory.ChangeKey((sender as InventoryButton).CurItem, Convert.ToInt32((sender as InventoryButton).Name));
+                            }
+                        }
                         (sender as InventoryButton).CurItem = ButtonDataItem;
-                        PlayerInventory.ChangeKey((sender as InventoryButton).CurItem, Convert.ToInt32((sender as InventoryButton).Name));
+                        (sender as InventoryButton).SetButtonImage(ButtonDataImage);
                     }
                     else
                     {
                         (sender as InventoryButton).CurItem = null;
+                        (sender as InventoryButton).SetButtonImage(Properties.Resources.NullSlotImage);
                         //(sender as InventoryButton).CurItem.Position = Convert.ToInt32((sender as InventoryButton).Name);
                     }
-                    (sender as InventoryButton).SetButtonImage(ButtonDataImage);
+                    
                     (sender as InventoryButton).LabelUpdate();
+                    UpdateItemButtons();
+                    foreach (Control c in interfaceControl1.Controls)
+                    {
+                        InventoryButton ib1 = c as InventoryButton;
+                        if (ib1 == null)
+                            continue;
+                        if ((ib1.AccessibleName == "Кнопка с экипировкой") || (ib1.AccessibleName == "Кнопка с предметом"))
+                        {
+                            ib1.AllowDrop = true;
+                            ib1.BorderStyle = BorderStyle.None;
+                        }
+                    }
+                    DropBlocking = false;
                 }
             }
             else
@@ -300,7 +371,7 @@ namespace VisualPart.UserControls
                             ib1.Visible = true;
                         }
                     }
-                    UpdateButtons();
+                    UpdateItemButtons();
                         break;
                 case "Armor": HideInventoryButtons(ItemType.Armor);
                     break;
@@ -391,7 +462,7 @@ namespace VisualPart.UserControls
                 }
             }
             if(PlayerInventory.Count>0)
-            UpdateButtons();
+            UpdateItemButtons();
         }
 
         private void OnDrop(object sender, DragEventArgs e)
@@ -401,8 +472,33 @@ namespace VisualPart.UserControls
             InventoryButton ib = (InventoryButton)e.Data.GetData(e.Data.GetFormats()[0]);
             if(ib.CurItem!=null)
             (sender as InventoryButton).CurItem = ib.CurItem;
-            //(sender as InventoryButton).CurItem.Position = Convert.ToInt32((sender as InventoryButton).Name);
-            PlayerInventory.ChangeKey((sender as InventoryButton).CurItem, Convert.ToInt32((sender as InventoryButton).Name));
+            if ((sender as InventoryButton).AccessibleName == "Кнопка с экипировкой")
+            {
+                PlayerInventory.RemoveItem((sender as InventoryButton).CurItem);
+                Item unequipedItem = PlayerEquipment.EquipItem((sender as InventoryButton).CurItem);
+                if (unequipedItem != null)
+                {
+                    PlayerInventory.AddItem(unequipedItem, Convert.ToInt32(ib.Name));
+                }
+            }
+            else if(((sender as InventoryButton).AccessibleName == "Кнопка с предметом") && ib.AccessibleName == "Кнопка с экипировкой")
+            {
+                PlayerInventory.AddItem((sender as InventoryButton).CurItem, Convert.ToInt32((sender as InventoryButton).Name));
+                //PlayerInventory.ChangeKey((sender as InventoryButton).CurItem, Convert.ToInt32((sender as InventoryButton).Name));
+                PlayerEquipment.UnEquipItem((sender as InventoryButton).CurItem);
+            }
+            else
+            {
+                //(sender as InventoryButton).CurItem.Position = Convert.ToInt32((sender as InventoryButton).Name);
+                try
+                {
+                    PlayerInventory.ChangeKey((sender as InventoryButton).CurItem, Convert.ToInt32((sender as InventoryButton).Name));
+                }
+                catch (Exception)
+                {
+                    ButtonDataPosition = Convert.ToInt32((sender as InventoryButton).Name);
+                }
+            }
             (sender as InventoryButton).SetButtonImage((Bitmap)ib.ItemImage);
             (sender as InventoryButton).LabelUpdate();
         }
@@ -410,7 +506,65 @@ namespace VisualPart.UserControls
         private void OnDrag(object sender, DragEventArgs e)
         {
             //(sender as InventoryButton).SetButtonStyle(FlatStyle.System);
-            e.Effect = DragDropEffects.Move;     
+
+            e.Effect = DragDropEffects.Move;
+            ArmorSlot aslot = ArmorSlot.None;
+            WeaponSlot wslot = WeaponSlot.None;
+            if (!DropBlocking)
+            {
+                if ((sender as InventoryButton).CurItem != null)
+                {
+                    if ((sender as InventoryButton).CurItem is Armor)
+                    {
+                        aslot = ((sender as InventoryButton).CurItem as Armor).ASlot;
+                    }
+                    if ((sender as InventoryButton).CurItem is Weapon)
+                    {
+                        wslot = ((sender as InventoryButton).CurItem as Weapon).WSlot;
+                    }
+                }
+                foreach (Control c in interfaceControl1.Controls)
+                {
+                    InventoryButton ib1 = c as InventoryButton;
+                    if (ib1 == null)
+                        continue;
+                    if (ib1.AccessibleName == "Кнопка с экипировкой")
+                    {
+                        if (ib1.Name != 6.ToString())
+                        {
+                            if (Convert.ToInt32(ib1.Name) != (Convert.ToInt32(aslot)))
+                            {
+                                ib1.AllowDrop = false;
+                            }
+                            else
+                            {
+                                ib1.BorderStyle = BorderStyle.FixedSingle;
+                            }
+                        }
+                        else if (wslot != WeaponSlot.None)
+                        {
+                            ib1.AllowDrop = true;
+                            ib1.BorderStyle = BorderStyle.FixedSingle;
+                        }
+                        else ib1.AllowDrop = false;
+                    }
+                    else if (((sender as InventoryButton).AccessibleName == "Кнопка с экипировкой") && (ib1.AccessibleName == "Кнопка с предметом"))
+                    {
+                        if (((sender as InventoryButton).CurItem is Armor) && ib1.CurItem is Armor)
+                            if (((sender as InventoryButton).CurItem as Armor).ASlot == (ib1.CurItem as Armor).ASlot)
+                                ib1.AllowDrop = true;
+                            else ib1.AllowDrop = false;
+                        else if (((sender as InventoryButton).CurItem is Weapon) && ib1.CurItem is Weapon)
+                            if (((sender as InventoryButton).CurItem as Weapon).WSlot == (ib1.CurItem as Weapon).WSlot)
+                                ib1.AllowDrop = true;
+                            else ib1.AllowDrop = false;
+                        else if (ib1.CurItem == null)
+                            ib1.AllowDrop = true;
+                        else ib1.AllowDrop = false;    
+                    }
+                }
+                DropBlocking = true;
+            }
         }
 
         /// <summary>
@@ -483,6 +637,7 @@ namespace VisualPart.UserControls
             lb.Name = "Money";
             lb.Font = new Font(lb.Font.FontFamily, 9.25F);
             lb.BorderStyle = BorderStyle.Fixed3D;
+
         }
 
 

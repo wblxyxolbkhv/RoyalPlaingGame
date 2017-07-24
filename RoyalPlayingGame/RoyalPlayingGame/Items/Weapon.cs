@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace RoyalPlayingGame.Items
 {
     public enum WeaponType { Sword, Staff, Shield, Dagger, Mace, Spear }
-    public enum WeaponSlot { LeftHand, RightHand, TwoHands }
+    public enum WeaponSlot { LeftHand, RightHand, TwoHands, None }
     /// <summary>
     /// Оружие юнита, автор: Жифарский Д.А.
     /// </summary>
@@ -26,6 +26,7 @@ namespace RoyalPlayingGame.Items
             effect.DAgility = randomWeaponGeneration.Next(minValue, maxValue);
             effect.DIntelligence = randomWeaponGeneration.Next(minValue, maxValue);
             effect.DStrength = randomWeaponGeneration.Next(minValue, maxValue);
+            effect.DHealth = randomWeaponGeneration.Next(minValue, maxValue);
             ItemEffect = effect;
             this.WType = WType;
             this.WSlot = WSlot;

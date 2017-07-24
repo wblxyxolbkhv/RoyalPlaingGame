@@ -131,6 +131,15 @@ namespace RoyalPlayingGame.Items
 
         }
 
+        public void AddItem(Item item, int position)
+        {
+            if (Bag.Count == Slots)
+            {
+                throw new FullBagException();
+            }
+            Bag.Add(position, item);
+            ItemsManager.AddItem();
+        }
         //public void AddItemForUnit(Item item)
         //{
         //    foreach (Item bagItem in Bag)
@@ -219,10 +228,34 @@ namespace RoyalPlayingGame.Items
             }
         }
 
-        public Dictionary<int, Item> GetItemList()
+        public void ChangeKey(Item firstItem, Item secondItem, int firstPosition, int secondPosition)
         {
-            return Bag;
+            foreach (KeyValuePair<int, Item> pair in Bag)
+            {
+                if (pair.Value == firstItem) 
+                {
+                    Bag.Remove(pair.Key);
+                    break;
+                }
+            }
+
+            foreach (KeyValuePair<int, Item> pair in Bag)
+            {
+                if (pair.Value == secondItem)
+                {
+                    Bag.Remove(pair.Key);                
+                    break;
+                }
+            }
+            if(firstPosition != secondPosition)
+            Bag.Add(firstPosition, firstItem);
+            Bag.Add(secondPosition, secondItem);
         }
+
+       //// public Dictionary<int, Item> GetItemList()
+       // {
+       //     return Bag;
+       // }
 
         public int GetKey(Item item)
         {
@@ -231,7 +264,7 @@ namespace RoyalPlayingGame.Items
                 if (pair.Value == item)
                     return pair.Key;
             }
-            return 0;
+            return -1;
         }
     }
 }
