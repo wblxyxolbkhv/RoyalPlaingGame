@@ -23,12 +23,19 @@ namespace StartUpProject.Enemies
             Unit.Health = 100;
             Unit.RealHealth = 100;
             Unit.BaseDamage = 10;
-            Unit.AddLoot(new Item("hat", "Шляпа", 1,1,1, ItemType.Other));
-            Unit.AddLoot(new Item("double_hat", "Двойная шляпа", 1,1,1, ItemType.Potion));
-            Unit.AddLoot(new Item("triple_hat", "Тройная шляпа", 1,1,1, ItemType.Armor));
-            Unit.AddLoot(ItemsManager.GetCustomItem("ultra_hat"));
-            Unit.AddLoot(new Item("cool_book", "Книгга", 1, 1, 1, ItemType.Weapon));
-
+            //Unit.AddLoot(new Item("hat", "Шляпа", 1,1,1, ItemType.Other));
+            //Unit.AddLoot(new Armor("hat", "Шляпа", ArmorSlot.Head, 0, 2, 5));
+            //Unit.AddLoot(new Item("double_hat", "Двойная шляпа", 1,1,1, ItemType.Potion));
+            //Unit.AddLoot(new Item("triple_hat", "Тройная шляпа", 1,1,1, ItemType.Armor));
+            //Unit.AddLoot(ItemsManager.GetCustomItem("ultra_hat"));
+            //Unit.AddLoot(new Item("cool_book", "Книгга", 1, 1, 1, ItemType.Weapon));
+            Unit.AddLoot(new Armor("newhat", "Шляпа", ArmorSlot.Head, 0, 4, 10));
+            Unit.AddLoot(new Armor("neck", "Ожерелье", ArmorSlot.Neck, 0, 4, 10));
+            Unit.AddLoot(new Armor("back", "Плащ", ArmorSlot.Back, 0, 4, 10));
+            Unit.AddLoot(new Armor("chest", "Мантия", ArmorSlot.Chest, 0, 4, 10));
+            Unit.AddLoot(new Armor("boots", "Сапоги", ArmorSlot.Boots, 0, 4, 10));
+            Unit.AddLoot(new Armor("ring", "Кольцо", ArmorSlot.Ring, 0, 4, 10));
+            Unit.AddLoot(new Weapon("staff", "Посох", WeaponType.Staff, WeaponSlot.TwoHands, 0, 4, 10));
 
             RealObject = new RealObject(CollisionDomain, Gravity);
             RealObject.Height = 106;

@@ -21,17 +21,17 @@ namespace StartUpProject
         }
 
         public Player Player { get; set; }
-        public InventoryControl InventoryControl
-        {
-            get
-            { return inventControl; }
-            set
-            {
-                inventControl = value;
-                inventControl.ItemList = Player.Inventory.GetItemList();
-                //inventControl.SlotsAmount = Player.Inventory.Slots;
-            }
-        }
+        //public InventoryControl InventoryControl
+        //{
+        //    get
+        //    { return inventControl; }
+        //    set
+        //    {
+        //        inventControl = value;
+        //        inventControl.ItemList = Player.Inventory.GetItemList();
+        //        //inventControl.SlotsAmount = Player.Inventory.Slots;
+        //    }
+        //}
         public PlayerInventoryControl PIC
         {
             get

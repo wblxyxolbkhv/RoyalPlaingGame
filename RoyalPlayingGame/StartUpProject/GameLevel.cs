@@ -370,10 +370,10 @@ namespace StartUpProject
             Player = new ComplexUnit();
 
             Player.Unit = new Player();
-            Player.Unit.Health = 200;
-            Player.Unit.Mana = 100000;
-            Player.Unit.RealMana = 100000;
-            Player.Unit.RealHealth = 200;
+            //Player.Unit.Health = 200;
+            //Player.Unit.Mana = 100000;
+            //Player.Unit.RealMana = 1000;
+            //Player.Unit.RealHealth = 10;
 
             Player.RealObject = new RealObject(CollisionDomain, "player", Gravity);
             Player.RealObject.Position = new Vector2(400, 400);

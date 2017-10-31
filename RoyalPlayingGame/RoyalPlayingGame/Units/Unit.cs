@@ -16,12 +16,64 @@ namespace RoyalPlayingGame.Units
     {
         public Unit()
         {
-            Equipment = new List<Item>();
+            Equipment = new Equipment();
             Inventory = new Inventory();
             SpellBook = new SpellBookCollection();
             Effects = new List<Effect.Effect>();
             IsAlive = true;
+            Equipment.EquipChanged += CalculateStats;
         }
+
+        private void CalculateStats(bool action, Dictionary<string, int> stats)
+        {
+            if (action)
+            {
+                foreach (KeyValuePair<string, int> pair in stats)
+                    switch (pair.Key)
+                    {
+                        case "Health":
+                            RealHealth += pair.Value;
+                            Health += pair.Value;
+                            break;
+                        case "Agility":
+                            RealAgility += pair.Value;
+                            Agility += pair.Value;
+                            break;
+                        case "Strength":
+                            RealStrength += pair.Value;
+                            Strength += pair.Value;
+                            break;
+                        case "Intelligence":
+                            RealIntelligence += pair.Value;
+                            Intelligence += pair.Value;
+                            break;
+                    }
+            }
+            else
+            {
+                foreach (KeyValuePair<string, int> pair in stats)
+                    switch (pair.Key)
+                    {
+                        case "Health":
+                            RealHealth -= pair.Value;
+                            Health -= pair.Value;
+                            break;
+                        case "Agility":
+                            RealAgility -= pair.Value;
+                            Agility -= pair.Value;
+                            break;
+                        case "Strength":
+                            RealStrength -= pair.Value;
+                            Strength -= pair.Value;
+                            break;
+                        case "Intelligence":
+                            RealIntelligence -= pair.Value;
+                            Intelligence -= pair.Value;
+                            break;
+                    }
+            }
+        }
+
         public Unit(int ID):this()
         {
             this.ID = ID;
@@ -145,7 +197,7 @@ namespace RoyalPlayingGame.Units
         public int ID {get;protected set; }
         public Inventory Inventory { get; set; }
         public List<Effect.Effect> Effects { get; set; }
-        public List<Item> Equipment { get; set; }
+        public Equipment Equipment { get; set; }
         public SpellBookCollection SpellBook { get; set; }
         public virtual int MoneyAmount { get; set; }
         public int Level { get; protected set; }
@@ -163,6 +215,7 @@ namespace RoyalPlayingGame.Units
                 Loot = new List<Item>();
             Loot.Add(item);
         }
+
         public int GotDamaged(int damage, DamageType DType)
         {
             if (DType == DamageType.Physical)
@@ -203,26 +256,26 @@ namespace RoyalPlayingGame.Units
             Effects.Add(effect);
         }
 
-        public void EquipWeapon(Weapon weapon)
-        {
-            if (CheckRequiredLvl(weapon))
-            {
-                Equipment.Add(weapon);
-            }
-        }
-        public void EquipArmor(Armor armor)
-        {
-            if (CheckRequiredLvl(armor))
-            {
-                Equipment.Add(armor);
-            }
-        }
-        public bool CheckRequiredLvl(Item item)
-        {
-            if (item.Lvl >= Level)
-                return true;
-            else return false;
-        }
+        //public void EquipWeapon(Weapon weapon)
+        //{
+        //    if (CheckRequiredLvl(weapon))
+        //    {
+        //        Equipment.Add(weapon);
+        //    }
+        //}
+        //public void EquipArmor(Armor armor)
+        //{
+        //    if (CheckRequiredLvl(armor))
+        //    {
+        //        Equipment.Add(armor);
+        //    }
+        //}
+        //public bool CheckRequiredLvl(Item item)
+        //{
+        //    if (item.Lvl >= Level)
+        //        return true;
+        //    else return false;
+        //}
 
         public virtual Spell.Spell CastSpell()
         {

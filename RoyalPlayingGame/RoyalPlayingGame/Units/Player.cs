@@ -17,10 +17,10 @@ namespace RoyalPlayingGame.Units
             
             QuestJournal = new PlayerJournal();
             Experience = 0;
-            Health = RealHealth = 100;
-            Mana = RealMana = 10000;
+            Health = RealHealth = 10;
+            Mana = RealMana = 1000;
             Agility = RealAgility = 4;
-            Intelligence = RealIntelligence = 1000;
+            Intelligence = RealIntelligence = 10;
             Strength = RealStrength = 4;
             PhysicalDamageReduction = RealPhysicalDamageReduction = 10;
             MagicalDamageReduction = RealMagicalDamageReduction = 15;
@@ -38,6 +38,8 @@ namespace RoyalPlayingGame.Units
             SpellHotKey3 = SpellBook[breath.Name];
             SpellHotKey4 = SpellBook[wave.Name];
             Inventory = new Items.Inventory(15);
+            Equipment.SetPlayerLevel(Level);
+            //Equipment.EquipItem(new Items.Armor("hat", "Шляпа", Items.ArmorSlot.Head, 0, 2, 5));
             MoneyAmount = 1005;
             //for (int i = 0; i < 4; i++)
             //    Inventory.AddItem(ItemsManager.GetItem(1000));
@@ -66,7 +68,6 @@ namespace RoyalPlayingGame.Units
                 else experience = value;
             }
         }
-        
         
         public Spell.Spell CastSpell(Keys key)
         {
