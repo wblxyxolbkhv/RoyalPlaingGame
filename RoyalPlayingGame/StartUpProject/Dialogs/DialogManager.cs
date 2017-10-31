@@ -56,6 +56,8 @@ namespace StartUpProject.Dialogs
         }
         private void OnAnswerChoosen(Answer a)
         {
+            if (Dialog == null)
+                return;
             Dialog.CurrentReplic = a;
             a.CurrentDuration = 0;
         }

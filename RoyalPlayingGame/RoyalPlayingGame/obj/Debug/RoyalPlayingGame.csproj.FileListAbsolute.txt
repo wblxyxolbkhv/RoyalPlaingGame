@@ -11,7 +11,6 @@ C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame
 C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\bin\Debug\RoyalPlayingGame.pdb
 C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.dll
 C:\Users\Dima\Desktop\projects\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.pdb
-<<<<<<< HEAD
 C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.csprojResolveAssemblyReference.cache
 C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.dll
 C:\Users\Дмитрий\Desktop\файлик\RoyalPlaingGame\RoyalPlayingGame\RoyalPlayingGame\obj\Debug\RoyalPlayingGame.pdb
